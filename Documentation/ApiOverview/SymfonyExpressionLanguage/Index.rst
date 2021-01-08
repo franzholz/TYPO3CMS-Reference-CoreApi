@@ -32,7 +32,7 @@ which would evaluate to true. In order to provide further functionality within
 conditions, the Symfony Expression Language needs to be extended. There are two
 parts that can be added to the language, which are variables and functions.
 
-The following section explain how to add variables and functions.
+The following sections explain how to add variables and functions.
 
 
 .. index:: pair: Symfony expression language; Custom provider
