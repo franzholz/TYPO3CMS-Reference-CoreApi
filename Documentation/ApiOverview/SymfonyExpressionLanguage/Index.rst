@@ -47,11 +47,13 @@ The provider is registered in the extension file :file:`/Configuration/Expressio
 the extension's custom PHP class name:
 
    <?php
+
    return [
        'typoscript' => [
            \Vendor\ExtensionName\ExpressionLanguage\CustomTypoScriptConditionProvider::class,
        ]
    ];
+
 
 This will register the defined class as provider within the context `typoscript`.
 
