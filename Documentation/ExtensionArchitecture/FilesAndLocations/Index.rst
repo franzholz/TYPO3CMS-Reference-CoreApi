@@ -430,11 +430,13 @@ A typical :file:`Configuration/Services.yaml` may look like this:
 :file:`Resources/Public/Icons/Extension.svg`
 --------------------------------------------
 
-Extension icon. If exists, this icon is displayed in the Extension Manager.
-Preferred is using an SVG file, Extension icon will look nicer when provided
-as vector graphics (SVG) rather than bitmaps (GIF or PNG).
+Alternatives: :file:`Resources/Public/Icons/Extension.gif`, :file:`Resources/Public/Icons/Extension.png`
 
-18x16 GIF, PNG or SVG icon for the extension.
+SVG, PNG or 18x16 GIF extension icon
+
+If exists, this icon is displayed in the Extension Manager.
+Preferred is using a SVG file, becasue the extension icon will look nicer when provided
+as a vector graphics (SVG) rather than bitmaps (GIF or PNG).
 
 
 .. _extension-reserved-folders:
