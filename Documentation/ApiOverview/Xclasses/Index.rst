@@ -5,9 +5,9 @@
    Overwriting Methods
 .. _xclasses:
 
-===================================
-Extending Classes (SYS OBJ, XCLASS)
-===================================
+============================
+Exchanging Classes (XCLASS)
+============================
 
 
 .. _xclasses-intro:
