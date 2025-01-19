@@ -51,7 +51,7 @@ For performance reasons, it should be quick to calculate.
 Suppose a resource-intensive extension is added as a plugin on two different
 pages. The calculated content depends on the page on which it is inserted and
 if a user is logged in or not. So, the plugin creates at maximum four different
-ontent outputs, which can be cached in four different cache entries:
+content outputs, which can be cached in four different cache entries:
 
 *   page 1, no user logged in
 *   page 1, a user is logged in
@@ -118,6 +118,8 @@ an arbitrary number of tags can be assigned to an entry and one specific tag
 can be assigned to multiple cache entries. All tags a cache entry has are given
 to the cache when the entry is stored ("set").
 
+..  seealso::
+    :ref:`Frontend cache collector <typo3-request-attribute-frontend-cache-collector>`
 
 ..  _caching-architecture-core:
 
@@ -151,7 +153,7 @@ does not belong to a group, it will be flushed when the "all" group is flushed,
 but such caches should normally be :ref:`transient <caching-backend-transient>`
 anyway.
 
-There are :ref:`TSconfig options for permissions <t3tsconfig:useroptions>`
+There are :ref:`TSconfig options for permissions <t3tsref:useroptions>`
 corresponding to each group.
 
 The following caches exist in the TYPO3 Core:
@@ -241,8 +243,6 @@ The following caches exist in the TYPO3 Core:
     *   Cache for :ref:`TypoScript <t3tsref:start>`.
 
 `database_schema`
-    .. versionadded:: 12.4.2
-
     **group**: system
 
     Cache for database schema information.

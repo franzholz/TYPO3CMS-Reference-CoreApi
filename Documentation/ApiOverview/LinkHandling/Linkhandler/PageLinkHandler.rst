@@ -1,5 +1,4 @@
 .. include:: /Includes.rst.txt
-.. highlight:: typoscript
 .. index:: LinkHandlers; PageLinkHandler
 .. _pagelinkhandler:
 
@@ -50,4 +49,3 @@ Enable the field with the following page TSConfig:
    :caption: EXT:some_extension/Configuration/page.tsconfig
 
    TCEMAIN.linkHandler.page.configuration.pageIdSelector.enabled = 1
-

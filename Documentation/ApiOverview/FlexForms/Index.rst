@@ -9,6 +9,9 @@ FlexForms
 FlexForms can be used to store data within an XML structure inside a single DB
 column.
 
+More information on this data structure is available in the section
+:ref:`t3ds`.
+
 FlexForms can be used to configure :ref:`content elements (CE) or plugins
 <content-elements>`, but they are optional so you can create plugins or
 content elements without using FlexForms.
@@ -112,14 +115,14 @@ Steps to perform (extension developer)
         );
 
 
-    If you are using a content element instead of a plugin, the example
+    If you are using a content element with a custom CType (recommend, both with and without
+    Extbase), the example
     looks like this:
 
     ..  code-block:: php
         :caption: EXT:my_extension/Configuration/TCA/Overrides/tt_content.php
 
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
-            // 'list_type' does not apply here
             '*',
             // FlexForm configuration schema file
             'FILE:EXT:example/Configuration/FlexForms/Registration.xml',
@@ -185,16 +188,16 @@ Select field
             <renderType>selectSingle</renderType>
             <items>
                 <numIndex index="0">
-                    <numIndex index="label">
+                    <label>
                         LLL:EXT:example/Resources/Private/Language/Backend.xlf:settings.registration.orderBy.crdate
-                    </numIndex>
-                    <numIndex index="value">crdate</numIndex>
+                    </label>
+                    <value>crdate</value>
                 </numIndex>
                 <numIndex index="1">
-                    <numIndex index="label">
+                    <label>
                         LLL:EXT:example/Resources/Private/Language/Backend.xlf:settings.registration.orderBy.title
-                    </numIndex>
-                    <numIndex index="value">title</numIndex>
+                    </label>
+                    <value>title</value>
                 </numIndex>
             </items>
         </config>
@@ -228,7 +231,7 @@ Populate a `select` field with a PHP Function (itemsProcFunc)
     </settings.orderBy>
 
 The function :php:`user_orderBy` populates the select field in
-:file:`Backend\ItemsProcFunc.php`:
+:file:`Backend/ItemsProcFunc.php`:
 
 ..  code-block:: php
 
@@ -428,16 +431,17 @@ the :php:`xml2array` method in :php:`GeneralUtility`  can be used to read
 the FlexForm data, then the :php:`FlexFormTools` can be used to write back the
 changes.
 
-..  code-block:: php
+..  versionchanged:: 13.0
+    :php:`\TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools` is now a stateless
+    service and can be injected via :ref:`DependencyInjection`.
+    :php:`FlexFormTools::flexArray2Xml()` is now marked as internal.
 
-    use \TYPO3\CMS\Core\Utility\GeneralUtility;
-    use \TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools;
+..  literalinclude:: _FlexformModificationService.php
+    :caption: EXT:my_extension/Classes/Service/FlexformModificationService.php
 
-    $flexFormArray = GeneralUtility::xml2array($flexFormString);
-    $changedFlexFormArray = $this->doSomething($flexFormArray);
-
-    $flexFormTools = new FlexFormTools();
-    $flexFormString = $flexFormTools->flexArray2Xml($changedFlexFormArray, addPrologue: true);
+..  note::
+    The method FlexFormTools::flexArray2Xml() is marked as internal and subject
+    to unannounced changes. Use at your own risk.
 
 
 .. index:: pair: FlexForms; TypoScript
@@ -488,7 +492,7 @@ FlexForm attribute. If that is missing, an empty value will be
 shown in the backend (:ref:`FormEngine <FormEngine>`)
 fields.
 
-While you can use page TSconfig's :ref:`t3tsconfig:pageTsTcaDefaults` to
+While you can use page TSconfig's :ref:`t3tsref:pageTsTcaDefaults` to
 modify defaults of usual TCA-based attributes, this is not
 possible on FlexForms. This is because the values are calculated
 at an earlier step in the Core workflow, where FlexForm values
@@ -517,7 +521,7 @@ If you defined your :typoscript:`FLUIDTEMPLATE` in TypoScript, you can assign si
 
 In order to have all FlexForm fields available, you can use the FlexFormProcessor. See also
 :ref:`FlexFormProcessor in the TypoScript Reference<t3tsref:FlexFormProcessor>`.
-This example would make your FlexForm data available as Fluid variable :html:`{flexform}`:
+This example would make your FlexForm data available as Fluid variable :html:`{myOutputVariable}`:
 
 .. code-block:: typoscript
 
@@ -548,8 +552,19 @@ Credits
 =======
 
 Some of the examples were taken from the extensions
-:t3ext:`news` (by Georg Ringer)
-and :t3ext:`bootstrap_package`
+:composer:`georgringer/news` (by Georg Ringer)
+and :composer:`bk2k/bootstrap-package`
 (by Benjamin Kott).
 
 Further enhancements by the TYPO3 community are welcome!
+
+T3DataStructure
+===============
+
+More information on the used data structures within FlexForms can be found
+in these following chapters:
+
+.. toctree::
+   :titlesonly:
+
+   T3datastructure/Index

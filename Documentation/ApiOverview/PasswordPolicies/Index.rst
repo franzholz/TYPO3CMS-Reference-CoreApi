@@ -40,11 +40,7 @@ The password policy applies to:
 *   Password fields in tables :sql:`be_users` and :sql:`fe_users`
 
 Optionally, a password policy can be configured for custom TCA fields of the
-type :ref:`password <columns-password>`.
-
-..  note::
-    During the development of TYPO3 v12 LTS more areas are added where the
-    password policy is considered.
+type :ref:`password <t3tca:columns-password>`.
 
 ..  _configure-password-policies:
 
@@ -90,7 +86,7 @@ Then assign the custom password policy `simple` to frontend and/or backend
 context:
 
 ..  code-block:: php
-    :caption: config/system/settings.php | typo3conf/system/settings.php
+    :caption: config/system/additional.php | typo3conf/system/additional.php
 
     $GLOBALS['TYPO3_CONF_VARS']['BE']['passwordPolicy'] = 'simple';
     $GLOBALS['TYPO3_CONF_VARS']['FE']['passwordPolicy'] = 'simple';
@@ -160,6 +156,13 @@ the exclude action :php:`\TYPO3\CMS\Core\PasswordPolicy\PasswordPolicyAction::NE
 because it should be excluded, when a new user account is created.
 
 
+..  _password-policies-third-party-validators:
+
+Third-party validators
+----------------------
+
+The extension :t3ext:`add_pwd_policy` provides additional validators.
+
 Disable password policies globally
 ==================================
 
@@ -197,9 +200,28 @@ Please refer to :php:`\TYPO3\CMS\Core\PasswordPolicy\Validator\CorePasswordValid
 for a detailed implementation example.
 
 ..  tip::
-    The third-party extension :t3ext:`add_pwd_policy` provides additional
+    The third-party extension :composer:`derhansen/add_pwd_policy` provides additional
     password validators. It can also be used as a resource for writing your
     own password validator.
+
+Validate a password manually
+============================
+
+You can use the :php:`\TYPO3\CMS\Core\PasswordPolicy\PasswordPolicyValidator` to validate a
+password using the validators configured in :php:`$GLOBALS['TYPO3_CONF_VARS']['SYS']['passwordPolicies']`.
+
+The class cannot be injected as it must be instantiated with an action. Available actions can be found in
+enum :t3src:`core/Classes/PasswordPolicy/PasswordPolicyAction.php`.
+
+..  rubric:: Example:
+
+In the following example a :ref:`command <symfony-console-commands>` to generate
+a public-private key pair validates the password from user input against the
+default policy of the current TYPO3 installation.
+
+..  literalinclude:: _PrivateKeyGeneratorCommand.php
+    :language: php
+    :caption: EXT:my_extension/Classes/Command/PrivateKeyGeneratorCommand.php
 
 Event
 =====

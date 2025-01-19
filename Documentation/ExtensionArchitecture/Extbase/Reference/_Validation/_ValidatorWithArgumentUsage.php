@@ -11,6 +11,9 @@ class Person extends AbstractEntity
 {
     #[Validate([
         'validator' => 'EmailAddress',
+        'options' => [
+            'message' => 'LLL:EXT:extbase/Resources/Private/Language/locallang.xlf:validator.emailaddress.notvalid',
+        ],
     ])]
     protected string $email = '';
     /**
@@ -21,7 +24,10 @@ class Person extends AbstractEntity
 
     #[Validate([
         'validator' => 'StringLength',
-        'options' => ['maximum' => 80],
+        'options' => [
+            'maximum' => 80,
+            'message' => 'A custom, non translatable message',
+        ],
     ])]
     protected string $firstname = '';
     /**
@@ -35,9 +41,4 @@ class Person extends AbstractEntity
         'options' => ['minimum' => 2, 'maximum' => 150],
     ])]
     protected string $lastname = '';
-    /**
-     * Use annotations instead for compatibility with TYPO3 v11 and PHP 7.4:
-     * @Validate("StringLength", options={"minimum": 2, "maximum": 80})
-     */
-    protected string $lastname2 = '';
 }

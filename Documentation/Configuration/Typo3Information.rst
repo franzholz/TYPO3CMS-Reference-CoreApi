@@ -1,3 +1,4 @@
+:navigation-title: TYPO3 information
 .. include:: /Includes.rst.txt
 
 .. _typo3Information:
@@ -38,5 +39,3 @@ accessing information about the currently used TYPO3 version.
 - :php:`getBranch()` will return the current branch (for example `10.4`)
 - :php:`getMajorVersion()` will return the major version number (for example `10`)
 - :php:`__toString()` will return the result of :php:`getVersion()`
-
-

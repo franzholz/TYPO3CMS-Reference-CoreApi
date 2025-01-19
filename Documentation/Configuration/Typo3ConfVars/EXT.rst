@@ -1,8 +1,8 @@
-.. include:: /Includes.rst.txt
+..  include:: /Includes.rst.txt
 
-.. index::
-   TYPO3_CONF_VARS; EXT
-.. _typo3ConfVars_ext:
+..  index::
+    TYPO3_CONF_VARS; EXT
+..  _typo3ConfVars_ext:
 
 =====================================
 EXT - Extension manager configuration
@@ -10,9 +10,6 @@ EXT - Extension manager configuration
 
 The following configuration variables can be used to configure settings for
 the Extension manager:
-
-..  contents::
-    :local:
 
 ..  attention::
     Extension specific configuration should be stored in
@@ -28,19 +25,21 @@ the Extension manager:
     *   :ref:`config/system/additional.php <typo3ConfVars-additional>`
 
 
-.. index::
-   TYPO3_CONF_VARS SYS; excludeForPackaging
-.. _typo3ConfVars_ext_excludeForPackaging:
+..  confval-menu::
+    :name: globals-typo3-conf-vars-ext
+    :display: tree
+    :type:
 
-excludeForPackaging
-===================
+..  index::
+    TYPO3_CONF_VARS SYS; excludeForPackaging
+..  _typo3ConfVars_ext_excludeForPackaging:
 
-.. confval:: $GLOBALS['TYPO3_CONF_VARS']['EXT']['excludeForPackaging']
+..  confval:: excludeForPackaging
+    :name: globals-typo3-conf-vars-excludeForPackaging
+    :Path: $GLOBALS['TYPO3_CONF_VARS']['EXT']['excludeForPackaging']
+    :type: list
+    :Default: :php:`'(?:\\.(?!htaccess$).*|.*~|.*\\.swp|.*\\.bak|node_modules|bower_components)'`
 
-   :Path: $GLOBALS['TYPO3_CONF_VARS']['EXT']
-   :type: list
-   :Default: :php:`'(?:\\.(?!htaccess$).*|.*~|.*\\.swp|.*\\.bak|node_modules|bower_components)'`
-
-   List of directories and files which will not be packaged into extensions nor
-   taken into account otherwise by the Extension Manager. Perl regular
-   expression syntax!
+    List of directories and files which will not be packaged into extensions nor
+    taken into account otherwise by the Extension Manager. Perl regular
+    expression syntax!

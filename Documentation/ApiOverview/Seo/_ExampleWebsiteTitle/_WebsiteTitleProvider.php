@@ -4,30 +4,43 @@ declare(strict_types=1);
 
 namespace MyVendor\MySitepackage\PageTitle;
 
+use Psr\Http\Message\ServerRequestInterface;
+use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use TYPO3\CMS\Core\PageTitle\PageTitleProviderInterface;
 use TYPO3\CMS\Core\Site\SiteFinder;
-use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
+use TYPO3\CMS\Frontend\Page\PageInformation;
 
-final class WebsiteTitleProvider implements PageTitleProviderInterface
+#[Autoconfigure(public: true)]
+final readonly class WebsiteTitleProvider implements PageTitleProviderInterface
 {
+    private ServerRequestInterface $request;
+
     public function __construct(
-        private readonly SiteFinder $siteFinder
+        private SiteFinder $siteFinder,
     ) {}
 
     public function getTitle(): string
     {
-        $site = $this->siteFinder->getSiteByPageId($this->getTypoScriptFrontendController()->page['uid']);
+        $site = $this->siteFinder->getSiteByPageId($this->getPageInformation()->getId());
         $titles = [
-            $this->getTypoScriptFrontendController()->page['title'],
+            $this->getPageInformation()->getPageRecord()['title'] ?? '',
             $site->getAttribute('websiteTitle'),
         ];
 
-        // do something
         return implode(' - ', $titles);
     }
 
-    private function getTypoScriptFrontendController(): TypoScriptFrontendController
+    public function setRequest(ServerRequestInterface $request): void
     {
-        return $GLOBALS['TSFE'];
+        $this->request = $request;
+    }
+
+    private function getPageInformation(): PageInformation
+    {
+        $pageInformation = $this->request->getAttribute('frontend.page.information');
+        if (!$pageInformation instanceof PageInformation) {
+            throw new \Exception('Current frontend page information not available', 1730098625);
+        }
+        return $pageInformation;
     }
 }

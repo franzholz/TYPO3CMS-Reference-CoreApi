@@ -33,7 +33,7 @@ Follow these steps:
     to the extension's documentation on how to display additional fields.
 
 #.  :ref:`Extend the original model <extending-extbase-model_extend_original_model>`
-    in your custom extension or :ref:`sitepackage <t3sitepackage:start>`.
+    in your custom extension or :ref:`sitepackage <site-package>`.
 
 #.  :ref:`Register your extended model <extending-extbase-model_register_extended_model>`
     with the according database table in
@@ -64,9 +64,9 @@ as original model.
 If the model has different :ref:`Record types <extbase-persistance-record-types>`
 you can decide to introduce a new type and
 only extend that one type. This is, for example, commonly done when extending
-the model of :t3ext:`news`.
+the model of :composer:`georgringer/news`.
 
-If you are planing to publish your extension that extends another extensions
+If you are planning to publish your extension that extends another extensions
 model, research on `Packagist <https://packagist.org/>`__ and the
 `TER (TYPO3 extension repository) <https://extensions.typo3.org/>`__ for
 extensions that are already extending the model. If necessary, put them in
@@ -156,17 +156,20 @@ Register the extended model
 ---------------------------
 
 The extended model needs to be registered for :ref:`Extbase persistence <extbase-Persistence>` in file
-:file:`Configuration/Extbase/Persistence/Classes.php`.
+:file:`Configuration/Extbase/Persistence/Classes.php` and :file:`ext_localconf.php`.
 
 ..  literalinclude:: _Classes.php
     :language: php
     :caption: EXT:my_extension/Configuration/Extbase/Persistence/Classes.php
 
+..  literalinclude:: _ext_localconf.php
+    :language: php
+    :caption: EXT:my_extension/ext_localconf.php
 
 ..  _extending-extbase-model_extend_original_repository:
 
-Extend the original repository
-------------------------------
+Extend the original repository (optional)
+-----------------------------------------
 
 Likewise extend the original repository:
 
@@ -182,7 +185,6 @@ If you have no need for additional repository methods you can leave the body of
 this class empty. However, for Extbase internal reasons you have to create this
 repository even if you need no additional functionality.
 
-
 ..  _extending-extbase-model_register_extended_repository:
 
 Register the extended repository
@@ -193,7 +195,7 @@ The extended repository needs to be registered with Extbase in your extensions
 Extbase to use your repository instead of the original one whenever the original
 repository is requested via Dependency Injection in a controller or service.
 
-..  literalinclude:: _ext_localconf.php
+..  literalinclude:: _ext_localconf_repository.php
     :language: php
     :caption: EXT:my_extension/ext_localconf.php
 
@@ -205,8 +207,8 @@ implementing the proxy pattern: `Extbase Domain Model Extender
 (evoweb/extender) <https://extensions.typo3.org/extension/extender>`__.
 
 This extension can - for example - be used to
-:ref:`Extend models of tt_address <ext_tt_address:development-extend-ttaddress>`.
+:ref:`Extend models of tt_address <friendsoftypo3/tt-address:development-extend-ttaddress>`.
 
 The commonly used extension `EXT:news (georgringer/news)` supplies a special
 generator that can be used to :ref:`add custom fields to news models
-<ext_news:proxyClassGenerator>`.
+<georgringer/news:proxyClassGenerator>`.

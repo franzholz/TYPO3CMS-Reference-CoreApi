@@ -28,7 +28,7 @@ You can find the type converters provided by Extbase in the directory
 Custom type converters
 ======================
 
-..  versionchanged:: 13.0
+..  versionchanged:: 12.0
     A type converter has to be registered in your extension's
     :file:`Configuration/Services.yaml` file. The previous registration method
     via :php:`\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerTypeConverter()`
@@ -56,3 +56,21 @@ The registration and configuration of a type converter is done in the extension'
             priority: 10
             target: \DateTime
             sources: int,string
+
+.. note::
+   For conversions of Extbase controller action parameters into Extbase domain
+   model objects the incoming data is usually a numeric type, but in case of an update
+   action it might as well be an array containing its ID as property `__identifier`.
+
+   Thus the configuration should list :php:`array` as one of its sources:
+
+   ..  code-block:: yaml
+       :caption: EXT:my_extension/Configuration/Services.yaml
+
+       services:
+         MyVendor\MyExtension\Property\TypeConverter\MyCustomModelObjectConverter:
+           tags:
+             - name: extbase.type_converter
+               priority: 10
+               target: MyVendor\MyExtension\Domain\Model\MyCustomModel
+               sources: int,string,array

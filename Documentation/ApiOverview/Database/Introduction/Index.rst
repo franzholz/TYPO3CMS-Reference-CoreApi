@@ -80,23 +80,12 @@ Low-level and high-level database calls
 
 This documentation focuses on low-level database calls. In many cases, it is
 better to use higher level APIs such as the :ref:`DataHandler
-<tce-database-basics>` or :ref:`Extbase repositories <extbase-repository>` and
+<datahandler-basics>` or :ref:`Extbase repositories <extbase-repository>` and
 to let the framework handle persistence details internally.
 
 ..  tip::
     Always remember the **high-level** database calls and use them when
     appropriate!
-
-
-Credits
-=======
-
-Implementing the Doctrine DBAL API into `TYPO3` has been a *huge project in
-2016.* Special thanks goes to awesome Mr. **Morton Jonuschat** for the initial
-design, integration and support and to more than **40 different people** who
-actively contributed to migrate more than 1700 calls from TYPO3_DB-style to
-Doctrine within half a year.
-**This was a huge community achievement, thanks everyone involved!**
 
 
 .. _Doctrine DBAL: https://www.doctrine-project.org/projects/dbal.html

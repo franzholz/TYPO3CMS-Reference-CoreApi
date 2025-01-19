@@ -1,3 +1,4 @@
+:navigation-title: PHP API
 ..  include:: /Includes.rst.txt
 ..  index:: pair: Site handling; PHP
 ..  _sitehandling-php-api:
@@ -144,6 +145,8 @@ or even fetching all settings:
 ..  code-block:: php
 
     $siteSettings->getAll();
+
+See :ref:`<sitehandling-inTypoScript>` for other means of accessing the site settings.
 
 API
 ---

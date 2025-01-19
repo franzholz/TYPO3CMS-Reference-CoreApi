@@ -249,4 +249,40 @@ return [
         'targetFileName' => 'CodeSnippets/Events/Backend/ModifyButtonBarEvent.rst.txt',
         'withCode' => false,
     ],
+    [
+        'action' => 'createPhpClassDocs',
+        'class' => \TYPO3\CMS\Backend\RecordList\Event\BeforeRecordDownloadIsExecutedEvent::class,
+        'targetFileName' => 'CodeSnippets/Events/Backend/BeforeRecordDownloadIsExecutedEvent.rst.txt',
+        'withCode' => false,
+    ],
+    [
+        'action' => 'createPhpClassDocs',
+        'class' => \TYPO3\CMS\Backend\RecordList\Event\BeforeRecordDownloadPresetsAreDisplayedEvent::class,
+        'targetFileName' => 'CodeSnippets/Events/Backend/BeforeRecordDownloadPresetsAreDisplayedEvent.rst.txt',
+        'withCode' => false,
+    ],
+    [
+        'action' => 'createPhpClassDocs',
+        'class' => \TYPO3\CMS\Backend\RecordList\DownloadPreset::class,
+        'targetFileName' => 'CodeSnippets/Events/Backend/DownloadPreset.rst.txt',
+        'withCode' => false,
+    ],
+    [
+        'action' => 'createPhpClassDocs',
+        'class' => \TYPO3\CMS\Backend\Tree\Repository\AfterRawPageRowPreparedEvent::class,
+        'targetFileName' => 'CodeSnippets/Events/Backend/AfterRawPageRowPreparedEvent.rst.txt',
+        'withCode' => false,
+    ],
+    [
+        'action' => 'createPhpClassDocs',
+        'class' => \TYPO3\CMS\Backend\Authentication\Event\PasswordHasBeenResetEvent::class,
+        'targetFileName' => 'CodeSnippets/Events/Backend/PasswordHasBeenResetEvent.rst.txt',
+        'withCode' => false,
+    ],
+    [
+        'action' => 'createPhpClassDocs',
+        'class' => \TYPO3\CMS\Backend\Tree\Repository\BeforePageTreeIsFilteredEvent::class,
+        'targetFileName' => 'CodeSnippets/Events/Backend/BeforePageTreeIsFilteredEvent.rst.txt',
+        'withCode' => false,
+    ],
 ];

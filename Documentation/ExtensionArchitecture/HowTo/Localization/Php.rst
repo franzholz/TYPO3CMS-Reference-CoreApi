@@ -18,6 +18,29 @@ Which method of localization to use depends on the current context:
 Localization in plain PHP
 =========================
 
+.. note::
+
+    The :php:`\TYPO3\CMS\Core\Localization\LanguageService` could formerly be
+    accessed via the global variable :php:`$GLOBALS['LANG']`. This is now
+    discouraged. Use :php:`LanguageServiceFactory` instead.
+
+The :php:`\TYPO3\CMS\Core\Localization\LanguageService` is available if a
+backend user has been initialized, in particular in the following contexts:
+
+*   frontend: only if there is a logged-in backend user
+*   backend: always, except in :guilabel:`Admin Tools` modules (e.g. within
+    :guilabel:`Upgrade Wizard`
+    in the backend)
+*   install tool / install tool modules in backend (e.g. Upgrade Wizard): no
+*   in cli: only if a backend user was initialized, e.g. by
+    `TYPO3\CMS\Core\Core\Bootstrap::initializeBackendUser()`
+
+The :php:`LanguageServiceFactory` can be used to instantiate. Please see the examples below.
+
+:ref:`The methods provided by the instantiated LanguageService <LanguageService-api>`
+class then be used to translate texts using the language keys of XLIFF language
+files.
+
 Localization in frontend context
 --------------------------------
 
@@ -35,8 +58,9 @@ custom non-Extbase controllers, user functions, data processors etc.
 Localization in backend context
 -------------------------------
 
-In the backend context you can use the global variable :php:`$GLOBALS['LANG']`
-which contains the :ref:`LanguageService <LanguageService-api>`.
+In the backend context you should use the
+:ref:`LanguageServiceFactory <LanguageServiceFactory-api>`
+to create the required :ref:`LanguageService <LanguageService-api>`.
 
 ..  literalinclude:: _php/MyBackendClass.php
     :caption: EXT:my_extension/Classes/Backend/MyBackendClass.php
@@ -62,7 +86,7 @@ Localization in Extbase
 =======================
 
 In :ref:`Extbase <extbase>` context you can use the method
-:ref:`\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($key, $extensionName) <extbase-localization-utility-api>`.
+:ref:`\\TYPO3\\CMS\\Extbase\\Utility\\LocalizationUtility::translate($key, $extensionName) <extbase-localization-utility-api>`.
 
 This method requires the localization key as the first and the extension's
 name as optional second parameter. For all available parameters

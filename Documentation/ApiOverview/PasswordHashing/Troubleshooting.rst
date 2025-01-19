@@ -68,7 +68,7 @@ working algorithm.
 Manually disable argon2 in the :file:`config/system/settings.php`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This may be nessesary if access to the install tool is not possible.
+This may be necessary if access to the install tool is not possible.
 This can happen when the first installation was done on a system with argon2
 and the installation was then copied to a target system that doesn't support
 this encryption type.
@@ -102,4 +102,3 @@ Add or edit the following in your :file:`config/system/settings.php`.
 
 If this doesn't work then check file :file:`config/system/additional.php` which
 overrides :file:`config/system/settings.php`.
-

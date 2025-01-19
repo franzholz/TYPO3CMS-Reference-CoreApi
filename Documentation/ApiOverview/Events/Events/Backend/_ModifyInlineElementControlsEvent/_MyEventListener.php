@@ -7,19 +7,19 @@ namespace MyVendor\MyExtension\Backend\EventListener;
 use TYPO3\CMS\Backend\Form\Event\ModifyInlineElementControlsEvent;
 use TYPO3\CMS\Backend\Form\Event\ModifyInlineElementEnabledControlsEvent;
 use TYPO3\CMS\Core\Attribute\AsEventListener;
-use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Imaging\IconFactory;
+use TYPO3\CMS\Core\Imaging\IconSize;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 #[AsEventListener(
     identifier: 'my-extension/backend/modify-enabled-controls',
-    method: 'modifyEnabledControls'
+    method: 'modifyEnabledControls',
 )]
 #[AsEventListener(
     identifier: 'my-extension/backend/modify-controls',
-    method: 'modifyControls'
+    method: 'modifyControls',
 )]
-final class MyEventListener
+final readonly class MyEventListener
 {
     public function modifyEnabledControls(ModifyInlineElementEnabledControlsEvent $event): void
     {
@@ -37,8 +37,8 @@ final class MyEventListener
             $event->setControl(
                 'tx_my_control',
                 '<a href="/some/url" class="btn btn-default t3js-modal-trigger">'
-                . $iconFactory->getIcon('my-icon-identifier', Icon::SIZE_SMALL)->render()
-                . '</a>'
+                . $iconFactory->getIcon('my-icon-identifier', IconSize::SMALL)->render()
+                . '</a>',
             );
         }
     }

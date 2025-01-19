@@ -1,3 +1,5 @@
+:navigation-title: Custom Permissions
+
 .. include:: /Includes.rst.txt
 
 .. _custom-permissions:
@@ -21,7 +23,7 @@ Registration
 Options are configured in the global variable
 :php:`$GLOBALS['TYPO3_CONF_VARS']['BE']['customPermOptions']` in
 :file:`EXT:my_extension/ext_tables.php`. The syntax is demonstrated in
-the following example, which a custom permission option:
+the following example, which registers two custom permission options:
 
 ..  literalinclude:: _CustomPermissions/_ext_tables.php
     :language: php

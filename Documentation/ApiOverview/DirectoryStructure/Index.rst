@@ -85,29 +85,28 @@ This path can be retrieved from the Environment API, see
 :file:`packages/`
 -----------------
 
-Each web site which is run on TYPO3 **should**
-have a sitepackage, an extension with a special purpose containing all
-templates, styles, images, etc. needed for the theme.
+If you installed TYPO3 using the base distribution `composer create "typo3/cms-base-distribution"`
+this folder is automatically created and registered as repository in the the :file:`composer.json`.
 
-It is usually stored locally and then symlinked into the :ref:`directory-vendor`
-folder. Many projects also need custom extensions that can be stored here.
+You can put your site package and other extensions to be installed locally here. Then you can just
+install the extension with `composer install myvendor/my-sitepackage`.
 
-The folder for local packages has to be defined in the project's :file:`composer.json`
-to be used:
+If you did not use the base-distribution, create the directory and add it to your repositories
+manualy:
 
-..  code-block:: json
-    :caption: composer.json
+..  code-block:: diff
+    :caption: composer.json (diff)
 
-    {
-        "name": "myvendor/my-project",
-        "repositories": {
-            "packages": {
-                "type": "path",
-                "url": "packages/*"
-            }
-        },
-        "...": "..."
-    }
+      {
+         "name": "myvendor/my-project",
+         "repositories": [
+     +       {
+     +           "type": "path",
+     +           "url": "packages/*"
+             }
+         ],
+         "...": "..."
+      }
 
 .. _directory-public:
 
@@ -157,17 +156,35 @@ directory :file:`_assets/`.
 
 ..  tip::
     When creating an extension without a :file:`Resources/Public/` folder, the
-    corresponding :file:`assets/` folder for that extension can not be symlinked
+    corresponding :file:`_assets/` folder for that extension can not be symlinked
     as the extension's :file:`Resources/Public/` folder does not exist. When you
     create it later after the installation of the extension, run a
     :bash:`composer dumpautoload` and the :file:`Resources/Public/` folder for
     that extension is symlinked to :file:`_assets/`.
 
+..  todo:: This may be fixed/addressed with this issue: https://review.typo3.org/c/Packages/TYPO3.CMS/+/84383
+
+..  warning::
+    The :file:`_assets/` directory is not meant to be manually changed. Also, it
+    is important for local development that all its subdirectories are symlinks
+    to the specific Composer packages. Do not synchronize this directory
+    from a production instance back to your development instance (only the other
+    way round). Thus, the whole :file:`_assets/` directory should always be removable and
+    can be re-created with proper contents via :bash:`composer dumpautoload`.
+    This will create symlinks for all installed TYPO3 Composer packages containing public
+    assets.
+
+    If the :file:`_assets/` directory would not contain symlinks, any Composer update
+    would never refer to updated versions of any JavaScript and CSS assets
+    (including TYPO3 backend system extension), leading to incompatible code
+    being loaded and causing errors in both backend and frontend.
+
 ..  seealso::
 
+    -   :ref:`<migrate-public-assets>`
     -   `TYPO3 and Composer — we've come a long way <https://b13.com/core-insights/typo3-and-composer-weve-come-a-long-way>`__
     -   `Composer changes for TYPO3 v11 and v12 <https://usetypo3.com/composer-changes-for-typo3-v11-and-v12.html>`__
-    -   `Migration to typo3/composer-cms-installers version 4+ <https://brot.krue.ml/migration-typo3-composer-cms-installers-version-4/>`__
+    -   `Migration to typo3/composer-cms-installers version 4+ <https://brotkrueml.dev/migration-typo3-composer-cms-installers-version-4/>`__
 
 
 .. _directory-public-fileadmin:
@@ -184,6 +201,10 @@ further storage locations configured outside of :file:`fileadmin/`, even
 pointing to different servers or using 3rd party digital asset management
 systems.
 
+Depending on the configuration in
+:ref:`$GLOBALS['TYPO3_CONF_VARS']['BE']['fileadminDir'] <typo3ConfVars_be_fileadminDir>`
+another folder name than :file:`fileadmin/` can be in use.
+
 ..  note::
     This directory is meant for editors! Integrators should
     *not* locate frontend website layout related files in here: Storing
@@ -197,13 +218,12 @@ systems.
 :file:`public/typo3/`
 ~~~~~~~~~~~~~~~~~~~~~
 
-This directory contains the two PHP files for accessing the TYPO3
-backend (:file:`typo3/index.php`) and install tool (:file:`typo3/install.php`).
+If :composer:`typo3/cms-install` is installed, this directory contains the PHP
+file for accessing the install tool (:file:`public/typo3/install.php`).
 
-..  versionchanged:: 12.0
-    Starting with TYPO3 v12 (or v11 using `typo3/cms-composer-installers` v4)
-    the system extensions are not located in this directory anymore. They can now
-    be found in the :ref:`directory-vendor` folder.
+..  versionchanged:: 14.0
+    The TYPO3 backend entry point PHP file :file:`public/typo3/index.php` has
+    been removed. The backend can be accessed via the :ref:`backend-entry-point`.
 
 .. _directory-public-typo3temp:
 

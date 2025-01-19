@@ -142,7 +142,7 @@ Restrictions
 
 :php:`\TYPO3\CMS\Core\Database\Query\Restriction\StartTimeRestriction` (default)
     Evaluates :php:`['ctrl']['enablecolumns']['starttime']`, typically adds
-    something like :sql:`AND (`tt_content`.`starttime` <= 1475580240)`.
+    something like ``AND (`tt_content`.`starttime` <= 1475580240)``.
 
 :php:`\TYPO3\CMS\Core\Database\Query\Restriction\EndTimeRestriction` (default)
     Evaluates :php:`['ctrl']['enablecolumns']['endtime']`.
@@ -151,7 +151,7 @@ Restrictions
     Evaluates :php:`['enablecolumns']['fe_group']`.
 
 :php:`\TYPO3\CMS\Core\Database\Query\Restriction\RootlevelRestriction`
-    Match records on root level, adds :sql:`AND (`pid` = 0)`
+    Match records on root level, adds ``AND (`pid` = 0)``
 
 :php:`\TYPO3\CMS\Core\Database\Query\Restriction\WorkspaceRestriction`
     The workspace restriction limits an SQL query to only select records which

@@ -10,18 +10,18 @@ use TYPO3\CMS\Frontend\ContentObject\Event\AfterStdWrapFunctionsInitializedEvent
 use TYPO3\CMS\Frontend\ContentObject\Event\BeforeStdWrapFunctionsInitializedEvent;
 use TYPO3\CMS\Frontend\ContentObject\Event\EnhanceStdWrapEvent;
 
-final class MyEventListener
+#[AsEventListener(
+    identifier: 'my-extension/my-stdwrap-enhancement',
+)]
+final readonly class MyEventListener
 {
-    #[AsEventListener(
-        identifier: 'my-extension/my-stdwrap-enhancement'
-    )]
     public function __invoke(EnhanceStdWrapEvent $event): void
     {
         // listen to all events
     }
 
     #[AsEventListener(
-        identifier: 'my-extension/my-stdwrap-before-initialized'
+        identifier: 'my-extension/my-stdwrap-before-initialized',
     )]
     public function individualListener(BeforeStdWrapFunctionsInitializedEvent $event): void
     {
@@ -29,10 +29,10 @@ final class MyEventListener
     }
 
     #[AsEventListener(
-        identifier: 'my-extension/my-stdwrap-after-initialized-executed'
+        identifier: 'my-extension/my-stdwrap-after-initialized-executed',
     )]
     public function listenOnMultipleEvents(
-        AfterStdWrapFunctionsInitializedEvent|AfterStdWrapFunctionsExecutedEvent $event
+        AfterStdWrapFunctionsInitializedEvent|AfterStdWrapFunctionsExecutedEvent $event,
     ): void {
         // Union type to listen to different events
     }

@@ -1,3 +1,4 @@
+:navigation-title: Examples
 .. include:: /Includes.rst.txt
 .. index:: Routing; Examples
 .. _routing-examples:
@@ -73,7 +74,7 @@ If you use the *category menu* or *tag list* plugins to filter news records, the
            routeFieldName: slug
 
 For more examples and background information see the
-:ref:`routing examples in the "News" manual <ext_news:routing>`.
+:ref:`routing examples in the "News" manual <georgringer/news:routing>`.
 
 
 .. index:: Routing; EXT: Blog

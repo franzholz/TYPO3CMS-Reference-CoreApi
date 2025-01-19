@@ -1,3 +1,4 @@
+:navigation-title: Tea
 ..  include:: /Includes.rst.txt
 
 ..  index::
@@ -10,12 +11,12 @@
 Tea in a nutshell
 =================
 
-The example extension :t3ext:`tea` was created as an example of best practises
+The example extension :composer:`ttn/tea` was created as an example of best practises
 on automatic code checks.
 
 ..  hint::
     If you want to learn more about automatic code checks
-    see the :doc:`documentation of tea <ext_tea:Index>` and the chapter on
+    see the :doc:`documentation of tea <ttn/tea:Index>` and the chapter on
     :ref:`Testing <testing>` in this manual.
 
 In this manual, however we will ignore the testing and just explain how this

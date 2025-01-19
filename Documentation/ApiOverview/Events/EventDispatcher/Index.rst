@@ -215,9 +215,9 @@ The event listener class
 An example listener, which hooks into the :ref:`Mailer API <mail>` to modify
 mailer settings to not send any emails, could look like this:
 
-..  literalinclude:: _NullMailer.php
+..  literalinclude:: _MailerEventListener.php
     :language: php
-    :caption: EXT:my_extension/Classes/EventListener/NullMailer.php
+    :caption: EXT:my_extension/Classes/EventListener/MailerEventListener.php
 
 An extension can define multiple listeners. The attribute can be used on class
 and method level. The PHP attribute is repeatable, which allows to register the
@@ -237,7 +237,7 @@ following properties (which are all optional):
 
 :php:`before`
     This property allows a custom sorting of registered listeners. The listener
-    is then dispatched before the given listener. The value is the identifier of 
+    is then dispatched before the given listener. The value is the identifier of
     another event listener. Also, multiple event identifiers can be entered here,
     separated by a comma.
 
@@ -260,16 +260,16 @@ following properties (which are all optional):
 The PHP attribute is repeatable, which allows to register the same class
 to listen for different events, for example:
 
-..  literalinclude:: _NullMailerRepeatable.php
+..  literalinclude:: _MailerEventListenerRepeatable.php
     :language: php
-    :caption: EXT:my_extension/Classes/EventListener/NullMailer.php
+    :caption: EXT:my_extension/Classes/EventListener/MailerEventListener.php
 
 The PHP attribute can also be used on a method level. The above example can also
 be written as:
 
-..  literalinclude:: _NullMailerRepeatable2.php
+..  literalinclude:: _MailerEventListenerRepeatable2.php
     :language: php
-    :caption: EXT:my_extension/Classes/EventListener/NullMailer.php
+    :caption: EXT:my_extension/Classes/EventListener/MailerEventListener.php
 
 
 ..  index::
@@ -302,8 +302,8 @@ The custom PHP class :php:`\MyVendor\MyExtension\EventListener\NullMailer`
 serves as the listener whose :php:`handleEvent()` method is called, once the
 :yaml:`event` is dispatched. The name of the listened event is specified as
 a typed argument to that dispatch method.
-:php:`handleEvent(\TYPO3\CMS\Core\Mail\Event\AfterMailerInitializationEvent $event)` will
-for example listen on the event `AfterMailerInitializationEvent`.
+:php:`handleEvent(\TYPO3\CMS\Core\Mail\Event\BeforeMailerSentMessageEvent $event)` will
+for example listen on the event `BeforeMailerSentMessageEvent`.
 
 The :yaml:`identifier` is a common name, so
 orderings can be built upon the identifier, the optional :yaml:`before` and
@@ -400,7 +400,7 @@ Best practices
     package. Be careful about the context that should be exposed.
 
 *   The same applies to creating a new event listener PHP class: Add
-    an :php:`EventListener` suffix to the PHP class, and move it to a folder
+    an :php:`Listener` suffix to the PHP class, and move it to a folder
     :file:`Classes/EventListener/`.
 
 *   Emitters (TYPO3 Core or extension authors) should always use

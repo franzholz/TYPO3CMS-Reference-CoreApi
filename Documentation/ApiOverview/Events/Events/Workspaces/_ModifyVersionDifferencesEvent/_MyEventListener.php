@@ -9,21 +9,20 @@ use TYPO3\CMS\Core\Utility\DiffUtility;
 use TYPO3\CMS\Workspaces\Event\ModifyVersionDifferencesEvent;
 
 #[AsEventListener(
-    identifier: 'my-extension/modify-version-differences'
+    identifier: 'my-extension/modify-version-differences',
 )]
-final class MyEventListener
+final readonly class MyEventListener
 {
-    public function __construct(private readonly DiffUtility $diffUtility)
-    {
-        $this->diffUtility->stripTags = false;
-    }
+    public function __construct(
+        private DiffUtility $diffUtility,
+    ) {}
 
     public function __invoke(ModifyVersionDifferencesEvent $event): void
     {
         $differences = $event->getVersionDifferences();
         foreach ($differences as $key => $difference) {
             if ($difference['field'] === 'my_test_field') {
-                $differences[$key]['content'] = $this->diffUtility->makeDiffDisplay('a', 'b');
+                $differences[$key]['content'] = $this->diffUtility->diff('a', 'b');
             }
         }
 

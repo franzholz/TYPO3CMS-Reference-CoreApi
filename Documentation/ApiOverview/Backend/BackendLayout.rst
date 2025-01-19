@@ -6,7 +6,7 @@
 Backend layout
 ==============
 
-Backend layouts can be defined as database records or via :ref:`page TSconfig <t3tsconfig:pagetsconfig>`.
+Backend layouts can be defined as database records or via :ref:`page TSconfig <t3tsref:pagetsconfig>`.
 Page TSconfig should be preferred as it can be stored in the file system and
 be kept under version control.
 
@@ -59,13 +59,16 @@ The entries title and icon are being used to display the backend layout options 
 
 The overall grid size will be defined by :typoscript:`config.backend_layout.colCount` and :typoscript:`rowCount`.
 Additional rows in the :typoscript:`rows` array and additional columns in the each rows :typoscript:`columns` section
-will be ignored when they are greater then :typoscript:`rowCount` or :typoscript:`colCount` respectively.
+will be ignored when they are greater than :typoscript:`rowCount` or :typoscript:`colCount` respectively.
 
 Each column position can span several columns and or several rows. Each column position must have a distinct number
 between 0 and n. It is best practice to always assign "0" to the main column if there is such a thing as a
 main column. Multiple backend layouts that contain similar parts, i.e. header, footer, aside, ...  should each have
 assigned the same number within one project. This leads to a uniform position of the content, which makes it more clear
 for further use.
+
+For usage with the :ref:`page-content data processor <t3tsref:PageContentFetchingProcessor>`, an identifier string must
+be assigned to each column. The default backend layout definition uses `identifier = main` for column `0`.
 
 .. index:: Backend layout; Example
 .. _be-layout-simple-example:
@@ -90,6 +93,7 @@ The following page TSconfig example creates a simple backend layout consisting o
                  1 {
                    columns {
                      1 {
+                       identifier = border
                        name = LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:colPos.I.3
                        colPos = 3
                        colspan = 1
@@ -99,6 +103,7 @@ The following page TSconfig example creates a simple backend layout consisting o
                  2 {
                    columns {
                      1 {
+                       identifier = main
                        name = Main
                        colPos = 0
                        colspan = 1
@@ -136,6 +141,7 @@ row (here called "header") spans all 3 columns. There is an "aside" spanning two
              1 {
                columns {
                  1 {
+                   identifier = header
                    name = Header
                    colspan = 3
                    colPos = 1
@@ -145,11 +151,13 @@ row (here called "header") spans all 3 columns. There is an "aside" spanning two
              2 {
                columns {
                  1 {
+                   identifier = main
                    name = Main
                    colspan = 2
                    colPos = 0
                  }
                  2 {
+                   identifier = aside
                    name = Aside
                    rowspan = 2
                    colPos = 2
@@ -159,10 +167,12 @@ row (here called "header") spans all 3 columns. There is an "aside" spanning two
              3 {
                columns {
                  1 {
+                   identifier = left
                    name = Main Left
                    colPos = 5
                  }
                  2 {
+                   identifier = right
                    name = Main Right
                    colPos = 6
                  }
@@ -225,7 +235,7 @@ In the Fluid template the column positions can be accessed now via content mappi
 Reference implementations of backend layouts
 ============================================
 
-The extension :t3ext:`bootstrap_package` ships several
+The extension :composer:`bk2k/bootstrap-package` ships several
 `Backend layouts <https://github.com/benjaminkott/bootstrap_package/tree/1b00a01e362d2460af92f754ee10e507edb70568/Configuration/TsConfig/Page/Mod/WebLayout/BackendLayouts>`__
 as well as an example configuration of how to include frontend templates for backend layouts (see its
 `setup.typoscript <https://github.com/benjaminkott/bootstrap_package/blob/1b00a01e362d2460af92f754ee10e507edb70568/Configuration/TypoScript/setup.typoscript#L99-L113>`__)
@@ -238,8 +248,8 @@ Extensions for backend layouts
 
 In many cases besides defining fixed backend layouts a more modular approach with the possibility of combining different
 backend layouts and frontend layouts may be feasible. The extension
-:t3ext:`container`
+:composer:`b13/container`
 integrates the grid layout concept also to regular content elements.
 
-The extension :t3ext:`content_defender` offers advanced options to
+The extension :composer:`ichhabrecht/content-defender` offers advanced options to
 the column positions i.e. allowed or disallowed content elements, a maximal number of content elements.

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MyVendor\MyExtension\Package\EventListener;
 
 use TYPO3\CMS\Core\Attribute\AsEventListener;
@@ -8,9 +10,9 @@ use TYPO3\CMS\Core\Package\Initialization\ImportExtensionDataOnPackageInitializa
 
 #[AsEventListener(
     identifier: 'my-extension/package-initialization',
-    after: ImportExtensionDataOnPackageInitialization::class
+    after: ImportExtensionDataOnPackageInitialization::class,
 )]
-final class MyEventListener
+final readonly class MyEventListener
 {
     public function __invoke(PackageInitializationEvent $event): void
     {

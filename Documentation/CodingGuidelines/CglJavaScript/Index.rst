@@ -1,9 +1,10 @@
+:navigation-title: JavaScript
 .. include:: /Includes.rst.txt
 .. index:: pair: Coding guidelines; JavaScript
 .. _cgl-javascript:
 
 ============================
-JavaScript Coding Guidelines
+JavaScript coding guidelines
 ============================
 
 The rules suggested in the `Airbnb JavaScript Style Guide
@@ -12,7 +13,7 @@ Core for JavaScript files.
 
 Note that the TYPO3 Core  typically uses TypeScript now and automatically converts it to JavaScript.
 
-Directories and Filenames
+Directories and filenames
 =========================
 
 * JavaScript files should have the file ending :file:`.js`
@@ -31,7 +32,7 @@ Format
 * Prefix jQuery object variables with a `$`.
 
 
-More Information
+More information
 ================
 
 * See :ref:`cgl-ide` in this manual for information about setting up your Editor / IDE to adhere to

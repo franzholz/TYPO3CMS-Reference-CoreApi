@@ -1,3 +1,4 @@
+:navigation-title: Plain controller
 .. include:: /Includes.rst.txt
 
 .. _backend-modules-template-without-extbase:
@@ -7,7 +8,7 @@ Create a backend module with Core functionality
 ===============================================
 
 This page covers the backend template view, using only Core functionality
-without Extbase.
+without Extbase. See also the :ref:`Backend module API <backend-modules>`.
 
 .. tip::
 
@@ -21,37 +22,11 @@ Basic controller
 When creating a controller without Extbase an instance of :php:`ModuleTemplate`
 is required to return the rendered template:
 
-..  code-block:: php
-    :caption: EXT:examples/Classes/Controller/AdminModuleController.php
+..  include:: _ModuleConfiguration/_AdminModuleControllerConstruct.rst.txt
 
-    use TYPO3\CMS\Backend\Attribute\AsController;
-    // the module template will be initialized in handleRequest()
-    use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
-    use TYPO3\CMS\Core\Imaging\IconFactory;
-
-    #[AsController]
-    final class AdminModuleController
-    {
-        public function __construct(
-            protected readonly ModuleTemplateFactory $moduleTemplateFactory,
-            protected readonly IconFactory $iconFactory,
-            // ...
-        ) {
-        }
-    }
-
-..  versionadded:: 12.1/12.4.9
-    A backend controller can be tagged with the
-    :php:`\TYPO3\CMS\Backend\Attribute\AsController` attribute. This way, the
-    :ref:`registration of the controller <backend-modules-template-without-extbase-manual-tagging>`
-    in the :file:`Configuration/Services.yaml` file is no longer necessary.
-
-    ..  note::
-        Until TYPO3 v12.4.8 the attribute was named
-        :php:`\TYPO3\CMS\Backend\Attribute\Controller` and has been renamed to
-        :php:`AsController` with TYPO3 v12.4.9. Both work with TYPO3 v12 and v13,
-        but developers should use :php:`#[AsController]` for upwards compatibility,
-        since :php:`#[Controller]` has been deprecated with TYPO3 v13.
+..  note::
+    A backend controller should be tagged with the
+    :php:`\TYPO3\CMS\Backend\Attribute\AsController` (:php:`#[AsController]`) attribute.
 
 ..  _backend-modules-template-without-extbase-manual-tagging:
 
@@ -83,40 +58,7 @@ Main entry point
 The :php:`handleRequest()` method is the main entry point which triggers only the allowed actions.
 This makes it possible to include e.g. Javascript for all actions in the controller.
 
-.. code-block:: php
-   :caption: EXT:examples/Classes/Controller/AdminModuleController.php
-
-   public function handleRequest(ServerRequestInterface $request): ResponseInterface
-   {
-       $languageService = $GLOBALS['LANG'];
-
-       $this->menuConfig($request);
-       $moduleTemplate = $this->moduleTemplateFactory->create($request);
-       // setUpDocHeader() is documented below
-       $this->setUpDocHeader($moduleTemplate);
-
-       $title = $languageService->sL('LLL:EXT:examples/Resources/Private/Language/AdminModule/locallang_mod.xlf:mlang_tabs_tab');
-       switch ($this->MOD_SETTINGS['function']) {
-           case 'debug':
-               $moduleTemplate->setTitle(
-                   $title,
-                   $languageService->sL('EXT:examples/Resources/Private/Language/AdminModule/locallang.xlf:module.menu.debug')
-               );
-               return $this->debugAction($moduleTemplate);
-           case 'password':
-               $moduleTemplate->setTitle(
-                   $title,
-                   $languageService->sL('EXT:examples/Resources/Private/Language/AdminModule/locallang.xlf:module.menu.password')
-               );
-               return $this->passwordAction($moduleTemplate);
-           default:
-               $moduleTemplate->setTitle(
-                   $title,
-                   $languageService->sL('EXT:examples/Resources/Private/Language/AdminModule/locallang.xlf:module.menu.log')
-               );
-               return $this->logAction($moduleTemplate);
-       }
-   }
+..  include:: _ModuleConfiguration/_AdminModuleControllerHandleRequest.rst.txt
 
 Actions
 =======
@@ -124,50 +66,17 @@ Actions
 Now create an example :php:`debugAction()` and assign variables to your view
 as you would normally do.
 
-.. code-block:: php
-   :caption: EXT:examples/Classes/Controller/AdminModuleController.php
-
-   public function debugAction(
-       ModuleTemplate $view,
-       string $cmd = 'cookies'
-   ): ResponseInterface
-   {
-       $cmd = $_POST['tx_examples_admin_examples']['cmd'];
-       switch ($cmd) {
-           case 'cookies':
-               $this->debugCookies();
-               break;
-       }
-
-       $view->assignMultiple(
-           [
-               'cookies' => $_COOKIE,
-               'lastcommand' => $cmd,
-           ]
-       );
-       return $view->renderResponse('AdminModule/Debug');
-   }
+..  include:: _ModuleConfiguration/_AdminModuleControllerDebugAction.rst.txt
 
 ..  _backend-modules-template-without-extbase-docheader:
 
 The DocHeader
 =============
 
-To add a DocHeader button use :php:`$this->moduleTemplate->getDocHeaderComponent()->getButtonBar()`
-and :php:`makeLinkButton()` to create the button. Finally use :php:`addButton()` to add it.
+To add a DocHeader button use :php:`$view->getDocHeaderComponent()->getButtonBar()`
+and :php:`makeLinkButton()` to create the button. Finally, use :php:`addButton()` to add it.
 
-..  code-block:: php
-    :caption: EXT:examples/Classes/Controller/AdminModuleController.php
-
-    private function setDocHeader(string $active) {
-        $buttonBar = $this->moduleTemplate->getDocHeaderComponent()->getButtonBar();
-        $list = $buttonBar->makeLinkButton()
-            ->setHref('<uri-builder-path>')
-            ->setTitle('A Title')
-            ->setShowLabelText('Link')
-            ->setIcon($this->moduleTemplate->getIconFactory()->getIcon('actions-extension-import', Icon::SIZE_SMALL));
-        $buttonBar->addButton($list, ButtonBar::BUTTON_POSITION_LEFT, 1);
-    }
+..  include:: _ModuleConfiguration/_AdminModuleControllerSetUpDocHeader.rst.txt
 
 ..  seealso::
     :ref:`button-components`
@@ -176,20 +85,7 @@ and :php:`makeLinkButton()` to create the button. Finally use :php:`addButton()`
 Template example
 ================
 
-.. code-block:: html
-   :caption: EXT:examples/Resources/Private/Templates/AdminModule/Debug.html
-
-   <html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
-
-   <f:layout name="Module" />
-
-   <f:section name="Content">
-      <h1><f:translate key="function_debug" extensionName="examples"/></h1>
-      <p><f:translate key="function_debug_intro" extensionName="examples"/></p>
-      <p><f:debug inline="1">{cookies}</f:debug></p>
-   </f:section>
-   </html>
-
+..  include:: _ModuleConfiguration/_DebugHtml.rst.txt
 
 .. note:: Some Fluid tags do not work in non-Extbase context such as
    :html:`<f:form>`.

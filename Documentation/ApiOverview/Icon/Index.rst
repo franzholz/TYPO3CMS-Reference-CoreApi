@@ -24,13 +24,12 @@ To register icons for your own extension, create a file called
 :file:`Configuration/Icons.php` in your extension - for example:
 :file:`EXT:my_extension/Configuration/Icons.php`.
 
-..  note::
-    In versions below TYPO3 v11.4 the configuration was done in the
+..  versionchanged:: 14.0
+    It is not possible anymore to register icons in the
     :file:`ext_localconf.php` file.
 
-    It :ref:`migrates the icon registration <icon_migration>` to
+    :ref:`Migrate the icon registration <icon_migration>` to
     new format. There is also a Rector rule.
-
 
 The file needs to return a PHP configuration array with the following keys:
 
@@ -52,7 +51,8 @@ The TYPO3 Core ships two icon providers which can be used straight away:
 ..  versionchanged:: 12.0
     The :php:`\TYPO3\CMS\Core\Imaging\IconProvider\FontawesomeIconProvider`
     was removed from the Core in 12.0. You can use the polyfill extension from
-    :t3ext:`fontawesome_provider` which is also compatible with TYPO3 v11 LTS.
+    :composer:`friendsoftypo3/fontawesome-provider` which is also compatible
+    with TYPO3 v11 LTS.
 
 If you need a custom icon provider, you can add your own by writing a
 class which implements the
@@ -89,20 +89,9 @@ The following icon sizes are available as enum values:
 *   :php:`\TYPO3\CMS\Core\Imaging\IconSize::LARGE`: fixed to 48px
 *   :php:`\TYPO3\CMS\Core\Imaging\IconSize::MEGA`: fixed to 64px
 
-..  deprecated:: 13.0
-    In TYPO3 versions up to 12.4 class constants from
-    :php:`\TYPO3\CMS\Core\Imaging\Icon` must be used:
-
-    *   :php:`\TYPO3\CMS\Core\Imaging\Icon::SIZE_DEFAULT`
-    *   :php:`\TYPO3\CMS\Core\Imaging\Icon::SIZE_SMALL`
-    *   :php:`\TYPO3\CMS\Core\Imaging\Icon::SIZE_MEDIUM`
-    *   :php:`\TYPO3\CMS\Core\Imaging\Icon::SIZE_LARGE`
-    *   :php:`\TYPO3\CMS\Core\Imaging\Icon::SIZE_MEGA`
-
-    One can also use the class constants of :php:`\TYPO3\CMS\Core\Imaging\Icon`
-    if an extension should remain compatible with TYPO3 v13 and older versions.
-
-    The class constants will be removed in a future version of TYPO3.
+..  versionchanged:: 14.0
+    The icon size class constants :php:`\TYPO3\CMS\Core\Imaging\Icon::SIZE_*`
+    deprecated in v13.0 have been removed. Use the enum values described above.
 
 
 ..  index::
@@ -245,37 +234,16 @@ Available icons
 
 The TYPO3 Core comes with a number of icons that may be used in your extensions.
 
-To search for available icons, you can use one of these possibilities:
-
-
-Install the styleguide extension
---------------------------------
-
-Install the extension *styleguide* as described in the Readme in the `installation
-<https://github.com/TYPO3/styleguide#installation>`__ section.
-
-Once installed, you can view available icons by selecting help (?) on the top in the
-TYPO3 backend, then *Styleguide* and then *Icons*, *All Icons*.
-
-There, browse through existing icons. Use the name under the icon (for example
-:code:`actions-add`) as first parameter for :php:`IconFactory::getIcon()` in PHP or as value for
-the argument :code:`identifier` in Fluid (see code examples above).
-
-
-.. include:: /Images/AutomaticScreenshots/Icon/IconProviders.rst.txt
-
-Use TYPO3.Icons
----------------
-
-An alternative way to look for existing icons is to browse through
+To search for available icons, you can browse through
 `TYPO3.Icons <https://typo3.github.io/TYPO3.Icons/>`__.
+
 
 ..  _icon_migration:
 
 Migration
 =========
 
-The Rector rule `\\Ssch\\TYPO3Rector\\Rector\\v11\\v4\\RegisterIconToIconFileRector`_
+The Rector v1 rule `\Ssch\TYPO3Rector\Rector\v11\v4\RegisterIconToIconFileRector`_
 can be used for automatic migration.
 
 For manual migration remove all calls
@@ -284,4 +252,4 @@ your :file:`EXT:my_extension/ext_localconf.php` and move the content to
 :file:`Configuration/Icons.php` instead.
 
 
-..  _\\Ssch\\TYPO3Rector\\Rector\\v11\\v4\\RegisterIconToIconFileRector: https://github.com/sabbelasichon/typo3-rector/blob/main/docs/all_rectors_overview.md#registericontoiconfilerector
+..  _\Ssch\TYPO3Rector\Rector\v11\v4\RegisterIconToIconFileRector: https://github.com/sabbelasichon/typo3-rector/blob/1.x/docs/all_rectors_overview.md#registericontoiconfilerector

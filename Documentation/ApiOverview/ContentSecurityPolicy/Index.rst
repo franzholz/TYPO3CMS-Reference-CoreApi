@@ -36,9 +36,15 @@ web page context.
 Content Security Policy declarations can be applied to a TYPO3 website in
 frontend and backend scope with a dedicated API.
 
-To delegate Content Security Policy handling to TYPO3 frontend, the feature flag
-:ref:`security.frontend.enforceContentSecurityPolicy <typo3ConfVars_sys_features_security.frontend.enforceContentSecurityPolicy>`
-needs to be enabled.
+To delegate Content Security Policy handling to TYPO3 frontend, at least one of
+the feature flags
+
+*   :confval:`globals-typo3-conf-vars-sys-features-security-frontend-enforceContentSecurityPolicy`
+    (for enforcing)
+*   :confval:`globals-typo3-conf-vars-sys-features-security-frontend-reportContentSecurityPolicy`
+    (for report-only mode)
+
+need to be enabled.
 
 ..  versionchanged:: 13.0
 
@@ -115,7 +121,215 @@ used to declare policies for a specific site, for example:
     :language: yaml
     :caption: config/sites/<my_site>/csp.yaml | typo3conf/sites/<my_site>/csp.yaml
 
-..  todo: Explain "inheritDefault", "mutations", "mode", "directive", "sources", ...
+
+..  _content-security-policy-site-active:
+
+Disable CSP for a site
+~~~~~~~~~~~~~~~~~~~~~~
+
+The Content Security Policy for a particular site can be disabled with the
+:yaml:`active` key set to :yaml:`false`:
+
+..  literalinclude:: _csp_active.yaml
+    :language: yaml
+    :caption: config/sites/<my_site>/csp.yaml | typo3conf/sites/<my_site>/csp.yaml
+
+
+..  _content-security-policy-modes:
+
+Modes
+-----
+
+The following modes are available:
+
+..  confval-menu::
+    :name: content-security-policy-modes
+
+    ..  confval:: append
+        :name: content-security-policy-mode-append
+        :YAML: :yaml:`append`
+        :PHP: :php:`\TYPO3\CMS\Core\Security\ContentSecurityPolicy\MutationMode::Append`
+
+        Appends to a given directive.
+
+        Example:
+
+        ..  literalinclude:: _csp_mode_append.yaml
+            :language: yaml
+            :caption: config/sites/<my_site>/csp.yaml | typo3conf/sites/<my_site>/csp.yaml
+            :emphasize-lines: 12-15
+
+        ..  literalinclude:: _ContentSecurityPolicies_mode_append.php
+            :language: php
+            :caption: EXT:my_extension/Configuration/ContentSecurityPolicies.php
+            :emphasize-lines: 27-31
+
+        Results in:
+
+        ..  code-block:: http
+
+            Content-Security-Policy: default-src 'self'; img-src example.org example.com
+
+    ..  confval:: extend
+        :name: content-security-policy-mode-extend
+        :YAML: :yaml:`extend`
+        :PHP: :php:`\TYPO3\CMS\Core\Security\ContentSecurityPolicy\MutationMode::Extend`
+
+        Extends the given directive. It is a shortcut for
+        :confval:`content-security-policy-mode-inherit-once` and
+        :confval:`content-security-policy-mode-append`.
+
+        Example:
+
+        ..  literalinclude:: _csp_mode_extend.yaml
+            :language: yaml
+            :caption: config/sites/<my_site>/csp.yaml | typo3conf/sites/<my_site>/csp.yaml
+            :emphasize-lines: 7-10
+
+        ..  literalinclude:: _ContentSecurityPolicies_mode_extend.php
+            :language: php
+            :caption: EXT:my_extension/Configuration/ContentSecurityPolicies.php
+            :emphasize-lines: 22-26
+
+        Results in:
+
+        ..  code-block:: http
+
+            Content-Security-Policy: default-src 'self'; img-src 'self' example.com
+
+    ..  confval:: inherit-again
+        :name: content-security-policy-mode-inherit-again
+        :YAML: :yaml:`inherit-again`
+        :PHP: :php:`\TYPO3\CMS\Core\Security\ContentSecurityPolicy\MutationMode::InheritAgain`
+
+        Inherits again from the corresponding ancestor chain and merges existing
+        sources.
+
+        Example:
+
+        ..  literalinclude:: _csp_mode_inherit_again.yaml
+            :language: yaml
+            :caption: config/sites/<my_site>/csp.yaml | typo3conf/sites/<my_site>/csp.yaml
+            :emphasize-lines: 8-9,21-22
+
+        ..  literalinclude:: _ContentSecurityPolicies_mode_inherit_again.php
+            :language: php
+            :caption: EXT:my_extension/Configuration/ContentSecurityPolicies.php
+            :emphasize-lines: 23-26,37-40
+
+        Results in:
+
+        ..  code-block:: http
+
+            Content-Security-Policy: default-src data:; img-src data: 'self' example.com
+
+        Note that `data:` is inherited to `img-src`
+        (in opposite to :confval:`content-security-policy-mode-inherit-once`).
+
+    ..  confval:: inherit-once
+        :name: content-security-policy-mode-inherit-once
+        :YAML: :yaml:`inherit-once`
+        :PHP: :php:`\TYPO3\CMS\Core\Security\ContentSecurityPolicy\MutationMode::InheritOnce`
+
+        Inherits once from the corresponding ancestor chain. When `inherit-once` is
+        called multiple times on the same directive, only the first time is applied.
+
+        Example:
+
+        ..  literalinclude:: _csp_mode_inherit_once.yaml
+            :language: yaml
+            :caption: config/sites/<my_site>/csp.yaml | typo3conf/sites/<my_site>/csp.yaml
+            :emphasize-lines: 8-9,21-22
+
+        ..  literalinclude:: _ContentSecurityPolicies_mode_inherit_once.php
+            :language: php
+            :caption: EXT:my_extension/Configuration/ContentSecurityPolicies.php
+            :emphasize-lines: 23-26,37-40
+
+        Results in:
+
+        ..  code-block:: http
+
+            Content-Security-Policy: default-src data:; img-src 'self' example.com
+
+        Note that `data:` is not inherited to `img-src`. If you want to inherit
+        also `data:` to `img-src` use
+        :confval:`content-security-policy-mode-inherit-again`.
+
+    ..  confval:: reduce
+        :name: content-security-policy-mode-reduce
+        :YAML: :yaml:`reduce`
+        :PHP: :php:`\TYPO3\CMS\Core\Security\ContentSecurityPolicy\MutationMode::Reduce`
+
+        Reduces a directive by a given aspect.
+
+        Example:
+
+        ..  literalinclude:: _csp_mode_reduce.yaml
+            :language: yaml
+            :caption: config/sites/<my_site>/csp.yaml | typo3conf/sites/<my_site>/csp.yaml
+            :emphasize-lines: 9-12
+
+        ..  literalinclude:: _ContentSecurityPolicies_mode_reduce.php
+            :language: php
+            :caption: EXT:my_extension/Configuration/ContentSecurityPolicies.php
+            :emphasize-lines: 24-28
+
+        Results in:
+
+        ..  code-block:: http
+
+            Content-Security-Policy: default-src 'self' example.com
+
+    ..  confval:: remove
+        :name: content-security-policy-mode-remove
+        :YAML: :yaml:`remove`
+        :PHP: :php:`\TYPO3\CMS\Core\Security\ContentSecurityPolicy\MutationMode::Remove`
+
+        Removes a directive completely.
+
+        Example:
+
+        ..  literalinclude:: _csp_mode_remove.yaml
+            :language: yaml
+            :caption: config/sites/<my_site>/csp.yaml | typo3conf/sites/<my_site>/csp.yaml
+            :emphasize-lines: 12-13
+
+        ..  literalinclude:: _ContentSecurityPolicies_mode_remove.php
+            :language: php
+            :caption: EXT:my_extension/Configuration/ContentSecurityPolicies.php
+            :emphasize-lines: 27-30
+
+        Results in:
+
+        ..  code-block:: http
+
+            Content-Security-Policy: default-src 'self'
+
+    ..  confval:: set
+        :name: content-security-policy-mode-set
+        :YAML: :yaml:`set`
+        :PHP: :php:`\TYPO3\CMS\Core\Security\ContentSecurityPolicy\MutationMode::Set`
+
+        Sets (overrides) a directive completely.
+
+        Example:
+
+        ..  literalinclude:: _csp_mode_set.yaml
+            :language: yaml
+            :caption: config/sites/<my_site>/csp.yaml | typo3conf/sites/<my_site>/csp.yaml
+            :emphasize-lines: 2-5
+
+        ..  literalinclude:: _ContentSecurityPolicies_mode_set.php
+            :language: php
+            :caption: EXT:my_extension/Configuration/ContentSecurityPolicies.php
+            :emphasize-lines: 16-20
+
+        Results in:
+
+        ..  code-block:: http
+
+            Content-Security-Policy: img-src 'self'
 
 
 .. _content-security-policy-nonce:
@@ -159,7 +373,12 @@ or styles are blocked by the browser.
 
 The nonce is applied automatically, when scripts or styles are defined with the
 TYPO3 API, like TypoScript (:typoscript:`page.includeJS`, etc.) or the
-:ref:`asset collector <assets>`.
+:ref:`asset collector <assets>`. This only refers to referenced files
+(via :html:`src` and :html:`href` attributes) and not inline scripts
+or inline styles. For those, you should either use the PHP/Fluid approach
+as listed below, or use TypoScript only for passing DOM attributes
+and using external scripts to actually evaluate these attributes to control
+functionality.
 
 TYPO3 provides APIs to get the nonce for the current request:
 
@@ -186,9 +405,30 @@ The :ref:`f:security.nonce <t3viewhelper:typo3-fluid-security-nonce>` ViewHelper
 is available, which provides the nonce in a Fluid template, for example:
 
 ..  code-block:: html
+    :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.html
 
-    <script nonce="{f:security.nonce()}">const inline = 'script';</script>
+    <script nonce="{f:security.nonce()}">
+        const inline = 'script';
+    </script>
 
+    <style nonce="{f:security.nonce()}">
+        .some-style { color: red; }
+    </style>
+
+You can also use the :ref:`f:asset.script <t3viewhelper:typo3-fluid-asset-script>`
+or :ref:`f:asset.css <t3viewhelper:typo3-fluid-asset-css>`
+ViewHelpers with the `useNonce` attribute:
+
+..  code-block:: html
+    :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.html
+
+    <f:asset.script identifier="my-inline-script" useNonce="1">
+        const inline = 'script';
+    </f:asset.script>
+
+    <f:asset.css identifier="my-inline-style" useNonce="1">
+        .some-style { color: red; }
+    </f:asset.css>
 
 .. _content-security-policy-reporting:
 
@@ -249,4 +489,3 @@ The following PSR-14 events are available:
 
 *   :ref:`InvestigateMutationsEvent`
 *   :ref:`PolicyMutatedEvent`
-

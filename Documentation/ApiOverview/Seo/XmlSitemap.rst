@@ -105,7 +105,7 @@ backend.
                     pages {
                         config {
                             excludedDoktypes = 3, 4, 6, 7, 199, 254, 255, 137, 138
-                            additionalWhere = AND (no_index = 0 OR no_follow = 0)
+                            additionalWhere = AND ({#no_index} = 0 OR {#no_follow} = 0)
                             #rootPage = <optionally specify a different root page. (default: rootPageId from site configuration)>
                             excludePagesRecursive = <comma-separated list of page IDs>
                         }
@@ -141,7 +141,7 @@ following example shows how to add a sitemap for news records:
                             lastModifiedField = tstamp
                             changeFreqField = news_changefreq
                             priorityField = news_priority
-                            additionalWhere = AND (no_index = 0 OR no_follow = 0)
+                            additionalWhere = AND ({#no_index} = 0 OR {#no_follow} = 0)
                             pid = <page id('s) containing news records>
                             recursive = <number of subpage levels taken into account beyond the pid page. (default: 0)>
                             url {
@@ -277,7 +277,7 @@ sitemap:
 
 The :php:`loc` element is the URL of the page to be crawled by a search engine.
 The :php:`lastMod` element contains the date of the last update of the
-specific item. This value is a UNIX timestamp. In additiona, you can include
+specific item. This value is a UNIX timestamp. In addition, you can include
 :php:`changefreq` and :php:`priority` as keys in the array to give
 :ref:`search engines a hint <xmlsitemap-changefreq-priority>`.
 

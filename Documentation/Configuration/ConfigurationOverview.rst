@@ -73,7 +73,7 @@ Extension files
    :ref:`TCA configuration <t3tca:start>`.
 
 :file:`Configuration/TSconfig/`
-   :ref:`TSconfig configuration <t3tsconfig:start>`.
+   :ref:`TSconfig <t3tsref:typoscript-syntax-using-setting>`.
 
 :file:`Configuration/TypoScript/`
    :ref:`TypoScript configuration <t3tsref:start>`.
@@ -89,7 +89,7 @@ Configuration languages
 
 These are the main languages TYPO3 uses for configuration:
 
-* :ref:`TypoScript syntax <typoscript-syntax-start>` is used for TypoScript
+* :ref:`TypoScript syntax <t3tsref:typoscript-syntax>` is used for TypoScript
   and TSconfig.
 * :ref:`TypoScript constant syntax <t3tsref:typoscript-syntax-constant-editor>` is
   used for Extension Configuration and for defining constants for TypoScript.
@@ -119,8 +119,9 @@ what they mean) are not.
 Configuration methods
 =====================
 
-:ref:`TSconfig <t3tsconfig:start>`
-----------------------------------
+
+:ref:`TSconfig <t3tsref:typoscript-syntax-using-setting>`
+---------------------------------------------------------
 
 While Frontend TypoScript is used to steer the rendering of the frontend, TSconfig is used
 to configure **backend** details for backend users. Using TSconfig it is possible to enable or
@@ -129,11 +130,12 @@ line of PHP. `TSconfig` can be set on a page (page TSconfig), as well as a user 
 basis.
 
 TSconfig uses the same syntax as Frontend TypoScript, the syntax is outlined in detail
-in :ref:`typoscript-syntax-start`. Other than that, TSconfig and Frontend TypoScript
+in :ref:`t3tsref:typoscript-syntax`. Other than that, TSconfig and Frontend TypoScript
 don't have much more in common - they consist of entirely different properties.
 
 A full reference of properties as well as an introduction to explain details configuration usage, API and
-load orders can be found in the :ref:`TSconfig Reference document <t3tsconfig:start>`. While Developers
+load orders can be found in the :ref:`Page TSconfig Reference <t3tsref:pagetoplevelobjects>` and
+:ref:`User TSconfig reference <t3tsref:usertoplevelobjects>`. While Developers
 should have an eye on this document, it is mostly used as a reference for Integrators who make life as
 easy as possible for backend users.
 
@@ -144,7 +146,7 @@ easy as possible for backend users.
 
 TypoScript - or more precisely "TypoScript Templating" - is used in TYPO3 to steer
 the frontend rendering (the actual website) of a TYPO3 instance. It is based on the
-TypoScript syntax which is outlined in detail in :ref:`typoscript-syntax-start`.
+TypoScript syntax which is outlined in detail in :ref:`t3tsref:typoscript-syntax`.
 
 TypoScript Templating is very powerful and has been the backbone of frontend rendering ever since.
 However, with the rise of the Fluid templating engine, many parts of Frontend TypoScript are much less
@@ -159,9 +161,9 @@ the incredible power of TypoScript Templating is daily bread for Integrators.
 For an introduction, you may want to read one of the following tutorials:
 
 
-* :ref:`t3ts45:start` - Introduction to TypoScript Templating.
-* :ref:`t3sitepackage:start` - Start a Sitepackage Extension to create a theme
-  for your site using TypoScript and Fluid.
+*   :ref:`TypoScript guide <t3tsref:guide>` - Introduction to TypoScript.
+*   :ref:`t3sitepackage:start` - Start a Sitepackage Extension to create a theme
+    for your site using TypoScript and Fluid.
 
 .. note::
 
@@ -261,7 +263,7 @@ YAML
 Some system extensions use YAML for configuration:
 
 * :ref:`Site <sitehandling>` configuration is stored in :file:`<project-root>/config/sites/<identifier>/config.yaml`.
-  It can be configured in the backend module "Site" or changed directly in
+  It can be configured in the backend module "Sites" or changed directly in
   the configuration file.
 
 * :ref:`routing` is also defined in the file :file:`<project-root>/config/sites/<identifier>/config.yaml`.
@@ -277,4 +279,3 @@ Some system extensions use YAML for configuration:
 
 There is a :ref:`YamlFileLoader <yamlFileLoader>` which can be used to load YAML
 files.
-

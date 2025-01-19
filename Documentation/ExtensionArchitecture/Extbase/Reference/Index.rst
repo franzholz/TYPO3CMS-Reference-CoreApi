@@ -1,3 +1,4 @@
+:navigation-title: Reference
 .. include:: /Includes.rst.txt
 
 .. index:: Extbase; Reference
@@ -19,5 +20,7 @@ Extbase reference
    TypoScriptConfiguration
    Annotations
    Validation
+   FileUpload
    Caching
    Localization
+   UriArguments

@@ -35,6 +35,10 @@ If you want to participate, it only takes a few steps to get started:
 Using Crowdin is free for Open Source projects. For private projects, Crowdin's
 pricing model is based on projects and not on individual users.
 
+To help you get started, Tom Warwick has created a short tutorial video for you:
+
+..  youtube:: 5TnUh0AzqHE
+
 
 Teams and roles
 ===============
@@ -135,6 +139,8 @@ How to create (good) translations
     for collaborating with your team translators, and please join the
     `Translation Slack channel #typo3-translations`_.
 
+..  note::
+    When translating into German, we prefer the informal "du" to the formal "Sie".
 
 Translation styles
 ==================
@@ -175,7 +181,7 @@ FAQ
 ===
 
 
-Should I localize both 12.4 and main?
+Should I localize both 13.4 and main?
 ---------------------------------------
 
 The main branch is the leading version. Any string that is also present in the
@@ -194,8 +200,8 @@ If the process takes too long, please write an email to `localization@typo3.org`
 ..  _localization@typo3.org: mailto:localization@typo3.org
 
 
-How can I be sure what way a word, term or sting is to be translated?
----------------------------------------------------------------------
+How can I be sure what way a word, term or string is to be translated?
+----------------------------------------------------------------------
 
 There are several ways to get help: In the left panel you can either search
 the translation memory (TM) or the term base. You can also drop a comment to

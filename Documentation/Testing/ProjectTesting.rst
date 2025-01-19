@@ -6,262 +6,231 @@
 Project testing
 ===============
 
-Introduction
-============
+..  contents::
 
-Testing entire projects is somehow different from Core and extension testing. As a developer
-or maintainer of a specific TYPO3 instance, you probably do not want to test extension details
-too much - those should have been tested on an extension level already. And you probably also
-do not want to check too many TYPO3 backend details but look for acceptance testing of your
-local development, stage and live frontend website instead.
+.. _testing-projects-differences:
 
-Project testing is thus probably wired into your specific CI and deployment environment. Maybe
-you want to automatically fire your acceptance tests as soon as some code has been merged to
-your projects develop branch and pushed to a staging system?
+Differences between project and extension testing
+=================================================
 
-Documenting all the different decisions that may have been taken by agencies and other project
-developers is way too much for this little document. We thus document only one example
-how project testing could work: We have some "site" repository based on `ddev
-<https://www.drud.com/what-is-ddev/>`_ and add basic acceptance testing to it, executed
-locally and by GitHub Actions.
+**Projects** usually needs to support only one PHP version, Database vendor
+and version and TYPO3 core version
 
-This is thought as an inspiration you may want to adapt for your project.
+Version raises for upgrades are usually prepared on a branch and changed
+instead of parallel execution.
 
+Project may have different places for tests
 
-Project site-introduction
+*   local path extension tests `packages/*/Tests/*`
+*   global (root) tests `Tests/*`
+
+The Core mono repository is basically a project setup, having local path
+extensions in `typo3/sysexts/*` instead of the more known and lived `packages/*`
+project folder structure.
+
+.. _testing-projects-structure:
+
+Project structure
+=================
+
+We assume a project structure similar to `tf-basics-project <https://github.com/sbuerk/tf-basics-project>`__
+here. If you are using another structure, you have to adjust some scripts.
+
+*   :ref:`TYPO3 installation with Composer <t3start:install>` and default paths
+*   :ref:`DDEV <t3start:installation-ddev-tutorial>` is used for local development
+*   Local extensions and the site package are situated in :path:`packages`
+
+..  directory-tree::
+    :caption: Initial directory tree in version control
+    :level: 1
+
+    *   :path:`.ddev`
+    *   :path:`config`
+    *   :path:`packages`
+    *   :file:`composer.json`
+    *   :file:`composer.lock`
+
+The :file:`composer.json` looks like this:
+
+..  literalinclude:: _ProjectTesting/_composer.json
+    :caption: Example project composer.json before testing
+
+..  _testing-projects-installation:
+
+Install testing dependencies
+============================
+
+As a bare minimum it is suggested to use
+
+*   One coding style fixer for PHP, for example :composer:`friendsofphp/php-cs-fixer`
+*   One static code analyzer for PHP, for example :composer:`phpstan/phpstan`
+
+Depending on the complexity of your project you might need:
+
+*   :composer:`phpunit/phpunit`, if there is any PHP code of a complexity that
+    should be tested.
+*   Testing of scss, TypeScript or JavaScript (not covered here)
+*   Linting of YAML, XML, TypoScript (not covered here)
+*   :ref:`Writing acceptance tests <t3coreapi:testing-writing-acceptance>`
+
+You can install all these tools as development dependencies. They will then not
+be installed on your production system when Composer is executed with option
+`--no-dev` during deployment:
+
+..  code-block:: bash
+    :caption: Composer installation **during deployment**
+
+    composer install --no-dev
+
+..  todo: Link to a dedicated php-cs-fixer section once it exists
+
+For TYPO3 project you can use the package :composer:`typo3/coding-standards`
+which already requires :composer:`friendsofphp/php-cs-fixer` and a set of
+useful configuration and rules.
+
+..  code-block:: bash
+    :caption: Require development dependencies
+
+    composer req --dev typo3/coding-standards
+
+If you want to do Unit or Functional tests on project level you also need the
+TYPO3 testing framework:
+
+..  code-block:: bash
+    :caption: Require development dependencies
+
+    composer req --dev typo3/coding-standards typo3/testing-framework
+
+.. _testing-projects-configuration:
+
+Test configuration on project level
+===================================
+
+We suggest to keep all project level test configuration in a common place that
+can be excluded from deployment. The Core uses a folder called :path:`Build` with
+one folder per test-type and we will follow that scheme here. If you put
+the configuration in other directories, adjust your configuration files
+accordingly.
+
+..  _testing-projects-configuration-cs:
+
+Code style tests and fixing
+---------------------------
+
+:composer:`typo3/coding-standards` comes with a predefined configuration for
+:composer:`friendsofphp/php-cs-fixer`. You can override rules as needed in
+your own configuration:
+
+..  literalinclude:: _ProjectTesting/_php-cs-fixer.dist.php
+    :caption: Build/php-cs-fixer/.php-cs-fixer.dist.php
+
+It is recommended to also copy the :file:`.editorconfig` from the testing
+framework into your main directory so that your IDE applies the same formatting
+as the php-cs-fixer.
+
+.. _testing-projects-configuration-phpstan:
+
+PHPstan - Static PHP analysis
+-----------------------------
+
+When configuring PHPstan the various places in which PHP files can be found
+should be taken into consideration:
+
+..  literalinclude:: _ProjectTesting/_phpstan.neon
+    :caption: Build/phpstan/phpstan.neon
+    :language: plaintext
+
+It also makes sense to exclude the :file:`ext_emconf.php` and any
+:path:`node_modules` directory.
+
+..  _testing-projects-configuration-phpunit:
+
+Unit and Functional test configuration
+--------------------------------------
+
+See the chapters :ref:`Unit testing <testing-writing-unit>` and
+:ref:`Functional testing <testing-writing-functional>`.
+
+..  _testing-projects-execution:
+
+Running the tests locally
 =========================
 
-The `site-introduction <https://github.com/TYPO3-Documentation/site-introduction>`_ TYPO3 project is a
-straight ddev based setup that aims to simplify handling the `introduction
-<https://github.com/FriendsOfTYPO3/introduction>`_ extension. It delivers everything needed
-to have a working introduction based project, to manage content and export it for new
-introduction extension releases.
+The tests can be run via PHP on your local machine or with DDEV.
 
-Since we're lazy and like well defined but simply working environments, this project is
-based on ddev. The repository is a simple project setup that defines a working
-TYPO3 instance. And we want to make sure we do not break main parts if we fiddle with it.
-Just like any other projects wants.
+..  _testing-projects-execution-cs:
 
-The quick start for an own site based on this repository boils down to these commands, with
-more details mentioned in `README.md <https://github.com/TYPO3-Documentation/site-introduction/blob/main/README.md>`_:
+Run the php-cs-fixer
+--------------------
 
-.. code-block:: shell
+To run the php-cs-fixer you need to configure the path to the configuration
+file:
 
-    lolli@apoc /var/www/local $ git clone git@github.com:TYPO3-Documentation/site-introduction.git
-    lolli@apoc /var/www/local $ cd site-introduction
-    lolli@apoc /var/www/local/site-introduction $ ddev start
-    lolli@apoc /var/www/local/site-introduction $ ddev import-db --src=./data/db.sql
-    lolli@apoc /var/www/local/site-introduction $ ddev import-files --src=./assets
-    lolli@apoc /var/www/local/site-introduction $ ddev composer install
+..  code-block:: bash
 
-This will start various containers: A database, a phpmyadmin instance, and a web server. If all
-goes well, the instance is reachable on :samp:`https://introduction.ddev.site`.
+    vendor/bin/php-cs-fixer fix --config=Build/php-cs-fixer/.php-cs-fixer.dist.php
 
-.. index:: Testing; Acceptance
+.. _testing-projects-execution-phpstan:
 
-Local acceptance testing
-========================
+Run PHPstan
+-----------
 
-There has been one `main patch
-<https://github.com/TYPO3-Documentation/site-introduction/commit/841d86e72f34982827af66f3015b53b127f1dc2f>`_ adding
-acceptance testing to the site-introduction repository.
+..  code-block:: bash
 
-The goal is to run some acceptance tests against the current website that has been
-set up using ddev and execute this via GitHub Actions on each run.
+    vendor/bin/phpstan --configuration=Build/phpstan/phpstan.neon
 
-The solution is to add the basic selenium-chrome container as additional ddev container, add
-codeception as require-dev dependency, add some codeception actor, a test and a basic codeception.yml
-file. Tests are then executed within the container to the locally running ddev setup.
+Regenerate the baseline:
 
-Let's have a look at some more details: ddev allows to add further containers to the setup. We did
-that for the selenium-chrome container that pilots the acceptance tests as :file:`.ddev/docker-compose.chrome.yaml`:
+..  code-block:: bash
 
-.. code-block:: yaml
+    vendor/bin/phpstan \
+        --configuration=Build/phpstan/phpstan.neon \
+        --generate-baseline=Build/phpstan/phpstan-baseline.neon
 
-    version: '3.6'
-    services:
-      selenium:
-        container_name: ddev-${DDEV_SITENAME}-chrome
-        image: selenium/standalone-chrome:3.12
-        environment:
-          - VIRTUAL_HOST=$DDEV_HOSTNAME
-          - HTTP_EXPOSE=4444
-        external_links:
-          - ddev-router:$DDEV_HOSTNAME
+..  _testing-projects-execution-phpunit:
 
-With this in place and calling `ddev start`, another container with name `ddev-introduction-chrome`
-is added to the other containers, running in the same docker network. More information about
-setups like these can be found in the `ddev documentation
-<https://ddev.readthedocs.io/en/stable/users/extend/custom-compose-files/>`_.
+Run Unit tests
+--------------
 
-To execute acceptance tests in this installation you have to activate this file, usually it is now appended
-with the suffix `.inactive` and therefore not used when DDEV starts. To activate acceptance tests the file
-:file:`.ddev/docker-compose.chrome.yaml.inactive` has to be renamed to :file:`.ddev/docker-compose.chrome.yaml`.
-By default acceptance tests are disabled because they slow down other tests significantally.
+As Unit tests need no database or other dependencies you can run them directly
+on your host system or DDEV:
 
-Next, after adding codeception as require-dev dependency in :file:`composer.json`, we need a
-basic :file:`Tests/codeception.yml` file:
+..  code-block:: bash
 
-.. code-block:: yaml
+    vendor/bin/phpunit \
+        -c Build/phpunit/UnitTests.xml
 
-    namespace: Bk2k\SiteIntroduction\Tests\Acceptance\Support
-    suites:
-      acceptance:
-        actor: AcceptanceTester
-        path: .
-        modules:
-          enabled:
-            - Asserts
-            - WebDriver:
-                url: https://introduction.ddev.site
-                browser: chrome
-                host: ddev-introduction-chrome
-                wait: 1
-                window_size: 1280x1024
-    extensions:
-      enabled:
-        - Codeception\Extension\RunFailed
-        - Codeception\Extension\Recorder
+..  _testing-projects-execution-functional-sqlite:
 
-    paths:
-      tests: Acceptance
-      output: ../var/log/_output
-      data: .
-      support: Acceptance/Support
+Run Functional tests using sqlite and DDEV
+------------------------------------------
 
-    settings:
-      shuffle: false
-      lint: true
-      colors: true
+..  code-block:: bash
 
-This tells codeception there is a selenium instance at `ddev-introduction-chrome` with chrome,
-the website is reachable as :samp:`https://introduction.ddev.site`, it enables some codeception plugins
-and specifies a couple of logging details. The `codeception documentation <https://codeception.com/>`_
-goes into details about these.
+    ddev exec \
+        typo3DatabaseDriver=pdo_sqlite \
+        php vendor/bin/phpunit -c Build/phpunit/FunctionalTests.xml
 
-Now we need a simple first test which is added as :file:`Tests/Acceptance/Frontend/FrontendPagesCest.php`:
+.. _testing-projects-execution-functional-mysqli:
 
-.. code-block:: php
-   :caption: EXT:site_introduction/Tests/Acceptance/Frontend/FrontendPagesCest.php
+Run Functional tests using mysqli and DDEV
+------------------------------------------
+..  code-block:: bash
 
-    <?php
-    declare(strict_types = 1);
-    namespace Bk2k\SiteIntroduction\Tests\Acceptance\Frontend;
-    use Bk2k\SiteIntroduction\Tests\Acceptance\Support\AcceptanceTester;
-    class FrontendPagesCest
-    {
-        /**
-         * @param AcceptanceTester $I
-         */
-        public function firstPageIsRendered(AcceptanceTester $I)
-        {
-            $I->amOnPage('/');
-            $I->see('Open source, enterprise CMS delivering  content-rich digital experiences on any channel,  any device, in any language');
-            $I->click('Customize');
-            $I->see('Incredible flexible');
-        }
-    }
-
-It just calls the homepage of our instance, clicks one of the links and verifies some text is
-shown. Straight, but enough to see if the basic instance does work.
-
-Ah, and we need a "Tester" in the `Support directory <https://github.com/TYPO3-Documentation/site-introduction/tree/main/Tests/Acceptance/Support>`_.
-
-That's it. We can now execute the acceptance test suite by executing a command in the
-ddev PHP container:
-
-.. code-block:: shell
-
-    lolli@apoc /var/www/local/site-introduction $ ddev exec bin/codecept run acceptance -d -c Tests/codeception.yml
-    Codeception PHP Testing Framework v2.5.6
-    Powered by PHPUnit 7.5.20 by Sebastian Bergmann and contributors.
-    Running with seed:
+    ddev exec \
+        typo3DatabaseDriver='mysqli' \
+        typo3DatabaseHost='db' \
+        typo3DatabasePort=3306 \
+        typo3DatabaseUsername='root' \
+        typo3DatabasePassword='root' \
+        typo3DatabaseName='func' \
+        php vendor/bin/phpunit -c Build/phpunit/FunctionalTests.xml
 
 
-    Bk2k\SiteIntroduction\Tests\Acceptance\Support.acceptance Tests (1) -------------------------------------------------------------------------------------------------
-    Modules: Asserts, WebDriver
-    ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    ⏺ Recording ⏺ step-by-step screenshots will be saved to /var/www/html/Tests/../var/log/_output/
-    Directory Format: record_5be441bbdc8ed_{filename}_{testname} ----
-    FrontendPagesCest: First page is rendered
-    Signature: Bk2k\SiteIntroduction\Tests\Acceptance\Frontend\FrontendPagesCest:firstPageIsRendered
-    Test: Acceptance/Frontend/FrontendPagesCest.php:firstPageIsRendered
-    Scenario --
-     I am on page "/"
-      [GET] https://introduction.ddev.site/
-     I see "Open source, enterprise CMS delivering  content-rich digital experiences on any channel,  any device, in any language"
-     I click "Customize"
-     I see "Incredible flexible"
-     PASSED
+.. _testing-projects-organization:
 
-    ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    ⏺ Records saved into: file:///var/www/html/Tests/../var/log/_output/records.html
+Organizing and storing the commands
+===================================
 
-
-    Time: 8.46 seconds, Memory: 8.00MB
-
-    OK (1 test, 2 assertions)
-
-    lolli@apoc /var/www/local/site-introduction $
-
-Done: Local test execution of a projects acceptance test!
-
-.. index:: Testing; GitHub Actions
-
-GitHub Actions
-==============
-
-With local testing in place, we now want tests to run automatically when something is merged
-into the repository, and when people create pull requests for our project, we want to make sure
-that our carefully crafted test setup actually works. We're going to use Github's Actions CI
-service to get that done. It's free for open source projects.
-To tell the CI what to do, create a new workflow file in
-`.github/workflows/tests.yml <https://github.com/TYPO3-Documentation/site-introduction/blob/master/.github/workflows/tests.yml>`__
-
-.. code-block:: yaml
-
-   name: tests
-
-   on:
-     push:
-     pull_request:
-     workflow_dispatch:
-
-   jobs:
-     testsuite:
-       name: all tests
-       runs-on: ubuntu-20.04
-       steps:
-         - name: Checkout
-           uses: actions/checkout@v2
-
-         - name: Start DDEV
-           uses: jonaseberle/github-action-setup-ddev@v1
-
-         - name: Import database
-           run: ddev import-db --src=./data/db.sql
-
-         - name: Import files
-           run: ddev import-files --src=./assets
-
-         - name: Install Composer packages
-           run: ddev composer install
-
-         - name: Allow public access of var folder
-           run: sudo chmod 0777 ./var
-
-         - name: Run acceptance tests
-           run: ddev exec bin/codecept run acceptance -d -c Tests/codeception.yml
-
-It's possible to see executed test runs `online <https://github.com/TYPO3-Documentation/site-introduction/actions>`_.
-Green :)
-
-
-Summary
-=======
-
-This chapter is a show case how project testing can be done. Our example projects makes it easy for us since
-the ddev setup allows us to fully kickstart the entire instance and then run tests on it. Your project setup
-may be probably different, you may want to run tests against some other web endpoint, you may want to trigger
-that from within your CI and deployment phase and so on. These setups are out of scope of this document, but
-maybe the chapter is a good starting point and you can derive your own solution from it.
+There are different solutions to store and execute these command.
+For details see :ref:`testing-organization`.

@@ -30,7 +30,7 @@ The new page type is added to the :php:`PageDoktypeRegistry` in
     :language: php
     :caption: EXT:examples/ext_tables.php
 
-We need to add the following :ref:`user TSconfig <t3tsconfig:usertsconfig>`
+We need to add the following :ref:`user TSconfig <t3tsref:usertsconfig>`
 to all users, so that the new page type is displayed in the wizard:
 
 ..  literalinclude:: _user.tsconfig
@@ -57,8 +57,8 @@ you can utilize :php:`typeicon_classes`.
 
 It is possible to define additional type icons for special case pages:
 
-*   Page contains content from another page `<doktype>-mountpoint`,
-    For example: :php:`$GLOBALS['TCA']['pages']['ctrl']['typeicon_classes']['116-mountpoint']`.
+*   Page contains content from another page `<doktype>-contentFromPid`,
+    For example: :php:`$GLOBALS['TCA']['pages']['ctrl']['typeicon_classes']['116-contentFromPid']`.
 *   Page is hidden in navigation `<doktype>-hideinmenu`
     For example: :php:`$GLOBALS['TCA']['pages']['ctrl']['typeicon_classes']['116-hideinmenu']`.
 *   Page is the root of the site `<doktype>-root`

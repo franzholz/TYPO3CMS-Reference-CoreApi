@@ -89,7 +89,7 @@ The form looks like this:
       <f:form.textbox property="description" />
    </f:form>
 
-If the form is sent, the argument mapping for the user object recieves
+If the form is sent, the argument mapping for the user object receives
 this array:
 
 .. code-block:: none
@@ -220,5 +220,3 @@ htmlspecialchars(), the content of `{variable2}` is not
 changed. The ViewHelper must retrieve the unchanged data because we can not
 foresee what should be done with it. For this reason, ViewHelpers
 that output parameters directly have to handle special characters correctly.
-
-

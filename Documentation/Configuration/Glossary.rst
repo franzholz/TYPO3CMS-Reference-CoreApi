@@ -111,7 +111,7 @@ check whether the syntax is correct.
 
 These are the main languages TYPO3 uses for configuration:
 
-* :ref:`TypoScript syntax <typoscript-syntax-start>` is used for TypoScript
+* :ref:`TypoScript syntax <t3tsref:typoscript-syntax>` is used for TypoScript
   and TSconfig.
 * :ref:`TypoScript constant syntax <t3tsref:typoscript-syntax-constant-editor>` is
   used for Extension Configuration and for defining constants for TypoScript.
@@ -157,4 +157,3 @@ Examples for using a configuration definition file in TYPO3:
 * TypoScript constant syntax is used to define Extension Configuration in the
   file :file:`ext_conf_template.txt` of an extension.
 * Flexforms are defined using XML in an extension.
-

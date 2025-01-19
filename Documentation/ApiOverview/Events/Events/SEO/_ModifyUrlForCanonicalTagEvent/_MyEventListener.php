@@ -9,9 +9,9 @@ use TYPO3\CMS\Seo\Event\ModifyUrlForCanonicalTagEvent;
 use TYPO3\CMS\Seo\Exception\CanonicalGenerationDisabledException;
 
 #[AsEventListener(
-    identifier: 'my-extension/modify-url-for-canonical-tag'
+    identifier: 'my-extension/modify-url-for-canonical-tag',
 )]
-final class MyEventListener
+final readonly class MyEventListener
 {
     public function __invoke(ModifyUrlForCanonicalTagEvent $event): void
     {

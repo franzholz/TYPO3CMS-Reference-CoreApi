@@ -6,16 +6,16 @@ namespace MyVendor\MyExtension\Backend\EventListener;
 
 use TYPO3\CMS\Backend\Form\Event\ModifyLinkExplanationEvent;
 use TYPO3\CMS\Core\Attribute\AsEventListener;
-use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Imaging\IconFactory;
+use TYPO3\CMS\Core\Imaging\IconSize;
 
 #[AsEventListener(
-    identifier: 'my-extension/backend/modify-link-explanation'
+    identifier: 'my-extension/backend/modify-link-explanation',
 )]
-final class MyEventListener
+final readonly class MyEventListener
 {
     public function __construct(
-        private readonly IconFactory $iconFactory
+        private IconFactory $iconFactory,
     ) {}
 
     public function __invoke(ModifyLinkExplanationEvent $event): void
@@ -26,8 +26,8 @@ final class MyEventListener
                 'icon',
                 $this->iconFactory->getIcon(
                     'my-custom-link-icon',
-                    Icon::SIZE_SMALL
-                )->render()
+                    IconSize::SMALL,
+                )->render(),
             );
         }
     }

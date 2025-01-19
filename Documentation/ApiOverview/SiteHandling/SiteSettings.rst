@@ -6,17 +6,11 @@
 Site settings
 =============
 
-..  versionchanged:: 12.1
-    Before TYPO3 v12.1 the site settings were stored in the :file:`config.yaml`
-    file under the :yaml:`settings` key. An upgrade wizard copies the settings
-    to the new :file:`settings.yaml` file.
-
-    Settings are not removed from the :file:`config.yaml` file for now, but will
-    not have any effect anymore as soon as a :file:`settings.yaml` file exists.
-
-    Please review your settings in the :file:`config.yaml` file and remove them
-    manually. Eventually, you need and/or want to adopt your deployment
-    workflow.
+..  versionadded:: 13.1
+    Site settings can receive a type, a default value and some documentation in
+    :ref:`site settings definitions <site-sets-settings-definition>`. It is
+    recommended to always define a site setting before using it, as only this way
+    you can ensure proper types and default values.
 
 Site settings can be used to provide settings for a site. They can be accessed
 via
@@ -26,7 +20,9 @@ via
 *   the :ref:`siteSettings <t3tsref:data-type-siteSettings>` key of the
     :ref:`data <t3tsref:data-type-gettext>` function in
     :ref:`TypoScript <t3tsref:start>`
-*   constants in :ref:`TypoScript <t3tsref:start>` or :ref:`page TSconfig <t3tsconfig:pagetsconfig>`
+*   constants in :ref:`TypoScript <t3tsref:start>` or :ref:`page TSconfig <t3tsref:pagetsconfig>`
+*   as variables (for example, :fluid:`{site.configuration.settings.mySettingKey}`) in Fluid templates
+    using the :typoscript:`SiteProcessor data processor`, see :ref:`<sitehandling-inTypoScript`.
 
 For instance, settings can be used in custom frontend code to deliver features
 which might vary per site for extensions. An example may be to configure
@@ -34,6 +30,8 @@ storage page IDs.
 
 The settings are defined in the :file:`config/sites/<my_site>/settings.yaml`
 file.
+
+..  _sitehandling-settings-add:
 
 Adding site settings
 ====================
@@ -52,6 +50,7 @@ Add settings to the :file:`settings.yaml`:
 
 
 ..  index:: Site handling; TypoScript access to settings
+..  _sitehandling-settings-access:
 
 Accessing site settings in page TSconfig or TypoScript
 ======================================================

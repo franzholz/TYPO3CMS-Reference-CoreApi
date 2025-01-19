@@ -7,8 +7,8 @@ Symfony expression language
 ===========================
 
 Symfony expression language (SEL) is used by TYPO3 in a couple of places. The most
-well-known ones are :ref:`TypoScript conditions <typoscript-syntax-global-condition>`.
-The :ref:`TypoScript <t3tsref:conditions>` and :ref:`TSconfig <t3tsconfig:conditions>` references list
+well-known ones are :ref:`TypoScript conditions <t3tsref:typoscript-syntax-global-condition>`.
+The :ref:`TypoScript <t3tsref:conditions>` and :ref:`TSconfig <t3tsref:tsconfig-conditions>` references list
 available variables and functions of these contexts. But the TYPO3 Core API allows
 enriching expressions with additional functionality, which is what this chapter is about.
 
@@ -179,7 +179,7 @@ A usage example in TypoScript could be this:
        page.10 = TEXT
        page.10.value = Matched
    [GLOBAL]
-   
+
    # if there are no parameters, your own conditions still need brackets
    [conditionWithoutParameters()]
        # do something

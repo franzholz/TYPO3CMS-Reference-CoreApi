@@ -1,3 +1,4 @@
+:navigation-title: TSconfig
 .. include:: /Includes.rst.txt
 .. index::
    pair: Coding guidelines; TSconfig
@@ -7,12 +8,12 @@
 .. _cgl-tsconfig:
 
 ==========================
-TSconfig Coding Guidelines
+TSconfig coding guidelines
 ==========================
 
 TSconfig files use TypoScript syntax.
 
-Directory and File Names
+Directory and file names
 ========================
 
 * Files have the ending :file:`.tsconfig`
@@ -34,9 +35,9 @@ Format
 See `.editorconfig <https://github.com/typo3/typo3/blob/main/.editorconfig>`__ in core.
 
 
-More Information
+More information
 ================
 
-* See :ref:`cgl-ide` in this manual for information about setting up your Editor / IDE to adhere to
-  the coding guidelines.
-* :ref:`t3tsconfig:start`
+*   See :ref:`cgl-ide` in this manual for information about setting up your Editor / IDE to adhere to
+    the coding guidelines.
+*   :ref:`Using and setting TSconfig <t3tsref:typoscript-syntax-using-setting>`

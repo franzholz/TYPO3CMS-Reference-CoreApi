@@ -1,3 +1,5 @@
+:navigation-title: Context menus
+
 .. include:: /Includes.rst.txt
 
 
@@ -27,8 +29,8 @@ Markup
 
     *   :html:`class="t3js-contextmenutrigger"` with :html:`data-contextmenu-trigger="click"`
     *   :html:`data-table="pages"` with :html:`data-contextmenu-table="pages"`
-    *   :html:`data-uid="10" with :html:`data-contextmenu-uid="10"`
-    *   :html:`data-context="tree" with :html:`data-contextmenu-context="tree"`
+    *   :html:`data-uid="10"` with :html:`data-contextmenu-uid="10"`
+    *   :html:`data-context="tree"` with :html:`data-contextmenu-context="tree"`
 
     to be compatible with TYPO3 v12+.
 
@@ -276,7 +278,7 @@ add the :typoscript:`.tree` key after table name like that:
 If configuration for certain context is available, the default configuration
 is not taken into account.
 
-For more details see :ref:`TSConfig reference <t3tsconfig:useroptions-contextmenu-key-disableitems>`.
+For more details see :ref:`TSConfig reference <t3tsref:useroptions-contextmenu-key-disableitems>`.
 
 .. _csm-adding:
 

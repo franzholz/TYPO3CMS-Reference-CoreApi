@@ -1,3 +1,4 @@
+:navigation-title: Usage in TypoScript + Fluid
 .. include:: /Includes.rst.txt
 .. index:: pair: Site handling; TypoScript
 .. _sitehandling-inTypoScript:
@@ -56,6 +57,8 @@ Site configuration can also be used in :ref:`TypoScript conditions <sitehandling
    Site handling; Fluid
    SiteProcessor
 
+.. _sitehandling-fluidtemplate:
+
 FLUIDTEMPLATE
 =============
 
@@ -80,3 +83,27 @@ In the Fluid template the properties of the site entity can be accessed with:
 
    <p>{site.rootPageId}</p>
    <p>{site.configuration.someCustomConfiguration}</p>
+
+Specific :ref:`sitehandling-settings` can be accessed via:
+
+.. code-block:: html
+
+   <p>{site.configuration.settings.mySettingKey}</p>
+   <p>{site.settings.all.mySettingKey}</p>
+
+.. _sitehandling-non-extbase-fluid:
+
+Non-Extbase Fluid view
+======================
+
+..  versionchanged:: 14.0
+    The :php-short:`\TYPO3\CMS\Fluid\View\StandaloneView` was deprecated with
+    TYPO3 v13.3 and has been removed with v14.0. Use a
+    :php-short:`\TYPO3\CMS\Core\View\ViewInterface` instance provided by the
+    :ref:`sitehandling-site-object`.
+
+In a non-Extbase Fluid view (:php:`\TYPO3\CMS\Core\View\ViewInterface`), created
+manually by the :ref:`generic-view-factory`, you can use the PHP API to access the
+site settings (see :ref:`sitehandling-site-object`), then assign that object
+to your Fluid standalone template, and finally access it through the same
+notation in the :ref:`Fluid template of a FLUIDTEMPLATE <sitehandling-fluidtemplate>`.

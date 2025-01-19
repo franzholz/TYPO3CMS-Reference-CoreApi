@@ -180,8 +180,8 @@ The simplest solution is to create a database entry into table
 using the :ref:`database connection <database-connection>` class or the
 :ref:`query builder <database-query-builder>` provided by TYPO3.
 
-A cleaner solution using :ref:`Extbase <extbase>` requires far more work. An
-example can be found here: https://github.com/helhum/upload_example
+See :ref:`Extbase file upload <extbase_fileupload>` for details on how
+to achieve this using :ref:`Extbase <extbase>`.
 
 
 ..  _fal-using-fal-examples-file-folder-get-references:
@@ -220,6 +220,7 @@ finally retrieve the files:
     :language: php
     :caption: EXT:my_extension/Classes/MyClass.php
 
+..  _fal-using-fal-examples-file-folder-eid:
 
 Dumping a file via eID script
 =============================
@@ -252,46 +253,32 @@ The parameters :code:`width` and :code:`height` can feature the trailing
 :code:`c` or :code:`m` indicator, as known from TypoScript.
 
 The PHP class responsible for handling the file dumping is the
-:php:`FileDumpController`, which you may also use in your code.
+:php:`\TYPO3\CMS\Core\Controller\FileDumpController`, which you may also use
+in your code.
+
+..  versionchanged:: 14.0
+    Until TYPO3 v13 generating the Hash-based Message Authentication Codes (HMACs)
+    was done via :php:`GeneralUtility::hmac()`; this has been deprecated with
+    TYPO3 v13.1 and removed with TYPO3 v14.0. Use the
+    :php:`\TYPO3\CMS\Core\Crypto\HashService::hmac()` method instead.
 
 See the following example on how to create a URI using the
 :php:`FileDumpController` for a :sql:`sys_file` record with a fixed image size:
 
-..  code-block:: php
+..  literalinclude:: _ExamplesFileFolder/_SomeFileEid1.php
     :caption: EXT:some_extension/Classes/SomeClass.php
-
-    $queryParameterArray = ['eID' => 'dumpFile', 't' => 'f'];
-    $queryParameterArray['f'] = $resourceObject->getUid();
-    $queryParameterArray['s'] = '320c:280c';
-    $queryParameterArray['token'] = GeneralUtility::hmac(implode('|', $queryParameterArray), 'resourceStorageDumpFile');
-    $publicUrl = GeneralUtility::locationHeaderUrl(PathUtility::getAbsoluteWebPath(Environment::getPublicPath() . '/index.php'));
-    $publicUrl .= '?' . http_build_query($queryParameterArray, '', '&', PHP_QUERY_RFC3986);
 
 In this example, the crop variant :php:`default` and an image size of 320x280
 will be applied to a :sql:`sys_file_reference` record:
 
-..  code-block:: php
+..  literalinclude:: _ExamplesFileFolder/_SomeFileEid2.php
     :caption: EXT:some_extension/Classes/SomeClass.php
-
-    $queryParameterArray = ['eID' => 'dumpFile', 't' => 'r'];
-    $queryParameterArray['f'] = $resourceObject->getUid();
-    $queryParameterArray['s'] = '320c:280c:320:280:320:280';
-    $queryParameterArray['cv'] = 'default';
-    $queryParameterArray['token'] = GeneralUtility::hmac(implode('|', $queryParameterArray), 'resourceStorageDumpFile');
-    $publicUrl = GeneralUtility::locationHeaderUrl(PathUtility::getAbsoluteWebPath(Environment::getPublicPath() . '/index.php'));
-    $publicUrl .= '?' . http_build_query($queryParameterArray, '', '&', PHP_QUERY_RFC3986);
 
 This example shows how to create a URI to load an image of
 `sys_file_processedfile`:
 
-..  code-block:: php
+..  literalinclude:: _ExamplesFileFolder/_SomeFileEid3.php
     :caption: EXT:some_extension/Classes/SomeClass.php
-
-    $queryParameterArray = ['eID' => 'dumpFile', 't' => 'p'];
-    $queryParameterArray['p'] = $resourceObject->getUid();
-    $queryParameterArray['token'] = GeneralUtility::hmac(implode('|', $queryParameterArray), 'resourceStorageDumpFile');
-    $publicUrl = GeneralUtility::locationHeaderUrl(PathUtility::getAbsoluteWebPath(Environment::getPublicPath() . '/index.php'));
-    $publicUrl .= '?' . http_build_query($queryParameterArray, '', '&', PHP_QUERY_RFC3986);
 
 The following restrictions apply:
 

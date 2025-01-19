@@ -1,3 +1,5 @@
+:navigation-title: Ajax
+
 ..  include:: /Includes.rst.txt
 ..  index:: pair: Ajax; Backend
 ..  _ajax-backend:
@@ -11,10 +13,6 @@ regular controller. The method receives a request object implementing the
 :php:`\Psr\Http\Message\ServerRequestInterface`, which allows to access all
 aspects of the requests and returns an appropriate response in a normalized way.
 This approach is standardized as `PSR-7`_.
-
-..  seealso::
-    You can find information on how to handle Ajax requests in the frontend
-    in the chapter :ref:`Ajax in the Extension Development section <ajax-client-side>`.
 
 ..  index:: pair: Ajax; Controller
 

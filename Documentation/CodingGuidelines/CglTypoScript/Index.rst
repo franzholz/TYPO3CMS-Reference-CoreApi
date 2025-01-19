@@ -1,45 +1,37 @@
-.. include:: /Includes.rst.txt
-.. index:: pair: Coding guidelines; TypoScript
-.. _cgl-typoscript:
+:navigation-title: TypoScript
+..  include:: /Includes.rst.txt
+..  index:: pair: Coding guidelines; TypoScript
+..  _cgl-typoscript:
 
 ============================
-TypoScript Coding Guidelines
+TypoScript coding guidelines
 ============================
 
-Directory and File Names
+Directory and file names
 ========================
 
-* The file extension **should** be :file:`.typoscript`.
+..  versionchanged:: 12.0
+    Support for other TypoScript file extensions, such as :file:`.txt` or
+    :file:`.ts`, has been removed in TYPO3 v12.
 
-* TypoScript files are located in the directory :file:`<extension>/Configuration/TypoScript`.
+*   The file extension **must** be :file:`.typoscript`.
 
-* File name for constants in static templates: :file:`constants.typoscript`.
+*   TypoScript files are located in the directory
+    :file:`<extension>/Configuration/TypoScript`.
 
-* File name for TypoScript in static templates: :file:`setup.typoscript`.
+*   File name for constants in static templates: :file:`constants.typoscript`.
 
-More information about the file ending:
-
-* TypoScript files used to have the ending :file:`.txt`.
-
-* It is also possible to use the ending :file:`.ts`. This is
-  not recommended because it is also used by TypeScript.
-
-* Therefore, you should use :file:`.typoscript`.
-
-
-.. seealso::
-
-   Changelog: :doc:`ext_core:Changelog/8.7.x/Feature-78161-IntroduceTypoScriptFileExtension`
+*   File name for TypoScript in static templates: :file:`setup.typoscript`.
 
 Format
 ======
 
-* Use spaces, not TABs.
+*   Use spaces, not TABs.
 
-* Use 2 spaces per indenting level.
+*   Use 2 spaces per indenting level.
 
-More Information
+More information
 ================
 
-* See :ref:`cgl-ide` in this manual for information about setting up your Editor / IDE to adhere to
-  the coding guidelines.
+*   See :ref:`cgl-ide` in this manual for information about setting up your
+    editor / IDE to adhere to the coding guidelines.

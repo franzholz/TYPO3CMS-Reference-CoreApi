@@ -24,6 +24,8 @@ thread of continuity and identity, for example, a person or a blog post.
 Objects stored in the database are usually entities as they can be identified
 by the :sql:`uid` and are persisted, therefore have continuity.
 
+In the TYPO3 backend models are displayed as :ref:`database-records`.
+
 **Example:**
 
 ..  include:: /CodeSnippets/Extbase/Domain/AbstractEntity.rst.txt
@@ -447,7 +449,7 @@ the :php:`uid` of the translated record is kept in the :php:`_localizedUid`.
 +----------------------------------------------------------+-------------------------+---------------------------+
 
 ..  hint::
-    In case your project uses :t3ext:`workspaces` there is yet another
+    In case your project uses :composer:`typo3/cms-workspaces` there is yet another
     additional property, :php:`_versionedUid`. Refer to the
     :doc:`Workspaces documentation <ext_workspaces:Index>` for details on
     workspace overlays.

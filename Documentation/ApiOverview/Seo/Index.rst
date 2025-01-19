@@ -1,3 +1,4 @@
+:navigation-title: SEO
 .. include:: /Includes.rst.txt
 .. index::
    ! SEO
@@ -71,5 +72,6 @@ SEO for Developers
     :maxdepth: 1
     :glob:
 
+    GeneralRecommendations/Index
+    Configuration/Index
     *
-

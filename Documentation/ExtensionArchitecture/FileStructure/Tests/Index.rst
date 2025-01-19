@@ -1,11 +1,13 @@
 .. include:: /Includes.rst.txt
 .. index:: Path; EXT:{extkey}/Tests
 
+..  _extension-files-tests:
+
 =============
 :file:`Tests`
 =============
 
-This folder contains all automatic Tests to test the extension.
+This folder contains all automatic tests to test the extension.
 
 Read more about :ref:`automatic testing <testing>`
 

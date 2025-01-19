@@ -8,49 +8,33 @@
 Tutorials
 =========
 
-..  container:: row m-0 p-0
+..  card-grid::
+    :columns: 1
+    :columns-md: 2
+    :gap: 4
+    :class: pb-4
+    :card-height: 100
 
-    ..  container:: col-md-6 pl-0 pr-3 py-3 m-0
+    ..  card:: :ref:`Kickstart an extension <extension-kickstart>`
 
-        ..  container:: card px-0 h-100
+        There are different options to kickstart an extension. This
+        chapter offers tutorials for some common methods to
+        kickstart an extension.
 
-            ..  rst-class:: card-header h3
+    ..  card:: :ref:`Components of TYPO3 extension <extension-components>`
 
-                ..  rubric:: :ref:`Kickstart an extension <extension-kickstart>`
+        This section is about the essential components of a TYPO3 extension. It provides a comprehensive overview of the structure and core elements that make up an extension.
 
-            ..  container:: card-body
+    ..  card:: :ref:`Tea in a nutshell <extbase_tutorial_tea>`
 
-                There are different options to kickstart an extension. This
-                chapter offers tutorials for some common methods to
-                kickstart an extension.
+        `tea` is a simple, well-tested extension based on Extbase.
 
-    ..  container:: col-md-6 pl-0 pr-3 py-3 m-0
+        This tutorial guides you through the different files,
+        configuration formats and PHP classes needed for an Extbase
+        extension. Automatic tests are not covered in this tutorial.
+        Refer to the extensions manual for this topic.
 
-        ..  container:: card px-0 h-100
-
-            ..  rst-class:: card-header h3
-
-                ..  rubric:: :ref:`Tea in a nutshell <extbase_tutorial_tea>`
-
-            ..  container:: card-body
-
-                `tea` is a simple, well-tested extension based on Extbase.
-
-                This tutorial guides you through the different files,
-                configuration formats and PHP classes needed for an Extbase
-                extension. Automatic tests are not covered in this tutorial.
-                Refer to the extensions manual for this topic.
-
-
-    ..  container:: col-md-6 pl-0 pr-3 py-3 m-0
-
-        ..  container:: card px-0 h-100
-
-            ..  rst-class:: card-header h3
-
-                ..  rubric:: :ref:`Extension development with extbase <extbase_tutorials>`
-
-            ..  container:: card-body
+    ..  card:: :ref:`Extension development with extbase <extbase_tutorials>`
 
                 Extension Development with Extbase, a video from the TYPO3
                 Developer Days 2019
@@ -61,4 +45,5 @@ Tutorials
 
     Kickstart/Index
     Tea/Index
+    ComponentsOfTYPO3Extension/Index
     Extbase

@@ -20,7 +20,7 @@ Generally transformations are needed for two reasons:
 - **Data Formats:** If the agreed format of the stored content in TYPO3
   is different from the HTML format the RTE produces. This could be
   issues like XHTML, banning of certain tags or maybe a hybrid format in
-  the database. (See section 3 in the illustration some pages ahead)
+  the database.
 
 - **RTE specifics:** If the RTE has special requirements to the content
   before it can be edited and if that format is different from what we
@@ -37,7 +37,7 @@ Hybrid modes
 
 Many of the transformations performed back and forth in the TYPO3
 backend date back to when it was a challenge to incorporate a RTE
-in a browser. It was then sometimes needed to fall back an a simple
+in a browser. It was then sometimes needed to fall back to a simple
 :code:`<textarea>` where rich text had to be presented in a simple enough
 way so that editors could work with it with no visual help.
 
@@ -115,7 +115,7 @@ Transformations are mainly defined in the
 'special configurations' of the $TCA "types"-configuration.
 See label 'special-configuration' in older versions of the TCA-Reference.
 
-In addition :ref:`transformations can be fine-tuned by page TSconfig <t3tsconfig:pageTsRte>`
+In addition :ref:`transformations can be fine-tuned by page TSconfig <t3tsref:pageTsRte>`
 which means that RTE behaviour can be determined even on page branch level!
 
 
@@ -137,4 +137,3 @@ The transformations are invoked in two cases:
   :code:`\TYPO3\CMS\Core\Html\RteHtmlParser::transformTextForPersistence()`.
 
 The rationale for transformations is discussed in :ref:`appendix-a`.
-

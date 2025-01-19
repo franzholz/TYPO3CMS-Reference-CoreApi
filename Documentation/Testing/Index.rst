@@ -22,15 +22,14 @@ This chapter goes into details about automatic testing: Writing, maintaining and
 various scopes. Have fun.
 
 
-.. toctree::
+..  toctree::
     :maxdepth: 1
     :titlesonly:
 
-    History
-    CoreTesting
     ExtensionTesting
     ProjectTesting
-    WritingUnit
-    WritingFunctional
-    WritingAcceptance
-    Faq
+    UnitTesting/Index
+    FunctionalTesting/Index
+    AcceptanceTesting/Index
+    TestRunners
+    Tutorial/Index

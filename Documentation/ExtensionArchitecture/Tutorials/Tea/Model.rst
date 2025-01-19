@@ -104,7 +104,7 @@ Strings starting with :php:`LLL:` will be replaced with localized text. See chap
 will be output as they are. This title will always be output as "Tea" without localization:
 
 .. code-block:: php
-   :caption: EXT:tea/Configuration/TCA/tx_tea_domain_model_product_tea.php
+   :caption: EXT:tea/Configuration/TCA/tx_tea_domain_model_tea.php
 
    [
        'ctrl' => [
@@ -131,7 +131,7 @@ in listings and in backend forms:
 :php:`tstamp`, :php:`deleted`, ...
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-These fields are used to keep timestamp and status information for each record. You can read more about them in the `TCA Reference, chapter ctrl <t3tca:ctrl>`.
+These fields are used to keep timestamp and status information for each record. You can read more about them in the :ref:`TCA Reference, chapter Table properties (ctrl) <t3tca:ctrl>`.
 
 ..  _extbase_tutorial_tea_model_columns:
 
@@ -149,7 +149,7 @@ The title of the field is displayed above the input field. The type is a (string
 input field. The other configuration values influence display (size of the input
 field) and or processing on saving ( :php:`'eval' => 'trim'` removes whitespace).
 
-You can find a complete list of available input types and their propererties in
+You can find a complete list of available input types and their properties in
 the :ref:`TCA Reference, chapter "Field types (config > type)" <t3tca:columns-types>`.
 
 The other text fields are defined in a similar manner.
@@ -168,12 +168,12 @@ The image field is a special case, as it is created by a call to the API functio
 This method returns a preconfigured array, and saves you from writing a long and complicated configuration array.
 
 ..  code-block:: php
-    :caption: EXT:tea/Configuration/TCA/tx_tea_domain_model_product_tea.php
+    :caption: EXT:tea/Configuration/TCA/tx_tea_domain_model_tea.php
 
     [
         'columns' => [
             'image' => [
-                'label' => 'LLL:EXT:tea/Resources/Private/Language/locallang_db.xlf:tx_tea_domain_model_product_tea.image',
+                'label' => 'LLL:EXT:tea/Resources/Private/Language/locallang_db.xlf:tx_tea_domain_model_tea.image',
                 'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                     'image',
                     [
@@ -223,7 +223,7 @@ Result - the complete TCA
 --------------------------
 
 Have a look at the complete file
-`EXT:tea/Configuration/TCA/tx_tea_domain_model_product_tea.php <https://github.com/TYPO3-Documentation/tea/blob/main/Configuration/TCA/tx_tea_domain_model_product_tea.php>`__.
+`EXT:tea/Configuration/TCA/tx_tea_domain_model_tea.php <https://github.com/TYPO3-Documentation/tea/blob/main/Configuration/TCA/tx_tea_domain_model_tea.php>`__.
 
 Now the edit form for tea records will look like this:
 
@@ -284,7 +284,7 @@ The getter for the image also has to resolve the :ref:`lazy loading <extbase-ann
 ..  include:: /CodeSnippets/Tutorials/Tea/Classes/Domain/Model/TeaImage.rst.txt
 
 See the complete
-`class on Github: Tea <https://github.com/TYPO3-Documentation/tea/blob/main/Classes/Domain/Model/Product/Tea.php>`__.
+`class on Github: Tea <https://github.com/TYPO3-Documentation/tea/blob/main/Classes/Domain/Model/Tea.php>`__.
 
 Next steps
 ==========

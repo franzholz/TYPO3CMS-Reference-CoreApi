@@ -36,7 +36,9 @@ The :php:`BlogRepository` sets some default orderings and is otherwise empty:
 Find methods
 ============
 
-..  versionadded:: 12.3
+..  versionchanged:: 14.0
+    The "magic" find methods `findByX()`, `findOneByX()` and `countByX()` have
+    been removed. See :ref:`t3coreapi/13:extbase-repository-find-by-magic-migration`
 
 The :php:`Repository` class provides the following methods for querying against
 arbitrary criteria:
@@ -56,6 +58,12 @@ Example:
 
     $this->blogRepository->findBy(['author' => 1, 'published' => true]);
 
+..  attention::
+    Saving a :php:`QueryResult` to a cache is not possible, if objects in the
+    :php:`QueryResult` contain closures. This is typically the case for models
+    which use lazy loading on properties.
+
+..  _extbase-repository-find-by-custom:
 
 Custom find methods
 ===================
@@ -68,61 +76,12 @@ Custom find methods can be implemented. They can be used for complex queries.
 
 **Example:**
 
-The :php:`PostRepository` of the :t3ext:`blog` example extension implements
+The :php:`PostRepository` of the :composer:`t3docs/blog-example` example extension implements
 several custom find methods, two of them are shown below:
 
 ..  include:: /CodeSnippets/Extbase/Domain/CustomMethods.rst.txt
 
-
-Magic find methods
-==================
-
-..  deprecated:: 12.3
-    As these methods are widely used in almost all Extbase-based extensions,
-    they are marked as deprecated in TYPO3 v12, but will only trigger a
-    deprecation notice in TYPO3 v13, as they will be removed in TYPO3 v14.
-    Migrate the usage of these methods to the new
-    :ref:`find methods <extbase-repository-find-methods>`.
-
-The :php:`Repository` class creates "magic" methods to find by attributes of
-model.
-
-:php:`findBy[PropertyName]`
-   Finds all objects with the provided property.
-
-:php:`findOneBy[PropertyName]`
-   Returns the first object found with the provided property.
-
-:php:`countBy[PropertyName]`
-   Counts all objects with the provided property.
-
-If necessary, these methods can also be overridden by implementing them in the
-concrete repository.
-
-Migration
----------
-
-:php:`findBy[PropertyName]($propertyValue)` can be replaced with a call to
-:php:`findBy()`:
-
-..  code-block:: php
-
-    $this->myRepository->findBy(['propertyName' => $propertyValue]);
-
-:php:`findOneBy[PropertyName]($propertyValue)` can be replaced with a call to
-:php:`findOneBy`:
-
-..  code-block:: php
-
-    $this->myRepository->findOneBy(['propertyName' => $propertyValue]);
-
-:php:`countBy[PropertyName]($propertyValue)` can be replaced with a call to
-:php:`count`:
-
-..  code-block:: php
-
-    $this->myRepository->count(['propertyName' => $propertyValue]);
-
+..  _extbase-repository-query-setting:
 
 Query settings
 ===============
@@ -141,11 +100,15 @@ set in the method itself:
 
 ..  include:: /CodeSnippets/Extbase/Domain/SpecialQuerySettings.rst.txt
 
+..  _extbase-repository-api:
 
 Repository API
 ===============
 
 ..  include:: /CodeSnippets/Extbase/Api/Repository.rst.txt
+
+
+..  _extbase-repository-localization:
 
 Typo3QuerySettings and localization
 ===================================
@@ -170,3 +133,18 @@ Example to use the fallback to the default language when working with overlays:
 ..  literalinclude:: _Repository/_LanguageAspect.php
     :language: php
     :caption: EXT:my_extension/Classes/Repository/MyRepository.php
+
+..  _extbase-repository-debug-query:
+
+Debugging an Extbase query
+==========================
+
+When using complex queries in Extbase repositories it sometimes comes handy
+to debug them using the Extbase debug utilities.
+
+..  literalinclude:: _Repository/_DebugQuery.php
+    :language: php
+    :caption: EXT:my_extension/Classes/Repository/MyRepository.php
+
+Please note that :php:`\TYPO3\CMS\Extbase\Persistence\Generic\Storage\Typo3DbQueryParser`
+is marked as `@internal` and subject to unannounced changes.

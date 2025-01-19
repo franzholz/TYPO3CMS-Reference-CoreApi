@@ -3,6 +3,7 @@
     Database; CRUD
     Database; Create, read, update, and delete operations
 ..  _database-basic-crud:
+..  _cgl-database-access:
 
 ========================================================
 Basic create, read, update, and delete operations (CRUD)
@@ -146,4 +147,3 @@ The executed query looks like this:
 
     DELETE FROM `tt_content`
         WHERE `uid` = '4711'
-

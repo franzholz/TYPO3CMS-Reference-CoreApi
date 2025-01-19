@@ -1,5 +1,4 @@
 .. include:: /Includes.rst.txt
-.. highlight:: typoscript
 .. index:: LinkHandlers
 .. _linkhandler:
 
@@ -128,6 +127,11 @@ This configuration shows a reduced page tree starting at page with uid 42:
 The page TSconfig of the LinkHandler is being used in sysext `backend`
 in class :php:`\TYPO3\CMS\Backend\LinkHandler\RecordLinkHandler`
 which does not contain Hooks.
+
+.. attention::
+
+    It is important, that the `storagePid` is hard coded in TSConfig, because using
+    constants, for example from the site configuration, will not work here.
 
 .. index::
    pair: LinkHandler; TypoScript

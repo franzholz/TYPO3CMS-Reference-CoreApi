@@ -1,6 +1,7 @@
 *.bak
 *.idea
 .Build/*
+config/
 *.project
 *.swp
 *NOT_VERSIONED*
@@ -9,6 +10,7 @@
 .cache
 .DS_Store
 .env
+.php-cs-fixer.cache
 .project
 .session
 .settings
@@ -25,3 +27,4 @@ Thumbs.db
 var/
 .cache/
 Build/.cache/
+/composer.json.testing

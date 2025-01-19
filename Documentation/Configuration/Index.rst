@@ -14,7 +14,7 @@ Configuration
 features a short description for each topic and links to more information.
 
 
-We have categorized information about configuration into *configration
+We have categorized information about configuration into *configuration
 syntax* and *methods*. Configuration that can be changed in the backend
 is usually referred to as *Settings*. The :ref:`glossary` explains how we use
 these terms in this chapter.
@@ -28,14 +28,17 @@ these terms in this chapter.
     ConfigurationOverview
     Glossary
     ConfigurationFiles
+    BackendEntryPoint/Index
     ConfigurationModule/Index
     FeatureToggles
     GlobalVariables
+    ApplicationContext
     Typo3ConfVars/Index
     Typo3Information
     TypoScript/Index
     UserSettingsConfiguration/Index
     Yaml/Index
+    FlagFiles/Index
 
 **More ...**
 
@@ -51,7 +54,5 @@ away from this chapter.
 * :ref:`Logging configuration ➜ <logging-configuration>`
 * :ref:`Rich text configuration ➜ <ext_rte_ckeditor:configuration>` (rte_ckeditor)
 * :ref:`Site, language, routing configuration ➜ <sitehandling>`
-* :doc:`TCA Reference ➜ <t3tca:Index>`
-* :doc:`TSconfig Reference ➜ <t3tsconfig:Index>`
-* :doc:`TypoScript Templating Reference ➜ <t3tsref:Index>`
-
+* :ref:`TCA Reference ➜ <t3tca:start>`
+* :ref:`TypoScript Explained ➜ <t3tsref:start>`

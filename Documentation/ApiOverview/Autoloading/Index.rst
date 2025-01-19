@@ -95,7 +95,7 @@ Loading classes without Composer mode
 
 This means, you did not install TYPO3 via a `require` statement inside your
 :file:`composer.json`. It's a regular old-school install where the TYPO3 source
-and the symlinks (:file:`typo3/index.php`) are setup manually.
+and the symlinks (:file:`index.php`) are setup manually.
 
 In this case, every time you install an extension, the autoloader scans the
 whole extension directory for classes. No matter if they follow any convention
@@ -166,7 +166,7 @@ Best practices
 
 ..  tip::
     PSR-4 is a standard that has been developed by the PHP Framework Interop
-    Group (FIG). PSR-4 is an advanced standard for autoloading php classes and
+    Group (FIG). PSR-4 is an advanced standard for autoloading PHP classes and
     replaces PSR-0. If you want to know more about the PHP FIG in general and
     PSR-4 in specific, please visit https://www.php-fig.org/psr/psr-4/.
 

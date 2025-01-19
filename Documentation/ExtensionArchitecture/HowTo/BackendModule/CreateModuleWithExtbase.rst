@@ -1,3 +1,4 @@
+:navigation-title: Extbase controller
 .. include:: /Includes.rst.txt
 
 .. _backend-modules-extbase:
@@ -12,6 +13,7 @@ Create a backend module with Extbase
    If you don't want to do extensive data modeling templates can be written
    :ref:`without Extbase. <backend-modules-template-without-extbase>`
 
+See also the :ref:`Backend module API <backend-modules>`.
 
 Backend modules can be written using the Extbase/Fluid combination.
 
@@ -42,19 +44,13 @@ controller:
         }
    }
 
-..  versionadded:: 12.1/12.4.9
-    A backend controller can be tagged with the
-    :php:`\TYPO3\CMS\Backend\Attribute\AsController` attribute. This way, the
-    :ref:`registration of the controller <backend-modules-template-without-extbase-manual-tagging>`
-    in the :file:`Configuration/Services.yaml` file is no longer necessary.
+..  note::
+    A backend controller should be tagged with the
+    :php:`\TYPO3\CMS\Backend\Attribute\AsController` (php:`#[AsController]`) attribute.
 
-    ..  note::
-        Until TYPO3 v12.4.8 the attribute was named
-        :php:`\TYPO3\CMS\Backend\Attribute\Controller` and has been renamed to
-        :php:`AsController` with TYPO3 v12.4.9. Both work with TYPO3 v12 and v13,
-        but developers should use :php:`#[AsController]` for upwards compatibility,
-        since :php:`#[Controller]` has been deprecated with TYPO3 v13.
-
+..  versionchanged:: 14.0
+	The class alias for :php:`\TYPO3\CMS\Backend\Attribute\Controller` has been
+	removed. :php:`\TYPO3\CMS\Backend\Attribute\AsController` is still in place.
 
 After that you can add titles, menus and buttons using :php:`ModuleTemplate`:
 
@@ -63,11 +59,20 @@ After that you can add titles, menus and buttons using :php:`ModuleTemplate`:
     // use Psr\Http\Message\ResponseInterface
     public function myAction(): ResponseInterface
     {
-        $this->view->assign('someVar', 'someContent');
         $moduleTemplate = $this->moduleTemplateFactory->create($this->request);
-        // Adding title, menus, buttons, etc. using $moduleTemplate ...
-        $moduleTemplate->setContent($this->view->render());
-        return $this->htmlResponse($moduleTemplate->renderContent());
+
+        // Example of assignung variables to the view
+        $moduleTemplate->assign('someVar', 'someContent');
+
+        // Example of adding a page-shortcut button
+        $routeIdentifier = 'web_examples'; // array-key of the module-configuration
+        $buttonBar = $moduleTemplate->getDocHeaderComponent()->getButtonBar();
+        $shortcutButton = $buttonBar->makeShortcutButton()->setDisplayName('Shortcut to my action')->setRouteIdentifier($routeIdentifier);
+        $shortcutButton->setArguments(['controller' => 'MyController', 'action' => 'my']);
+        $buttonBar->addButton($shortcutButton, ButtonBar::BUTTON_POSITION_RIGHT);
+        // Adding title, menus and more buttons using $moduleTemplate ...
+
+        return $moduleTemplate->renderResponse('MyController/MyAction');
     }
 
 ..  seealso::

@@ -14,6 +14,114 @@ This chapter should also help you to find your way around in
 extensions and sitepackages that where automatically generated or
 that you downloaded as an example.
 
+The following folders and files can typically be found in a TYPO3 extension:
+
+..  directory-tree::
+    :level: 1
+    :show-file-icons: true
+
+    *   :ref:`Classes <extension-classes>`
+
+        *   ...
+
+    *   :ref:`Configuration <extension-configuration-files>`
+
+        *   :ref:`Backend <extension-configuration-backend>`
+
+            *   :ref:`AjaxRoutes.php <extension-configuration-backend-ajaxroutes>`
+            *   :ref:`Modules.php <extension-configuration-backend-modules>`
+            *   :ref:`Routes.php <extension-configuration-backend-routes>`
+
+        *   :ref:`Extbase <extension-configuration-extbase>`
+
+            *   :ref:`Persistence <extension-configuration-extbase-persistence>`
+
+                *   :ref:`Classes.php <extension-configuration-extbase-persistence-classes>`
+
+        *   :ref:`TCA <extension-configuration-tca>`
+
+            *   :ref:`Overrides <extension-configuration-tca-overrides>`
+
+                *   <tablename>.php
+                *   ...
+
+            *   <tablename>.php
+            *   ...
+
+        *   :ref:`Sets <extension-configuration-sets>`
+
+            *   <SetIdentifier>
+
+                *   `config.yaml (mandatory) <https://docs.typo3.org/permalink/t3coreapi:extension-configuration-sets-config-yaml>`_
+                *   `settings.definitions.yaml <https://docs.typo3.org/permalink/t3coreapi:extension-configuration-sets-settings-definitions-yaml>`_
+                *   `setup.typoscript <https://docs.typo3.org/permalink/t3coreapi:extension-configuration-sets-setup-typoscript>`_
+                *   ...
+
+        *   :ref:`TsConfig <extension-configuration-tsconfig>`
+
+            *   ...
+
+        *   :ref:`TypoScript <extension-configuration-typoscript>`
+
+            *   ...
+
+            *   constants.typoscript
+            *   setup.typoscript
+
+        *   :ref:`extension-configuration-Icons-php`
+        *   :ref:`extension-configuration-page_tsconfig`
+        *   :ref:`extension-configuration-services-yaml`
+        *   :ref:`extension-configuration-user_tsconfig`
+
+    *   :ref:`Documentation <extension-files-documentation>`
+
+        *   ...
+
+    *   :ref:`Resources <extension-files-Resources>`
+
+        *   :ref:`Private <extension-Resources-Private>`
+
+            *   :ref:`Language <extension-Resources-Private-Language>`
+
+                *   ...
+
+            *   Layouts
+
+                *   ...
+
+            *   Partials
+
+                *   ...
+
+            *   Templates
+
+                *   ...
+
+            *   ...
+
+        *   :ref:`Public <extension-Resources-Public>`
+
+            *   ...
+
+    *   :ref:`Tests <extension-files-tests>`
+
+        *   Functional
+
+            *   ...
+
+        *   Unit
+
+            *   ...
+
+        *   ...
+
+    *   :ref:`composer.json <files-composer-json>`
+    *   :ref:`ext_emconf.php <ext_emconf-php>`
+    *   :ref:`ext_localconf.php <ext-localconf-php>`
+    *   :ref:`ext_tables.php <ext-tables-php>`
+    *   :ref:`ext_tables.sql <ext_tables-sql>`
+
+
 .. _extension-files:
 
 Files
@@ -64,12 +172,13 @@ stick to this and the other Coding Guidelines, the system helps in various ways.
 PHP classes into the :file:`Classes/` folder and using appropriate namespaces for the classes,
 the system will be able to autoload these files.
 
-Extension kickstarters like the :t3ext:`extension_builder`
+Extension kickstarters like the :composer:`friendsoftypo3/extension-builder`
 will create the correct structure for you.
 
 .. toctree::
    :titlesonly:
    :glob:
+   :hidden:
 
-   *
    */Index
+   *

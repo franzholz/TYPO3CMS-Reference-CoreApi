@@ -132,6 +132,33 @@ it be a module, a typical route or an Ajax call. Therefore use either
 cast to a string when needed. Furthermore, the :php:`UriBuilder` automatically
 generates and applies the mentioned session token.
 
+To generate a backend URL via the :php:`UriBuilder` you'd usually use the route
+identifier and optional :php:`parameters`.
+
+In case of Extbase controllers you can append the controller action to the route
+identifier to directly target those actions. See also module configuration: :confval:`controllerActions <t3coreapi:backend-module-controlleractions>`.
+
+.. _backend-routing-url-viewhelper:
+
+Via Fluid ViewHelper
+--------------------
+
+To generate a backend URL in Fluid you can simply use html:`<f:be.link>` (which
+is using :php:`UriBuilder` internally).
+
+..  code-block:: html
+
+    <f:be.link route="web_layout" parameters="{id:42}">go to page 42</f:be.link>
+    <f:be.link route="web_ExtkeyExample">go to custom BE module</f:be.link>
+    <f:be.link route="web_ExtkeyExample.MyModuleController_list">
+        go to custom BE module but specific controller action
+    </f:be.link>
+
+.. _backend-routing-url-php:
+
+Via PHP
+-------
+
 Example within a controller (we use here a non-Extbase controller):
 
 ..  literalinclude:: _BackendRouting/_UriBuilderExample.php
@@ -140,6 +167,21 @@ Example within a controller (we use here a non-Extbase controller):
 
 ..  versionadded:: 13.0
     The :php:`UriBuilder->buildUriFromRequest()` method has been introduced.
+
+..  _backend-routing-sudo:
+
+Sudo mode
+=========
+
+The sudo mode, as known from the install tool,
+can be request for arbitrary backend modules.
+
+You can configure the sudo mode in your backend routing like this:
+
+..  literalinclude:: /ApiOverview/Backend/_BackendRouting/_sudo_routes.php
+    :caption: EXT:my_extension/Configuration/Backend/Routes.php
+
+See also :ref:`backend-module-sudo-modules`.
 
 More information
 ================

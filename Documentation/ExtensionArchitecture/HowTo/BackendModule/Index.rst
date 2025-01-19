@@ -1,8 +1,6 @@
 .. include:: /Includes.rst.txt
-.. index:: ! Backend modules
-.. index:: Backend modules; API
-.. _backend-modules-api:
-.. _backend-modules:
+.. index:: Backend modules; How to
+.. _backend-modules-how-to:
 
 ===============
 Backend modules
@@ -11,142 +9,48 @@ Backend modules
 TYPO3 CMS offers a number of ways to attach custom functionality to the
 backend. They are described in this chapter.
 
-.. container:: row m-0 p-0
+..  card-grid::
+    :columns: 1
+    :columns-md: 2
+    :gap: 4
+    :class: pb-4
+    :card-height: 100
 
-   .. container:: col-md-6 pl-0 pr-3 py-3 m-0
+    ..  card:: :ref:`Backend module API <backend-modules>`
 
-      .. container:: card px-0 h-100
+        See the API about classes and configuration for backend modules.
 
-         .. rst-class:: card-header h3
+    ..  card:: :ref:`Backend module configuration examples <backend-modules-configuration-examples>`
 
-            .. rubric:: :ref:`Backend GUI <backend-gui>`
+        Howto register custom modules provided by extensions.
 
-         .. container:: card-body
+    ..  card:: :ref:`Create a module with Extbase <backend-modules-extbase>`
 
-            Describes the graphical user interface structure of a backend module
-            and defines how the different parts are called.
+        Explains how to create a module with Extbase and Fluid. This is
+        the preferred method if extensive data modeling is involved.
 
-   .. container:: col-md-6 pl-0 pr-3 py-3 m-0
+    ..  card:: :ref:`Create a module with Core functionality <backend-modules-template-without-extbase>`
 
-      .. container:: card px-0 h-100
+        Explains how to create a module without Extbase. Fluid can still be
+        used, however there are some limitations. This is the preferred way
+        if no extensive data modelling is needed.
 
-         .. rst-class:: card-header h3
+    ..  card:: :ref:`Security Considerations <backend-modules-security>`
 
-            .. rubric:: :ref:`Backend module configuration <backend-modules-configuration>`
+        Explores web application security considerations when
+        developing custom modules for the backend user interface.
 
-         .. container:: card-body
+    ..  card:: :ref:`Tutorials <backend-modules-tutorials>`
 
-            Howto register custom modules provided by extensions.
-
-
-   .. container:: col-md-6 pl-0 pr-3 py-3 m-0
-
-      .. container:: card px-0 h-100
-
-         .. rst-class:: card-header h3
-
-            .. rubric:: :ref:`Toplevel modules <backend-modules-toplevel-module>`
-
-         .. container:: card-body
-
-            Lists all toplevel modules available by default and explains how to
-            register custom toplevel modules.
-
-
-
-   .. container:: col-md-6 pl-0 pr-3 py-3 m-0
-
-      .. container:: card px-0 h-100
-
-         .. rst-class:: card-header h3
-
-            .. rubric:: :ref:`Create a module with Extbase <backend-modules-extbase>`
-
-         .. container:: card-body
-
-            Explains how to create a module with Extbase and Fluid. This is
-            the preferred method if extensive data modeling is involved.
-
-   .. container:: col-md-6 pl-0 pr-3 py-3 m-0
-
-      .. container:: card px-0 h-100
-
-         .. rst-class:: card-header h3
-
-            .. rubric:: :ref:`Create a module with Core functionality <backend-modules-template-without-extbase>`
-
-         .. container:: card-body
-
-            Explains how to create a module without Extbase. Fluid can still be
-            used, however there are some limitations. This is the preferred way
-            if no extensive data modelling is needed.
-
-   .. container:: col-md-6 pl-0 pr-3 py-3 m-0
-
-      .. container:: card px-0 h-100
-
-         .. rst-class:: card-header h3
-
-            .. rubric:: :ref:`ModuleProviderAPI <backend-module-interface>`
-
-         .. container:: card-body
-
-            The :php:`ModuleProvider` API, allows extension authors to work with the
-            registered modules.
-
-
-   .. container:: col-md-6 pl-0 pr-3 py-3 m-0
-
-      .. container:: card px-0 h-100
-
-         .. rst-class:: card-header h3
-
-            .. rubric:: :ref:`Button components <button-components>`
-
-         .. container:: card-body
-
-            The menu button bar of a backend module can hold various components.
-
-
-   .. container:: col-md-6 pl-0 pr-3 py-3 m-0
-
-      .. container:: card px-0 h-100
-
-         .. rst-class:: card-header h3
-
-            .. rubric:: :ref:`BeforeModuleCreationEvent <BeforeModuleCreationEvent>`
-
-         .. container:: card-body
-
-            The PSR-14 :ref:`BeforeModuleCreationEvent` allows extension authors
-            to manipulate the module configuration before it is used to create and
-            register the module.
-
-   .. container:: col-md-6 pl-0 pr-3 py-3 m-0
-
-      .. container:: card px-0 h-100
-
-         .. rst-class:: card-header h3
-
-            .. rubric:: :ref:`Tutorials <backend-modules-tutorials>`
-
-         .. container:: card-body
-
-            A video series from Susanne Moog demonstrating how to register
-            and style a TYPO3 backend module.
-
+        A video series from Susanne Moog demonstrating how to register
+        and style a TYPO3 backend module.
 
 ..  toctree::
     :hidden:
     :titlesonly:
 
-    BackendGUI
     ModuleConfiguration
     CreateModule
     CreateModuleWithExtbase
-    ModuleTypoScript
-    ModuleDataObject
-    ToplevelModules
-    ThirdlevelModules
-    ModuleProviderAPI
+    SecurityConsiderations
     Tutorials

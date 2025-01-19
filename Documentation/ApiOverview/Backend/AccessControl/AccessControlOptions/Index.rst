@@ -1,3 +1,6 @@
+:navigation-title: Options
+
+
 .. include:: /Includes.rst.txt
 
 
@@ -29,7 +32,7 @@ User TSconfig
    customize the backend and individual modules.
 
    All user TSconfig options are described in the
-   :ref:`TSconfig Reference <t3tsconfig:usertsconfig>`
+   :ref:`TSconfig Reference <t3tsref:usertsconfig>`
 
 
 .. _access-options-access-lists:
@@ -38,7 +41,7 @@ Access Lists
 ============
 
 Access lists are defined at group-level. Usage of access lists for defining
-user rights is described in the :ref:`Getting Started tutorial <t3start:setting-up-user-permissions>`.
+user rights is described in chapter :ref:`setting-up-user-permissions`.
 The various access lists are described here for reference, with
 additional technical details, where necessary.
 
@@ -244,14 +247,14 @@ summarized here:
    Here "Page content" means all records related to that page,
    except other pages.
 
-Page permissions are set and viewed with the module :guilabel:`System > Access`
+Page permissions are set and viewed with the module :guilabel:`System > Permissions`
 module:
 
 .. include:: /Images/AutomaticScreenshots/AccessControl/AccessModule.rst.txt
 
 
-Editing permissions is described in details in the
-:ref:`Getting Started Tutorial <t3start:page-permissions>`.
+Editing permissions is described in details in chapter
+:ref:`page-permissions`.
 
 A user must be "admin" *or* the owner of a page in order to edit its
 permissions.
@@ -259,7 +262,7 @@ permissions.
 When a user creates new pages in TYPO3 CMS they will by default get the
 creating user as owner. The owner group will be set to the *first
 listed user group* configured for the users record (if any). These defaults
-can be changed through :ref:`page TSconfig <t3tsconfig:pagetcemain-permissions-user-group>`.
+can be changed through :ref:`page TSconfig <t3tsref:pagetcemain-permissions-user-group>`.
 
 
 .. _access-options-user-tsconfig:
@@ -271,4 +274,4 @@ User TSconfig is a hierarchical configuration structure entered in
 plain text TypoScript. It can be used by all kinds of applications
 inside of TYPO3 CMS to retrieve customized settings for users which
 relates to a certain module or part. The options available are
-described in the :ref:`document TSconfig <t3tsconfig:usertsconfig>` .
+described in the :ref:`document TSconfig <t3tsref:usertsconfig>` .

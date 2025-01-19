@@ -24,7 +24,7 @@ The class *may* implement other interfaces (optional):
     as done after execution
 *   :ref:`ChattyInterface <uprade-wizards-chatty-interface>` for generating
     output
-*   :php:`ConfirmableInferface` for wizards that need user confirmation
+*   :php:`ConfirmableInterface` for wizards that need user confirmation
 
 
 .. index:: Upgrade wizards; Registration
@@ -53,8 +53,8 @@ Method :php:`getDescription()`
 
 Method :php:`executeUpdate()`
     Is called, if the user triggers the wizard. This method should contain, or
-    call, the code that is needed to execute the upgrade. Therefore, a boolean
-    has to be returned.
+    call, the code that is needed to execute the upgrade. Return a boolean
+    indicating whether the update was successful.
 
 Method :php:`updateNecessary()`
     Is called to check whether the upgrade wizard has to run. Return
@@ -88,6 +88,23 @@ Method :php:`getPrerequisites()`
                 ReferenceIndexUpdatedPrerequisite::class,
             ];
         }
+
+..  note::
+    Your extension must define a
+    :ref:`Configuration/Services.yaml <t3coreapi:extension-configuration-services-yaml>`
+    file. Either :yaml:`autoconfigure: true` must be set, or you have to
+    manually register the upgrade wizard by adding the tag
+    :yaml:`install.upgradewizard`:
+
+    ..  literalinclude:: _tagUpgradeWizard.yaml
+        :language: yaml
+        :caption: EXT:my_extension/Configuration/Services.yaml
+
+After creating the new upgrade wizard, delete all caches in
+:guilabel:`Admin tools > Maintanance > Flush TYPO3 and PHP Cache` or via console
+command:
+
+..  include:: /_includes/CliCacheFlush.rst.txt
 
 
 .. index:: Upgrade wizards; Identifier
@@ -256,6 +273,5 @@ It is also possible to execute the wizard from the command line:
                 typo3/sysext/core/bin/typo3 '\\MyVendor\\MyExtension\\Upgrade\\ExampleUpgradeWizard'
 
 ..  seealso::
-    You can find more information about running upgrade wizards in the
-    :ref:`Upgrade wizard section <t3install:use-the-upgrade-wizard>` of the
-    Installation Guide.
+    You can find more information about running upgrade wizards in the section
+    :ref:`Upgrade wizards <use-the-upgrade-wizard>`.

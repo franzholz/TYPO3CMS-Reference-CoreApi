@@ -1,3 +1,4 @@
+:navigation-title: Usage
 ..  include:: /Includes.rst.txt
 ..  index:: Site handling; Conditions
 ..  _sitehandling-inConditions:
@@ -37,6 +38,18 @@ The identifier of the site name is evaluated:
        page.30.value = foo
     [GLOBAL]
 
+
+A custom field is evaluated:
+
+.. code-block:: typoscript
+
+    [site("configuration")["custom_field"] == "compareValue"]
+       page.35.value = abc
+    [GLOBAL]
+
+:typoscript:`site("methodName")` is equivalent to a call of "methodName" on the current site object.
+
+You can take a look at :php:`\TYPO3\CMS\Core\Site\Entity\SiteInterface` for accessible methods.
 
 Property of the current site language is evaluated:
 

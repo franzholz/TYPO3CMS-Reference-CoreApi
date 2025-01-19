@@ -85,6 +85,9 @@ should compare their specific version with the reference files found at
 and :t3src:`install/Resources/Private/FolderStructureTemplateFiles/root-web-config`
 and adapt or update local versions if needed.
 
+See :ref:`<maintain-htaccess>` for details on maintaining the file after a major
+version upgrade.
+
 
 NGINX web servers
 =================
@@ -115,7 +118,7 @@ servers virtual host configuration. A typical example looks like this:
             deny all;
         }
 
-        # TYPO3 - Block access to composer files
+        # TYPO3 - Block access to Composer files
         location ~* composer\.(?:json|lock) {
             deny all;
         }
@@ -150,7 +153,7 @@ servers virtual host configuration. A typical example looks like this:
             deny all;
         }
 
-        # TYPO3 - Block access to libaries, source and temporary compiled data
+        # TYPO3 - Block access to libraries, source and temporary compiled data
         location ~ ^(?:vendor|typo3_src|typo3temp/var) {
             deny all;
         }

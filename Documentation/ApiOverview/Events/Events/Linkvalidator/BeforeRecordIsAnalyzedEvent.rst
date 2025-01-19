@@ -20,8 +20,8 @@ of the project itself, as editors tend to set external links on internal pages
 at times.
 
 The following code can be put in a custom
-:ref:`minimal extension <extension-minimal>`. You can find a live example in
-our example extension
+:ref:`extension, for example kickstarted with make <extension-make-kickstart>`.
+You can find a live example in our example extension
 `EXT:examples <https://github.com/TYPO3-Documentation/t3docs-examples>`__.
 
 Create a class that works as event listener. This class does not implement or
@@ -44,7 +44,7 @@ For the implementation we need the
 additional link errors and the
 :php:`\TYPO3\CMS\Core\DataHandling\SoftReference\SoftReferenceParserFactory` so
 we can automatically parse for links. These two classes have to be injected via
-:ref:`dependeny injection <Dependency-Injection>`:
+:ref:`dependency injection <Dependency-Injection>`:
 
 ..  include:: /CodeSnippets/Events/Linkvalidator/BeforeRecordIsAnalyzedEvent/ExampleInject.rst.txt
 
@@ -56,7 +56,7 @@ match, if it is an external link to an internal page.
 ..  include:: /CodeSnippets/Events/Linkvalidator/BeforeRecordIsAnalyzedEvent/ParseFields.rst.txt
 
 If the URL found in the matching is external and contains the local domain name
-we add the an entry to the :php:`BrokenLinkRepository` and to the result set of
+we add an entry to the :php:`BrokenLinkRepository` and to the result set of
 :php:`BeforeRecordIsAnalyzedEvent`.
 
 ..  include:: /CodeSnippets/Events/Linkvalidator/BeforeRecordIsAnalyzedEvent/AddToBrokenLinkRepository.rst.txt

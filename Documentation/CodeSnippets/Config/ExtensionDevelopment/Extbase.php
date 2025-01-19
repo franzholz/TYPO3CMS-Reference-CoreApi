@@ -1,10 +1,12 @@
 <?php
 
+use T3docs\Examples\Upgrades\ExtbasePluginListTypeToCTypeUpdate;
+
 return [
     [
         'action' => 'createCodeSnippet',
-        'caption' => 'EXT:blog_example/Configuration/TypoScript/RssFeed/setup.typoscript',
-        'sourceFile' => 'EXT:blog_example/Configuration/TypoScript/RssFeed/setup.typoscript',
+        'caption' => 'EXT:blog_example/Configuration/Sets/RssFeed/setup.typoscript',
+        'sourceFile' => 'EXT:blog_example/Configuration/Sets/RssFeed/setup.typoscript',
         'targetFileName' => 'CodeSnippets/Extbase/FrontendPlugins/TypoScriptPluginRss.rst.txt',
     ],
     [
@@ -322,7 +324,7 @@ return [
         'caption' => 'EXT:blog_example/Configuration/FlexForms/PluginSettings.xml',
         'sourceFile' => 'EXT:blog_example/Configuration/FlexForms/PluginSettings.xml',
         'targetFileName' => 'CodeSnippets/Extbase/Configuration/PluginSettings.rst.txt',
-        'emphasizeLines' => [10],
+        'emphasizeLines' => [8],
     ],
     [
         'action' => 'createPhpClassCodeSnippet',
@@ -340,5 +342,12 @@ return [
         'class' => \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder::class,
         'targetFileName' => 'CodeSnippets/Extbase/UriBuilder.rst.txt',
         'withCode' => false,
+    ],
+    [
+        'action' => 'createPhpClassCodeSnippet',
+        'class' => ExtbasePluginListTypeToCTypeUpdate::class,
+        'withComment' => true,
+        'withClassComment' => false,
+        'targetFileName' => 'CodeSnippets/Extbase/Upgrades/ExtbasePluginListTypeToCTypeUpdate.rst.txt',
     ],
 ];

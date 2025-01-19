@@ -1,3 +1,4 @@
+:navigation-title: Assets
 ..  include:: /Includes.rst.txt
 ..  index::
     ! Assets
@@ -11,6 +12,7 @@ Assets (CSS, JavaScript, Media)
 ..  contents:: **Table of Contents**
     :local:
 
+..  _assets-introduction:
 
 Introduction
 ============
@@ -32,6 +34,8 @@ more convenient :php:`AssetCollector` is possible.
    AssetCollector
    Fluid; asset.script
    Fluid; asset.css
+
+..  _asset-collector:
 
 Asset collector
 ===============
@@ -61,6 +65,16 @@ inserting JavaScript and CSS code.
 The asset collector also collects information about images on a page,
 which can be used in cached and non-cached components.
 
+..  versionadded:: 13.3
+    Option `external` to skip URL processing in AssetRenderer has been added.
+
+The :php:`AssetCollector` option `external` can be used for
+asset files using :php:`$assetCollector->addStyleSheet()`
+or :php:`$assetCollector->addJavaScript()`. If set all processing of the asset
+URI (like the addition of the cache busting parameter) is skipped and the input
+path will be used as-is in the resulting HTML tag.
+
+..  _asset-collector-api:
 
 The API
 -------
@@ -77,6 +91,8 @@ The API
 
 .. index:: pair: Assets; Viewhelpers
 
+..  _assets-viewhelper:
+
 ViewHelper
 ----------
 
@@ -87,6 +103,8 @@ use the :php:`AssetCollector` API.
 
 
 .. index:: pair: Assets; Rendering order
+
+..  _assets-rendering-order:
 
 Rendering order
 ---------------
@@ -115,6 +133,9 @@ rendered after their page renderer counterparts. The order is:
 ..  note::
     JavaScript registered with the asset collector is not affected by
     :ref:`config.moveJsFromHeaderToFooter <t3tsref:setup-config-movejsfromheadertofooter>`.
+
+
+..  _assets-examples:
 
 Examples
 --------
@@ -174,11 +195,31 @@ Check if a JavaScript file with the given identifier exists:
         // result: false - JavaScript with identifier $identifier does not exist
     }
 
+The following code skips the cache busting parameter `?1726090820` for the supplied CSS file:
+
+..  code-block:: php
+    :caption: EXT:my_extension/Classes/MyClass.php
+
+    $assetCollector->addStyleSheet(
+        'myCssFile',
+        PathUtility::getAbsoluteWebPath(GeneralUtility::getFileAbsFileName('EXT:my_extension/Resources/Public/MyFile.css')),
+        [],
+        ['external' => true]
+    );
+
+Resulting in the following HTML output:
+
+..  code-block:: html
+
+    <link rel="stylesheet" href="/_assets/<hash>/myFile.css" />
+
 
 .. index::
    pair: Assets; Events
    Events; BeforeJavaScriptsRenderingEvent
    Events; BeforeStylesheetsRenderingEvent
+
+..  _assets-events:
 
 Events
 ------
@@ -193,6 +234,8 @@ There are two events available that allow additional adjusting of assets:
 
 Former methods to add assets
 ============================
+
+..  _assets-page-renderer:
 
 Using the page renderer
 -----------------------
@@ -217,12 +260,20 @@ The following methods can then be used:
 *   :php:`$this->pageRenderer->addJsLibrary($name, $file)`
 
 
+..  _assets-TypoScriptFrontendController:
+
 Using the TypoScriptFrontendController
 --------------------------------------
 
 ..  versionchanged:: 13.0
     The property :php:`additionalHeaderData` has been marked as internal
-    and should not be used.
+    and should not be used. Use :php:`AssetCollector->addJavaScript()` instead
+    (like described in the :ref:`examples <assets-examples>` above).
+
+..  deprecated:: 13.4
+    The class :php:`\TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController`
+    and its global instance :php:`$GLOBALS['TSFE']` have been marked as
+    deprecated. The class will be removed with TYPO3 v14.
 
 ..  code-block:: php
 

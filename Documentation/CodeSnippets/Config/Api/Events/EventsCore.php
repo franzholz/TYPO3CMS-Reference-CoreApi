@@ -57,12 +57,6 @@ return [
     ],
     [
         'action' => 'createPhpClassDocs',
-        'class' => \TYPO3\CMS\Core\Mail\Event\AfterMailerInitializationEvent::class,
-        'targetFileName' => 'CodeSnippets/Events/Core/AfterMailerInitializationEvent.rst.txt',
-        'withCode' => false,
-    ],
-    [
-        'action' => 'createPhpClassDocs',
         'class' => \TYPO3\CMS\Core\Package\Event\AfterPackageActivationEvent::class,
         'targetFileName' => 'CodeSnippets/Events/Core/AfterPackageActivationEvent.rst.txt',
         'withCode' => false,
@@ -306,6 +300,42 @@ return [
         'action' => 'createPhpClassDocs',
         'class' => \TYPO3\CMS\Core\Package\Event\PackageInitializationEvent::class,
         'targetFileName' => 'CodeSnippets/Events/Core/Package/PackageInitializationEvent.rst.txt',
+        'withCode' => false,
+    ],
+    [
+        'action' => 'createPhpClassDocs',
+        'class' => \TYPO3\CMS\Core\Html\Event\BeforeTransformTextForPersistenceEvent::class,
+        'targetFileName' => 'CodeSnippets/Events/Core/Html/BeforeTransformTextForPersistenceEvent.rst.txt',
+        'withCode' => false,
+    ],
+    [
+        'action' => 'createPhpClassDocs',
+        'class' => \TYPO3\CMS\Core\Html\Event\AfterTransformTextForPersistenceEvent::class,
+        'targetFileName' => 'CodeSnippets/Events/Core/Html/AfterTransformTextForPersistenceEvent.rst.txt',
+        'withCode' => false,
+    ],
+    [
+        'action' => 'createPhpClassDocs',
+        'class' => \TYPO3\CMS\Core\Html\Event\BeforeTransformTextForRichTextEditorEvent::class,
+        'targetFileName' => 'CodeSnippets/Events/Core/Html/BeforeTransformTextForRichTextEditorEvent.rst.txt',
+        'withCode' => false,
+    ],
+    [
+        'action' => 'createPhpClassDocs',
+        'class' => \TYPO3\CMS\Core\Html\Event\AfterTransformTextForRichTextEditorEvent::class,
+        'targetFileName' => 'CodeSnippets/Events/Core/Html/AfterTransformTextForRichTextEditorEvent.rst.txt',
+        'withCode' => false,
+    ],
+    [
+        'action' => 'createPhpClassDocs',
+        'class' => \TYPO3\CMS\Core\Country\Event\BeforeCountriesEvaluatedEvent::class,
+        'targetFileName' => 'CodeSnippets/Events/Core/Country/BeforeCountriesEvaluatedEvent.rst.txt',
+        'withCode' => false,
+    ],
+    [
+        'action' => 'createPhpClassDocs',
+        'class' => \TYPO3\CMS\Core\Domain\Event\RecordCreationEvent::class,
+        'targetFileName' => 'CodeSnippets/Events/Core/RecordCreationEvent.rst.txt',
         'withCode' => false,
     ],
 ];

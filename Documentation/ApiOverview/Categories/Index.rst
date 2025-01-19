@@ -7,18 +7,13 @@ System categories
 =================
 
 TYPO3 provides a generic categorization system.
-Categories can be created in the backend like any other type of record.
+Categories can be created in the backend like any other type of
+:ref:`record <database-records>`.
 
 A TCA field of the column type :ref:`category<t3tca:columns-category>` is
 available.
 
 Pages, content elements and files contain category fields by default.
-
-.. versionchanged:: 11.4
-   Starting with v11.4 the formerly used PHP function
-   :php:`ExtensionManagementUtility::makeCategorizable()` is deprecated and
-   removed with v12.0. Use a TCA field of the type
-   :ref:`category<t3tca:columns-category>` instead.
 
 
 .. _categories-using:
@@ -145,6 +140,6 @@ has access to and if the table :sql:`sys_category` is allowed in the field
 :guilabel:`Access Lists` of the user group.
 
 Additionally it is possible to set :guilabel:`Mounts and Workspaces >
-Category Mounts` in the :ref:`user group <t3start:category-permissions>`. If at
+Category Mounts` in the :ref:`user group <access-lists-category-permissions>`. If at
 least one category is set in the category mounts only the chosen categories are
 allowed to be attached to records.

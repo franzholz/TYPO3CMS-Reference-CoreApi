@@ -12,7 +12,7 @@ Frequently asked questions (FAQ)
 
 ..  note::
     If you miss a question, please share it in the Slack channel
-    `#cig-crowdin-localization <https://typo3.slack.com/app_redirect?channel=CMUG7C04F>`__.
+    `#typo3-localization-team <https://typo3.slack.com/app_redirect?channel=CR75200FL>`__.
 
 
 General questions
@@ -37,11 +37,13 @@ My favorite language is not available for an extension
 
 If you are missing the support for a specific language in an extension on
 Crowdin please contact either the maintainer of the extension or the
-:ref:`crowdin-initiative`.
+`Localization Team`_.
 
 ..  seealso::
     The language needs to be supported by TYPO3 itself as well, see
     :ref:`i18n_languages` for a list of all languages.
+
+..  _Localization Team: https://typo3.org/community/teams/localization
 
 
 ..  _crowdin-faq-pootle:
@@ -63,19 +65,7 @@ How to convert to the new language XLIFF file format
 
 If you have :ref:`downloaded an XLIFF file <migrate-from-pootle>` from the
 deactivated Pootle language server or an old version of an extension, then it
-does not have the correct format. You need to remove some attributes. And you
-need to add the :xml:`resname` attribute. For this you can use a Linux tool or a
-sophisticated editor to copy the :xml:`id` attribute into the :xml:`resname` of
-the :ref:`XLIFF <xliff>` file based on regular expressions.
-
-In most editors you can use regular expressions, for example, in PhpStorm:
-
-#.  Open the XLIFF file in the editor.
-#.  Press :kbd:`Ctrl` + :kbd:`R` to open the search and replace pane
-#.  Find: `id="(.+?)"` / Replace: `id="$1" resname="$1"`
-#.  Click the regex icon (:guilabel:`.*`) to enable regular expressions.
-#.  Click on button :guilabel:`Replace All`
-
+does not have the correct format. You need to remove some attributes.
 
 Questions about extension integration
 =====================================
@@ -88,15 +78,15 @@ Why does Crowdin show me translations in source language?
 If you have just set up Crowdin and ship translated XLIFF files in your
 extension, they will also show up as files to be translated.
 
-You need to exclude them in your :file:`crowdin.yml` configuration, which is
+You need to exclude them in your :file:`.crowdin.yml` configuration, which is
 located in the extension root directory.
 
 ..  code-block:: yaml
-    :caption: EXT:my_extension/crowdin.yml
+    :caption: EXT:my_extension/.crowdin.yml
 
     files:
       - source: /Resources/Private/Language/
-        translation: /%original_path%/%two_letters_code%.%original_file_name%
+        translation: /Resources/Private/Language/%two_letters_code%.%original_file_name%
         ignore:
           - /Resources/Private/Language/de.*
 
@@ -127,6 +117,23 @@ containing the XLIFF files.
 After triggering the upload, Crowdin tries to find the matching source files and
 target languages. You may have to accept both if they are not found
 automatically.
+
+..  index:: Crowdin; Disable pushing of changes
+..  _crowdin-faq-disable-push-changes:
+
+How can I disable the pushing of changes?
+-----------------------------------------
+
+By default, Crowdin pushes changes made in translations back to the
+repository. This is not necessary, as the translation server provided by TYPO3
+handles the distribution of translations, so your extension does not need to
+ship the translations.
+
+You can disable the pushing of changes back into your repository in the
+Crowdin configuration. Navigate in your Crowdin project to
+:guilabel:`Integrations` and select your integration (for example, GitHub). Then
+click on the :guilabel:`Edit` button and disable the :guilabel:`Push Sources`
+checkbox.
 
 
 ..  index:: Crowdin; Migration from Pootle
@@ -193,6 +200,13 @@ you can import them.
 #.  **Upload the Translations**
     Have a look at :ref:`crowdin-faq-upload-xliff-files`.
 
+..  _crowdin-faq-crowdin-yml:
+
+crowdin.yml, .crowdin.yml or crowdin.yaml?
+------------------------------------------
+
+All three filenames are valid names for for Crowdin CLI to detect the configuration file.
+We recommend using `.crowdin.yml` to make it more obvious that it's a configuration file.
 
 Questions about TYPO3 Core integration
 ======================================
