@@ -11,10 +11,8 @@
 Content security policy
 =======================
 
-..  versionadded:: 12.3
-    Content Security Policy declarations can be applied to a TYPO3 website in
-    frontend and backend scope with a dedicated API.
-    See :ref:`content-security-policy`.
+..  seealso::
+    *   :ref:`content-security-policy`
 
 Content security policy (CSP_) is an added layer of security that helps
 to detect and mitigate certain types of attacks, including cross-site
@@ -33,6 +31,15 @@ impractical for some sites) or add content security policy headers for
 these directories - basically all public available base directories of
 file storages (`sys_file_storage`).
 
+Please note that the CSP configuration in :ref:`content-security-policy`
+only applies to pages served by TYPO3 (when PHP is involved, allowing
+the configured Middleware to be utilized).
+
+Files that are not served by TYPO3, as is the case with files in :file:`fileadmin/`, need
+manual server configuration if CSP is to be applied, for example to :file:`.svg` files
+to prevent possible execution and loading of further
+remote resources or scripts.
+
 The following example sends a corresponding CSP_ header for any file
 accessed via :samp:`https://example.org/fileadmin/...`:
 
@@ -46,7 +53,7 @@ accessed via :samp:`https://example.org/fileadmin/...`:
 For nginx webservers, the following configuration example can be used to send
 a CSP_ header for any file accessed via :samp:`https://example.org/fileadmin/...`:
 
-..   code-block:: nginx
+..  code-block:: nginx
 
     map $request_uri $csp_header {
         ~^/fileadmin/ "default-src 'self'; script-src 'none'; style-src 'none'; object-src 'none';";

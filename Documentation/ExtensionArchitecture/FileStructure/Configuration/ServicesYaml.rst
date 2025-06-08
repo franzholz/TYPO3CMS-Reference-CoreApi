@@ -1,12 +1,27 @@
-.. include:: /Includes.rst.txt
-.. index::
-   Extension development; Configuration/Services.yaml
-   Path; EXT:{extkey}/Configuration/Services.yaml
-.. _extension-configuration-services-yaml:
+..  include:: /Includes.rst.txt
+..  index::
+    Extension development; Configuration/Services.yaml
+    Path; EXT:{extkey}/Configuration/Services.yaml
+.. _ServicesYaml:
+..  _extension-configuration-services-yaml:
 
-================================
-:file:`Services.yaml`
-================================
+===============
+`Services.yaml`
+===============
+
+It is possible to use a YAML or PHP format:
+
+..  typo3:file:: Services.yaml
+    :scope: extension
+    :path: /Configuration/
+    :regex: /^.*Configuration\/Services\.yaml$/
+    :shortDescription: Dependency injection service configuration
+
+..  typo3:file:: Services.php
+    :scope: extension
+    :path: /Configuration/
+    :regex: /^.*Configuration\/Services\.php$/
+    :shortDescription: Dependency injection service configuration
 
 Services can be configured in this file. TYPO3 uses it for:
 
@@ -16,6 +31,13 @@ Services can be configured in this file. TYPO3 uses it for:
    support for console commands <ext_core:Changelog/10.3/Feature-89139-AddDependencyInjectionSupportForConsoleCommands>`)
 *  :ref:`Registering a widget with the dashboard <ext_dashboard:register-new-widget>`
 
-..  literalinclude:: /Configuration/Yaml/_example_services.yaml
+..  literalinclude:: _snippets/_example_services.yaml
     :language: yaml
     :caption: EXT:my_extension/Configuration/Services.yaml
+
+..  seealso::
+
+    *   TYPO3 uses the Symfony Dependency Injection component. The official documentation can be found at
+        https://symfony.com/doc/current/service_container.html
+
+    *   It is possible to use a glob pattern for the file paths, for example `'../Classes/*'`.

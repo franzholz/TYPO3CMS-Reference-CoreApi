@@ -31,8 +31,6 @@ the PSR-7 base request object is given as argument to the called method.
 Extbase controller
 ------------------
 
-..  versionadded:: 11.3
-
 The request object compatible with the PSR-7
 :php:`\Psr\Http\Message\ServerRequestInterface` is available in an
 :ref:`Extbase controller <extbase-action-controller>` via the class property
@@ -64,6 +62,21 @@ The request object compatible with the PSR-7
     not adhere to the PSR-7 standard. If you want to stay compatible with
     TYPO3 v10 and TYPO3 v11 you have to use the :ref:`global variable
     <typo3-request-global-variable>`.
+
+..  _typo3-request-extbase-validator:
+
+Extbase validator
+-----------------
+
+..  versionadded:: 13.2
+    Extbase :php-short:`\TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator`
+    provides a getter and a setter for the PSR-7 Request object.
+
+In Extbase validators the current request is available with
+`$this->getRequest()` if they extend the :php-short:`\TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator`:
+
+..  literalinclude:: /ExtensionArchitecture/Extbase/Reference/Validation/CustomValidator/_RequestValidator.php
+    :caption: EXT:my_extension/Classes/Domain/Validators/MyCustomValidator.php
 
 ..  _typo3-request-viewhelper:
 
@@ -142,6 +155,16 @@ as first argument for the :php:`process()` method. This object provides a
         }
     }
 
+..  _typo3-request-console-command:
+
+Console command
+---------------
+
+Within a `Console command (CLI) <https://docs.typo3.org/permalink/t3coreapi:symfony-console-commands>`_
+there is no request available. See also https://forge.typo3.org/issues/105554
+
+If a request is needed initialize one as described in
+`Initialize a frontend request in a console command <https://docs.typo3.org/permalink/t3coreapi:console-command-tutorial-fe-request>`_.
 
 ..  _typo3-request-global-variable:
 

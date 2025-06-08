@@ -1,10 +1,12 @@
+:navigation-title: Administrators
+
 .. include:: /Includes.rst.txt
 
 .. _privileges:
 
-==================
-Backend Privileges
-==================
+=========================================================
+Backend privileges: Administrators and System Maintainers
+=========================================================
 
 The following chapters cover modules that will only be available for backend
 users with specific access privileges.
@@ -18,32 +20,23 @@ usually not get access to admin or system modules.
 
 You should only give a backend user
 as much access as is needed. This makes the job easier by automatically deactivating
-modules and GUI elements the user does not have access to. It also makes it
+modules and GUI elements that the user does not have access to. It also makes it
 impossible for a user to damage the system by accidentally doing things he or she
 should not have been able to do in the first place.
 
-Before TYPO3 version 9 there was only admin and non admin. Now we have the
-additional access privilege "system maintainer".
-
-
-
 .. _admin-user:
 
-Admin
-=====
+Administrators
+==============
 
-* admin user privilege can be added by clicking the "admin" checkbox when
-  creating or changing a backend user
-* admins have access to the **SYSTEM** module (including Access, Backend User,
-  Log etc. modules)
+..  figure:: /Images/ManualScreenshots/UserManagement/Administrator.png
+    :alt: Screenshot of the TYPO3 backend as seen by an Administrator. The Backend user module menu is opened.
 
-.. image:: /Images/ManualScreenshots/UserManagement/system.png
-   :class: with-shadow
+    Administrators have access to the System modules, including Permissions, Backend User, Log etc.)
 
-.. image:: /Images/ManualScreenshots/UserManagement/system_open.png
-   :class: with-shadow
-
-
+..  seealso::
+    *   `Using the backend module "Backend Users" to create admins (Getting Started Tutorial) <https://docs.typo3.org/permalink/t3start:backend-users-admin-backend-module>`_
+    *   `Create an administrator / System Maintainer using a console command (Getting Started Tutorial) <https://docs.typo3.org/permalink/t3start:backend-users-admin-cli>`_
 
 .. _user-management-system-maintainers:
 .. _system-maintainer:
@@ -55,16 +48,19 @@ The first backend admin created during installation will automatically be a syst
 maintainer as well. To give other users system privileges, you
 can add them in the :guilabel:`ADMIN TOOLS > Settings > Manage System Maintainers`
 configuration.
-Alternatively the website can be set into "Development" mode in the Install
+Alternatively, the website can be set to "Development" mode in the Install
 Tool. This will give all admin users system maintainer access.
 
-.. image:: /Images/ManualScreenshots/UserManagement/admin-tools.png
-   :class: with-shadow
+..  figure:: /Images/ManualScreenshots/UserManagement/SystemMaintainer.png
+    :alt: Screenshot of the TYPO3 backend as seen by a System Maintainer. The Admin Tools module menu is opened.
 
-.. image:: /Images/ManualScreenshots/UserManagement/admin-tools-open.png
-   :class: with-shadow
+    System Maintainers are the only users who are able to see and access
+    :guilabel:`Admin Tools`, including the :guilabel:`Extension Manager`.
 
-System Maintainers are the only users who are able to see and access the
-:guilabel:`Admin Tools` and the :guilabel:`Extension Manager`. These users are
+..  seealso::
+    *   `Granting System Maintainer rights (Getting Started Tutorial) <https://docs.typo3.org/permalink/t3start:backend-users-system-maintainer>`_
+    *   `Create an administrator / System Maintainer using a console command (Getting Started Tutorial) <https://docs.typo3.org/permalink/t3start:backend-users-admin-cli>`_
+
+System Maintainers are
 persisted within the :file:`config/system/settings.php` as
 :php:`$GLOBALS['TYPO3_CONF_VARS']['SYS']['systemMaintainers']`.

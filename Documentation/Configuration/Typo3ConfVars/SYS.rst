@@ -178,10 +178,6 @@ configurations.
 
 ..  _typo3ConfVars_sys_ddmmyy:
 
-..  versionchanged:: 12.4.14/13.1.0
-    The default value has been changed from 'd-m-y' to 'Y-m-d' (ISO 8601) to
-    avoid unclear dates.
-
 ..  confval:: ddmmyy
     :name: globals-typo3-conf-vars-sys-ddmmyy
     :Path: $GLOBALS['TYPO3_CONF_VARS']['SYS']['ddmmyy']
@@ -249,6 +245,22 @@ configurations.
 
     Commalist of file extensions perceived as media files by TYPO3.
     Must be written in lower case with no spaces between.
+
+..  _typo3ConfVars_sys_miscfile_ext:
+
+..  confval:: miscfile_ext
+    :name: globals-typo3-conf-vars-sys-miscfile-ext
+    :Path: $GLOBALS['TYPO3_CONF_VARS']['SYS']['miscfile_ext']
+    :type: text
+    :Default: 'zip'
+
+    ..  versionadded:: 13.4.12 / 12.4.31
+        This property has been added with the security fix `Important: #106240 -
+        Enforce File Extension and MIME-Type Consistency in File Abstraction
+        Layer <https://docs.typo3.org/permalink/changelog:important-106240-1747316969>`_.
+
+    Allows specifying file extensions that don't belong to either `textfile_ext`
+    or `mediafile_ext`, such as `zip` or `xz`.
 
 ..  _typo3ConfVars_sys_binPath:
 
@@ -350,9 +362,24 @@ configurations.
     :Path: $GLOBALS['TYPO3_CONF_VARS']['SYS']['reverseProxyIP']
     :type: list
     :Default: ''
+    :allowedValues:
+        `''`, `'*'` or a comma separated list of IPv4 or IPv6 addresses in CIDR-notation.
+        For IPv4 addresses wildcards are additionally supported.
 
-    List of IP addresses. If TYPO3 is behind one or more (intransparent) reverse
-    proxies the IP addresses must be added here.
+    If TYPO3 is behind one or more (intransparent) reverse
+    proxies or load balancers the IP addresses or CIDR ranges must be added here and
+    :confval:`globals-typo3-conf-vars-sys-reverseProxyHeaderMultiValue` must be set to `first` or `last`.
+
+    ..  code-block:: php
+        :caption: config/system/additional.php
+
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['reverseProxyHeaderMultiValue'] = 'first';
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['reverseProxyIP'] = '192.168.0.0/16';
+
+    ..  seealso::
+
+        *   `Running TYPO3 behind a reverse proxy <https://docs.typo3.org/permalink/t3coreapi:reverse-proxy-setup>`_
+        *   `reverseProxySSL  <https://docs.typo3.org/permalink/t3coreapi:confval-globals-typo3-conf-vars-sys-reverseproxyssl>`_
 
 ..  _typo3ConfVars_sys_reverseProxyHeaderMultiValue:
 
@@ -372,8 +399,9 @@ configurations.
 
     :Default: 'none'
 
-    Defines which values of a proxy header (for example HTTP_X_FORWARDED_FOR) to use,
-    if more than one is found.
+    Position of the authoritative IP address within the `X-Forwarded-For` header
+    (for example, `X-Forwarded-For: 1.2.3.4, 2.3.4.5, 3.4.5.6` uses `1.2.3.4`
+    with `first` and `3.4.5.6` with `last`).
 
 ..  _typo3ConfVars_sys_reverseProxyPrefix:
 
@@ -386,7 +414,7 @@ configurations.
     Optional prefix to be added to the internal URL (SCRIPT_NAME and
     REQUEST_URI).
 
-    Example: When proxying external.example.org to internal.example.org/prefix this has to
+    Example: When proxying `external.example.org` to `internal.example.org/prefix` this has to
     be set to :php:`prefix`
 
 ..  _typo3ConfVars_sys_reverseProxySSL:
@@ -396,11 +424,19 @@ configurations.
     :Path: $GLOBALS['TYPO3_CONF_VARS']['SYS']['reverseProxySSL']
     :type: text
     :Default: ''
+    :allowedValues:
+        `''`, `'*'` or a comma separated list of IPv4 or IPv6 addresses in CIDR-notation.
+        For IPv4 addresses wildcards are additionally supported.
 
     :php:`*` or a list of IP addresses of proxies that use SSL (https) for
     the connection to the client, but an unencrypted connection (http) to
-    the server. If php:`*` all proxies defined in
+    the server. If :php:`*` all proxies defined in
     :ref:`[SYS][reverseProxyIP]<typo3ConfVars_sys_reverseProxyIP>` use SSL.
+
+    ..  seealso::
+
+        *   `Running TYPO3 behind a reverse proxy <https://docs.typo3.org/permalink/t3coreapi:reverse-proxy-setup>`_
+        *   `reverseProxyIP  <https://docs.typo3.org/permalink/t3coreapi:confval-globals-typo3-conf-vars-sys-reverseproxyip>`_
 
 ..  _typo3ConfVars_sys_reverseProxyPrefixSSL:
 

@@ -8,11 +8,6 @@
 Modules.php - Backend module configuration
 ==========================================
 
-..  versionchanged:: 12.0
-    Registration of backend modules was changed with version 12. If you are
-    using an older version of TYPO3 please use the version switcher on the top
-    left of this document to go to the respective version.
-
 The configuration of backend modules is placed in the
 dedicated :file:`Configuration/Backend/Modules.php` configuration file.
 
@@ -310,8 +305,8 @@ Extbase module configuration options
         This leads to the following URLs:
 
         *   :samp:`https://example.com/typo3/module/web/ExtkeyExample`
-        *   :samp:`https://example.com/typo3/module/web/ExtkeyExample/MyModuleController/list`
-        *   :samp:`https://example.com/typo3/module/web/ExtkeyExample/MyModuleController/detail`
+        *   :samp:`https://example.com/typo3/module/web/ExtkeyExample/MyModule/list`
+        *   :samp:`https://example.com/typo3/module/web/ExtkeyExample/MyModule/detail`
 
         The route identifier of corresponding routes is registered with similar
         syntax as :ref:`standard backend modules <backend-modules-api-default>`:
@@ -319,8 +314,8 @@ Extbase module configuration options
         therefore register the following routes:
 
         *   `web_ExtkeyExample`
-        *   `web_ExtkeyExample.MyModuleController_list`
-        *   `web_ExtkeyExample.MyModuleController_detail`
+        *   `web_ExtkeyExample.MyModule_list`
+        *   `web_ExtkeyExample.MyModule_detail`
 
 Debug the module configuration
 ===============================

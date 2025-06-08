@@ -43,10 +43,8 @@ but only for logged-in users with administrator and maintainer privileges.
 The :file:`ENABLE_INSTALL_TOOL` file
 ------------------------------------
 
-The :confval:`flag-file-enable-install-tool` flag file can be created by placing an empty
+The :file:`ENABLE_INSTALL_TOOL` flag file can be created by placing an empty
 file in one of the following file paths:
-
-..  versionchanged:: 12.2
 
 ..  include:: /_includes/_EnableInstallTool.rst.txt
     :show-buttons:
@@ -138,7 +136,7 @@ discuss the best approach with the team.
 TYPO3 Core updates
 ==================
 
-In legacy installations the Install Tool allows integrators to update the
+In Classic mode installations the Install Tool allows integrators to update the
 TYPO3 Core with a click on a button. This feature can be found under
 :guilabel:`Important actions`, and it checks/installs revision updates only
 (that is, bug fixes and security updates).

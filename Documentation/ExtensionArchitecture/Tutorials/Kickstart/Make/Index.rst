@@ -36,9 +36,9 @@ it should not be used on production systems:
 
             ddev composer req b13/make --dev
 
-    ..  group-tab:: Legacy
+    ..  group-tab:: Classic mode installation (no Composer)
 
-        To install the extension on legacy installations, download it from the
+        To install the extension on Classic mode installations, download it from the
         `TYPO3 Extension Repository (TER), extension
         "make" <https://extensions.typo3.org/extension/make/>`__.
 
@@ -61,7 +61,7 @@ Call the CLI script on the console:
 
             ddev exec vendor/bin/typo3 make:extension
 
-    ..  group-tab:: Legacy
+    ..  group-tab:: Classic mode installation (No Composer)
 
         ..  code-block:: bash
 
@@ -99,7 +99,7 @@ Call the CLI script on the console:
 
 `Enter a description of the extension:`
     A description is mandatory. You can change it later in the file
-    :file:`composer.json` of the extension.
+    :file:`composer.json <extension-composer-json>` of the extension.
 
 `Where should the extension be created? [src/extensions/]:`
     If you have a special path for installing local extensions like
@@ -140,7 +140,7 @@ the following files:
 On Composer-based installations the extension is not installed yet.
 It will not be displayed in the :guilabel:`Extension Manager` in the backend.
 
-To install it, open the main :file:`composer.json` of your **project** (not the
+To install it, open the main :file:`composer.json <extension-composer-json>` of your **project** (not the
 one in the created extension) and add the extension directory as new repository:
 
 ..  code-block:: json
@@ -175,7 +175,7 @@ name defined in the prompt of the script:
 
             ddev composer req my-vendor/my-test:@dev
 
-    ..  group-tab:: Legacy
+    ..  group-tab:: Classic mode installation (No Composer)
 
         Activate the extension in the Extension Manager.
 

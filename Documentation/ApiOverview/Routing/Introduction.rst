@@ -32,23 +32,29 @@ Key Terminology
 
 Given a complex link (`URI`, `Uniform Resource Identificator`) like
 
-    `https://subdomain.example.com:80/en/about-us/our-team/john-doe/publications/index.xhtml?utm_campaign=seo#start`
+..  code-block:: plaintext
+
+    https://subdomain.example.com:80/en/about-us/our-team/john-doe/publications/index.xhtml?utm_campaign=seo#start
 
 all of its components can be broken down to:
 
-+----------+------------+----------+-----+------+----------------------+--------------------+----------------+----------------+-------+------------------+----------------+----------------+------------------------+
-| https:// | subdomain. | example. | com | :80  | /en                  | /about-us/our-team | /john-doe      | /publications/ | index | .xhtml           | ?utm_campaign= | seo            | #start                 |
-+==========+============+==========+=====+======+======================+====================+================+================+=======+==================+================+================+========================+
-| Protocol | Subdomain  | Domain   | TLD | Port | Site Language Prefix | Slug               | Enhanced Route                                             |                |                |                        |
-+----------+------------+----------+-----+------+----------------------+--------------------+-----------------------------------------+------------------+----------------+----------------+------------------------+
-|          | Hostname                    |      |                      |                    | Route Enhancer                          | Route Decorator  | Query string   | argument value | Location Hash / Anchor |
-+----------+-----------------------------+------+----------------------+--------------------+-----------------------------------------+------------------+----------------+----------------+------------------------+
-|                                               |  Route / Permalink                                                                                     |                                                          |
-+-----------------------------------------------+--------------------------------------------------------------------------------------------------------+----------------+----------------+------------------------+
-| URL (no arguments, unlike the URI)                                                                                                                     |                |                |                        |
-+--------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+----------------+------------------------+
-| URI (everything)                                                                                                                                                                                                  |
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+..  table::
+    :width: 100%
+    :break: none
+
+    +----------+------------+----------+-----+------+----------------------+--------------------+----------------+----------------+-------+------------------+----------------+----------------+------------------------+
+    | https:// | subdomain. | example. | com | :80  | /en                  | /about-us/our-team | /john-doe      | /publications/ | index | .xhtml           | ?utm_campaign= | seo            | #start                 |
+    +==========+============+==========+=====+======+======================+====================+================+================+=======+==================+================+================+========================+
+    | Protocol | Subdomain  | Domain   | TLD | Port | Site Language Prefix | Slug               | Enhanced Route                                             |                |                |                        |
+    +----------+------------+----------+-----+------+----------------------+--------------------+-----------------------------------------+------------------+----------------+----------------+------------------------+
+    |          | Hostname                    |      |                      |                    | Route Enhancer                          | Route Decorator  | Query string   | argument value | Location Hash / Anchor |
+    +----------+-----------------------------+------+----------------------+--------------------+-----------------------------------------+------------------+----------------+----------------+------------------------+
+    |                                               |  Route / Permalink                                                                                     |                                                          |
+    +-----------------------------------------------+--------------------------------------------------------------------------------------------------------+----------------+----------------+------------------------+
+    | URL (no arguments, unlike the URI)                                                                                                                     |                |                |                        |
+    +--------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+----------------+------------------------+
+    | URI (everything)                                                                                                                                                                                                  |
+    +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 ..  hint::
 
@@ -123,7 +129,7 @@ Enhanced Route
 Query string
     The main distinction of `URL` (Uniform Resource Locator) and `URI` (Uniform Resource Identifier) is that
     the URI also includes arguments/parameters and their values, beginning with a `?` and each argument
-    separated by `&`, and the value separated from the argument name by `=`. This is commonly refered to as
+    separated by `&`, and the value separated from the argument name by `=`. This is commonly referred to as
     "Query string".
 
 ..  index:: Routing; Location Hash
@@ -146,12 +152,6 @@ Routing in TYPO3 is implemented based on the Symfony Routing components. It cons
 Page Routing describes the process of resolving the concrete page (in earlier TYPO3 versions this were the `id` and `L` `$_GET` parameters,
 now this uses the Site Language Prefix plus one or more slugs),
 whereas Route Enhancements and Aspects take care of all additionally configured parameters (such as beautifying plugin parameters, handling `type` etc.).
-
-Mathias Schreiber demonstrates this way of handling URLs
-(Version 9.5, 28.09.2018).
-
-..  youtube:: dUz4B08XFes
-
 
 ..  _routing-prerequisites:
 
@@ -187,11 +187,7 @@ Example:
         - { resource: "EXT:mynews/Configuration/Routes/Default.yaml" }
         - { resource: "EXT:template/Configuration/Routes/Default.yaml" }
 
-..  versionchanged:: 12.0
-    In TYPO3 v10.4.14 the feature flag :php:`yamlImportsFollowDeclarationOrder`
-    was introduced to enable natural order of YAML imports. For existing
-    installations it was set to :php:`false` (resources are imported in reverse
-    order), for new installations to :php:`true` (resources are imported in
-    declared order). In TYPO3 v12.0 the feature flag was removed and the
-    resources are now imported in the exact same order as they are configured in
-    the importing file.
+..  note::
+    The resources are now imported in the exact same order as they are
+    configured in the importing file. Take care during updating from version
+    below TYPO3 v12.

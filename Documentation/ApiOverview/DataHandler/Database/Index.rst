@@ -242,9 +242,9 @@ Command keywords and values
             'field' => 'tx_myfieldname', // field we want to synchronize
             'language' => 2,             // uid of the target language
             // either the key 'action' or 'ids' must be set
-            'action' => 'localize'       // or 'synchronize'
-            'ids' =>  [1, 2, 3]          // array of child IDs to be localized
-        ]
+            'action' => 'localize',      // or 'synchronize'
+            'ids' =>  [1, 2, 3],         // array of child IDs to be localized
+        ];
 
 
 ..  confval:: version
@@ -416,6 +416,11 @@ Description of keywords in syntax:
     for example, `NEW7342abc5e6d`. You can use static strings (`NEW1`, `NEW2`,
     ...) or generate them using
     :php:`\TYPO3\CMS\Core\Utility\StringUtility::getUniqueId('NEW')`.
+
+..  caution::
+
+    If you supply your own string `NEW` must not be followed by an underscore.
+    The occurance of an underscore implies a reference to a record in a table.
 
 
 ..  confval:: fieldname
@@ -623,6 +628,14 @@ custom ViewHelper):
 ..  literalinclude:: _SomeController.php
     :language: php
     :caption: EXT:my_extension/Classes/Controller/SomeController.php
+
+..  versionadded:: 13.3
+    The :ref:`frontend.cache.collector <typo3-request-attribute-frontend-cache-collector>`
+    request attribut has been introduced as a successor of the now deprecated
+    :php:`TypoScriptFrontendController->addCacheTags()` method. Switch to
+    another version of this page for an example in an older TYPO3 version. For
+    compatibility with TYPO3 v12 and v13 use
+    :php:`TypoScriptFrontendController->addCacheTags()`.
 
 Hook for cache post-processing
 ------------------------------

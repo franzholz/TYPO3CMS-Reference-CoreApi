@@ -24,7 +24,7 @@ tutorials for common options:
 
         *   Create a directory with the extension name
         *   Create the :ref:`files-composer-json` file
-        *   Create the :ref:`ext_emconf-php` file for legacy installations and extensions to be uploaded to TER
+        *   Create the :ref:`ext_emconf-php` file for Classic mode installations and extensions to be uploaded to TER
 
     ..  card:: :ref:`Use b13/make to create an extension <extension-make-kickstart>`
 
@@ -44,7 +44,7 @@ tutorials for common options:
 
     ..  card:: :ref:`Site package builder <extension-sitepackage-builder>`
 
-        The `Site package builder <https://www.site packagebuilder.com/>`__
+        The `Site Package Builder <https://get.typo3.org/sitepackage>`__
         can be used to conveniently create an extension containing the
         site package (theme) of a site. It can also be used to kickstart
         an arbitrary extension by removing unneeded files.

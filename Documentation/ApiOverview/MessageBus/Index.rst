@@ -6,8 +6,6 @@
 Message bus
 ===========
 
-..  versionadded:: 12.2
-
 TYPO3 provides a message bus solution based on `symfony/messenger`_. It has the
 ability to send messages and then handle them immediately (synchronous) or
 send them through transports (asynchronous, for example, queues) to be handled
@@ -125,7 +123,7 @@ To consume messages, run the command:
 
             vendor/bin/typo3 messenger:consume <receiver-name>
 
-    ..  group-tab:: Legacy installation
+    ..  group-tab:: Classic mode installation (no Composer)
 
         ..  code-block:: bash
 
@@ -141,7 +139,7 @@ By default, you should run:
 
             vendor/bin/typo3 messenger:consume doctrine
 
-    ..  group-tab:: Legacy installation
+    ..  group-tab:: Classic mode installation (No Composer)
 
         ..  code-block:: bash
 

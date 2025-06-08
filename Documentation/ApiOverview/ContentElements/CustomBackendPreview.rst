@@ -43,6 +43,12 @@ and a Fluid template.
       }
     }
 
+In the Fluid template, the following variables are available:
+
+*     All properties of the :php:`tt_content` row (for example `{uid}`, `{title}`, and `{header}`)
+*     The current record as object (:php:`\TYPO3\CMS\Core\Domain\Record`) in `{record}`
+*     FlexForm settings as array in `{pi_flexform_transformed}`
+
 For more details see the :ref:`TSconfig Reference <t3tsref:pageweblayoutpreview>`.
 
 ..  _ConfigureCE-Preview-EventListener:
@@ -52,10 +58,6 @@ Event listener
 
 This requires at least some PHP coding, but allows more flexibility in
 accessing and processing the content elements properties.
-
-..  versionadded:: 12.0
-    Since version 12.0 this technique replaces the former hook
-    :php:`$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/class.tx_cms_layout.php']['tt_content_drawItem']`
 
 The event :php:`PageContentPreviewRenderingEvent` is being dispatched by the
 :php:`StandardContentPreviewRenderer`. You can listen to it with your own
