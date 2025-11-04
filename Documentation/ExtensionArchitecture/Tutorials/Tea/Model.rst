@@ -167,7 +167,7 @@ Now the edit form for tea records will look like this:
 
     The complete input form for a tea record.
 
-The list of teas in the module :guilabel:`Web -> List` looks like this:
+The list of teas in the module :guilabel:`Content -> List` looks like this:
 
 
 ..  figure:: /Images/ManualScreenshots/ExtensionArchitecture/Tutorials/Tea/TeaList.png
@@ -216,7 +216,7 @@ Example for the property :php:`title`:
 
 ..  include:: /CodeSnippets/Tutorials/Tea/Classes/Domain/Model/TeaTitle.rst.txt
 
-The getter for the image also has to resolve the :ref:`lazy loading <extbase-annotation-lazy>`:
+The getter for the image also has to resolve the :ref:`lazy loading <extbase-attribute-lazy>`:
 
 ..  include:: /CodeSnippets/Tutorials/Tea/Classes/Domain/Model/TeaImage.rst.txt
 

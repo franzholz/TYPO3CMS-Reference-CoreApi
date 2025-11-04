@@ -132,7 +132,8 @@ Enable / disable feature toggle
 Features can be toggled in the :guilabel:`Admin Tools > Settings` module via
 :guilabel:`Feature Toggles`:
 
-..  include:: /Images/AutomaticScreenshots/AdminTools/FeatureToggles.rst.txt
+..  figure:: /Images/ManualScreenshots/AdminTools/FeatureToggles.png
+    :alt: Feature toggles in the Admin Tools
 
 Internally, the changes are written to :file:`config/system/settings.php`:
 
@@ -176,7 +177,7 @@ The :ref:`t3viewhelper:typo3-fluid-feature` can be used to check for a feature i
 template:
 
 ..  code-block:: html
-    :caption: EXT:myExtension/Resources/Private/Templates/SomeTemplate.html
+    :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.html
 
     <f:feature name="unifiedPageTranslationHandling">
        This is being shown if the flag is enabled

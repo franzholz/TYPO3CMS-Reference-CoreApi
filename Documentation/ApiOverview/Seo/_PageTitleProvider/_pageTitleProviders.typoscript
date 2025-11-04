@@ -1,0 +1,5 @@
+config.pageTitleProviders {
+  recordTitle {
+    before = seo
+  }
+}

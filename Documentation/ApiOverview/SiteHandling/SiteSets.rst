@@ -48,6 +48,8 @@ unique `name` and preferably also a unique `label` to the site set definition.
     dependencies:
       - my-vendor/my-other-set
       - other-namespace/fancy-carousel
+    optionalDependencies:
+      - typo3/form
 
 Line 1: :yaml:`name: my-vendor/my-set`
     Site Set Name
@@ -74,7 +76,14 @@ Line 7: Dependencies
     of this or other extensions. These dependencies are loaded before your own
     site set. For example a dependency to a site set definition in your own
     site package and/or a dependency to a site set definition from
-    another provider (vendor)
+    another provider (vendor). A non-existing dependency makes the whole
+    site set report failures.
+Line 10: Optional dependencies
+    The files :file:`setup.typoscript`, :file:`constants.typoscript`,
+    :file:`page.tsconfig` and :file:`config.yaml` from the site set definitions
+    of this or other extensions are loaded only if the providing extension is
+    installed. Otherwise, the site set is loaded simply without these and
+    no errors are reported (in contrast to `dependencies`).
 
 ..  _site-sets-hidden:
 
@@ -107,7 +116,8 @@ shall be selectable:
 Using a site set as dependency in a site
 ========================================
 
-Sets are applied to sites via `dependencies` array in site configuration:
+Sets are applied to sites via `dependencies` array in site configuration,
+optional dependencies listed in `optionalDependencies`:
 
 ..  code-block:: yaml
     :caption: config/sites/my-site/config.yaml
@@ -116,6 +126,8 @@ Sets are applied to sites via `dependencies` array in site configuration:
     rootPageId: 1
     dependencies:
       - my-vendor/my-set
+    optionalDependencies:
+       - typo3/form
 
 Site sets can also be added to a site via the backend module
 :guilabel:`Site Management > Sites`.
@@ -153,9 +165,14 @@ provided by `typo3/fluid-styled-content` is configured via
 ..  code-block:: yaml
     :caption: EXT:my_extension/Configuration/Sets/MySet/settings.yaml
 
-    styles:
-      content:
-        defaultHeaderType: 1
+    styles.content.defaultHeaderType: 1
+
+
+..  versionchanged:: 13.4.15
+
+    The settings in :file:`settings.yaml` are stored as map instead of tree.
+
+    `Important: #106894 - Site settings.yaml is now stored as a map <https://docs.typo3.org/permalink/changelog:important-106894-1750144877>`_
 
 This setting will be exposed as site setting whenever the set
 `my-vendor/my-set` is applied as dependency to a site configuration.
@@ -191,6 +208,7 @@ sets. Dependencies are included recursively. This mechanism supersedes the
 previous include via `static_file_include` or manual :typoscript:`@import` statements as
 sets are automatically ordered and deduplicated. That means TypoScript will not
 be loaded multiple times, if a shared dependency is required by multiple sets.
+Dependencies can also be optional, see :ref:`site-sets-example-site-package-set-optional`.
 
 ..  note::
     :typoscript:`@import` statements are still fine to be used for local
@@ -276,8 +294,8 @@ The site package example extension has the following file structure:
 
 ..  _site-sets-example-site-package-set:
 
-Defining the site set with a fluid_styled_content dependency
-------------------------------------------------------------
+Defining the site set with an EXT:fluid_styled_content dependency
+-----------------------------------------------------------------
 
 As our example site package only contains one site set the name of that set
 is the same as the Composer name of the site package.
@@ -291,6 +309,29 @@ dependencies:
 
 If you need additional dependencies, you can find all available sets with the
 console command :ref:`bin/typo3 site:sets:list <site-sets-cli>`.
+
+..  _site-sets-example-site-package-set-optional:
+
+Defining the site set with an optional EXT:form dependency
+----------------------------------------------------------
+
+Site sets can also have optional dependencies, a bit like how `suggest`
+works in :file:`composer.json` files (see :ref:`t3coreapi:ext-composer-json-properties`):
+An optional dependency will only
+load the listed definitions in case the mentioned site set is available.
+If a listed site set is not installed, no error will be reported and
+the listed dependency is simply not loaded.
+
+In this example, the `typo3/form` dependency would be loaded based on
+the availability of the `EXT:form` extension:
+
+..  include:: _Sets/_config_optional.rst.txt
+
+..  hint::
+
+    If you include optional dependencies, be sure to make all other code
+    (PHP, Fluid, ...) also operate gracefully on this condition, and be
+    sure to list the extension in the composer's `suggest` key.
 
 ..  _site-sets-example-usage:
 
@@ -324,13 +365,20 @@ TypoScript imports.
 Using the site set to override default settings
 -----------------------------------------------
 
+..  versionchanged:: 13.4.15
+
+    The settings in :file:`settings.yaml` are stored as map instead of tree.
+
+    `Important: #106894 - Site settings.yaml is now stored as a map <https://docs.typo3.org/permalink/changelog:important-106894-1750144877>`_
+
 In this example the file
 :file:`EXT:site_package/Configuration/Sets/SitePackage/settings.yaml`
 is used to
 override default settings made by the by the set of
 :ref:`EXT:fluid_styled_content <typo3/cms-fluid-styled-content:start>`:
 
-..  include:: _Sets/_site-package/_settings.rst.txt
+..  literalinclude:: _Sets/_site-package/_settings-map.yaml
+    :caption: EXT:site_package/Configuration/Sets/SitePackage/settings.yaml
 
 ..  _site-sets-example-extension:
 

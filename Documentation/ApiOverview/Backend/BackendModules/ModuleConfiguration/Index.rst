@@ -82,14 +82,33 @@ Module configuration options
         :name: backend-module-appearance
         :type: array
 
-        Allows to define additional appearance options. Currently only
-        :confval:`backend-module-appearance-renderInModuleMenu` is available.
+        Allows to define additional appearance options.
 
-    ..  confval:: appearance.renderInModuleMenu
-        :name: backend-module-appearance-renderInModuleMenu
-        :type: bool
+        ..  confval:: appearance.dependsOnSubmodules
+            :name: backend-module-appearance-dependsOnSubmodules
+            :type: bool
+            :Default: false
 
-        If set to false the module is not displayed in the module menu.
+            ..  versionadded:: 14.0
+
+            If true, the module will only be displayed in the module menu if at least one of its
+            `submodules <https://docs.typo3.org/permalink/t3coreapi:backend-modules-third-level-module>`_
+            is available to the current user.
+
+            If all submodules are either disabled, removed, or the user lacks access
+            permissions to them, the parent module will automatically be hidden from
+            the module menu.
+
+            The :guilabel:`Content > Info` module leverages this feature to seamlessly disappear
+            from the module menu when extensions are uninstalled or users lack permissions
+            to access its submodules, preventing dead-end navigation paths and enhancing
+            the overall backend experience.
+
+        ..  confval:: appearance.renderInModuleMenu
+            :name: backend-module-appearance-renderInModuleMenu
+            :type: bool
+
+            If set to false the module is not displayed in the module menu.
 
     ..  confval:: iconIdentifier
         :name: backend-module-iconIdentifier
@@ -142,17 +161,17 @@ Module configuration options
         The module navigation component. The following are provided by the Core:
 
         :js:`@typo3/backend/tree/page-tree-element`
-            The page tree as used in the :guilabel:`Web` module.
+            The page tree as used in the :guilabel:`Content` module.
 
         :js:`@typo3/backend/tree/file-storage-tree-container`
-            The file tree as used in the :guilabel:`Filelist` module.
+            The file tree as used in the :guilabel:`Media` module.
 
         ..  rubric:: Migration
 
         ..  code-block:: diff
 
             'mymodule' => [
-                'parent' => 'web',
+                'parent' => 'content',
                 ...
             -   'navigationComponent' => '@typo3/backend/page-tree/page-tree-element',
             +   'navigationComponent' => '@typo3/backend/tree/page-tree-element',

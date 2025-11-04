@@ -1,0 +1,8 @@
+my_content = FLUIDTEMPLATE
+my_content {
+  dataProcessing {
+    10 = flex-form
+    10.fieldName = my_flexform_field
+    10.as = myOutputVariable
+  }
+}

@@ -1,3 +1,5 @@
+:navigation-title: Naming
+
 .. include:: /Includes.rst.txt
 .. index:: Extension development; Naming conventions
 .. _extension-naming:
@@ -235,8 +237,9 @@ Examples for Extbase domain models and table names of an extension named `cool_s
 +-----------------------------------------------------+-------------------------------------------------+
 
 .. tip::
-   You may notice, that the names above use the singular form, e.g. `post` and
-   not `posts`. This is recommended, but not always followed. If you do not follow this pattern,
+   Notice that the names above use the singular form, e.g. `post` and
+   not `posts`. This is recommended, but not a requirement.
+   However, if you do not follow the recommended patterns
    you may need :ref:`manual mapping <extbase_manual_mapping>`.
 
 ..  _naming-tables-mm:
@@ -278,7 +281,10 @@ follow this pattern:
    tx_<extkeyprefix>_<column-name>
 
 * `<extkeyprefix>` is the extension key without underscores, so `foo_bar` becomes `foobar`
-* `<column-name>` should clearly describe the purpose of the column
+* `<column-name>` purpose of the column, lower case letters with underscores
+
+.. tip::
+   If you work with column-names not following this convention (e.g. :php:`colPos`), you have to add a :ref:`column mapping <extbase_manual_mapping>`.
 
 .. _BackendModuleKey:
 
@@ -301,12 +307,16 @@ Example usage:
 
     return [
         // Submodule key
-        'web_productmanagement' => [
-            // Main module key (use existing main module 'web' here)
-            'parent' => 'web',
+        'content_productmanagement' => [
+            // Main module key (use existing main module 'content' here)
+            'parent' => 'content',
             // ...
         ],
     ];
+
+..  versionchanged:: 14.0
+    The main module `web` has been renamed to `content`.
+    See `Feature: #107628 - Improved backend module naming and structure <https://docs.typo3.org/permalink/changelog:feature-107628-1729026000>`_
 
 For more details have a look into the :ref:`backend-modules-configuration`
 chapter.
@@ -340,12 +350,12 @@ Plugin signature
 ..  versionchanged:: 14.0
     Adding frontend plugins as a "General Plugin", setting the content
     record :sql:`CType` to :sql:`'list'` and `list_type` to the plugin signature
-    is not possible anymore. See :ref:`plugins-list_type-migration`.
+    is not possible anymore. See `Migration <https://docs.typo3.org/permalink/t3coreapi:plugins-list_type-migration@13.4>`__.
 
 The plugin signature of non-Extbase plugins, registered via
-:php:`ExtensionManagementUtility::addPlugin()` is an arbitrarily defined string.
-By convention it should always be the extension name with all underscores removed
-followed by one underscore and then a lowercase, alphanumeric plugin key.
+:php:`ExtensionManagementUtility::addPlugin()`, is an arbitrary string.
+By convention it should be the extension name with all underscores removed,
+followed by one underscore and the alphanumeric plugin key in lowercase.
 Examples: :php:`"myextension_coolplugin"`, :php:`"examples_pi1"`.
 
 Extbase based plugins are registered via :php:`ExtensionUtility::registerPlugin()`.
