@@ -10,7 +10,7 @@ Query builder
     :depth: 1
     :local:
 
-The query builder provides a set of methods to create queries
+The :php-short:`TYPO3\CMS\Core\Database\Query\QueryBuilder` provides a set of methods to create queries
 programmatically.
 
 This chapter provides examples of the most common queries.
@@ -193,6 +193,48 @@ Default Restrictions
     :ref:`enableColumns <t3tca:ctrl-enablecolumns>` in the table's TCA ctrl section.
     See the :ref:`RestrictionBuilder <database-restriction-builder>` section for
     further details.
+
+..  _database-query-builder-selectLiteral:
+
+selectLiteral() and addSelectLiteral()
+======================================
+
+Create an advanced :sql:`SELECT` query. Typical usage:
+
+..  code-block:: php
+    :caption: EXT:my_extension/Classes/Domain/Repository/MyRepository.php
+
+    // SELECT `uid`,
+    //    6371.41 * ACOS(COS(RADIANS(:dcValue1)) * COS(RADIANS(tx_geosearch_lat)) * COS(
+    //    RADIANS(tx_geosearch_lng) - RADIANS(:dcValue2)) + SIN(
+    //    RADIANS(:dcValue3)) * SIN(
+    //    RADIANS(tx_geosearch_lat))) AS distance
+    //    FROM `tt_address`
+    $lat = '51.2442656';
+    $lng = '6.7374966';
+    $queryBuilder = $this->connectionPool->getQueryBuilderForTable('tt_address');
+    $result = $queryBuilder
+        ->select('uid')
+        ->addSelectLiteral('
+            6371.41 * ACOS(
+                COS(
+                    RADIANS(' . $queryBuilder->createNamedParameter($lat, Connection::PARAM_STR) . ')
+                ) * COS(
+                    RADIANS(tx_geosearch_lat)
+                ) * COS(
+                    RADIANS(tx_geosearch_lng) - RADIANS(' . $queryBuilder->createNamedParameter($lng, Connection::PARAM_STR) . ')
+                ) + SIN(
+                    RADIANS(' . $queryBuilder->createNamedParameter($lat, Connection::PARAM_STR) . ')
+                ) * SIN(
+                    RADIANS(tx_geosearch_lat)
+                )
+            ) AS distance
+        ')
+        ->from('tt_address')
+        ->executeQuery();
+
+:php:`selectLiteral()` and :php:`addSelectLiteral()` allow you to write complex queries as raw SQL statement.
+Because the whole query part won't be escaped, you are responsible to escape all parameters that you pass to the query manually!
 
 ..  _database-query-builder-count:
 
