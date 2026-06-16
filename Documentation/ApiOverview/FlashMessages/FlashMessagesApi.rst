@@ -45,10 +45,6 @@ of class :php:`\TYPO3\CMS\Core\Messaging\FlashMessage`:
 Flash messages severities
 -------------------------
 
-..  versionchanged:: 13.0
-    The previous class constants of :php:`\TYPO3\CMS\Core\Messaging\FlashMessage`
-    have been removed with TYPO3 v13.0.
-
 The severity is defined by using the
 :php:`\TYPO3\CMS\Core\Type\ContextualFeedbackSeverity` enumeration:
 
@@ -87,7 +83,7 @@ The message is added to the queue and then the template class calls
 :php:`\TYPO3\CMS\Core\Messaging\FlashMessageQueue::renderFlashMessages()` which renders all
 messages from the queue as inline flash messages. Here's how such a message looks like in a module:
 
-.. include:: /Images/AutomaticScreenshots/Examples/FlashMessages/FlashMessagesExample.rst.txt
+.. include:: /Images/ManualScreenshots/Examples/FlashMessages/FlashMessagesExample.rst.txt
 
 This shows flash messages with 2 types of rendering mechanisms:
 

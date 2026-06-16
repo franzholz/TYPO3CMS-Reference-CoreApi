@@ -23,12 +23,6 @@ A basic call looks like this:
     ];
     $formData = $formDataCompiler->compile($formDataCompilerInput, $formDataGroup);
 
-..  versionchanged:: 13.0
-    The FormEngine data provider requires the current
-    :ref:`PSR-7 request object <typo3-request>` passed with the input data.
-    Additionally, the form data group must be provided as second argument to
-    :php:`compile()`.
-
 The above code is a simplified version of the relevant part of the :php:`EditDocumentController`. This controller
 knows by its :code:`GET` or :code:`POST` parameters which record ("vanillaUid") of which specific table ("tableName")
 should be edited (command="edit") or created (command="new"), and sets this as init data to the DataCompiler. The
@@ -84,8 +78,10 @@ which in turn hands over the data array to a specific :php:`FormDataGroup`. What
 single classes that add or change data within the data array. They are called in a chain after each other. A :php:`FormDataGroup`
 has the responsibility to find out, which specific single data providers should be used, and calls them in a specific order.
 
-.. figure:: /Images/Plantuml/FormEngine/FormEngineDataCompiling.svg
-   :alt: Data compiling by multiple providers
+..  uml:: /Images/Plantuml/FormEngine/FormEngineDataCompiling.plantuml
+    :align: center
+    :width: 1000
+    :caption: Data compiling by multiple providers
 
 Why do we need this?
 

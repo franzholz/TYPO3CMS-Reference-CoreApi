@@ -118,9 +118,9 @@ method and then adds its own content:
         protected function renderNewRecordControls(ServerRequestInterface $request): void
         {
             parent::renderNewRecordControls($request);
-            $ll = 'LLL:EXT:examples/Resources/Private/Language/locallang.xlf'
-            $label = $GLOBALS['LANG']->sL($ll . ':help');
-            $text = $GLOBALS['LANG']->sL($ll . ':make_choice');
+            $languageDomain = 'my_extension:messages'
+            $label = $GLOBALS['LANG']->translate('help', $languageDomain);
+            $text = $GLOBALS['LANG']->label('make_choice', $languageDomain);
             $str = '<div><h2 class="uppercase" >' .  htmlspecialchars($label)
                 . '</h2>' . $text . '</div>';
             $this->code .= $str;
@@ -129,7 +129,7 @@ method and then adds its own content:
 
 The result can be seen here:
 
-..  include:: /Images/AutomaticScreenshots/Examples/Xclasses/XclassNewElementWizard.rst.txt
+..  include:: /Images/ManualScreenshots/Examples/Xclasses/XclassNewElementWizard.rst.txt
 
 The object-oriented rules of PHP, such as rules about visibility, apply here.
 As you are extending the original class you can overload or call methods

@@ -51,13 +51,16 @@ Extension development
         Extbase is a framework for creating TYPO3 frontend plugins
         and TYPO3 backend modules.
 
+    ..  card:: :ref:`Extbase (work in progress) <extbase-extension-framework>`
+
+        New Extbase documentation for TYPO3 v14. Work in progress.
+
 
     ..  card:: :ref:`Best practises and conventions <extension-Best-practises>`
 
         Explains how to choose an extension key, naming conventions
-        and how to best use configuration files
-        (:ref:`ext_localconf.php <ext-localconf-php>` and
-        :ref:`ext_tables.php <ext-tables-php>`)
+        and how to best use the configuration file
+        :ref:`ext_localconf.php <ext-localconf-php>`
 
 
     ..  card:: :ref:`Tutorials <extension-tutorials>`
@@ -74,5 +77,6 @@ Extension development
     Kickstarter/Index
     HowTo/Index
     Extbase/Index
+    ExtbaseRewrite/Index
     BestPractises/Index
     Tutorials/Index

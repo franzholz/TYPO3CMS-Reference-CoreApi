@@ -1,0 +1,16 @@
+routeEnhancers:
+  ConferenceList:
+    type: Extbase
+    extension: MyExtension
+    plugin: ConferenceList
+    defaultController: 'Conference::list'
+    routes:
+      - routePath: '/conferences'
+        _controller: 'Conference::list'
+      - routePath: '/conferences/{conference}'
+        _controller: 'Conference::show'
+    aspects:
+      conference:
+        type: PersistedAliasMapper
+        tableName: tx_myextension_domain_model_conference
+        routeFieldName: slug

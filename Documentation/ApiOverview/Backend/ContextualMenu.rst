@@ -14,7 +14,7 @@ Contextual menus exist in many places in the TYPO3 backend. Just try your
 luck clicking on any **icon** that you see. Chances are good that a contextual
 menu will appear, offering useful functions to execute.
 
-.. include:: /Images/AutomaticScreenshots/Examples/ContextualMenuExtended/ContextMenuTtContent.rst.txt
+.. include:: /Images/ManualScreenshots/Examples/ContextualMenuExtended/ContextMenuTtContent.rst.txt
 
 .. _csm-implementation:
 
@@ -23,16 +23,6 @@ Context menu rendering flow
 
 Markup
 ------
-
-..  versionchanged:: 13.0
-    The configuration of the context menu was streamlined. Replace
-
-    *   :html:`class="t3js-contextmenutrigger"` with :html:`data-contextmenu-trigger="click"`
-    *   :html:`data-table="pages"` with :html:`data-contextmenu-table="pages"`
-    *   :html:`data-uid="10"` with :html:`data-contextmenu-uid="10"`
-    *   :html:`data-context="tree"` with :html:`data-contextmenu-context="tree"`
-
-    to be compatible with TYPO3 v12+.
 
 The context menu is shown after clicking on the HTML element which has the
 :html:`data-contextmenu-trigger` attribute set together with
@@ -270,7 +260,7 @@ Tutorial: How to add a custom context menu item
 Follow these steps to add a custom menu item for pages records. You will add a
 "Hello world" item which will show an info after clicking.
 
-.. include:: /Images/AutomaticScreenshots/Examples/ContextualMenuExtended/ContextMenuHelloWorld.rst.txt
+.. include:: /Images/ManualScreenshots/Examples/ContextualMenuExtended/ContextMenuHelloWorld.rst.txt
 
 Step 1: Implementation of the item provider class
 -------------------------------------------------

@@ -37,6 +37,11 @@ The following folder and file structure is typical for a TYPO3 extension:
 
                 *   :ref:`Classes.php <extension-configuration-extbase-persistence-classes>`
 
+        *   :ref:`Fluid <extension-configuration-fluid>`
+
+            *   :ref:`Namespaces.php <extension-configuration-fluid-namespaces>`
+            *   :ref:`ComponentCollections.php <extension-configuration-backend-component-collections>`
+
         *   :ref:`TCA <extension-configuration-tca>`
 
             *   :ref:`Overrides <extension-configuration-tca-overrides>`
@@ -115,9 +120,7 @@ The following folder and file structure is typical for a TYPO3 extension:
         *   ...
 
     *   :ref:`composer.json <files-composer-json>`
-    *   :ref:`ext_emconf.php <ext_emconf-php>`
     *   :ref:`ext_localconf.php <ext-localconf-php>`
-    *   :ref:`ext_tables.php <ext-tables-php>`
     *   :ref:`ext_tables.sql <ext_tables-sql>`
 
 
@@ -143,14 +146,7 @@ An extension consists of:
 Reserved file names
 ===================
 
-Most of these files are not required, except :file:`ext_emconf.php`
-in :ref:`Classic mode installations not based on Composer <classic-installation>`
-and :file:`composer.json <extension-composer-json>` in :ref:`Composer installations <t3start:install>`.
-
-.. note::
-   It is recommended to keep :file:`ext_emconf.php` and :file:`composer.json <extension-composer-json>` in
-   public extensions that are published in the TYPO3 Extension Repository (TER), and
-   to ensure compatibility with Composer and legacy installations.
+Most of these files are not required, except :file:`composer.json <extension-composer-json>`.
 
 Do not use the prefix :file:`ext_` in your extension names as this is a reserved name.
 

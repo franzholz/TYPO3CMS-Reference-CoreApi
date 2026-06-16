@@ -94,19 +94,6 @@ the TYPO3 frontend:
     client matches :ref:`[SYS][devIPmask] <typo3ConfVars_sys_devIPmask>`, the page is
     shown as normal. This is useful during temporary site maintenance.
 
-..  _typo3ConfVars_fe_addRootLineFields:
-
-..  confval:: addRootLineFields
-    :Path: $GLOBALS['TYPO3_CONF_VARS']['FE']['addRootLineFields']
-    :name: typo3-conf-vars-fe-addRootLineFields
-
-    ..  versionchanged:: 13.2
-        The option `$GLOBALS['TYPO3_CONF_VARS']['FE']['addRootLineFields']`
-        has been removed without replacement with TYPO3 13.2.
-
-        Relations of table :sql:`pages` are now always resolved with nearly
-        no performance penalty in comparison to not having them resolved.
-
 ..  _typo3ConfVars_fe_checkFeUserPid:
 
 ..  confval:: checkFeUserPid
@@ -364,22 +351,6 @@ the TYPO3 frontend:
     :Default: ''
 
     Enter lines of default TypoScript, setup-field.
-
-..  _typo3ConfVars_fe_additionalAbsRefPrefixDirectories:
-
-..  confval:: additionalAbsRefPrefixDirectories
-    :Path: $GLOBALS['TYPO3_CONF_VARS']['FE']['additionalAbsRefPrefixDirectories']
-    :name: typo3-conf-vars-fe-additionalAbsRefPrefixDirectories
-    :type: text
-    :Default: ''
-
-    Enter additional directories to be prepended with absRefPrefix.
-    Directories must be comma-separated. TYPO3 already prepends the following
-    directories :file:`public/_assets/`, :file:`public/typo3temp/` and all
-    local storages including :file:`public/fileadmin/`.
-
-    In Classic mode installations without Composer :file:`typo3conf/ext`
-    and :file:`typo3/` are also prefixed.
 
 ..  _typo3ConfVars_fe_enable_mount_pids:
 

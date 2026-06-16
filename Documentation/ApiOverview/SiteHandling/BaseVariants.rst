@@ -33,7 +33,10 @@ would define a base variant to use in "Development" context.
     Environment variables can be used in the :yaml:`base` via ``%env(...)%``.
     :yaml:`condition` needs ``getenv(...)`` instead.
 
-..  include:: /Images/AutomaticScreenshots/SiteHandling/SiteHandlingBaseVariants-1.rst.txt
+..  figure:: /Images/ManualScreenshots/SiteHandling/SiteHandlingBaseVariants-1.png
+    :zoom: lightbox
+
+    A configured base variant for development context.
 
 ..  hint::
     For those coming from earlier TYPO3 versions: With site handling, there is
@@ -66,14 +69,14 @@ Properties
 ..  option:: typo3.version
 
     :type: string
-    :Example: `13.4.0`
+    :Example: `14.3.0`
 
     The current TYPO3 version.
 
 ..  option:: typo3.branch
 
     :type: string
-    :Example: `13.4`
+    :Example: `14.3`
 
     The current TYPO3 branch.
 
@@ -115,7 +118,7 @@ are available:
 ..  option:: compatVersion
 
     :type: string
-    :Example: `compatVersion("13.4.0")`, `compatVersion("12.4")`
+    :Example: `compatVersion("14.3.0")`, `compatVersion("13.4")`
 
     Match a TYPO3 version.
 

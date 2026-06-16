@@ -250,6 +250,12 @@ return [
     ],
     [
         'action' => 'createPhpClassDocs',
+        'class' => \TYPO3\CMS\Core\Security\ContentSecurityPolicy\Event\BeforePersistingReportEvent::class,
+        'targetFileName' => 'CodeSnippets/Events/Core/Security/BeforePersistingReportEvent.rst.txt',
+        'withCode' => false,
+    ],
+    [
+        'action' => 'createPhpClassDocs',
         'class' => \TYPO3\CMS\Core\Cache\Event\CacheFlushEvent::class,
         'targetFileName' => 'CodeSnippets/Events/Core/Cache/CacheFlushEvent.rst.txt',
         'withCode' => false,
@@ -342,6 +348,18 @@ return [
         'action' => 'createPhpClassDocs',
         'class' => \TYPO3\CMS\Core\Configuration\Event\AfterRichtextConfigurationPreparedEvent::class,
         'targetFileName' => 'CodeSnippets/Events/Core/AfterRichtextConfigurationPreparedEvent.rst.txt',
+        'withCode' => false,
+    ],
+    [
+        'action' => 'createPhpClassDocs',
+        'class' => \TYPO3\CMS\Core\Localization\Event\ModifyLanguagePackRemoteBaseUrlEvent::class,
+        'targetFileName' => 'CodeSnippets/Events/Core/ModifyLanguagePackRemoteBaseUrlEvent.rst.txt',
+        'withCode' => false,
+    ],
+    [
+        'action' => 'createPhpClassDocs',
+        'class' => \TYPO3\CMS\Core\Localization\Event\ModifyLanguagePacksEvent::class,
+        'targetFileName' => 'CodeSnippets/Events/Core/ModifyLanguagePacksEvent.rst.txt',
         'withCode' => false,
     ],
 ];

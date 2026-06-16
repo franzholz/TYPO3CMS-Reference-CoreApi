@@ -26,7 +26,10 @@ for system and extension translations from the official TYPO3 translation server
 The module is straightforward to use. Downloaded language packs are stored in the
 environment’s :ref:`Environment-labels-path`.
 
-..  include:: /Images/AutomaticScreenshots/AdminTools/ManageLanguagePacks.rst.txt
+..  figure:: /Images/ManualScreenshots/AdminTools/ManageLanguagePacks.png
+    :zoom: lightbox
+
+    The Languages module with some active languages and status of extensions language packs
 
 Language packs can also be fetched using the command line:
 
@@ -55,16 +58,25 @@ Administrators can install additional language packs directly in the backend:
 
 1.  Go to :guilabel:`System > Maintenance > Manage Language Packs`
 
-    ..  include:: /Images/AutomaticScreenshots/Modules/ManageLanguage.rst.txt
+    ..  figure:: /Images/ManualScreenshots/Modules/ManageLanguage.png
+        :alt: Manage language packs
+        :zoom: lightbox
+
+        Open the backend language administration module
 
 2.  Select :guilabel:`Add Language` and activate the new language:
 
-    ..  include:: /Images/AutomaticScreenshots/Modules/ManageLanguagePacksAddLanguage.rst.txt
+    ..  figure:: /Images/ManualScreenshots/Modules/ManageLanguagePacksAddLanguage.png
+        :alt: Add a language
+        :zoom: lightbox
+
+        Add the desired language
 
 3.  The selected language is now available:
 
-    ..  include:: /Images/AutomaticScreenshots/Modules/ManageLanguagePacksAddLanguageAddSuccess.rst.txt
-
+    ..  figure:: /Images/ManualScreenshots/Modules/ManageLanguagePacksAddLanguageAddSuccess.png
+        :alt: A language has been added
+        :zoom: lightbox
 
 ..  index:: Localization; Local translations
 ..  _xliff-translating-local:
@@ -197,7 +209,10 @@ add custom languages and provide your own translations using XLIFF 1.2 or 2.x.
 
     The new language is now available in the backend user settings:
 
-    ..  include:: /Images/AutomaticScreenshots/Internationalization/CustomLanguage.png.rst.txt
+    ..  figure:: /Images/ManualScreenshots/Internationalization/CustomLanguage.png
+        :zoom: lightbox
+
+        The new language appears in the user preferences
 
     For your own extensions, provide the custom language files in the
     :file:`Resources/Private/Language/` folder, for example

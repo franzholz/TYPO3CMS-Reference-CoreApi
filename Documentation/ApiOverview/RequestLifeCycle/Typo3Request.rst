@@ -57,20 +57,10 @@ The request object compatible with the PSR-7
         }
     }
 
-..  note::
-    Prior to TYPO3 v11.3, a custom Extbase request object is available that does
-    not adhere to the PSR-7 standard. If you want to stay compatible with
-    TYPO3 v10 and TYPO3 v11 you have to use the :ref:`global variable
-    <typo3-request-global-variable>`.
-
 ..  _typo3-request-extbase-validator:
 
 Extbase validator
 -----------------
-
-..  versionadded:: 13.2
-    Extbase :php-short:`\TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator`
-    provides a getter and a setter for the PSR-7 Request object.
 
 In Extbase validators the current request is available with
 `$this->getRequest()` if they extend the :php-short:`\TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator`:
@@ -155,6 +145,14 @@ as first argument for the :php:`process()` method. This object provides a
         }
     }
 
+..  hint::
+
+    Utilizing the PSR-7 request context inside a DataProcessor is
+    currently not attainable via proper API. The `$cObj->getRequest()` method is currently
+    still the recommended way to retrieve the request object, even though marked
+    as `@internal`. It internally falls back to utilize the :php:`$GLOBALS['TYPO3_REQUEST']`
+    variable, which could also be utilized directly (for now).
+
 ..  _typo3-request-console-command:
 
 Console command
@@ -234,7 +232,6 @@ The following attributes are available in **frontend** context:
 *    :doc:`RequestAttributes/CurrentContentObject`
 *    :doc:`RequestAttributes/FrontendCacheCollector`
 *    :doc:`RequestAttributes/FrontendCacheInstruction`
-*    :doc:`RequestAttributes/FrontendController`
 *    :doc:`RequestAttributes/FrontendPageInformation`
 *    :doc:`RequestAttributes/FrontendTyposcript`
 *    :doc:`RequestAttributes/FrontendUser`

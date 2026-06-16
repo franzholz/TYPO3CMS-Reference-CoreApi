@@ -149,8 +149,11 @@ There are 3 different methods you can use to read the changelogs:
 #.  Read the changelog in the :ref:`Extension Scanner <t3coreapi:extension-scanner>`
     (as explained above).
 
-..  include:: /Images/AutomaticScreenshots/Upgrade/UpgradeAnalysis.rst.txt
+..  figure:: /Images/ManualScreenshots/Upgrade/UpgradeAnalysis.png
+    :alt: Upgrade Analysis
+    :zoom: lightbox
 
+    The "Upgrade Analysis" in the Install Tool
 
 ..  _handling-deprecations:
 ..  _deprecations:
@@ -191,8 +194,8 @@ to automatically refactor the code for a lot of deprecations.
     If PHP classes, methods, constants, functions or parameters are to be
     removed, they will be *marked as deprecated* first and not removed until the
     next major release of TYPO3. For example: a method that gets deprecated in
-    version 12.3.0 will remain fully functional in all 12.x.y releases, but will
-    be removed in version 13.
+    version 13.3.0 will remain fully functional in all 13.x.y releases, but will
+    be removed in version v14.
 
     This strategy gives developers sufficient time to adjust their TYPO3
     extensions, assuming many agencies upgrade from one LTS release to the next

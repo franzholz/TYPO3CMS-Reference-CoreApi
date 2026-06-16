@@ -74,8 +74,6 @@ improves the overall quality and maintainability of your code base.
 Use log rotation
 ================
 
-..  versionadded:: 13.0
-
 Replace :php-short:`\TYPO3\CMS\Core\Log\Writer\FileWriter`
 with :php-short:`\TYPO3\CMS\Core\Log\Writer\RotatingFileWriter`. Define a
 rotation interval and specify how many rotated files should be retained.
@@ -187,7 +185,7 @@ If the deprecation log continues to be written, check the following:
 #.  **Look for overrides in extensions**
 
     Some extensions may override logging settings in their
-    :file:`ext_localconf.php` or :file:`ext_tables.php`. Check these files
+    :file:`ext_localconf.php`. Check these files
     if your configuration appears to be ignored.
 
 ..  _production-logging-security:

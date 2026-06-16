@@ -16,19 +16,17 @@ Fluid is a templating engine commonly used within TYPO3.
     Introduction
     Fluid Syntax <https://docs.typo3.org/permalink/fluid:syntax>
     UsingFluidInTypo3
-    AdditionalAttributes
     DevelopCustomViewhelper
     ViewHelper reference <https://docs.typo3.org/other/typo3/view-helper-reference/main/en-us/>
+    Versions
 
 ..  _fluid-syntax:
-..  _fluid-variables:
 ..  _fluid-variables-reserved:
 ..  _fluid-variables-reserved-migration:
 ..  _fluid-boolean:
 ..  _fluid-arrays:
 ..  _fluid-dynamic-properties:
 ..  _fluid-syntax-viewhelpers:
-..  _fluid-syntax-viewhelpers-import-namespaces:
 ..  _fluid-viewhelper-attributes:
 ..  _fluid-viewhelper-attributes-simple:
 ..  _fluid-inline-notation:

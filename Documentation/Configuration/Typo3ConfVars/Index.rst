@@ -27,9 +27,7 @@ Configuration options are stored internally in the global array
 They can be overridden in the file  :file:`system/additional.php`. Some settings
 can also be overridden by installed extensions. They are then defined in extension file
 `ext_localconf.php <https://docs.typo3.org/permalink/t3coreapi:ext-localconf-php>`_
-for the frontend and backend contexts or in the extension
-`ext_tables.php <https://docs.typo3.org/permalink/t3coreapi:ext-tables-php>`_
-for the backend context only.
+for the frontend and backend contexts.
 
 This chapter describes the global configuration in more detail and gives hints
 about further configuration possibilities.
@@ -213,9 +211,15 @@ change parts of :file:`config/system/settings.php`. They can be found in
 :guilabel:`System > Settings` - most importantly section
 :guilabel:`Configure installation-wide options`:
 
-..  include:: /Images/AutomaticScreenshots/AdminTools/AllConfiguration.rst.txt
+..  figure:: /Images/ManualScreenshots/AdminTools/AllConfiguration.png
+    :zoom: lightbox
 
-..  include:: /Images/AutomaticScreenshots/AdminTools/InstallationWideOptions.rst.txt
+    Configure installation-wide options :guilabel:`System > Settings`
+
+..  figure:: /Images/ManualScreenshots/AdminTools/InstallationWideOptions.png
+    :zoom: lightbox
+
+    Configure installation-wide options with an active search
 
 ..  index:: File; typo3/sysext/core/Configuration/DefaultConfiguration.php
 ..  _typo3ConfVars-defaultConfiguration:

@@ -117,6 +117,12 @@ return [
     ],
     [
         'action' => 'createPhpClassDocs',
+        'class' => \TYPO3\CMS\Backend\Form\Event\CustomFileSelectorsEvent::class,
+        'targetFileName' => 'CodeSnippets/Events/Backend/CustomFileSelectorsEvent.rst.txt',
+        'withCode' => false,
+    ],
+    [
+        'action' => 'createPhpClassDocs',
         'class' => \TYPO3\CMS\Backend\Form\Event\ModifyInlineElementControlsEvent::class,
         'targetFileName' => 'CodeSnippets/Events/Backend/ModifyInlineElementControlsEvent.rst.txt',
         'withCode' => false,
@@ -144,6 +150,12 @@ return [
         'action' => 'createPhpClassDocs',
         'class' => TYPO3\CMS\Backend\Controller\Event\AfterBackendPageRenderEvent::class,
         'targetFileName' => 'CodeSnippets/Events/Backend/AfterBackendPageRenderEvent.rst.txt',
+        'withCode' => false,
+    ],
+    [
+        'action' => 'createPhpClassDocs',
+        'class' => TYPO3\CMS\Backend\Controller\Event\BeforeBackendPageRenderEvent::class,
+        'targetFileName' => 'CodeSnippets/Events/Backend/BeforeBackendPageRenderEvent.rst.txt',
         'withCode' => false,
     ],
     [
@@ -299,14 +311,8 @@ return [
     ],
     [
         'action' => 'createPhpClassDocs',
-        'class' => TYPO3\CMS\Backend\View\Event\BeforeSectionMarkupGeneratedEvent::class,
-        'targetFileName' => 'CodeSnippets/Events/Backend/BeforeSectionMarkupGeneratedEvent.rst.txt',
-        'withCode' => false,
-    ],
-    [
-        'action' => 'createPhpClassDocs',
-        'class' => TYPO3\CMS\Backend\View\Event\AfterSectionMarkupGeneratedEvent::class,
-        'targetFileName' => 'CodeSnippets/Events/Backend/AfterSectionMarkupGeneratedEvent.rst.txt',
+        'class' => \TYPO3\CMS\Backend\Search\Event\ModifyConstraintsForLiveSearchEvent::class,
+        'targetFileName' => 'CodeSnippets/Events/Backend/ModifyConstraintsForLiveSearchEvent.rst.txt',
         'withCode' => false,
     ],
     [
@@ -321,4 +327,23 @@ return [
         'targetFileName' => 'CodeSnippets/Events/Backend/SudoModeVerifyEvent.rst.txt',
         'withCode' => false,
     ],
+    [
+        'action' => 'createPhpClassDocs',
+        'class' => \TYPO3\CMS\Backend\Event\AddUserSettingsJavaScriptModulesEvent::class,
+        'targetFileName' => 'CodeSnippets/Events/Backend/AddUserSettingsJavaScriptModulesEvent.rst.txt',
+        'withCode' => false,
+    ],
+    [
+        'action' => 'createPhpClassDocs',
+        'class' => \TYPO3\CMS\Backend\Localization\Event\ModifyLocalizationHandlerIsAvailableEvent::class,
+        'targetFileName' => 'CodeSnippets/Events/Backend/ModifyLocalizationHandlerIsAvailableEvent.rst.txt',
+        'withCode' => false,
+    ],
+    [
+        'action' => 'createPhpClassDocs',
+        'class' => \TYPO3\CMS\Backend\Controller\Event\ModifyNewRecordCreationLinksEvent::class,
+        'targetFileName' => 'CodeSnippets/Events/Backend/ModifyNewRecordCreationLinksEvent.rst.txt',
+        'withCode' => false,
+    ],
+
 ];

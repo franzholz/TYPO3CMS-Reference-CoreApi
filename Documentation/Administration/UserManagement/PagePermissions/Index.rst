@@ -6,10 +6,6 @@
 Page permissions
 ================
 
-..  versionchanged:: 13.2
-    The module to handle page permissions has been renamed from
-    :guilabel:`Access` to :guilabel:`Permissions`.
-
 :ref:`DB mounts <db-mounts>` are not the whole story about access to pages.
 Users and groups also need to have rights to perform operations on the
 pages, like viewing, editing or deleting.
@@ -36,9 +32,6 @@ To change the permissions, click on the edit button.
 
 It is also possible to change owner, group and permissions
 recursively, even for the whole page tree. Use the dropdown to select the depth.
-
-..  figure:: /Images/ManualScreenshots/UserManagement/PermissionsModuleChangeGroupDepth.png
-    :alt: Preparing for recursively changing the group on the whole page tree
 
 By choosing group "Editors" as group and then "Set recursively 2 levels"
 in the "Depth" dropdown, we will assign **all** pages in the

@@ -12,10 +12,9 @@ FlexForms can be used to store data within an XML structure inside a single DB
 column.
 
 ..  attention::
-    ..  versionchanged:: 13.0
-        The superfluous tag :xml:`TCEforms` was removed and is not evaluated
-        anymore. All :xml:`TCEforms` tags **must** be removed. Otherwise the
-        FlexForm is displayed broken in the backend records.
+    The superfluous tag :xml:`TCEforms` was removed and is not evaluated
+    anymore. All :xml:`TCEforms` tags **must** be removed. Otherwise the
+    FlexForm is displayed broken in the backend records.
 
 ..  contents::
 
@@ -33,6 +32,13 @@ column.
 Extbase plugin settings as FlexForm
 ===================================
 
+..  deprecated:: 14.0
+    :php:`\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue()`
+    has been deprecated. For Extbase plugins use the 7th parameter of method
+    :php:`\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin()` instead.
+
+    See `Deprecation: #107047 - ExtensionManagementUtility::addPiFlexFormValue() <https://docs.typo3.org/permalink/changelog:deprecation-107047-1751984220>`_.
+
 FlexForms are commonly used to configure Extbase plugins:
 
 ..  literalinclude:: _codesnippets/_extbase_plugin.php
@@ -49,8 +55,18 @@ in the Fluid templates as variable `{settings.someSetting}`. For example:
 For an example see the plugin settings of the plugins in extension
 :composer:`georgringer/news`.
 
+..  _flexforms-plain-plugin:
+
 Plain plugins configured by FlexForms
 =====================================
+
+..  deprecated:: 14.0
+    :php:`\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue()`
+    has been deprecated. For plain plugins use the 2nd parameter of method
+    :php:`\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPlugin()` instead.
+
+    See `Deprecation: #107047 - ExtensionManagementUtility::addPiFlexFormValue() <https://docs.typo3.org/permalink/changelog:deprecation-107047-1751984220>`_.
+
 
 Complex content elements or plain plugins not registered via Extbase can
 use FlexForms for configuration as well. Plain plugins can be configured with

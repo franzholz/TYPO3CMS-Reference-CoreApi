@@ -66,9 +66,7 @@ additional fields in pages to be filled out:
 `DOKTYPE_SYSFOLDER` - ID: `254`
    Folder
 
-.. versionchanged:: 13.0
+   A folder is a place where records from various database tables can be stored.
+   Some records may only be created in folders and are not available on standard pages.
 
-   The recycler doktype (`DOKTYPE_RECYCLER` - ID: `255`) is removed and cannot be selected or used anymore. Any
-   existing recycler pages are migrated to a page of type "Backend User Section"
-   which is also not accessible if there is no valid backend user with permission
-   to see this page.
+   It can also be used to group standard pages so they can be displayed in a custom menu.

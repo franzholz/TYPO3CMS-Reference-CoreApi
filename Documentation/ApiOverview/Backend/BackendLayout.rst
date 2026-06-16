@@ -34,18 +34,23 @@ layouts are available if an
 backend layouts have been
 :ref:`defined as records or page TSconfig <be-layout-definition>`.
 
-.. include:: /Images/AutomaticScreenshots/BackendLayouts/PagePropertiesAppearance.rst.txt
+..  figure:: /Images/ManualScreenshots/BackendLayouts/PagePropertiesAppearance.png
+    :zoom: lightbox
+
+    Choose the backend layout in the page properties
 
 ..  versionchanged:: 14.0
     The main module `web` has been renamed to `content`.
     See `Feature: #107628 - Improved backend module naming and structure <https://docs.typo3.org/permalink/changelog:feature-107628-1729026000>`_
 
-
 The :guilabel:`Content > Status` module gives an overview of the backend layouts configured or
 inherited from a parent page at
 :guilabel:`Content > Status > Pagetree overview > Type: Layouts`:
 
-.. include:: /Images/AutomaticScreenshots/BackendLayouts/PageTreeLayoutOverview.rst.txt
+..  figure:: /Images/ManualScreenshots/BackendLayouts/PageTreeLayoutOverview.png
+    :zoom: lightbox
+
+    Overview of the backend layouts used
 
 .. index::
    Backend layout; Record
@@ -258,3 +263,67 @@ integrates the grid layout concept also to regular content elements.
 
 The extension :composer:`ichhabrecht/content-defender` offers advanced options to
 the column positions i.e. allowed or disallowed content elements, a maximal number of content elements.
+
+..  _backend-layout-providers:
+
+Backend layout providers
+========================
+
+..  versionchanged:: 14.0
+    Backend layout providers are now autoconfigured once they implement the required
+    :php:`\TYPO3\CMS\Backend\View\BackendLayout\DataProviderInterface`.
+
+    The configuration via :php:`$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutDataProvider']`
+    has no effect anymore but can be kept until dropping TYPO3 v13 support.
+
+    See `Feature: #107784 - Autoconfigure backend layout data providers <https://docs.typo3.org/permalink/changelog:feature-107784-1760946896>`_.
+
+Backend layout data providers, classes implementing :php:`\TYPO3\CMS\Backend\View\BackendLayout\DataProviderInterface`,
+supply TYPO3 with the available backend layouts
+and allow layout definitions to be loaded from different sources, such
+as database records, Page TSconfig, or custom implementations.
+
+They define which content areas editors can see and use in the
+:guilabel:`Content > Layout` module.
+
+..  literalinclude:: _BackendLayout/_MyLayoutDataProvider.php
+    :caption: EXT:my_extension/Classes/DataProviders/MyLayoutDataProvider.php
+
+The TYPO3 Core provides the :php-short:`\TYPO3\CMS\Backend\View\BackendLayout\DefaultDataProvider` and
+the :php-short:`\TYPO3\CMS\Backend\View\BackendLayout\PageTsBackendLayoutDataProvider`.
+
+Third party extension :composer:`fluidtypo3/flux` implements, for example, its
+own backend layout data provider.
+
+..  _backend-layout-providers-configuration:
+
+Manual service configuration
+----------------------------
+
+If autoconfiguration is disabled, manually tag the service in
+:file:`Services.yaml`:
+
+..  code-block:: yaml
+    :caption: EXT:my_extension/Configuration/Services.yaml
+
+     services:
+       MyVendor\MyExtension\View\BackendLayout\MyLayoutDataProvider:
+         tags:
+           - name: page_layout.data_provider
+
+..  _backend-layout-providers:
+
+Backend layout provider ordering
+--------------------------------
+
+If you need to control the order in which providers are processed, use service
+priorities in your :file:`Services.yaml`:
+
+..  code-block:: yaml
+    :caption: EXT:my_extension/Configuration/Services.yaml
+
+    services:
+      MyVendor\MyExtension\View\BackendLayout\MyLayoutDataProvider:
+        tags:
+          - name: page_layout.data_provider
+            priority: 100

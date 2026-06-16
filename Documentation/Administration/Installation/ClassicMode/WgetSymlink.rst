@@ -15,7 +15,7 @@ Classic TYPO3 installation on linux using symlinks and shell access
     compared to using Composer.
 
     If possible, use the dependency manager `Composer <https://getcomposer.org/>`_.
-    See :ref:`Composer-based installation instructions <install>`.
+    See :ref:`Composer-based installation instructions <installation>`.
 
 This guide explains how to install TYPO3 manually on a Linux/Unix or Windows
 server using a `.tar.gz` or `.zip` archive. Shell access is required to
@@ -80,12 +80,12 @@ Ensure that the package is placed one level above the web server's document root
 Unpack the TYPO3 package using tar
 ----------------------------------
 
-Unpack the :file:`typo3_src-13.4.y.tar.gz`:
+Unpack the :file:`typo3_src-14.3.y.tar.gz`:
 
 ..  code-block:: bash
     :caption: /var/www/site/$
 
-    tar xzf typo3_src-13.4.y.tar.gz
+    tar xzf typo3_src-14.3.y.tar.gz
 
 The `y` placeholders in the folder name will be replaced with the
 latest patch version number of TYPO3.
@@ -104,7 +104,7 @@ exist yet, create it:
 
     mkdir -p my_project
     cd my_project
-    ln -s ../typo3_src-13.4.y typo3_src
+    ln -s ../typo3_src-14.3.y typo3_src
     ln -s typo3_src/index.php index.php
     ln -s typo3_src/typo3 typo3
 
@@ -122,10 +122,10 @@ After creating the symlinks, your directory structure should look like this:
 
 ..  directory-tree::
 
-    *   :path:`typo3_src-13.4.y/`
+    *   :path:`typo3_src-14.3.y/`
     *   :path:`my_project/`
 
-        *   :path:`typo3_src -> ../typo3_src-13.4.y/`
+        *   :path:`typo3_src -> ../typo3_src-14.3.y/`
         *   :path:`typo3 -> typo3_src/typo3/`
         *   :file:`index.php -> typo3_src/index.php`
 

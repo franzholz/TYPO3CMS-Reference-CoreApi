@@ -105,11 +105,6 @@ The function :php:`user_orderBy` populates the select field in
         // ...
     }
 
-How this looks when configuring the plugin:
-
-..  figure:: /Images/ManualScreenshots/FlexForms/FlexFormsItemsProcFunc.png
-   :class: with-shadow
-
 ..  seealso::
 
     * :ref:`itemsProcFunc <t3tca:columns-select-properties-itemsprocfunc>` in TCA reference.
@@ -207,8 +202,8 @@ FlexForm attribute. If that is missing, an empty value will be
 shown in the backend (:ref:`FormEngine <FormEngine>`)
 fields.
 
-While can use page TSconfig's :ref:`t3tsref:pageTsTcaDefaults` to
-modify defaults of TCA-based attributes, it is not
+While you can use page TSconfig's :ref:`t3tsref:pageTsTcaDefaults` to
+modify defaults of TCA-based attributes, this is not
 possible with FlexForms. This is because the values are calculated
 at an earlier step in the Core workflow, where FlexForm values
 have not yet been extracted.
