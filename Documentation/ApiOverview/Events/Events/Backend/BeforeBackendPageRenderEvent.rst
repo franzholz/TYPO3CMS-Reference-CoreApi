@@ -2,9 +2,9 @@
 ..  index:: Events; BeforeBackendPageRenderEvent
 ..  _BeforeBackendPageRenderEvent:
 
-============================
-BeforeBackendPageRenderEvent
-============================
+==============================
+`BeforeBackendPageRenderEvent`
+==============================
 
 ..  versionadded:: 14.2
 
@@ -27,7 +27,6 @@ Example
 =======
 
 ..  literalinclude:: _BeforeBackendPageRenderEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Backend/EventListener/MyEventListener.php
 
 ..  _BeforeBackendPageRenderEvent-api:

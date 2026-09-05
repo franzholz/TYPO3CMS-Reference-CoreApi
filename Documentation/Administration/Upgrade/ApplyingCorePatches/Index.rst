@@ -2,9 +2,9 @@
 
 .. _applying-core-patches:
 
-==============================
+=====================
 Applying Core patches
-==============================
+=====================
 
 At some point you may be required to apply changes to TYPO3's core. For example
 you may be testing a colleague's feature or working on a patch of your own.
@@ -121,6 +121,8 @@ You can get a more verbose error message by calling:
    :caption: Very, very verbose error message
 
    composer install -vvv
+
+..  _applying-core-patches-creating-diff-core:
 
 Creating a diff from a Core change
 ==================================
@@ -258,7 +260,7 @@ First, install the package:
 
    composer req gilbertsoft/typo3-core-patches
 
-Then look up the change ID on `review.typo3.org <https://review.typo3.org/>`.
+Then look up the change ID on `review.typo3.org <https://review.typo3.org/>`_.
 You can find it in the URL or left of the title of the change. In the example
 it's `75368`.
 

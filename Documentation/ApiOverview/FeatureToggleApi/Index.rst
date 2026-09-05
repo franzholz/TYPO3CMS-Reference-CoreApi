@@ -33,6 +33,8 @@ Examples for features are:
    :local:
 
 
+..  _feature-toggles-naming-feature-toggles:
+
 Naming of feature toggles
 =========================
 
@@ -196,6 +198,8 @@ Internally, the changes are written to :file:`config/system/settings.php`:
     box is rendered. In that case, all input fields are disabled and the save
     button is not available.
 
+..  _feature-toggles-feature-toggles-typoscript:
+
 Feature toggles in TypoScript
 =============================
 
@@ -218,7 +222,7 @@ The :ref:`t3viewhelper:typo3-fluid-feature` can be used to check for a feature i
 template:
 
 ..  code-block:: html
-    :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.html
+    :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.fluid.html
 
     <f:feature name="unifiedPageTranslationHandling">
        This is being shown if the flag is enabled

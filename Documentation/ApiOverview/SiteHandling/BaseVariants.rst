@@ -30,8 +30,8 @@ conditions, for example:
 would define a base variant to use in "Development" context.
 
 ..  note::
-    Environment variables can be used in the :yaml:`base` via ``%env(...)%``.
-    :yaml:`condition` needs ``getenv(...)`` instead.
+    Environment variables can be used in the :yaml:`base` via `%env(...)%`.
+    :yaml:`condition` needs `getenv(...)` instead.
 
 ..  figure:: /Images/ManualScreenshots/SiteHandling/SiteHandlingBaseVariants-1.png
     :zoom: lightbox
@@ -53,15 +53,18 @@ would define a base variant to use in "Development" context.
 The following variables and functions are available in addition to the default
 Symfony functionality:
 
+..  _sitehandling-base-variants-example:
+
 Example
 =======
 
 ..  literalinclude:: _base-variants.yaml
-    :language: yaml
     :caption: config/sites/<some_site>/config.yaml | typo3conf/sites/<some_site>/config.yaml
 
 
 .. index:: Site handling; Base variant properties
+
+..  _sitehandling-base-variants-properties:
 
 Properties
 ==========
@@ -99,6 +102,8 @@ Properties
 .. index::
    Site handling; Base variant functions
    DefaultFunctionsProvider
+
+..  _sitehandling-base-variants-functions:
 
 Functions
 =========
@@ -143,7 +148,7 @@ are available:
 ..  option:: date
 
     :type: string
-    :Example: checking the current month: `date("j") == 7`
+    :Example: checking the day of the month: `date("j") == 7`
 
     Get the current date in given format.
 

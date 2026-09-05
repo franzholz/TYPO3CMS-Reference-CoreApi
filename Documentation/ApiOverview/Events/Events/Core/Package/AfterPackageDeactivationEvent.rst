@@ -2,9 +2,9 @@
 ..  index:: Events; AfterPackageDeactivationEvent
 ..  _AfterPackageDeactivationEvent:
 
-=============================
-AfterPackageDeactivationEvent
-=============================
+===============================
+`AfterPackageDeactivationEvent`
+===============================
 
 The PSR-14 event :php:`\TYPO3\CMS\Core\Package\Event\AfterPackageDeactivationEvent`
 is triggered after a package has been deactivated.
@@ -17,10 +17,14 @@ is triggered after a package has been deactivated.
     `installer events by Composer <https://getcomposer.org/doc/articles/scripts.md#installer-events>`__
     for Composer-based installations.
 
+..  _after-package-deactivation-event-example:
+
 Example
 =======
 
 ..  include:: /_includes/EventsContributeNote.rst.txt
+
+..  _after-package-deactivation-event-api:
 
 API
 ===

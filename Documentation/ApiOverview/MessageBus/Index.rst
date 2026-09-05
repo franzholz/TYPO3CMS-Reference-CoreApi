@@ -76,7 +76,6 @@ A :file:`Services.yaml` entry is needed to use :yaml:`before`/:yaml:`after`
 for registration if you need to define an order:
 
 ..  literalinclude:: _demo-handler.yaml
-    :language: yaml
     :caption: EXT:my_extension/Configuration/Services.yaml
 
 ..  _message-bus-routing:
@@ -112,7 +111,7 @@ This will route all messages to the asynchronous transport (mind the :php:`*`).
 
 ..  _message-bus-consume-command:
 
-Async message handling - The consume command
+Async message handling - the consume command
 --------------------------------------------
 
 To consume messages, run the command:
@@ -188,7 +187,7 @@ Advanced usage
 
 ..  _message-bus-custom-transport:
 
-Configure a custom transport (Senders/Receivers)
+Configure a custom transport (senders/receivers)
 ------------------------------------------------
 
 Transports are configured in the services configuration. To allow the
@@ -212,7 +211,6 @@ name used in the settings is resolved to a service that has been tagged with
     ];
 
 ..  literalinclude:: _custom-transport.yaml
-    :language: yaml
     :caption: EXT:my_extension/Configuration/Services.yaml | config/system/services.yaml
 
 The TYPO3 Core has been tested with three transports:
@@ -237,14 +235,13 @@ consume command. This allows controlling message processing rates to:
 
 ..  _message-bus-example-rate-limiter:
 
-Example: Usage of a rate limiter
+Example: usage of a rate limiter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Use the following configuration to limit the process of messages to
 max. 100 each 60 seconds:
 
 ..  literalinclude:: _add-rate-limiter.yaml
-    :language: yaml
     :caption: EXT:my_extension/Configuration/Services.yaml | config/system/services.yaml
 
 ..  hint::
@@ -253,14 +250,13 @@ max. 100 each 60 seconds:
 
 ..  _message-bus-in-memory-transport-testing:
 
-InMemoryTransport for testing
------------------------------
+`InMemoryTransport` for testing
+-------------------------------
 
 The :php:`InMemoryTransport` is a transport that should only be used while
 testing.
 
 ..  literalinclude:: _in-memory-transport.yaml
-    :language: yaml
     :caption: EXT:my_extension/Configuration/Services.yaml | config/system/services.yaml
 
 
@@ -279,7 +275,6 @@ To add your own middleware, tag it as :yaml:`messenger.middleware` and set the
 order using TYPO3's :yaml:`before` and :yaml:`after` ordering mechanism:
 
 ..  literalinclude:: _custom-middleware.yaml
-    :language: yaml
     :caption: EXT:my_extension/Configuration/Services.yaml | config/system/services.yaml
 
 

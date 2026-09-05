@@ -8,12 +8,14 @@
 Database
 ========
 
+..  _troubleshooting-database-mysql:
+
 MySQL
 =====
 
 .. _troubleshooting-character-sets:
 
-Character Set
+Character set
 -------------
 
 TYPO3 uses UTF-8 encoding, you will need to ensure that your

@@ -3,9 +3,9 @@
 ..  include:: /Includes.rst.txt
 ..  _t3ds:
 
-============================================
-T3DataStructure, the format behind FlexForms
-============================================
+==============================================
+`T3DataStructure`, the format behind FlexForms
+==============================================
 
 TYPO3’s **T3DataStructure** is an XML format for defining hierarchical data.
 
@@ -18,7 +18,7 @@ FlexForms. This documentation describes the general XML format.
 
 **Key facts:**
 
--   Defined in XML with a root ``<T3DataStructure>`` tag.
+-   Defined in XML with a root `<T3DataStructure>` tag.
 -   Compatible with :php:`GeneralUtility::xml2array()`, mapping directly to a
     multidimensional PHP array.
 -   Can be divided into *sheets*, a one-dimensional categorization whose purpose

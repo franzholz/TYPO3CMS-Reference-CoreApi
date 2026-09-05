@@ -5,7 +5,7 @@
 ..  _logging-quickstart:
 
 ==========================================
-Quickstart: Writing to the logger from PHP
+Quickstart: writing to the logger from PHP
 ==========================================
 
 ..  index::
@@ -20,7 +20,6 @@ Instantiate a logger for the current class
 automatically instantiate the logger:
 
 ..  literalinclude:: _MyClass.php
-    :language: php
     :caption: EXT:my_extension/Classes/MyClass.php
 
 
@@ -31,6 +30,8 @@ automatically instantiate the logger:
     Logging; logger->log
     Logging; logger->error
     Logging; logger->warning
+
+..  _logging-quickstart-log-2:
 
 Log
 ===
@@ -72,6 +73,8 @@ specifying an invalid value) should use placeholders, denoted by
 ..  index::
     Logging; Output
     Logging; FileWriter
+
+..  _logging-quickstart-set-logging-output:
 
 Set logging output
 ==================

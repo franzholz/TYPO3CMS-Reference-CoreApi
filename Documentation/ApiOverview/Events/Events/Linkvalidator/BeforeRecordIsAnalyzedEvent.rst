@@ -3,14 +3,16 @@
 ..  _BeforeRecordIsAnalyzedEvent:
 
 
-===========================
-BeforeRecordIsAnalyzedEvent
-===========================
+=============================
+`BeforeRecordIsAnalyzedEvent`
+=============================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Linkvalidator\Event\BeforeRecordIsAnalyzedEvent`
 allows to modify results (= add results) or modify the record
 before :doc:`LinkValidator <ext_linkvalidator:Index>` analyzes the record.
+
+..  _before-record-is-analyzed-event-example:
 
 Example
 =======
@@ -29,12 +31,12 @@ extend any class. It has to provide a method that accepts an event of type
 :php:`\TYPO3\CMS\Linkvalidator\Event\BeforeRecordIsAnalyzedEvent`. By default,
 the method is called :php:`__invoke`:
 
-..  include:: /CodeSnippets/Events/Linkvalidator/BeforeRecordIsAnalyzedEvent/ExampleInvoke.rst.txt
+.. literalinclude:: /CodeSnippets/Events/Linkvalidator/BeforeRecordIsAnalyzedEvent/ExampleInvoke.php
+   :caption: Class T3docs\\Examples\\EventListener\\LinkValidator\\CheckExternalLinksToLocalPagesEventListener
 
 The listener must then be registered in the extensions :php:`Services.yaml`:
 
 ..  literalinclude:: _BeforeRecordIsAnalyzedEvent/_Services.yaml
-    :language: yaml
     :caption: EXT:examples/Configuration/Services.yaml
 
 Read :ref:`how to configure dependency injection in extensions <dependency-injection-in-extensions>`.
@@ -46,20 +48,23 @@ additional link errors and the
 we can automatically parse for links. These two classes have to be injected via
 :ref:`dependency injection <Dependency-Injection>`:
 
-..  include:: /CodeSnippets/Events/Linkvalidator/BeforeRecordIsAnalyzedEvent/ExampleInject.rst.txt
+.. literalinclude:: /CodeSnippets/Events/Linkvalidator/BeforeRecordIsAnalyzedEvent/ExampleInject.php
+   :caption: Class T3docs\\Examples\\EventListener\\LinkValidator\\CheckExternalLinksToLocalPagesEventListener
 
 Now we use the :php:`SoftReferenceParserFactory` to find all registered link
 parsers for a soft reference. Then we apply each of these parsers in turn to
 the configured field in the current record. For each link found we can now
 match, if it is an external link to an internal page.
 
-..  include:: /CodeSnippets/Events/Linkvalidator/BeforeRecordIsAnalyzedEvent/ParseFields.rst.txt
+.. literalinclude:: /CodeSnippets/Events/Linkvalidator/BeforeRecordIsAnalyzedEvent/ParseFields.php
+   :caption: Class T3docs\\Examples\\EventListener\\LinkValidator\\CheckExternalLinksToLocalPagesEventListener
 
 If the URL found in the matching is external and contains the local domain name
 we add an entry to the :php:`BrokenLinkRepository` and to the result set of
 :php:`BeforeRecordIsAnalyzedEvent`.
 
-..  include:: /CodeSnippets/Events/Linkvalidator/BeforeRecordIsAnalyzedEvent/AddToBrokenLinkRepository.rst.txt
+.. literalinclude:: /CodeSnippets/Events/Linkvalidator/BeforeRecordIsAnalyzedEvent/AddToBrokenLinkRepository.php
+   :caption: Class T3docs\\Examples\\EventListener\\LinkValidator\\CheckExternalLinksToLocalPagesEventListener
 
 The :php:`BrokenLinkRepository` is not an Extbase repository but a repository
 based on the :ref:`Doctrine database abstraction (DBAL) <Database_Introduction>`.
@@ -76,6 +81,8 @@ need to worry about escaping here.
 
 See the complete class here:
 `CheckExternalLinksToLocalPagesEventListener <https://github.com/TYPO3-Documentation/t3docs-examples/blob/main/Classes/EventListener/LinkValidator/CheckExternalLinksToLocalPagesEventListener.php>`__.
+
+..  _before-record-is-analyzed-event-api:
 
 API
 ===

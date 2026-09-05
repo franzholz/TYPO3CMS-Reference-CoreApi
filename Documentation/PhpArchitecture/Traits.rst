@@ -6,6 +6,8 @@ Traits
 ======
 
 
+..  _cgl-traits-characteristica:
+
 Characteristica
 ===============
 
@@ -17,6 +19,8 @@ Characteristica
 
 * A trait interface MUST have a default implementation trait.
 
+
+..  _cgl-traits-rationale:
 
 Rationale
 =========
@@ -47,7 +51,9 @@ scope objects are currently not finally decided and we don’t want to
 have relatively hard to deprecate and remove traits at this point.
 
 
-Good Examples
+..  _cgl-traits-good-examples:
+
+Good examples
 =============
 
 * :php:`\Symfony\Component\DependencyInjection\ContainerAwareInterface` with
@@ -66,7 +72,9 @@ Good Examples
 * :php:`LoggerAwareInterface` with a default trait.
 
 
-Bad Examples
+..  _cgl-traits-bad-examples:
+
+Bad examples
 ============
 
 * Old :php:`\TYPO3\CMS\FluidStyledContent\ViewHelpers\Menu\MenuViewHelperTrait` (available in previous TYPO3 versions)
@@ -84,7 +92,9 @@ Bad Examples
 
 For these reasons the trait has been dissolved into an `AbstractMenuViewHelper`.
 
-Further Reading
+..  _cgl-traits-further-reading:
+
+Further reading
 ===============
 
 See https://www.rosstuck.com/how-i-use-traits.

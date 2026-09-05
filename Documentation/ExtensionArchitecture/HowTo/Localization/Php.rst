@@ -4,9 +4,9 @@
 ..  _xliff-api-php:
 ..  _extension-localization-php:
 
-====================
+===================
 Localization in PHP
-====================
+===================
 
 Sometimes you have to localize a string in PHP code, for
 example inside of a controller or a user function.
@@ -95,7 +95,7 @@ for example a static function, you can still do translations:
 Localization in Extbase
 =======================
 
-In :ref:`Extbase <extbase>` context you can use the method
+In :ref:`Extbase <extbase-extension-framework>` context you can use the method
 :ref:`\\TYPO3\\CMS\\Extbase\\Utility\\LocalizationUtility::translate($key, $extensionName) <extbase-localization-utility-api>`.
 
 This method requires the localization key as the first and the extension's
@@ -109,13 +109,15 @@ account. See :ref:`localization-typoscript-LOCAL_LANG`.
 
 ..  _extension-localization-extbase-example:
 
-Example: Translate a Flash message in an Extbase Controller
+Example: translate a flash message in an Extbase controller
 -----------------------------------------------------------
 
 In this example the content of the flash message to be displayed in the backend
 will be translated:
 
-..  include:: /CodeSnippets/Extbase/Controllers/PhpLocalization.rst.txt
+..  literalinclude:: /ExtensionArchitecture/HowTo/Localization/_php/PhpLocalization.php
+    :caption: Class MyVendor\\MyExtension\\Controller\\ModuleController
+    :emphasize-lines: 30,31,32,33,34
 
 The string in the translation file is defined like this:
 
@@ -131,7 +133,7 @@ This behaviour is the same like in a
 
 ..  _example-localization-middleware:
 
-Example: Provide localized strings via JSON by a middleware
+Example: provide localized strings via JSON by a middleware
 ===========================================================
 
 In the following example we use the :ref:`Translator API <translator-api>`
@@ -148,14 +150,16 @@ Beside other factories needed by our response, we inject the
 :ref:`LanguageServiceFactory <LanguageServiceFactory-api>` with
 :ref:`constructor dependency injection <Constructor-injection>`.
 
-..  include:: _php/_LanguageServiceFactoryDI.rst.txt
+.. literalinclude:: /ExtensionArchitecture/HowTo/Localization/_php/_LanguageServiceFactoryDI.php
+   :caption: Class T3docs\\Examples\\Middleware\\HaikuSeasonList
 
 The main method :php:`process()` is called with a
 :php-short:`Psr\Http\Message\ServerRequestInterface` argument that can be used to detect the
 current language and is passed on to the private method :php:`getSeasons()`
 to do the actual translation:
 
-..  include:: _php/_ProcessMiddleware.rst.txt
+.. literalinclude:: /ExtensionArchitecture/HowTo/Localization/_php/_ProcessMiddleware.php
+   :caption: Class T3docs\\Examples\\Middleware\\HaikuSeasonList
 
 Now we can let the :php:`\TYPO3\CMS\Core\Localization\LanguageServiceFactory`
 create an object of type
@@ -165,4 +169,5 @@ in the request, falling back to the default language of the site.
 The :php-short:`\TYPO3\CMS\Core\Localization\TranslatorInterface` object can
 then be queried for the localized strings:
 
-..  include:: _php/_LanguageServiceSl.rst.txt
+.. literalinclude:: /ExtensionArchitecture/HowTo/Localization/_php/_LanguageServiceSl.php
+   :caption: Class T3docs\\Examples\\Middleware\\HaikuSeasonList

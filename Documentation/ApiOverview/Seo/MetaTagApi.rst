@@ -2,9 +2,9 @@
 .. index:: ! MetaTag
 .. _metatagapi:
 
-============
-MetaTag API
-============
+=============
+`MetaTag` API
+=============
 
 The MetaTag API is available for setting meta tags in a flexible way.
 
@@ -23,8 +23,8 @@ In addition to the MetaTagManagers included in the Core, you can also register y
 .. index:: pair: MetaTag; API
 .. _metatagapi-usage:
 
-Using the MetaTag API
-======================
+Using the `MetaTag` API
+=======================
 
 To use the API, first get the right :php:`MetaTagManager` for your tag from the :php:`MetaTagManagerRegistry`.
 You can use that manager to add your meta tag; see the example below for the :html:`og:title` meta tag.
@@ -54,8 +54,8 @@ Or remove all previously set meta tags of a specific manager:
 .. index:: MetaTag; Custom MetaTagManager
 .. _metatagapi-create-your-own:
 
-Creating Your Own MetaTagManager
-================================
+Creating your own `MetaTagManager`
+==================================
 
 If you need to specify the settings and rendering of a specific meta tag (for example when you want to make it possible
 to have multiple occurrences of a specific tag), you can create your own :php:`MetaTagManager`.
@@ -64,7 +64,6 @@ This :php:`MetaTagManager` must implement :php:`\TYPO3\CMS\Core\MetaTag\MetaTagM
 To use the manager, you must register it in :php:`ext_localconf.php`:
 
 ..  literalinclude:: _MetaTagApi/_ext_localconf_register_manager.php
-    :language: php
     :caption: EXT:my_extension/ext_localconf.php
 
 Registering a :php:`MetaTagManager` works with the :php:`DependencyOrderingService`. So you can also specify the
@@ -73,7 +72,6 @@ want to implement your own :php:`OpenGraphMetaTagManager`, you can use the follo
 
 
 ..  literalinclude:: _MetaTagApi/_ext_localconf_register_manager_open_graph.php
-    :language: php
     :caption: EXT:my_extension/ext_localconf.php
 
 This will result in :php:`MyOpenGraphMetaTagManager` having a higher priority and it will first check if your own

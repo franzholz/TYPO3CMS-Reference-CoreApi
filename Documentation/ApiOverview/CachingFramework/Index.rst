@@ -9,6 +9,8 @@ Caching
 ..  contents::
     :local:
 
+..  _caching-caching-typo3:
+
 Caching in TYPO3
 ================
 
@@ -50,7 +52,7 @@ renders all dynamic parts.
 
 ..  _chash:
 
-Caching variants - or: What is a "cache hash"?
+Caching variants - or: what is a "cache hash"?
 ==============================================
 
 TYPO3 ideally delivers fully cached pages for maximum performance. However, in
@@ -97,6 +99,10 @@ Various configuration options exist to configure the cHash behavior via
 :ref:`$GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash'] <typo3ConfVars_fe_cacheHash>`
 in the file :file:`config/system/settings.php` or :file:`config/system/additional.php`:
 
+
+cachedParametersWhiteList
+-------------------------
+
 ..  confval:: cachedParametersWhiteList
 
     **Only** the given parameters will be evaluated in the cHash calculation.
@@ -107,16 +113,28 @@ in the file :file:`config/system/settings.php` or :file:`config/system/additiona
         parameters except the ones listed here. Caching of pages will not be
         influenced by other parameters beyond the initial caching anymore.
 
+
+requireCacheHashPresenceParameters
+----------------------------------
+
 ..  confval:: requireCacheHashPresenceParameters
 
     Configure parameters that require a cHash. If no cHash is given, but one of
     the parameters are set, then TYPO3 triggers the configured cHash error
     behavior
 
+
+excludedParameters
+------------------
+
 ..  confval:: excludedParameters
 
     The given parameters will be ignored in the cHash calculation.
     Example: `L,tx_search_pi1[query]`
+
+
+excludedParametersIfEmpty
+-------------------------
 
 ..  confval:: excludedParametersIfEmpty
 
@@ -124,10 +142,18 @@ in the file :file:`config/system/settings.php` or :file:`config/system/additiona
     associated value available. Set excludeAllEmptyParameters to true to skip
     all empty parameters.
 
+
+excludeAllEmptyParameters
+-------------------------
+
 ..  confval:: excludeAllEmptyParameters
 
     If true, all parameters relevant to cHash are only considered when they are
     not empty.
+
+
+enforceValidation
+-----------------
 
 ..  confval:: enforceValidation
 
@@ -152,6 +178,8 @@ and :php:`requireCacheHashPresenceParameters`.
 The most flexible modification of the page cache parameters is using the
 :ref:`BeforePageCacheIdentifierIsHashedEvent <BeforePageCacheIdentifierIsHashedEvent>` event that allows adding, removing or modifying
 all parameters.
+
+..  _caching-example-excerpt-config:
 
 Example (excerpt of `config/system/additional.php`)
 ===================================================
@@ -194,6 +222,8 @@ partial matches allow to simplify the configuration and consider all items havin
         // ...
     ],
 
+..  _caching-clearing-flushing-warming:
+
 Clearing/flushing and warming up caches
 =======================================
 
@@ -222,6 +252,8 @@ new classes have been added to the system or in case of problems with the system
 using this cache clearing option will clear all caches including compiled code
 like the dependency injection container.
 
+..  _caching-clearing-flushing-warming-clear-cache-command:
+
 Clear cache command
 -------------------
 
@@ -244,6 +276,8 @@ option. The command defaults to flush all available cache groups as the
 Extensions that register custom caches may listen to the :ref:`CacheFlushEvent`,
 but usually the cache flush via cache manager groups will suffice to clear those
 caches, too.
+
+..  _caching-clearing-flushing-warming-cache-warmup:
 
 Cache warmup
 ------------
@@ -285,6 +319,8 @@ via :ref:`CacheWarmupEvent`.
     TYPO3 frontend caches will not be warmed by TYPO3 Core, such functionality
     could be added by third-party extensions with the help of
     :ref:`CacheWarmupEvent`.
+
+..  _caching-clearing-flushing-warming-case-deployment:
 
 Use case: deployment
 --------------------
@@ -341,6 +377,8 @@ per release. In other words, share :file:`var/session/`, :file:`var/log/`,
 :file:`var/lock/` and :file:`var/charset/` between releases, but keep
 :file:`var/cache/` be associated only with one release.
 
+
+..  _caching-caching-framework:
 
 Caching framework
 =================

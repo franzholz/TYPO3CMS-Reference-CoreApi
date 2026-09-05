@@ -2,9 +2,9 @@
 ..  index:: Events; IsFileSelectableEvent
 ..  _IsFileSelectableEvent:
 
-=====================
-IsFileSelectableEvent
-=====================
+=======================
+`IsFileSelectableEvent`
+=======================
 
 The PSR-14 event :php:`\TYPO3\CMS\Backend\ElementBrowser\Event\IsFileSelectableEvent`
 allows to decide whether a file can be selected in the file browser.
@@ -12,12 +12,15 @@ allows to decide whether a file can be selected in the file browser.
 To get the image dimensions (width and height) of a file, you can retrieve the
 file and use the :php:`getProperty()` method.
 
+..  _is-file-selectable-event-example:
+
 Example
 =======
 
 ..  literalinclude:: _IsFileSelectableEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Backend/EventListener/MyEventListener.php
+
+..  _is-file-selectable-event-api:
 
 API
 ===

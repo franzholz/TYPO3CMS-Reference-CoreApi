@@ -144,7 +144,7 @@ A command can be set as disabled for the scheduler by using the
 
 ..  _writing-custom-symfony-console-command-context:
 
-Context of a command: No request, no site, no user
+Context of a command: no request, no site, no user
 ==================================================
 
 Commands are called from the console / command line and not through a web
@@ -164,7 +164,7 @@ Extbase limitations in CLI context
 
 ..  attention::
 
-    It is not recommended to use :ref:`Extbase <extbase>` repositories in a
+    It is not recommended to use :ref:`Extbase <extbase-extension-framework>` repositories in a
     CLI context.
 
 Extbase relies on frontend :ref:`TypoScript <t3tsref:start>`,  and features such as
@@ -200,7 +200,7 @@ or other backend permission-handling-related tasks.
 ..  _console-command-tutorial-fe-request:
 ..  _console-command-tutorial-fe-request-example:
 
-Simulating a frontend request in TYPO3 Commands
+Simulating a frontend request in TYPO3 commands
 -----------------------------------------------
 
 Executing a TYPO3 command in the CLI does not trigger a frontend (web)

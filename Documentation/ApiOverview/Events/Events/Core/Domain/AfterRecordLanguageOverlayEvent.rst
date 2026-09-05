@@ -2,9 +2,9 @@
 ..  index:: Events; AfterRecordLanguageOverlayEvent
 ..  _AfterRecordLanguageOverlayEvent:
 
-===============================
-AfterRecordLanguageOverlayEvent
-===============================
+=================================
+`AfterRecordLanguageOverlayEvent`
+=================================
 
 The PSR-14 event :php:`\TYPO3\CMS\Core\Domain\Event\AfterRecordLanguageOverlayEvent`
 can be used to modify the actual translated record (if found) to add additional
@@ -13,10 +13,14 @@ information or perform custom processing of the record.
 ..  seealso::
     *   :ref:`BeforeRecordLanguageOverlayEvent`
 
+..  _after-record-language-overlay-event-example:
+
 Example
 =======
 
 ..  include:: /_includes/EventsContributeNote.rst.txt
+
+..  _after-record-language-overlay-event-api:
 
 API
 ===

@@ -3,9 +3,9 @@
 ..  _AfterAutoCreateRedirectHasBeenPersistedEvent:
 
 
-============================================
-AfterAutoCreateRedirectHasBeenPersistedEvent
-============================================
+==============================================
+`AfterAutoCreateRedirectHasBeenPersistedEvent`
+==============================================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Redirects\Event\AfterAutoCreateRedirectHasBeenPersistedEvent`
@@ -19,12 +19,15 @@ persisted redirects.
     can be used.
 
 
+..  _after-auto-create-redirect-has-been-persisted-event-example:
+
 Example
 =======
 
 ..  literalinclude:: _AfterAutoCreateRedirectHasBeenPersistedEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Redirects/EventListener/MyEventListener.php
+
+..  _after-auto-create-redirect-has-been-persisted-event-api:
 
 API
 ===

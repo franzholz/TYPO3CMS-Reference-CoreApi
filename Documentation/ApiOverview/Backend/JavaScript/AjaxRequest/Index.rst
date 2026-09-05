@@ -10,6 +10,8 @@ TYPO3 Core ships an API to send Ajax requests to the server. This API is based
 on the `fetch API`_, which is implemented in every modern browser (for
 example, Chrome, Edge, Firefox, Safari).
 
+..  _ajax-request-prepare-request:
+
 Prepare a request
 =================
 
@@ -18,7 +20,6 @@ must be imported. To prepare a request, create a new instance of
 :js:`AjaxRequest` per request and pass the URL as the constructor argument:
 
 ..  literalinclude:: _MyRequest1.js
-    :language: js
     :caption: EXT:my_extension/Resources/Private/JavaScript/MyRequest.js
 
 The API offers a method :js:`withQueryArguments()` which allows to attach a query
@@ -29,11 +30,12 @@ possible to pass either strings, arrays or objects as an argument.
 Example:
 
 ..  literalinclude:: _MyRequest2.js
-    :language: js
     :caption: EXT:my_extension/Resources/Private/JavaScript/MyRequest.js
 
 The method detects whether the URL already contains a query string and appends
 the new query string in a proper format.
+
+..  _ajax-request-send-request:
 
 Send a request
 ==============
@@ -84,11 +86,12 @@ conversion will happen, but it is still recommended to set proper headers.
 Example:
 
 ..  literalinclude:: _MyRequestPromise1.js
-    :language: js
     :caption: EXT:my_extension/Resources/Private/JavaScript/MyRequest.js
 
 
 ..  index:: Ajax; Response
+
+..  _ajax-request-handle-response:
 
 Handle the response
 ===================
@@ -97,7 +100,6 @@ In the examples above :js:`promise` is, as the name already spoils, a `Promise`_
 object. To fetch the actual response, we make use of :js:`then()`:
 
 ..  literalinclude:: _MyRequestPromise2.js
-    :language: js
     :caption: EXT:my_extension/Resources/Private/JavaScript/MyRequest.js
 
 :js:`response` is an object of type :js:`AjaxResponse` shipped by TYPO3
@@ -118,7 +120,6 @@ function may receive a :js:`AjaxResponse` object which contains the original
 response object.
 
 ..  literalinclude:: _MyRequestPromise3.js
-    :language: js
     :caption: EXT:my_extension/Resources/Private/JavaScript/MyRequest.js
 
 ..  hint::
@@ -127,6 +128,8 @@ response object.
     Ajax API converts such responses into errors for convenience reasons.
 
 ..  index:: Ajax; Abort
+
+..  _ajax-request-abort-request:
 
 Abort a request
 ===============

@@ -3,9 +3,9 @@
     Events; ProvideStaticVariablesToComponentEvent
 ..  _ProvideStaticVariablesToComponentEvent:
 
-======================================
-ProvideStaticVariablesToComponentEvent
-======================================
+========================================
+`ProvideStaticVariablesToComponentEvent`
+========================================
 
 ..  versionadded:: 14.1
 
@@ -24,12 +24,15 @@ Valid use cases for this event might be:
 *   providing **static** design tokens (colors, icons, ...) to all components in a collection
 *   generating prefix strings based on the component's name
 
+..  _provide-static-variables-to-component-event-example:
+
 Example
 =======
 
 ..  literalinclude:: _ProvideStaticVariablesToComponentEvent/_ProvideStaticVariablesToComponentListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/EventListener/ProvideStaticVariablesToComponentListener.php
+
+..  _provide-static-variables-to-component-event-api:
 
 API
 ===

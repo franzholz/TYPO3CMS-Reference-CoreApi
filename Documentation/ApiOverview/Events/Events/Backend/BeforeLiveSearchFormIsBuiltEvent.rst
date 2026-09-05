@@ -2,9 +2,9 @@
 ..  index:: Events; BeforeLiveSearchFormIsBuiltEvent
 ..  _BeforeLiveSearchFormIsBuiltEvent:
 
-================================
-BeforeLiveSearchFormIsBuiltEvent
-================================
+==================================
+`BeforeLiveSearchFormIsBuiltEvent`
+==================================
 
 The PSR-14 event :php-short:`\TYPO3\CMS\Backend\Search\Event\BeforeLiveSearchFormIsBuiltEvent`
 can be used to modify the form data for the backend live search.
@@ -23,7 +23,6 @@ Example
 =======
 
 ..  literalinclude:: _BeforeLiveSearchFormIsBuiltEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Backend/EventListener/MyEventListener.php
 
 ..  _BeforeLiveSearchFormIsBuiltEvent-api:

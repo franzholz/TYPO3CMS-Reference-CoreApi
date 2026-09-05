@@ -8,13 +8,16 @@
 Backend user object
 ===================
 
-The backend user of a session is always available in extensions
-as the global variable :php:`$GLOBALS['BE_USER']`. The object is created in
+The backend user of a session is by default available in extensions
+as the global variable :php:`$GLOBALS['BE_USER']` only in backend contexts. This object is created in
 :php:`\TYPO3\CMS\Backend\Middleware\BackendUserAuthenticator` middleware for a standard web request
 and is an instance of the class :php:`\TYPO3\CMS\Core\Authentication\BackendUserAuthentication`
 (which extends :php:`\TYPO3\CMS\Core\Authentication\AbstractUserAuthentication`).
 
-When working with CLI and commands you might initialize the backend user object with :php:`\TYPO3\CMS\Core\Core\Bootstrap::initializeBackendUser()`. In addition, you can call :php:`\TYPO3\CMS\Core\Core\Bootstrap::initializeBackendAuthentication()` to load the language of the CLI user set in the backend so that view helpers (like :php:`f:translate()`) used in the CLI resolve to the correct language.
+When working with CLI and commands you might initialize the backend user object with :php:`\TYPO3\CMS\Core\Core\Bootstrap::initializeBackendUser()`.
+In addition, you can call :php:`\TYPO3\CMS\Core\Core\Bootstrap::initializeBackendAuthentication()`
+to load the language of the CLI user set in the backend so that ViewHelpers
+(like :php:`f:translate()`) used in the CLI resolve to the correct language.
 
 .. index:: Backend user; Access
 .. _be-user-check:
@@ -211,7 +214,7 @@ the user. In this case the value for "options.clipboardNumberPads":
 .. index:: Backend user; User record
 .. _be-user-name:
 
-Getting the Username
+Getting the username
 ====================
 
 The full "be\_users" record of a authenticated user is available in
@@ -225,7 +228,7 @@ The full "be\_users" record of a authenticated user is available in
 
 .. _be-user-configuration:
 
-Get User Configuration Value
+Get user configuration value
 ============================
 
 The internal :php:`->uc` array contains options which are managed by the
@@ -237,3 +240,10 @@ the :php:`$GLOBALS['BE_USER']->uc` array. This will return the current state of
    :caption: EXT:some_extension/Classes/Controller/SomeModuleController.php
 
    $GLOBALS['BE_USER']->uc['emailMeAtLogin']
+
+You can read the configured language of the backend user:
+
+.. code-block:: php
+   :caption: Read the language to be used in the backend
+
+   $backendLanguage = $GLOBALS['BE_USER']->uc['lang'] ?? 'en';

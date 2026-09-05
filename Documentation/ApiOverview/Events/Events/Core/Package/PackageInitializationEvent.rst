@@ -2,9 +2,9 @@
 ..  index:: Events; PackageInitializationEvent
 ..  _PackageInitializationEvent:
 
-==========================
-PackageInitializationEvent
-==========================
+============================
+`PackageInitializationEvent`
+============================
 
 The PSR-14 event :php:`\TYPO3\CMS\Core\Package\Event\PackageInitializationEvent`
 allows listeners to execute custom functionality after an extension has been
@@ -26,13 +26,16 @@ in the event using the :php:`addStorageEntry()` method. This is also used
 by the Core listeners to store their result.
 
 
+..  _package-initialization-event-example:
+
 Example
 =======
 
 ..  literalinclude:: _PackageInitializationEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Package/EventListener/MyEventListener.php
 
+
+..  _package-initialization-event-api:
 
 API
 ===

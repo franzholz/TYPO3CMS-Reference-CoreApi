@@ -2,9 +2,9 @@
 ..  index:: Events; BeforePageIsResolvedEvent
 ..  _BeforePageIsResolvedEvent:
 
-=========================
-BeforePageIsResolvedEvent
-=========================
+===========================
+`BeforePageIsResolvedEvent`
+===========================
 
 The PSR-14 event :php:`\TYPO3\CMS\Frontend\Event\BeforePageIsResolvedEvent` is
 fired before the frontend process is trying to fully resolve a given page by its
@@ -25,11 +25,15 @@ creates early responses.
     #.  :ref:`AfterPageAndLanguageIsResolvedEvent`
 
 
+..  _before-page-is-resolved-event-example:
+
 Example
 =======
 
 ..  include:: /_includes/EventsContributeNote.rst.txt
 
+
+..  _before-page-is-resolved-event-api:
 
 API
 ===

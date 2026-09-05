@@ -21,6 +21,8 @@ result in incomplete or corrupt data, if locking is not used.
 
 .. index:: Locking; Strategy
 
+..  _locking-api-locking-strategies:
+
 Locking strategies
 ==================
 
@@ -69,6 +71,8 @@ locking strategy supported on system
    Locking; LOCK_CAPABILITY_NOBLOCK
    Locking; LOCK_CAPABILITY_EXCLUSIVE
    Locking; LOCK_CAPABILITY_SHARED
+
+..  _locking-api-locking-strategies-capabilities:
 
 Capabilities
 ------------
@@ -121,6 +125,8 @@ You can use bitwise `OR` to combine them:
    Locking; SimpleLockStrategy
    Locking; SemaphoreLockStrategy
 
+..  _locking-api-locking-strategies-priorities:
+
 Priorities
 ----------
 
@@ -143,6 +149,8 @@ for example in additional configuration:
    use TYPO3\CMS\Core\Locking\FileLockStrategy;
 
    $GLOBALS['TYPO3_CONF_VARS']['SYS']['locking']['strategies'][FileLockStrategy::class]['priority'] = 10;
+
+..  _locking-api-locking-strategies-examples:
 
 Examples
 --------
@@ -203,7 +211,7 @@ Acquire and use an exclusive, non-blocking lock:
 
 .. _use-locking-api-in-extensions:
 
-Extend locking in Extensions
+Extend locking in extensions
 ============================
 
 An extension can extend the locking functionality by adding a new locking
@@ -236,8 +244,10 @@ Caveats
 
 .. index:: Locking; FileLockStrategy & NFS
 
-FileLockStrategy & NFS
-----------------------
+..  _locking-api-caveats-filelockstrategy-nfs:
+
+`FileLockStrategy` & NFS
+------------------------
 
 There is a problem with PHP `flock()
 <https://www.php.net/manual/en/function.flock.php>`__ on NFS systems.
@@ -257,7 +267,9 @@ first choice for most locking operations in TYPO3.
 
 .. index:: Locking; Multiple servers
 
-Multiple servers & Cache locking
+..  _locking-api-caveats-multiple-servers-cache:
+
+Multiple servers & cache locking
 --------------------------------
 
 Since the Core uses the locking API for some cache operations, make sure that
@@ -274,7 +286,7 @@ Specifically, this may be a problem:
 
 .. _locking-api-more-info:
 
-Related Information
+Related information
 ===================
 
 Some of these resources are for specific systems. We link to these, if the

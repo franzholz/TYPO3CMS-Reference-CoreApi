@@ -2,9 +2,9 @@
 ..  index:: Events; AfterFileCreatedEvent
 ..  _AfterFileCreatedEvent:
 
-=====================
-AfterFileCreatedEvent
-=====================
+=======================
+`AfterFileCreatedEvent`
+=======================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Core\Resource\Event\AfterFileCreatedEvent`
@@ -16,10 +16,14 @@ The folder represents the "target folder".
 *Example:* This allows to modify a file or check for an appropriate signature
 after a file was created in TYPO3.
 
+..  _after-file-created-event-example:
+
 Example
 =======
 
 ..  include:: /_includes/EventsContributeNote.rst.txt
+
+..  _after-file-created-event-api:
 
 API
 ===

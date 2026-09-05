@@ -31,6 +31,8 @@ Required in **all** installations
     :local:
 
 
+..  _composer-json-introduction:
+
 Introduction
 ============
 
@@ -50,6 +52,8 @@ easy way via the :bash:`composer require` command.
     automatically. See
     `TYPO3 TER Packagist Integration <https://extensions.typo3.org/about-extension-repository/ter-packagist-integration>`__
     for more information.
+
+..  _composer-json-composer-json-file:
 
 About the composer.json file
 ============================
@@ -85,7 +89,6 @@ Subsequently:
 *   The Composer package name will be `my-vendor/my-extension`
 
 ..  literalinclude:: _ComposerJson/_MinimalComposer.json
-    :language: json
     :caption: EXT:my_extension/composer.json
 
 * see `composer.json schema <https://getcomposer.org/doc/04-schema.md>`__ for
@@ -117,7 +120,6 @@ Extended composer.json
     further changes to :file:`composer.json <extension-composer-json>` for testing extensions.
 
 ..  literalinclude:: _ComposerJson/_ExtendedComposer.json
-    :language: json
     :caption: EXT:my_extension/composer.json
 
 
@@ -148,13 +150,11 @@ the extension loading order.
 Here the Classic mode compatible extension has a dependency on Composer package `symfony/dotenv`:
 
 ..  literalinclude:: _ComposerJson/_ClassicModeComposerWithPackages.json
-    :language: json
     :caption: EXT:my_extension/composer.json
 
 Here the Classic mode compatible extension does not depend on any Composer packages:
 
 ..  literalinclude:: _ComposerJson/_ClassicModeComposerWithoutPackages.json
-    :language: json
     :caption: EXT:my_extension/composer.json
 
 ..  important::
@@ -256,7 +256,7 @@ autoload
 (*required*)
 
 The autoload section defines the namespace/path mapping for
-`PSR-4 autoloading <https://www.php-fig.org/psr/psr-4/>`. In TYPO3 we follow
+`PSR-4 autoloading <https://www.php-fig.org/psr/psr-4/>`_. In TYPO3 we follow
 the convention that all classes (except test classes) are in the directory
 :file:`Classes/`.
 
@@ -279,7 +279,6 @@ properly.
 Example for extension key `my_extension`:
 
 ..  literalinclude:: _ComposerJson/_ExtensionKey.json
-    :language: json
     :caption: Excerpt of EXT:my_extension/composer.json
     :emphasize-lines: 4
 
@@ -299,7 +298,6 @@ is *required* for Classic mode installations)
     of a dedicated field.
 
 ..  literalinclude:: _ComposerJson/_ExtensionKey.json
-    :language: json
     :caption: Excerpt of EXT:my_extension/composer.json
     :emphasize-lines: 5
 
@@ -333,8 +331,8 @@ For example: `"version": "1.4.2+obsolete"`.
 
 ..  _ext-composer-json-property-provides-packages:
 
-extra.typo3/cms.Package.providesPackages
-----------------------------------------
+`extra.typo3/cms.Package.providesPackages`
+------------------------------------------
 
 ..  versionadded:: 14.2
 
@@ -346,7 +344,6 @@ as an empty object to ensure future compatibility with TYPO3 Classic mode
 and to avoid deprecation messages in TYPO3 v14:
 
 ..  literalinclude:: _ComposerJson/_ExtensionKey.json
-    :language: json
     :caption: Excerpt of EXT:my_extension/composer.json
     :emphasize-lines: 6,7,8
 
@@ -361,7 +358,6 @@ their autoloader in a standardized way.
 Here is an example of an extension that ships a local Composer vendor directory:
 
 ..  literalinclude:: _ComposerJson/_providesPackagesComposer.json
-    :language: json
     :caption: Excerpt of EXT:my_extension/composer.json
 
 In this example, the package `symfony/dotenv` is provided by the extension itself
@@ -398,22 +394,24 @@ To prevent this behavior declare the version number in the extra section
 Properties no longer used
 =========================
 
-replace with ``typo3-ter`` vendor name
---------------------------------------
+..  _ext-composer-json-property-not-used-replace-typo3-ter:
+
+replace with `typo3-ter` vendor name
+------------------------------------
 
 ..  literalinclude:: _ComposerJson/_ReplaceTypo3Ter.json
-    :language: json
     :caption: Excerpt of EXT:my_extension/composer.json
 
 This was used previously as long as the TER Composer Repository was
 relevant. Since the TER Composer Repository is deprecated, the `typo3-ter/*` entry
 within `replace` is not required.
 
-replace with ``"ext_key": "self.version"``
-------------------------------------------
+..  _ext-composer-json-property-not-used-replace-ext-key:
+
+replace with `"ext_key": "self.version"`
+----------------------------------------
 
 ..  literalinclude:: _ComposerJson/_ReplaceExtKey.json
-    :language: json
     :caption: Excerpt of EXT:my_extension/composer.json
 
 This was used previously, but is not compatible with latest Composer
@@ -434,7 +432,7 @@ and `revisions on helhum/composer.json <https://gist.github.com/helhum/0ffd82525
 
 ..  _ext-composer-json-more-information:
 
-More Information
+More information
 ================
 
 Not TYPO3-specific:

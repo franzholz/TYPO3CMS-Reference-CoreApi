@@ -4,7 +4,7 @@
 ..  _typo3ConfVars_lang:
 
 =============================
-LANG - Language configuration
+LANG - language configuration
 =============================
 
 ..  confval-menu::
@@ -47,6 +47,10 @@ LANG - Language configuration
     :php:`false`
         All translations are used.
 
+
+loader
+------
+
 ..  confval:: loader
     :name: globals-typo3-conf-vars-lang-loader
     :Path: $GLOBALS['TYPO3_CONF_VARS']['LANG']['loader']
@@ -57,6 +61,10 @@ LANG - Language configuration
 
     Configures custom translation loaders.
 
+
+format
+------
+
 ..  confval:: format
     :name: globals-typo3-conf-vars-lang-format
     :Path: $GLOBALS['TYPO3_CONF_VARS']['LANG']['format']
@@ -66,6 +74,10 @@ LANG - Language configuration
     ..  versionchanged:: 14.0
         This option has been moved from `$GLOBALS['TYPO3_CONF_VARS']['SYS']['lang']['format']`.
 
+
+availableLocales
+----------------
+
 ..  confval:: availableLocales
     :name: globals-typo3-conf-vars-lang-availableLocales
     :Path: $GLOBALS['TYPO3_CONF_VARS']['LANG']['availableLocales']
@@ -74,6 +86,10 @@ LANG - Language configuration
 
     ..  versionchanged:: 14.0
         This option has been moved from `$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['lang']['availableLanguages']`.
+
+
+resourceOverrides
+-----------------
 
 ..  confval:: resourceOverrides
     :name: globals-typo3-conf-vars-lang-resourceOverrides

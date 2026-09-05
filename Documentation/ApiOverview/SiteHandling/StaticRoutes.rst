@@ -32,8 +32,10 @@ configuration. There are two options: deliver static text or resolve a TYPO3 URL
 
 ..  index:: Site handling; StaticText
 
-:yaml:`staticText`
-==================
+..  _sitehandling-static-routes-statictext:
+
+`staticText`
+============
 
 The :yaml:`staticText` option allows to deliver simple text content. The text
 can be added through a text field directly in the site configuration. This is
@@ -42,7 +44,6 @@ suitable for files like :file:`robots.txt` or :file:`humans.txt`.
 A configuration example:
 
 ..  literalinclude:: _static-routes-static-text.yaml
-    :language: yaml
     :caption: config/sites/<some_site>/config.yaml | typo3conf/sites/<some_site>/config.yaml
 
 
@@ -64,7 +65,6 @@ resources which are typically located in the directory
 A configuration example:
 
 ..  literalinclude:: _static-routes-assets.yaml
-    :language: yaml
     :caption: config/sites/<some_site>/config.yaml | typo3conf/sites/<some_site>/config.yaml
 
 This enables you to reach the files at :samp:`https://example.org/example.svg`
@@ -73,6 +73,8 @@ and :samp:`https://example.org/favicon.ico`.
 The asset URL is configured on a per-site basis.
 This allows to deliver site-dependent custom favicon or manifest
 assets, for example.
+
+..  _sitehandling-static-routes-typo3-url-t3:
 
 TYPO3 URL (t3://)
 =================
@@ -84,5 +86,4 @@ content delivered.
 A configuration example:
 
 ..  literalinclude:: _static-routes-uri.yaml
-    :language: yaml
     :caption: config/sites/<some_site>/config.yaml | typo3conf/sites/<some_site>/config.yaml

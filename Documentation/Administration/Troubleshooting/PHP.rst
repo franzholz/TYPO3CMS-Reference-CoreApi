@@ -10,7 +10,7 @@ PHP
 
 .. _troubleshooting-php-modules:
 
-Missing PHP Modules
+Missing PHP modules
 -------------------
 
 The "System Environment" section of the Install Tool provides detailed
@@ -38,7 +38,7 @@ On a Windows-based server, these are the extension files:
 
 .. _troubleshooting-php-caches-extension-classes-etc:
 
-PHP Caches, Extension Classes etc.
+PHP caches, extension classes etc.
 ----------------------------------
 
 There are some situations which can cause what appear to be
@@ -59,6 +59,8 @@ illogical problems after an upgrade:
 Opcode cache messages
 ---------------------
 
+..  _troubleshooting-php-troubleshooting-opcode-php-opcode:
+
 No PHP opcode cache loaded
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -66,13 +68,17 @@ You do not have an opcode cache system installed or activated. If you
 want better performance for your website, then you should use one. The
 best choice is OPcache.
 
-This opcode cache is marked as malfunctioning by the TYPO3 CMS Team.
+..  _troubleshooting-php-troubleshooting-opcode-opcode-cache:
+
+This opcode cache is marked as malfunctioning by the TYPO3 CMS team.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This will be shown if an opcode cache system is found and activated,
 which is known to have "too many" errors and won't be supported by TYPO3
 CMS (no bugfixes, security fixes or anything else). In current TYPO3
 versions only OPcache is supported
+
+..  _troubleshooting-php-troubleshooting-opcode-opcode-cache-2:
 
 This opcode cache may work correctly but has medium performance.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -86,6 +92,8 @@ This will happen with:
 -  APC before 3.1.1 and some mysterious configuration combinations.
 -  XCache
 -  ZendOptimizerPlus
+
+..  _troubleshooting-php-troubleshooting-opcode-opcode-cache-3:
 
 This opcode cache should work correctly and has good performance.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

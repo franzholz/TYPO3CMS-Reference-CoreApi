@@ -58,7 +58,8 @@ information only if it matches a set of IP addresses (defined in
 
 For example, the following code:
 
-..  include:: /CodeSnippets/Debugging/DebugCookies.rst.txt
+.. literalinclude:: /CodeSnippets/Debugging/DebugCookies.php
+   :caption: Extension examples, file Classes/Controller/ModuleController.php
 
 will produce such an output:
 
@@ -73,8 +74,8 @@ debugging tools.
 
 .. _examples-debug-extbase-utility:
 
-Extbase DebuggerUtility
-=======================
+Extbase `DebuggerUtility`
+=========================
 
 Extbase's DebuggerUtility::var_dump() is a debugging function in TYPO3 that outputs detailed, human-readable information about variables, including their type and structure. It offers features like depth control and optional backtrace information to assist developers in effectively debugging complex data structures.
 
@@ -89,7 +90,7 @@ You can also use the Extbase DebuggerUtility to debug SQL Querys for example. To
 
 .. _examples-debug-fluid:
 
-Fluid Debug ViewHelper
+Fluid debug ViewHelper
 ======================
 
 The Fluid Debug ViewHelper is a part of the Fluid template engine and generates a HTML dump of the tagged variable. The ViewHelper can be used in any Fluid template to output the value of variables or objects in a human-readable format.

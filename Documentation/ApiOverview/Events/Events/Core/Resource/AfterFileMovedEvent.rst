@@ -2,9 +2,9 @@
 ..  index:: Events; AfterFileMovedEvent
 ..  _AfterFileMovedEvent:
 
-===================
-AfterFileMovedEvent
-===================
+=====================
+`AfterFileMovedEvent`
+=====================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Core\Resource\Event\AfterFileMovedEvent`
@@ -16,10 +16,14 @@ The folder represents the "target folder".
 *Example*: Use this to update custom third-party handlers that rely on specific
 paths.
 
+..  _after-file-moved-event-example:
+
 Example
 =======
 
 ..  include:: /_includes/EventsContributeNote.rst.txt
+
+..  _after-file-moved-event-api:
 
 API
 ===

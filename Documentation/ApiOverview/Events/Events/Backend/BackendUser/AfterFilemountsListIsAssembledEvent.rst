@@ -2,9 +2,9 @@
 ..  index:: Events; AfterFilemountsListIsAssembledEvent
 ..  _AfterFilemountsListIsAssembledEvent:
 
-===================================
-AfterFilemountsListIsAssembledEvent
-===================================
+=====================================
+`AfterFilemountsListIsAssembledEvent`
+=====================================
 
 ..  versionadded:: 14.0
 
@@ -18,12 +18,15 @@ in the backend module. It makes it possible to modify this list.
     are not introducing any breach of security when using this event, for example,
     by revealing restricted information.
 
+..  _after-filemounts-list-is-assembled-event-example:
+
 Example
 =======
 
 ..  literalinclude:: _AfterFilemountsListIsAssembledEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Backend/EventListener/MyEventListener.php
+
+..  _after-filemounts-list-is-assembled-event-api:
 
 API
 ===

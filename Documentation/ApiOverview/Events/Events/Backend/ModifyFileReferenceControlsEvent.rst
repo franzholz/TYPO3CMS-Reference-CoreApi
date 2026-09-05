@@ -2,9 +2,9 @@
 ..  index:: Events; ModifyFileReferenceControlsEvent
 ..  _ModifyFileReferenceControlsEvent:
 
-================================
-ModifyFileReferenceControlsEvent
-================================
+==================================
+`ModifyFileReferenceControlsEvent`
+==================================
 
 Listeners to the PSR-14 event
 :php:`\TYPO3\CMS\Backend\Form\Event\ModifyFileReferenceControlsEvent`
@@ -13,10 +13,14 @@ are able to modify the controls of a single file reference of a TCA type
 :ref:`ModifyInlineElementControlsEvent`, which is only available for TCA
 type :ref:`inline <t3tca:columns-inline>`.
 
+..  _modify-file-reference-controls-event-example:
+
 Example
 =======
 
 ..  include:: /_includes/EventsContributeNote.rst.txt
+
+..  _modify-file-reference-controls-event-api:
 
 API
 ===

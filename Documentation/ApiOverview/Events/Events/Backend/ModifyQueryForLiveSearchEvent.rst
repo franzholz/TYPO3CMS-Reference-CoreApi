@@ -2,9 +2,9 @@
 ..  index:: Events; ModifyQueryForLiveSearchEvent
 ..  _ModifyQueryForLiveSearchEvent:
 
-=============================
-ModifyQueryForLiveSearchEvent
-=============================
+===============================
+`ModifyQueryForLiveSearchEvent`
+===============================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Backend\Search\Event\ModifyQueryForLiveSearchEvent`
@@ -18,13 +18,16 @@ This event is fired in the
 and allows extensions to modify the :ref:`query builder <database-query-builder>`
 instance before execution.
 
+..  _modify-query-for-live-search-event-example:
+
 Example
 =======
 
 ..  literalinclude:: _ModifyQueryForLiveSearchEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Backend/EventListener/MyEventListener.php
 
+
+..  _modify-query-for-live-search-event-api:
 
 API
 ===

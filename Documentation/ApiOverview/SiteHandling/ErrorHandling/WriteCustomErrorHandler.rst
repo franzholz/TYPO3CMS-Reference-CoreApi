@@ -48,6 +48,8 @@ For a custom 403 error handler with redirect to a login form, please see
 :ref:`Custom error handler implementation for 403 redirects
 <typo3/cms-felogin:felogin-how-to-implement-403redirect-error-handler>`.
 
+..  _sitehandling-custom-error-handler-properties:
+
 Properties
 ==========
 
@@ -64,13 +66,14 @@ The custom error handlers have the properties
     :php:`PageErrorHandlerInterface`.
 
 
+..  _sitehandling-custom-error-handler-example-simple-404:
+
 Example for a simple 404 error handler
 ======================================
 
 The configuration:
 
 ..  literalinclude:: _custom-error-handler.yaml
-    :language: yaml
     :caption: config/sites/<some_site>/config.yaml | typo3conf/sites/<some_site>/config.yaml
 
 The error handler class:

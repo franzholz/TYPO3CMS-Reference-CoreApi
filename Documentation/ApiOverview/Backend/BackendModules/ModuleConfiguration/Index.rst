@@ -5,7 +5,7 @@
 ..  _backend-modules-configuration:
 
 ==========================================
-Modules.php - Backend module configuration
+Modules.php - backend module configuration
 ==========================================
 
 The configuration of backend modules is placed in the
@@ -204,7 +204,6 @@ Module configuration options
         **Example**
 
         ..  literalinclude:: _ModuleConfiguration/_ModuleData.php
-            :language: php
             :caption: Excerpt of EXT:my_extension/Configuration/Backend/Modules.php
 
     ..  confval:: aliases
@@ -222,13 +221,11 @@ Module configuration options
         Example for a new module identifier:
 
         ..  literalinclude:: _ModuleConfiguration/_AliasModule.php
-            :language: php
             :caption: Excerpt of EXT:my_extension/Configuration/Backend/Modules.php
 
         Example for a route alias identifier:
 
         ..  literalinclude:: _ModuleConfiguration/_AliasIdentifier.php
-            :language: php
             :caption: Excerpt of EXT:my_extension/Configuration/Backend/Modules.php
 
     ..  confval:: routeOptions
@@ -264,7 +261,6 @@ Default module configuration options (without Extbase)
         controller/action pair and can restrict the allowed HTTP methods:
 
         ..  literalinclude:: _ModuleConfiguration/_Routes.php
-            :language: php
             :caption: Excerpt of EXT:my_extension/Configuration/Backend/Modules.php
 
         All subroutes are automatically registered in a
@@ -278,6 +274,8 @@ Default module configuration options (without Extbase)
 
             \TYPO3\CMS\Backend\Routing\UriBuilder->buildUriFromRoute('my_module.edit');
 
+
+..  _backend-modules-configuration-options-extbase-module-configuration:
 
 Extbase module configuration options
 ------------------------------------
@@ -312,7 +310,6 @@ Extbase module configuration options
         can either be defined as array or comma-separated list:
 
         ..  literalinclude:: _ModuleConfiguration/_ControllerActions.php
-            :language: php
             :caption: Excerpt of EXT:my_extension/Configuration/Backend/Modules.php
 
         The modules define explicit routes for each controller/action combination,
@@ -336,8 +333,10 @@ Extbase module configuration options
         *   `web_ExtkeyExample.MyModule_list`
         *   `web_ExtkeyExample.MyModule_detail`
 
+..  _backend-module-configuration-debug-module-configuration:
+
 Debug the module configuration
-===============================
+==============================
 
 All registered modules are stored as objects in a registry. They can be viewed
 in the backend in the :guilabel:`System > Configuration > Backend Modules`

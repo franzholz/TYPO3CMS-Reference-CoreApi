@@ -21,7 +21,6 @@ Instantiation
 automatically instantiate the logger:
 
 ..  literalinclude:: _MyClassLoggerInjection.php
-    :language: php
     :caption: EXT:my_extension/Classes/Service/MyClass.php
 
 ..  tip::
@@ -37,8 +36,8 @@ automatically instantiate the logger:
     Logging; logger->log
 .. _logging-logger-log:
 
-The log() method
-================
+The `log()` method
+==================
 
 The :php:`\TYPO3\CMS\Core\Log\Logger` class provides a central point for
 submitting log messages, the :php:`log()` method:
@@ -56,11 +55,19 @@ which takes three parameters:
     One of the defined log levels, see the section
     :ref:`logging-logger-shortcuts`.
 
+
+$message
+--------
+
 ..  confval:: $message
     :name: logger-log-message
     :Type: string | :php:`\Stringable`
 
     The log message itself.
+
+
+$data
+-----
 
 ..  confval:: $data
     :name: logger-log-data
@@ -113,6 +120,10 @@ For each of the severity levels mentioned below, a shorthand method exists in
     development of PHP code.
 
 ..  _label-Informational:
+
+Informational
+-------------
+
 ..  confval:: Informational
     :name: logger-info
     :Class constant: :php:`\Psr\Log\LogLevel::INFO`
@@ -125,6 +136,10 @@ For each of the severity levels mentioned below, a shorthand method exists in
     *   Logging of SQL statements.
 
 ..  _label-notice:
+
+Notice
+------
+
 ..  confval:: Notice
     :name: logger-notice
     :Class constant: :php:`\Psr\Log\LogLevel::NOTICE`
@@ -137,6 +152,10 @@ For each of the severity levels mentioned below, a shorthand method exists in
     *   Logging of SQL statements.
 
 ..  _label-warning:
+
+Warning
+-------
+
 ..  confval:: Warning
     :name: logger-warning
     :Class constant: :php:`\Psr\Log\LogLevel::WARNING`
@@ -148,6 +167,10 @@ For each of the severity levels mentioned below, a shorthand method exists in
     *   Undesirable events that are not necessarily wrong.
 
 ..  _label-error:
+
+Error
+-----
+
 ..  confval:: Error
     :name: logger-error
     :Class constant: :php:`\Psr\Log\LogLevel::ERROR`
@@ -160,6 +183,10 @@ For each of the severity levels mentioned below, a shorthand method exists in
     *   A white screen is shown.
 
 ..  _label-critical:
+
+Critical
+--------
+
 ..  confval:: Critical
     :name: logger-critical
     :Class constant: :php:`\Psr\Log\LogLevel::CRITICAL`
@@ -172,6 +199,10 @@ For each of the severity levels mentioned below, a shorthand method exists in
     *   Data is corrupt or outdated.
 
 ..  _label-alert:
+
+Alert
+-----
+
 ..  confval:: Alert
     :name: logger-alert
     :Class constant: :php:`\Psr\Log\LogLevel::ALERT`
@@ -183,6 +214,10 @@ For each of the severity levels mentioned below, a shorthand method exists in
     *   The database is unavailable.
 
 .. _label-emergency:
+
+Emergency
+---------
+
 ..  confval:: Emergency
     :name: logger-emergency
     :Class constant: :php:`\Psr\Log\LogLevel::EMERGENCY`
@@ -215,19 +250,19 @@ dependency injection services as a class attribute.
 Registration via class attribute for :php:`\Psr\Log\LoggerInterface` injection:
 
 ..  literalinclude:: _MyClassChannel.php
-    :language: php
     :caption: EXT:my_extension/Classes/Service/MyClass.php
 
 Registration via parameter attribute for :php:`\Psr\Log\LoggerInterface`
 injection, overwrites possible class attributes:
 
 ..  literalinclude:: _MyClassChannel2.php
-    :language: php
     :caption: EXT:my_extension/Classes/Service/MyClass.php
 
 The instantiated logger will now have the channel "security",
 instead of the default one, which would be a combination of namespace and class
 of the instantiating class, such as `MyVendor.MyExtension.Service.MyClass`.
+
+..  _logging-channels-channel:
 
 Using the channel
 -----------------
@@ -279,6 +314,8 @@ Best practices
 There are no strict rules or guidelines about logging.
 Still it can be considered to be best practice to follow these rules:
 
+..  _logging-logger-best-practices-placeholders:
+
 Use placeholders
 ----------------
 
@@ -311,6 +348,8 @@ substitute placeholders in the message with data from the context array,
 if a context array key with same name exists.
 
 
+..  _logging-logger-best-practices-meaningful-message:
+
 Meaningful message
 ------------------
 
@@ -328,6 +367,8 @@ Good example:
 
     "Could not connect to database"
 
+
+..  _logging-logger-best-practices-searchable-message:
 
 Searchable message
 ------------------
@@ -348,6 +389,8 @@ Good example:
 
 This includes "connection", "mysql" and "database" as possible keywords.
 
+
+..  _logging-logger-best-practices-distinguishable-grouped:
 
 Distinguishable and grouped
 ---------------------------
@@ -373,6 +416,8 @@ Good examples:
 This way the same issue is grouped by the same structure,
 and one can scan the same position for either "MySQL" or "memcache".
 
+
+..  _logging-logger-best-practices-provide-useful-information:
 
 Provide useful information
 --------------------------

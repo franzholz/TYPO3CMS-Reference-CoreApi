@@ -5,7 +5,7 @@
 ..  _typo3ConfVars_ext:
 
 =====================================
-EXT - Extension manager configuration
+EXT - extension manager configuration
 =====================================
 
 The following configuration variables can be used to configure settings for
@@ -33,6 +33,10 @@ the Extension manager:
 ..  index::
     TYPO3_CONF_VARS SYS; excludeForPackaging
 ..  _typo3ConfVars_ext_excludeForPackaging:
+
+
+excludeForPackaging
+-------------------
 
 ..  confval:: excludeForPackaging
     :name: globals-typo3-conf-vars-excludeForPackaging

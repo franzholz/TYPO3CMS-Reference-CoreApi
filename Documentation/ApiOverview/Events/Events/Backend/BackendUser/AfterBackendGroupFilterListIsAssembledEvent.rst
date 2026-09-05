@@ -2,9 +2,9 @@
 ..  index:: Events; AfterBackendGroupFilterListIsAssembledEvent
 ..  _AfterBackendGroupFilterListIsAssembledEvent:
 
-===========================================
-AfterBackendGroupFilterListIsAssembledEvent
-===========================================
+=============================================
+`AfterBackendGroupFilterListIsAssembledEvent`
+=============================================
 
 ..  versionadded:: 14.0
 
@@ -18,12 +18,15 @@ is dispatched right after this list is assembled and makes it possible to modify
     are not introducing any breach of security when using this event, for example,
     by revealing restricted information.
 
+..  _after-backend-group-filter-list-is-assembled-event-example:
+
 Example
 =======
 
 ..  literalinclude:: _AfterBackendGroupFilterListIsAssembledEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Backend/EventListener/MyEventListener.php
+
+..  _after-backend-group-filter-list-is-assembled-event-api:
 
 API
 ===

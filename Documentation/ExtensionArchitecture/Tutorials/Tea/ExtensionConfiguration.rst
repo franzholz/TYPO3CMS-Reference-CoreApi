@@ -15,7 +15,8 @@ For an extension to be installable in TYPO3 it needs a file called
 A minimal :file:`composer.json <extension-composer-json>` to get the extension up and running
 could look like this:
 
-..  include:: /CodeSnippets/Tutorials/Tea/ComposerJsonSimplified.rst.txt
+.. literalinclude:: /CodeSnippets/Tutorials/Tea/ComposerJsonSimplified.json
+   :caption: EXT:tea/composer.json
 
 With just the :file:`composer.json <extension-composer-json>` present,
 you would be able to install the extension but it would not do anything.
@@ -23,6 +24,8 @@ you would be able to install the extension but it would not do anything.
 Though not required it is considered best practice for an extension to have an
 icon. This icon should have the format :file:`.svg` or :file:`.png` and has
 to be located at :file:`EXT:tea/Resources/Public/Icons/Extension.svg`.
+
+..  _extbase-tutorial-tea-extension-configuration-install-extension:
 
 Install the extension locally
 =============================

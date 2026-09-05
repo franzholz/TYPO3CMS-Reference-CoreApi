@@ -5,7 +5,7 @@
 .. _workspaces:
 
 =========================
-Versioning and Workspaces
+Versioning and workspaces
 =========================
 
 TYPO3 provides a feature called "workspaces", whereby changes
@@ -413,11 +413,15 @@ record is selected it should be discarded in case shown in
 context where ordering or position matters (like in menus or column
 based page content). This is done in the appropriate places.
 
+..  _workspaces-persistence-depth-scenarios:
+
 Persistence in-depth scenarios
 ==============================
 
 The following section represents how database records are actually persisted in a database
 table for different scenarios and previously performed actions.
+
+..  _workspaces-persistence-depth-scenarios-placeholders:
 
 Placeholders
 ------------
@@ -443,6 +447,8 @@ Workspace placeholders are stored in field :sql:`t3ver_state` which can have the
 `4`
    * **move pointer**
    * workspace pendant of a record that shall be moved
+
+..  _workspaces-persistence-depth-scenarios-overview:
 
 Overview
 --------
@@ -485,7 +491,9 @@ Overview
    33,20,0,224,1,0,1,11,2,Beitrag #1 (de)
    34,-1,0,224,1,33,-1,11,2,Beitrag #1 (de)
 
-Scenario: Create new page
+..  _workspaces-persistence-depth-scenarios-scenario-create-new:
+
+Scenario: create new page
 -------------------------
 
 .. csv-table:: Page "Topic #1 new" is created with their according placeholders
@@ -504,7 +512,9 @@ Scenario: Create new page
 * record :code:`uid = 42` contains actual version information, pointing back to new placeholder, :code:`t3ver_oid = 41`,
   indicating new version state :code:`t3ver_state = -1`
 
-Scenario: Modify record
+..  _workspaces-persistence-depth-scenarios-scenario-modify-record:
+
+Scenario: modify record
 -----------------------
 
 .. csv-table:: Record "Article #1" is modified in workspace
@@ -519,7 +529,9 @@ Scenario: Modify record
 * record :code:`uid = 21` contains actual version information, pointing back to live pendant, :code:`t3ver_oid = 11`,
   using default version state :code:`t3ver_state = 0`
 
-Scenario: Delete record
+..  _workspaces-persistence-depth-scenarios-scenario-delete-record:
+
+Scenario: delete record
 -----------------------
 
 .. csv-table:: Record "Article #2" is deleted in workspace
@@ -536,7 +548,7 @@ Scenario: Delete record
 
 .. _scenario-create-new-record-on-existing-page:
 
-Scenario: Create new record on existing page
+Scenario: create new record on existing page
 --------------------------------------------
 
 .. csv-table:: Record "Article #4" is created on existing page
@@ -552,7 +564,9 @@ Scenario: Create new record on existing page
 * record :code:`uid = 26` contains actual version information, pointing back to new placeholder, :code:`t3ver_oid = 25`,
   indicating new version state :code:`t3ver_state = -1`
 
-Scenario: Create new record on page that is new in workspace
+..  _workspaces-persistence-depth-scenarios-scenario-create-new-2:
+
+Scenario: create new record on page that is new in workspace
 ------------------------------------------------------------
 
 .. csv-table:: Record "Topic #1 Article" is created on page that is new in workspace
@@ -571,7 +585,7 @@ Scenario: Create new record on page that is new in workspace
 
 .. _scenario-discard-record-workspace-modifications:
 
-Scenario: Discard record workspace modifications
+Scenario: discard record workspace modifications
 ------------------------------------------------
 
 .. csv-table:: Previously created record "Article #5" is discarded
@@ -587,7 +601,9 @@ Scenario: Discard record workspace modifications
   (similar to :ref:`scenario-create-new-record-on-existing-page`)
 * both records represent the discarded state by having assigned :code:`deleted = 1` and :code:`t3ver_wsid = 0`
 
-Scenario: Create new record localization
+..  _workspaces-persistence-depth-scenarios-scenario-create-new-3:
+
+Scenario: create new record localization
 ----------------------------------------
 
 .. csv-table:: Record "Article #1" is localized to French and German
@@ -608,7 +624,9 @@ Scenario: Create new record localization
 * records :code:`uid = 33` and :code:`uid = 34` represent localization to German :code:`sys_language_uid = 2`,
   pointing back to their localization origin :code:`l10n_parent = 11`
 
-Scenario: Create new record, then move to different page
+..  _workspaces-persistence-depth-scenarios-scenario-create-new-4:
+
+Scenario: create new record, then move to different page
 --------------------------------------------------------
 
 .. csv-table:: Record "Article #4" is created on existing page, then moved to different page
@@ -625,7 +643,9 @@ Scenario: Create new record, then move to different page
   has been moved to target target page :code:`pid = 30`
 * record :code:`uid = 25` directly uses target page :code:`pid = 30`
 
-Scenario: Create new record, then delete
+..  _workspaces-persistence-depth-scenarios-scenario-create-new-5:
+
+Scenario: create new record, then delete
 ----------------------------------------
 
 .. csv-table:: Record "Article #4" is created on existing page, then deleted

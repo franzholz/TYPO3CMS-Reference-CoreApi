@@ -21,8 +21,10 @@ If you plan to publish your extension in the TYPO3 Extension Repository
 *   Create a directory with the extension name
 *   Create the :ref:`files-composer-json` file
 
+..  _extension-create-new-installing-newly-created:
+
 Installing the newly created extension
-=======================================
+======================================
 
 Since TYPO3 v11 extensions can only be installed
 using Composer as part of a Composer-based installation.

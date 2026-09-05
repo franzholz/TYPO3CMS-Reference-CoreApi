@@ -2,9 +2,9 @@
 ..  index:: Events; BeforeStdWrapContentStoredInCacheEvent
 ..  _BeforeStdWrapContentStoredInCacheEvent:
 
-======================================
-BeforeStdWrapContentStoredInCacheEvent
-======================================
+========================================
+`BeforeStdWrapContentStoredInCacheEvent`
+========================================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Frontend\ContentObject\Event\BeforeStdWrapContentStoredInCacheEvent`
@@ -16,13 +16,16 @@ added, the cache :php:`$tags` to be used, as well as the corresponding cache
 Additionally, the new event provides the full TypoScript configuration
 and the current :php:`ContentObjectRenderer` instance.
 
+..  _before-std-wrap-content-stored-in-cache-event-example:
+
 Example
 =======
 
 ..  literalinclude:: _BeforeStdWrapContentStoredInCacheEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Frontend/EventListener/MyEventListener.php
 
+
+..  _before-std-wrap-content-stored-in-cache-event-api:
 
 API
 ===

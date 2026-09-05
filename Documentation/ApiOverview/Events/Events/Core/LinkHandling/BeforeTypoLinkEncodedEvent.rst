@@ -2,9 +2,9 @@
 ..  index:: Events; BeforeTypoLinkEncodedEvent
 ..  _BeforeTypoLinkEncodedEvent:
 
-==========================
-BeforeTypoLinkEncodedEvent
-==========================
+============================
+`BeforeTypoLinkEncodedEvent`
+============================
 
 The PSR-14 event :php:`\TYPO3\CMS\Core\LinkHandling\Event\BeforeTypoLinkEncodedEvent`
 allows developers to fully manipulate the encoding of
@@ -17,12 +17,15 @@ inserted to the link markup.
 ..  seealso::
     :ref:`AfterTypoLinkDecodedEvent`
 
+..  _before-typo-link-encoded-event-example:
+
 Example
 =======
 
 ..  literalinclude:: _BeforeTypoLinkEncodedEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/LinkHandling/EventListener/MyEventListener.php
+
+..  _before-typo-link-encoded-event-api:
 
 API
 ===

@@ -9,6 +9,8 @@
 Extension scanner
 =================
 
+..  _extension-scanner-introduction:
+
 Introduction
 ============
 
@@ -35,6 +37,8 @@ This module has been featured on the TYPO3 YouTube channel:
 
 
 .. index:: Admin tool; Scan extension files
+
+..  _extension-scanner-quick-start:
 
 Quick start
 ===========
@@ -65,13 +69,15 @@ Quick start
 
         Deprecations as strong and weak matches in the extension scanner for EXT:news
 
+..  _extension-scanner-goals-non-goals:
+
 Goals and non goals
 ===================
 
 * Help extension authors quickly find code in extensions that may need attention when upgrading to
   newer Core versions.
 
-* Extend the existing reST documentation files which are shown in the ``Upgrade Analysis`` section
+* Extend the existing reST documentation files which are shown in the `Upgrade Analysis` section
   with additional information giving extension authors and site developers hints if they are affected
   by a specific change.
 
@@ -93,6 +99,8 @@ Goals and non goals
 
 
 .. index:: Extension scanner; Limits
+
+..  _extension-scanner-limits:
 
 Limits
 ======
@@ -199,6 +207,8 @@ in a Core version check.
 
 .. index:: Extension scanner; Extension authors
 
+..  _extension-scanner-extension-authors:
+
 Extension authors
 =================
 
@@ -255,11 +265,13 @@ may need attention when upgrading to a newer Core version, the following points 
   as a match. In general: the cleaner the code base of a given extension is and the simpler the code lines are,
   the more useful the extension scanner will be.
 
-* If an extension is cluttered with ``@extensionScannerIgnoreLine`` or ``@extensionScannerIgnoreFile``
+* If an extension is cluttered with `@extensionScannerIgnoreLine` or `@extensionScannerIgnoreFile`
   annotations this could be an indication to the extension author to consider branching off
   an extensions to support individual Core versions instead of supporting multiple versions in the same release.
 
 .. index:: Extension scanner; Project developers
+
+..  _extension-scanner-project-developers:
 
 Project developers
 ==================
@@ -278,6 +290,8 @@ an extension scanner run the following points should be considered:
   multiple TYPO3 versions in the same extension release.
 
 .. index:: Extension scanner; Core developers
+
+..  _extension-scanner-core-developers:
 
 Core developers
 ===============

@@ -2,9 +2,9 @@
 ..  index:: Events; AfterFileStorageTreeItemsPreparedEvent
 ..  _AfterFileStorageTreeItemsPreparedEvent:
 
-======================================
-AfterFileStorageTreeItemsPreparedEvent
-======================================
+========================================
+`AfterFileStorageTreeItemsPreparedEvent`
+========================================
 
 ..  versionadded:: 14.0
     This PSR-14 event was introduced to add visual cues and improved
@@ -55,7 +55,6 @@ Example
 =======
 
 ..  literalinclude:: _AfterFileStorageTreeItemsPreparedEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Backend/EventListener/ModifyFileStorageTreeItems.php
 
 ..  _AfterFileStorageTreeItemsPreparedEvent-api:

@@ -3,9 +3,9 @@
 ..  _ModifyRedirectManagementControllerViewDataEvent:
 
 
-===============================================
-ModifyRedirectManagementControllerViewDataEvent
-===============================================
+=================================================
+`ModifyRedirectManagementControllerViewDataEvent`
+=================================================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Redirects\Event\ModifyRedirectManagementControllerViewDataEvent`
@@ -21,12 +21,15 @@ view. With :ref:`overriding the backend view template <t3tsref:pagetemplates>`
 via :ref:`page TSconfig <t3tsref:pagetsconfig>` this custom data can be
 displayed where it is needed and rendered the way it is wanted.
 
+..  _modify-redirect-management-controller-view-data-event-example:
+
 Example
 =======
 
 ..  literalinclude:: _ModifyRedirectManagementControllerViewDataEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Redirects/EventListener/MyEventListener.php
+
+..  _modify-redirect-management-controller-view-data-event-api:
 
 API
 ===

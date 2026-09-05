@@ -11,6 +11,8 @@ Doctrine DBAL driver middlewares
 ..  contents::
     :local:
 
+..  _database-middleware-introduction:
+
 Introduction
 ============
 
@@ -44,9 +46,10 @@ Global driver middlewares are applied to all
 Example:
 
 ..  literalinclude:: _ext_localconf_global.php
-    :language: php
     :caption: EXT:my_extension/ext_localconf.php | config/system/additional.php
 
+
+..  _database-middleware-global-disable-global-middleware:
 
 Disable a global middleware for a specific connection
 -----------------------------------------------------
@@ -54,7 +57,6 @@ Disable a global middleware for a specific connection
 Example:
 
 ..  literalinclude:: _ext_localconf_global_disable.php
-    :language: php
     :caption: EXT:my_extension/ext_localconf.php | config/system/additional.php
 
 
@@ -67,7 +69,6 @@ In this example, the custom driver middleware :php:`MyDriverMiddleware` is added
 to the `Default` connection:
 
 ..  literalinclude:: _ext_localconf_specific.php
-    :language: php
     :caption: EXT:my_extension/ext_localconf.php | config/system/additional.php
 
 
@@ -79,13 +80,11 @@ Migration
 For example:
 
 ..  literalinclude:: _ext_localconf_specific_deprecated.php
-    :language: php
     :caption: EXT:my_extension/ext_localconf.php | config/system/additional.php
 
 needs to be converted to:
 
 ..  literalinclude:: _ext_localconf_specific.php
-    :language: php
     :caption: EXT:my_extension/ext_localconf.php | config/system/additional.php
 
 ..  _database-middleware-specific-registration-v12-v13:
@@ -98,7 +97,6 @@ the :php:`Typo3Version` class to provide the configuration suitable for the Core
 version and avoiding the deprecation notice:
 
 ..  literalinclude:: _ext_localconf_specific_dual_versions.php
-    :language: php
     :caption: EXT:my_extension/ext_localconf.php | config/system/additional.php
 
 
@@ -122,6 +120,10 @@ structure for a middleware configuration is:
 
     The fully-qualified class name of the driver middleware.
 
+
+before
+------
+
 ..  confval:: before
 
     :Data type: list of strings
@@ -130,6 +132,10 @@ structure for a middleware configuration is:
 
     A list of middleware identifiers the current middleware should be registered
     before.
+
+
+after
+-----
 
 ..  confval:: after
 
@@ -146,6 +152,10 @@ structure for a middleware configuration is:
         `'typo3/core/custom-pdo-driver-result-middleware'` driver middlewares to
         ensure essential Core driver middlewares have been processed first.
 
+
+disabled
+--------
+
 ..  confval:: disabled
 
     :Data type: boolean
@@ -161,7 +171,6 @@ structure for a middleware configuration is:
 Example:
 
 ..  literalinclude:: _ext_localconf_sorting.php
-    :language: php
     :caption: EXT:my_extension/ext_localconf.php | config/system/additional.php
 
 ..  tip::
@@ -179,8 +188,8 @@ Example:
 
 ..  _database-middleware-UsableForConnectionInterface:
 
-The interface :php:`UsableForConnectionInterface`
-=================================================
+The interface `UsableForConnectionInterface`
+============================================
 
 ..  note::
     Real use cases for this interface should be rare edge cases. Typically,
@@ -205,24 +214,23 @@ This allows to decide, if a middleware should be used for a specific connection,
 either based on the :php:`$connectionName` or the :php:`$connectionParams`,
 for example the concrete :php:`$connectionParams['driver']`.
 
+..  _database-middleware-usable-for-connection-interface-example:
+
 Example
 -------
 
 The custom driver:
 
 ..  literalinclude:: _CustomDriver.php
-    :language: php
     :caption: EXT:my_extension/Classes/DoctrineDBAL/CustomDriver.php
 
 The custom driver middleware which implements the
 :php:`\TYPO3\CMS\Core\Database\Middleware\UsableForConnectionInterface`:
 
 ..  literalinclude:: _CustomMiddleware.php
-    :language: php
     :caption: EXT:my_extension/Classes/DoctrineDBAL/CustomMiddleware.php
 
 Register the custom driver middleware:
 
 ..  literalinclude:: _ext_localconf_CustomMiddleware.php
-    :language: php
     :caption: EXT:my_extension/ext_localconf.php | config/system/additional.php

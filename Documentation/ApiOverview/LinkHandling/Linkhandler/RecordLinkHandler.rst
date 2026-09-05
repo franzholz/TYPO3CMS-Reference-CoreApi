@@ -2,9 +2,9 @@
 .. index:: LinkHandlers; RecordLinkHandler
 .. _recordlinkhandler:
 
-=====================
-The RecordLinkHandler
-=====================
+=======================
+The `RecordLinkHandler`
+=======================
 
 The :php:`RecordLinkHandler` enables editors to link to single records, for
 example the detail page of a news record.
@@ -29,7 +29,7 @@ In order to use the :php:`RecordLinkHandler` it can be configured as following:
 
       TCEMAIN.linkHandler.anIdentifier {
           handler = TYPO3\CMS\Backend\LinkHandler\RecordLinkHandler
-          label = LLL:EXT:extension/Resources/Private/Language/locallang.xlf:link.customTab
+          label = extension.messages:link.customTab
           configuration {
               table = tx_example_domain_model_item
           }
@@ -67,8 +67,8 @@ In order to use the :php:`RecordLinkHandler` it can be configured as following:
    TCEMAIN; RecordLinkHandler
 .. _linkhandler-pagetsconfig_options:
 
-RecordLinkHandler page TSconfig options
-=======================================
+`RecordLinkHandler` page TSconfig options
+=========================================
 
 The minimal page TSconfig configuration is:
 
@@ -77,7 +77,7 @@ The minimal page TSconfig configuration is:
 
    TCEMAIN.linkHandler.anIdentifier {
        handler = TYPO3\CMS\Backend\LinkHandler\RecordLinkHandler
-       label = LLL:EXT:extension/Resources/Private/Language/locallang.xlf:link.customTab
+       label = extension.messages:link.customTab
        configuration {
            table = tx_example_domain_model_item
        }

@@ -2,9 +2,9 @@
 ..  index:: Events; SiteConfigurationLoadedEvent
 ..  _SiteConfigurationLoadedEvent:
 
-============================
-SiteConfigurationLoadedEvent
-============================
+==============================
+`SiteConfigurationLoadedEvent`
+==============================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Core\Configuration\Event\SiteConfigurationLoadedEvent`
@@ -14,6 +14,8 @@ before loading the configuration.
 ..  note::
     If you need to change the configuration before it is saved to disk, use
     :ref:`SiteConfigurationBeforeWriteEvent`.
+
+..  _site-configuration-loaded-event-example:
 
 Example
 =======
@@ -25,12 +27,13 @@ is no need to :ref:`add an import manually <routing-examples-imports>` to the
 site configuration.
 
 ..  literalinclude:: _SiteConfigurationLoadedEvent/_ImportRoutesIntoSiteConfiguration.php
-    :language: php
     :caption: EXT:my_extension/Classes/Configuration/EventListener/ImportRoutesIntoSiteConfiguration.php
 
 For more sophisticated examples, see also
 `Automatically register route enhancer definitions stored in TYPO3 extensions <https://brotkrueml.dev/register-route-enhancer-definitions-extensions-automatically-typo3/>`__.
 
+
+..  _site-configuration-loaded-event-api:
 
 API
 ===

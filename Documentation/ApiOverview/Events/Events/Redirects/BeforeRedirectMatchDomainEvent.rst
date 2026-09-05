@@ -3,9 +3,9 @@
 ..  _BeforeRedirectMatchDomainEvent:
 
 
-==============================
-BeforeRedirectMatchDomainEvent
-==============================
+================================
+`BeforeRedirectMatchDomainEvent`
+================================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Redirects\Event\BeforeRedirectMatchDomainEvent`
@@ -27,12 +27,15 @@ redirects or return the matched redirect record from other sources.
     state to the event by properly deprecate it.
 
 
+..  _before-redirect-match-domain-event-example:
+
 Example
 =======
 
 ..  literalinclude:: _BeforeRedirectMatchDomainEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Redirects/EventListener/MyEventListener.php
+
+..  _before-redirect-match-domain-event-api:
 
 API
 ===

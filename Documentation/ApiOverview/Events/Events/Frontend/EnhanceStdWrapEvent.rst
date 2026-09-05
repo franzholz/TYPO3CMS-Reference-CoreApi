@@ -2,9 +2,9 @@
 ..  index:: Events; EnhanceStdWrapEvent
 ..  _EnhanceStdWrapEvent:
 
-===================
-EnhanceStdWrapEvent
-===================
+=====================
+`EnhanceStdWrapEvent`
+=====================
 
 Listeners to the PSR-14 event
 :php:`\TYPO3\CMS\Frontend\ContentObject\Event\EnhanceStdWrapEvent` are able to
@@ -29,9 +29,10 @@ Example
 =======
 
 ..  literalinclude:: _EnhanceStdWrapEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Frontend/EventListener/MyEventListener.php
 
+
+..  _enhance-std-wrap-event-api:
 
 API
 ===

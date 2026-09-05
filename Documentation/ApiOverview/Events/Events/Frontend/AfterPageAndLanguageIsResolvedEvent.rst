@@ -2,9 +2,9 @@
 ..  index:: Events; AfterPageAndLanguageIsResolvedEvent
 ..  _AfterPageAndLanguageIsResolvedEvent:
 
-===================================
-AfterPageAndLanguageIsResolvedEvent
-===================================
+=====================================
+`AfterPageAndLanguageIsResolvedEvent`
+=====================================
 
 The PSR-14 event :php:`\TYPO3\CMS\Frontend\Event\AfterPageAndLanguageIsResolvedEvent`
 is fired in the frontend process after a given page has been resolved
@@ -24,11 +24,15 @@ a custom 403 response).
     #.  AfterPageAndLanguageIsResolvedEvent
 
 
+..  _after-page-and-language-is-resolved-event-example:
+
 Example
 =======
 
 ..  include:: /_includes/EventsContributeNote.rst.txt
 
+
+..  _after-page-and-language-is-resolved-event-api:
 
 API
 ===

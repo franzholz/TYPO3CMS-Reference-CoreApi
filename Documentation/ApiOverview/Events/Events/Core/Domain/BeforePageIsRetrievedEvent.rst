@@ -2,9 +2,9 @@
 ..  index:: Events; BeforePageIsRetrievedEvent
 ..  _BeforePageIsRetrievedEvent:
 
-==========================
-BeforePageIsRetrievedEvent
-==========================
+============================
+`BeforePageIsRetrievedEvent`
+============================
 
 The PSR-14 event :php:`\TYPO3\CMS\Core\Domain\Event\BeforePageIsRetrievedEvent`
 allows to modify the resolving of page records within
@@ -14,12 +14,15 @@ It can be used to alter the incoming page ID or to even fetch a fully-loaded
 page object before the default TYPO3 behaviour is executed, effectively
 bypassing the default page resolving.
 
+..  _before-page-is-retrieved-event-example:
+
 Example
 =======
 
 ..  literalinclude:: _BeforePageIsRetrievedEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Access/MyEventListener.php
+
+..  _before-page-is-retrieved-event-api:
 
 API
 ===

@@ -9,6 +9,8 @@ Fluid-based error handler
 The Fluid-based error handler is defined in
 :t3src:`core/Classes/Error/PageErrorHandler/FluidPageErrorHandler.php`.
 
+..  _sitehandling-error-handling-fluid-properties:
+
 Properties
 ==========
 
@@ -19,7 +21,7 @@ The Fluid-based error handler has the properties
 ..  option:: errorFluidTemplate
 
     :type: string
-    :Example: `EXT:my_sitepackage/Resources/Private/Templates/Sites/Error.html`
+    :Example: `EXT:my_sitepackage/Resources/Private/Templates/Sites/Error.fluid.html`
 
     The path to the Fluid template file. Path may be
 
@@ -49,11 +51,12 @@ The Fluid-based error handler has the properties
     The paths to Fluid layouts in case more flexibility is needed.
 
 
+..  _sitehandling-error-handling-fluid-example:
+
 Example
 =======
 
 Show the content of a Fluid template in case of an error with HTTP status 404:
 
 ..  literalinclude:: _fluid-error-handler.yaml
-    :language: yaml
     :caption: config/sites/<some_site>/config.yaml | typo3conf/sites/<some_site>/config.yaml

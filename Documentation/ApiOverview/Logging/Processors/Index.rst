@@ -34,8 +34,8 @@ section for how to use these options.
 ..  index:: Logging; IntrospectionProcessor
 ..  _logging-processors-introspection:
 
-IntrospectionProcessor
-----------------------
+`IntrospectionProcessor`
+------------------------
 
 The introspection processor adds backtrace data about where the log event was
 triggered.
@@ -54,6 +54,8 @@ class
 function
     The function name.
 
+..  _logging-processors-introspection-options:
+
 Options
 ~~~~~~~
 
@@ -63,6 +65,10 @@ Options
     :Default: :php:`false`
 
     Adds a full backtrace stack to the log.
+
+
+shiftBackTraceLevel
+```````````````````
 
 ..  confval:: shiftBackTraceLevel
     :name: logging-processors-introspection-shiftBackTraceLevel
@@ -75,13 +81,15 @@ Options
 ..  index:: Logging; MemoryUsageProcessor
 ..  _logging-processors-memory:
 
-MemoryUsageProcessor
---------------------
+`MemoryUsageProcessor`
+----------------------
 
 The memory usage processor adds the amount of used memory to the log record
 (result from `memory_get_usage()`_).
 
 ..  _memory_get_usage(): https://www.php.net/manual/en/function.memory-get-usage.php
+
+..  _logging-processors-memory-options:
 
 Options
 ~~~~~~~
@@ -94,6 +102,10 @@ Options
     Use the `real size of memory <https://www.php.net/manual/en/function.memory-get-usage.php#refsect1-function.memory-get-usage-parameters>`__
     allocated from system instead of :php:`emalloc()` value.
 
+
+formatSize
+``````````
+
 ..  confval:: formatSize
     :name: logging-processors-memory-formatSize
     :Mandatory: no
@@ -105,13 +117,15 @@ Options
 ..  index:: Logging; MemoryPeakUsageProcessor
 ..  _logging-processors-memory-peak:
 
-MemoryPeakUsageProcessor
-------------------------
+`MemoryPeakUsageProcessor`
+--------------------------
 
 The memory peak usage processor adds the peak amount of used memory to the
 :ref:`log record <logging-model>` (result from `memory_get_peak_usage()`_).
 
 ..  _memory_get_peak_usage(): https://www.php.net/manual/en/function.memory-get-peak-usage.php
+
+..  _logging-processors-memory-peak-options:
 
 Options
 ~~~~~~~
@@ -124,6 +138,10 @@ Options
     Use the `real size of memory <https://www.php.net/manual/en/function.memory-get-peak-usage.php#refsect1-function.memory-get-peak-usage-parameters>`__
     allocated from system instead of :php:`emalloc()` value.
 
+
+formatSize
+``````````
+
 ..  confval:: formatSize
     :name: logging-processors-memory-peak-formatSize
     :Mandatory: no
@@ -135,8 +153,8 @@ Options
 ..  index:: Logging; Processors
 ..  _logging-processors-web:
 
-WebProcessor
-------------
+`WebProcessor`
+--------------
 
 The web processor adds selected webserver environment variables to the log record,
 that means, all possible values from

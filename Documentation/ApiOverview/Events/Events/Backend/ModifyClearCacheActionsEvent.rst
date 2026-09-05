@@ -2,9 +2,9 @@
 ..  index:: Events; ModifyClearCacheActionsEvent
 ..  _ModifyClearCacheActionsEvent:
 
-============================
-ModifyClearCacheActionsEvent
-============================
+==============================
+`ModifyClearCacheActionsEvent`
+==============================
 
 The PSR-14 event :php:`\TYPO3\CMS\Backend\Backend\Event\ModifyClearCacheActionsEvent`
 is fired in the :php-short:`\TYPO3\CMS\Backend\Backend\ToolbarItems\ClearCacheToolbarItem`
@@ -25,7 +25,6 @@ Example
 =======
 
 ..  literalinclude:: _ModifyClearCacheActionsEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Backend/EventListener/MyEventListener.php
 
 The response returned by the AJAX endpoint should look like this:
@@ -57,8 +56,8 @@ API
 
 ..  _ModifyClearCacheActionsEvent-api-add-cache-action:
 
-addCacheAction
---------------
+`addCacheAction`
+----------------
 
 The cache action array element consists of the following keys and values:
 
@@ -70,12 +69,20 @@ The cache action array element consists of the following keys and values:
     Contains an existing cache id like `pages` or `all` or one registered via
     the :ref:`addCacheActionIdentifier <ModifyClearCacheActionsEvent-api-add-cache-identifier>`.
 
+
+title
+~~~~~
+
 ..  confval:: title
     :name: ModifyClearCacheActionsEvent-api-add-cache-action-title
     :required: true
     :type: string or LLL reference
 
     The title displayed in the clear cache menu.
+
+
+endpoint
+~~~~~~~~
 
 ..  confval:: endpoint
     :name: ModifyClearCacheActionsEvent-api-add-cache-action-endpoint
@@ -92,6 +99,10 @@ The cache action array element consists of the following keys and values:
     however, gives users meaningful, context-specific feedback and ensures error
     conditions are surfaced correctly.
 
+
+iconIdentifier
+~~~~~~~~~~~~~~
+
 ..  confval:: iconIdentifier
     :name: ModifyClearCacheActionsEvent-api-add-cache-action-iconIdentifier
     :required: true
@@ -99,11 +110,19 @@ The cache action array element consists of the following keys and values:
 
     An icon to be displayed in the clear cache menu
 
+
+description
+~~~~~~~~~~~
+
 ..  confval:: description
     :name: ModifyClearCacheActionsEvent-api-add-cache-action-description
     :type: string or LLL reference
 
     The description displayed in the clear cache menu.
+
+
+severity
+~~~~~~~~
 
 ..  confval:: severity
     :name: ModifyClearCacheActionsEvent-api-add-cache-action-severity
@@ -128,8 +147,8 @@ The cache action array element consists of the following keys and values:
 
 ..  _ModifyClearCacheActionsEvent-api-add-cache-identifier:
 
-addCacheActionIdentifier
-------------------------
+`addCacheActionIdentifier`
+--------------------------
 
 The cache identifier array is a numerical array in which the array value
 corresponds to the registered `id` of the cache action array.

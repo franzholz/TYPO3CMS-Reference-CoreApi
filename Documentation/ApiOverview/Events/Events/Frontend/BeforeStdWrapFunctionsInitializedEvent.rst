@@ -2,9 +2,9 @@
 ..  index:: Events; BeforeStdWrapFunctionsInitializedEvent
 ..  _BeforeStdWrapFunctionsInitializedEvent:
 
-======================================
-BeforeStdWrapFunctionsInitializedEvent
-======================================
+========================================
+`BeforeStdWrapFunctionsInitializedEvent`
+========================================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Frontend\ContentObject\Event\BeforeStdWrapFunctionsInitializedEvent`
@@ -21,12 +21,16 @@ Calling order of similar events:
     :ref:`EnhanceStdWrapEvent`
 
 
+..  _before-std-wrap-functions-initialized-event-example:
+
 Example
 =======
 
 Have a look into the
 :ref:`example of EnhanceStdWrapEvent <EnhanceStdWrapEvent-example>`.
 
+
+..  _before-std-wrap-functions-initialized-event-api:
 
 API
 ===

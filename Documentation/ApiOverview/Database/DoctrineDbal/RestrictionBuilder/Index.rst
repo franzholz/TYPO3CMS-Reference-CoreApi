@@ -33,6 +33,8 @@ suppress rows which are marked as deleted or have exceeded their "active"
 lifecycle. All this is based on the TCA configuration of the affected table.
 
 
+..  _database-restriction-builder-rationale:
+
 Rationale
 =========
 
@@ -71,6 +73,8 @@ query" should be fired. The construct implements some important design goals:
     or substitute it with their own restrictions if that makes sense for
     modeling the domain in question.
 
+
+..  _database-restriction-builder-main-construct:
 
 Main construct
 ==============
@@ -126,6 +130,8 @@ extension developer.
     magic, security, transparency, and convenience.
 
 
+..  _database-restriction-builder-restrictions:
+
 Restrictions
 ============
 
@@ -178,8 +184,10 @@ following applies:
     :php:`EnforceableQueryRestrictionInterface`.
 
 
-QueryRestrictionContainer
-=========================
+..  _database-restriction-builder-queryrestrictioncontainer:
+
+`QueryRestrictionContainer`
+===========================
 
 .. rst-class:: dl-parameters
 
@@ -223,6 +231,8 @@ it is possible to apply restrictions to a query only for a given set of tables,
 or - to be precise - table aliases. Since it is a restriction container, it can
 be added to the restrictions of the query builder and can hold restrictions
 itself.
+
+..  _database-limit-restrictions-to-tables-examples:
 
 Examples
 --------
@@ -332,7 +342,6 @@ enforced, or even not applied at all, by returning an empty expression in certai
 To add a custom restriction class, use the following snippet:
 
 ..  literalinclude:: _ext_localconf.php
-    :language: php
     :caption: EXT:my_extension/ext_localconf.php
 
 ..  note::
@@ -349,8 +358,9 @@ Removing third party restrictions is possible, by setting the option
 or :file:`ext_localconf.php` of an extension:
 
 ..  literalinclude:: _ext_localconf_remove.php
-    :language: php
     :caption: EXT:my_extension/ext_localconf.php
+
+..  _database-restriction-builder-examples:
 
 Examples
 ========

@@ -31,7 +31,7 @@ Select field
 
     <settings.orderBy>
         <label>
-            LLL:EXT:example/Resources/Private/Language/Backend.xlf:settings.registration.orderBy
+            example.backend:settings.registration.orderBy
         </label>
         <config>
             <type>select</type>
@@ -39,13 +39,13 @@ Select field
             <items>
                 <numIndex index="0">
                     <label>
-                        LLL:EXT:example/Resources/Private/Language/Backend.xlf:settings.registration.orderBy.crdate
+                        example.backend:settings.registration.orderBy.crdate
                     </label>
                     <value>crdate</value>
                 </numIndex>
                 <numIndex index="1">
                     <label>
-                        LLL:EXT:example/Resources/Private/Language/Backend.xlf:settings.registration.orderBy.title
+                        example.backend:settings.registration.orderBy.title
                     </label>
                     <value>title</value>
                 </numIndex>
@@ -59,14 +59,14 @@ Select field
 
 ..  _flexforms-itemsProcFunc:
 
-Populate a `select` field using a PHP Function (itemsProcFunc)
---------------------------------------------------------------
+Populate a `select` field using a PHP function (`itemsProcFunc`)
+----------------------------------------------------------------
 
 ..  code-block:: xml
 
     <settings.orderBy>
         <label>
-            LLL:EXT:example/Resources/Private/Language/Backend.xlf:settings.registration.orderBy
+            example.backend:settings.registration.orderBy
         </label>
         <config>
             <type>select</type>
@@ -113,8 +113,8 @@ The function :php:`user_orderBy` populates the select field in
 ..  index:: FlexForms; Display conditions
 ..  _flexformDisplayCond:
 
-Display fields/sheets conditionally (displayCond)
--------------------------------------------------
+Display fields/sheets conditionally (`displayCond`)
+---------------------------------------------------
 
 Some settings may only make sense in the context of other settings.
 For example, in one setting you define a sorting order (by date, title etc.)

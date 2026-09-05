@@ -9,8 +9,10 @@ Using site configuration in TypoScript and Fluid templates
 
 .. index:: pair: Site handling; getText
 
-getText
-=======
+..  _sitehandling-in-typo-script-gettext:
+
+`getText`
+=========
 
 Site configuration can be accessed via the :ref:`site <t3tsref:data-type-site>` property in TypoScript.
 
@@ -69,7 +71,7 @@ to fetch data from the site entity:
 
    tt_content.mycontent.20 = FLUIDTEMPLATE
    tt_content.mycontent.20 {
-       file = EXT:myextension/Resources/Private/Templates/ContentObjects/MyContent.html
+       file = EXT:myextension/Resources/Private/Templates/ContentObjects/MyContent.fluid.html
 
        dataProcessing.10 = TYPO3\CMS\Frontend\DataProcessing\SiteProcessor
        dataProcessing.10 {

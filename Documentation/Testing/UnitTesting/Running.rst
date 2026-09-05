@@ -3,7 +3,7 @@
 ..  _testing-unit-run:
 
 ==================
-Running Unit tests
+Running unit tests
 ==================
 
 ..  _testing-unit-run-install:
@@ -17,22 +17,23 @@ PHPUnit and the testing framework via Composer as a development dependency:
 ..  code-block:: bash
 
     composer require --dev \
-      "typo3/testing-framework":"^9.3.0"
+      "typo3/testing-framework":"^9.6.0"
 
 Which versions to use depends on the PHP and TYPO3 versions to be supported.
 
 The following matrix can help you to choose the correct versions.
 
-================== ================ =================================== ==========
+================== ================ =================================== ===============
  testing-framework  TYPO3            PHP                                 PHPUnit
-================== ================ =================================== ==========
- 9.x.x              v13, v14 (main)  8.2, 8.3, (8.4)                     ^11, ^12
+================== ================ =================================== ===============
+ 10.x.x (main)      v14, v15 (main)  8.2, 8.3, 8.4, 8.5                  ^11, ^12, ^13
+ 9.x.x              v13, v14         8.2, 8.3, 8.4, 8.5                  ^11, ^12, ^13
  8.x.x              v12, v13         8.1, 8.2, 8.3 (8.4)                 ^10, ^11
  7.x.x              v11, v12         7.4, 8.0, 8.1, 8.2, 8.3 (8.4)       ^9, ^10
  6.x.x              v10, v11         7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3   ^8, ^9
-================== ================ =================================== ==========
+================== ================ =================================== ===============
 
-Testing framework <= 6.x is no longer maintained.
+Testing framework <= 7.x is no longer maintained.
 
 ..  _testing-unit-run-configure:
 
@@ -77,6 +78,8 @@ local extensions like site packages and client-specific extensions are installed
         </testsuite>
     </testsuites>
 
+..  _testing-unit-run-run-unit-tests:
+
 Run the unit tests on your system or with DDEV
 ==============================================
 
@@ -104,12 +107,14 @@ test class) you can use the filter option:
     php vendor/bin/phpunit -c Build/phpunit/UnitTests.xml --filter "MyTest"
 
 You can of course define a
-`Composer script <https://getcomposer.org/doc/articles/scripts.md>` as well, so that
+`Composer script <https://getcomposer.org/doc/articles/scripts.md>`_ as well, so that
 this command can be executed easily on the host, within a DDEV container and also in
 GitHub Actions or Gitlab CI.
 
-Run the unit tests with runTests.sh
-===================================
+..  _testing-unit-run-run-unit-tests-2:
+
+Run the unit tests with `runTests.sh`
+=====================================
 
 If you are using a :file:`runTests.sh` like the one used by the
 :composer:`t3docs/blog-example` you can run the tests with:
@@ -122,7 +127,7 @@ It is also possible to choose the PHP version to run the tests with:
 
 ..  code-block:: bash
 
-    Build/Script/runTests.sh -s unit -p 8.2
+    Build/Script/runTests.sh -s unit -p 8.5
 
 You can start by copying the
 `runTests.sh of blog_example <https://github.com/TYPO3-Documentation/blog_example/blob/main/Build/Scripts/runTests.sh>`__

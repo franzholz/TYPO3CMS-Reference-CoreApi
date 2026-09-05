@@ -13,6 +13,8 @@ See also the :ref:`Backend module configuration API <backend-modules-configurati
 
 Read more about
 
+..  _backend-modules-configuration-examples-example-register-two:
+
 Example: register two backend modules
 =====================================
 
@@ -20,9 +22,10 @@ You can find the following example in
 `EXT:examples <https://github.com/TYPO3-Documentation/t3docs-examples>`__.
 
 Two backend modules are being registered. The first module is based on
-:ref:`Extbase <extbase>` while the second uses a plain controller.
+:ref:`Extbase <extbase-extension-framework>` while the second uses a plain controller.
 
-..  include:: _ModuleConfiguration/_Modules.rst.txt
+.. literalinclude:: /ExtensionArchitecture/HowTo/BackendModule/_ModuleConfiguration/_Modules.php
+   :caption: EXT:examples/Configuration/Backend/Modules.php
 
 
 .. _backend-modules-configuration-example-debug:

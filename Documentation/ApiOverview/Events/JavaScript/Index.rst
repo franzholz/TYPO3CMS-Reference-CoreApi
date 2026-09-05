@@ -3,7 +3,7 @@
 ..  _Events_JavaScript:
 
 ====================
-JavaScript Event API
+JavaScript event API
 ====================
 
 The Event API in TYPO3 incorporates different techniques to handle JavaScript events in an easy, convenient and
@@ -12,6 +12,8 @@ performant manner. Event listeners may be bound directly to an element or to mul
 TYPO3 ships different event strategies, implementing the same interface which makes all strategies API-wise
 interchangeable.
 
+
+..  _events-java-script-bind-element:
 
 Bind to an element
 ------------------
@@ -31,6 +33,8 @@ Example:
     Event delegation needs a bubbling event which is not the default case for :js:`CustomEvent()`. Define the option
     in the event initialization as follows: :js:`new CustomEvent('my-event', {bubbles: true});`.
 
+
+..  _events-java-script-bind-multiple-elements:
 
 Bind to multiple elements
 -------------------------
@@ -54,6 +58,8 @@ In the following example all elements matching `.any-class` within `#foobar` exe
 
 To access the element that triggered the event, :js:`this` may be used.
 
+
+..  _events-java-script-release-event:
 
 Release an event
 ----------------

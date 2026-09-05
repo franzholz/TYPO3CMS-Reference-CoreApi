@@ -19,7 +19,7 @@ your `image` field configuration of tt_content records:
                     'config' => [
                         'cropVariants' => [
                             'mobile' => [
-                                'title' => 'LLL:EXT:ext_key/Resources/Private/Language/locallang.xlf:imageManipulation.mobile',
+                                'title' => 'ext_key.messages:imageManipulation.mobile',
                                 'cropArea' => [
                                     'x' => 0.1,
                                     'y' => 0.1,
@@ -48,7 +48,7 @@ It is also possible to set the cropping configuration only for a **specific tt_c
                'disabled' => true,
            ],
            'mobile' => [
-               'title' => 'LLL:EXT:ext_key/Resources/Private/Language/locallang.xlf:imageManipulation.mobile',
+               'title' => 'ext_key.messages:imageManipulation.mobile',
                'cropArea' => [
                    'x' => 0.1,
                    'y' => 0.1,
@@ -57,11 +57,11 @@ It is also possible to set the cropping configuration only for a **specific tt_c
                ],
                'allowedAspectRatios' => [
                    '4:3' => [
-                       'title' => 'LLL:EXT:core/Resources/Private/Language/locallang_wizards.xlf:imwizard.ratio.4_3',
+                       'title' => 'core.wizards:imwizard.ratio.4_3',
                        'value' => 4 / 3
                    ],
                    'NaN' => [
-                       'title' => 'LLL:EXT:core/Resources/Private/Language/locallang_wizards.xlf:imwizard.ratio.free',
+                       'title' => 'core.wizards:imwizard.ratio.free',
                        'value' => 0.0
                    ],
                ],
@@ -69,10 +69,12 @@ It is also possible to set the cropping configuration only for a **specific tt_c
         ],
     ];
 
+..  _ce-cropvariants-disable-crop-variants:
+
 Disable crop variants
 =====================
 
-Please note, as the array for ``overrideChildTca`` is merged with the child TCA, so are the crop variants that are defined
+Please note, as the array for `overrideChildTca` is merged with the child TCA, so are the crop variants that are defined
 in the child TCA (most likely sys_file_reference). Because you cannot remove crop variants easily, it is possible to disable them
-for certain field types by setting the array key for a crop variant ``disabled`` to the value ``true`` as you can see in the
+for certain field types by setting the array key for a crop variant `disabled` to the value `true` as you can see in the
 example above for the default variant.

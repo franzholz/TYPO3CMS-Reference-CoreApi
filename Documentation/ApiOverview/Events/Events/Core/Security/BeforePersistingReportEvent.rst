@@ -3,9 +3,9 @@
 ..  _BeforePersistingReportEvent:
 
 
-===========================
-BeforePersistingReportEvent
-===========================
+=============================
+`BeforePersistingReportEvent`
+=============================
 
 ..  versionadded:: 14.2
 
@@ -16,16 +16,17 @@ can be used to provide an alternative report or to prevent a particular report
 from being persisted at all.
 
 
+..  _before-persisting-report-event-example:
+
 Example
 =======
 
 ..  literalinclude:: _BeforePersistingReportEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/ContentSecurityPolicy/EventListener/MyEventListener.php
 
 ..  _BeforePersistingReportEvent-example-api:
 
-API: BeforePersistingReportEvent
-===
+API: `BeforePersistingReportEvent`
+==================================
 
 ..  include:: /CodeSnippets/Events/Core/Security/BeforePersistingReportEvent.rst.txt

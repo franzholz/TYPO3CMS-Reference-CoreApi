@@ -2,9 +2,9 @@
 ..  index:: Events; AfterPageContentPreviewRenderedEvent
 ..  _AfterPageContentPreviewRenderedEvent:
 
-====================================
-AfterPageContentPreviewRenderedEvent
-====================================
+======================================
+`AfterPageContentPreviewRenderedEvent`
+======================================
 
 ..  versionadded:: 14.1
 
@@ -25,7 +25,6 @@ Example
 =======
 
 ..  literalinclude:: _AfterPageContentPreviewRenderedEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Backend/EventListener/MyEventListener.php
 
 ..  _AfterPageContentPreviewRenderedEvent-api:

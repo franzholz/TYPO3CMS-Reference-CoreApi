@@ -6,6 +6,12 @@
 System categories
 =================
 
+..  versionchanged:: 14.2
+    Fields of `TCA column type category <https://docs.typo3.org/permalink/t3tca:columns-category>`_
+    are now hidden by default if no categories are available.
+
+    See `Feature: #109366 - Hide form fields with no selectable items <https://docs.typo3.org/permalink/changelog:feature-109366-1742900000>`_
+
 TYPO3 provides a generic categorization system.
 Categories can be created in the backend like any other type of
 :ref:`record <database-records>`.
@@ -18,13 +24,13 @@ Pages, content elements and files contain category fields by default.
 
 .. _categories-using:
 
-Using Categories
+Using categories
 ================
 
 
 .. _categories-managing:
 
-Managing Categories
+Managing categories
 -------------------
 
 System categories are defined like any other record. Each category
@@ -49,7 +55,7 @@ takes care of generating the necessary TCA configuration and also adds
 the database column automatically. Developers only have to configure the
 TCA column and add it to the desired record types:
 
-.. include:: /CodeSnippets/Manual/Categoy/CategorySimple.rst.txt
+.. literalinclude:: /CodeSnippets/Manual/Categoy/CategorySimple.php
 
 This is the result of the above code:
 
@@ -71,7 +77,7 @@ Due to some limitations in FlexForm, the property
 `manyToMany` is not supported. Therefore, the default value for this property
 is `oneToMany`.
 
-.. include:: /CodeSnippets/Manual/Categoy/CategoryFlexform.rst.txt
+.. literalinclude:: /CodeSnippets/Manual/Categoy/CategoryFlexform.xml
 
 .. _categories-api:
 
@@ -80,7 +86,7 @@ System categories API
 
 .. _categories-collections:
 
-Category Collections
+Category collections
 ====================
 
 The :php:`\TYPO3\CMS\Core\Category\Collection\CategoryCollection`
@@ -135,6 +141,8 @@ for rendering. Check out the
 The HMENU object also has a :ref:`"categories" special type <t3tsref:hmenu-special-categories>`
 to display a menu based on categorized pages.
 
+..  _categories-permissions:
+
 User permissions for system categories
 ======================================
 
@@ -148,3 +156,32 @@ Additionally it is possible to set :guilabel:`Mounts and Workspaces >
 Category Mounts` in the :ref:`user group <access-lists-category-permissions>`. If at
 least one category is set in the category mounts only the chosen categories are
 allowed to be attached to records.
+
+..  _categories-hidden:
+
+Hidden category fields
+======================
+
+..  versionchanged:: 14.2
+    Fields of `TCA column type category <https://docs.typo3.org/permalink/t3tca:columns-category>`_
+    are now hidden by default if no categories are available.
+
+    See `Feature: #109366 - Hide form fields with no selectable items <https://docs.typo3.org/permalink/changelog:feature-109366-1742900000>`_
+
+Fields of `TCA column type category <https://docs.typo3.org/permalink/t3tca:columns-category>`_
+are hidden by default if no categories are available. This also hides the tab
+`Categories` in many records.
+
+Reasons why no categories are available include:
+
+*   No category records have been created yet or all have been deleted.
+*   The currently logged in user lacks permissions for the :sql:`sys_category`
+    table or for the available categories.
+*   The categories reside on a page that the current user has no permissions for.
+
+The category field can be made visible by setting `showIfEmpty` to true:
+
+..  code-block:: php
+    :caption: EXT:my_extension/Configuration/TCA/Overrides/pages.php
+
+    $GLOBALS['TCA']['pages']['columns']['categories']['config']['showIfEmpty'] = true;

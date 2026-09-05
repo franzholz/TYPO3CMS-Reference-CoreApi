@@ -1,10 +1,12 @@
-.. include:: /Includes.rst.txt
-.. index:: pair: Security guidelines; Extensions
-.. _security-extensions:
+:navigation-title: Extensions
 
-================
-TYPO3 extensions
-================
+..  include:: /Includes.rst.txt
+..  index:: pair: Security guidelines; Extensions
+..  _security-extensions:
+
+======================================
+Security considerations for extensions
+======================================
 
 As already mentioned above, most of the security issues have been
 discovered in TYPO3 extensions, not in the TYPO3 Core . Due to the fact
@@ -15,6 +17,8 @@ code was developed from a security perspective.
 The following sections deal with extensions in general, the risks and
 the basic countermeasures to address security related issues.
 
+
+..  _security-extensions-stable-reviewed-extensions:
 
 Stable and reviewed extensions
 ==============================
@@ -49,23 +53,25 @@ Thus, it depends on the specific case and project, and the intention
 of listing the points below is more to raise the awareness of possible
 risks.
 
-* Do not install extensions or versions marked as `alpha` or `obsolete`:
-  The developer classified the code as a early version, preview,
-  prototype, proof-of-concept and/or as not maintained – nothing you
-  should install on a production site.
+-   Do not install extensions or versions marked as `alpha` or `obsolete`:
+    The developer classified the code as an early version, preview,
+    prototype, proof-of-concept and/or as not maintained – nothing you
+    should install on a production site.
 
-- Be very careful when using extensions or versions marked as `beta`:
-  According to the developer, this version of the extension is still in
-  development, so it is unlikely that any security-related tests or
-  reviews have been undertaken so far.
+-   Be very careful when using extensions or versions marked as `beta`:
+    According to the developer, this version of the extension is still in
+    development, so it is unlikely that any security-related tests or
+    reviews have been undertaken so far.
 
-- Be careful with extensions and versions marked as `stable`, but not
-  reviewed by the TYPO3 Security Team.
+-   Be careful with extensions and versions marked as `stable`, but not
+    reviewed by the TYPO3 Security Team.
 
-- Check every extension and extension update before you install it on a
-  production site and review it in regards to security, see
-  :ref:`Use staging servers for developments and tests <security-staging-servers>`.
+-   Check every extension and extension update before you install it on a
+    production site and review it in regards to security, see
+    :ref:`Use staging servers for developments and tests <security-staging-servers>`.
 
+
+..  _security-extensions-executable-binaries-shipped:
 
 Executable binaries shipped with extensions
 ===========================================
@@ -84,6 +90,8 @@ the vendor of your operating system - which also ensures, these binaries
 get updated in a timely manner, if a security vulnerability is
 discovered in these components.
 
+
+..  _security-extensions-remove-unused-extensions:
 
 Remove unused extensions and other code
 =======================================
@@ -110,7 +118,7 @@ extensions from the system (not only unload/deinstall them). The
 administrator backend account is required.
 
 
-.. _security-extensions-low-level:
+..  _security-extensions-low-level:
 
 Low-level extensions
 ====================
@@ -129,6 +137,8 @@ environment but are definitely out of place at production sites.
 
 Extensions that allow editors to include PHP code must be avoided, too.
 
+
+..  _security-extensions-check-extension-updates:
 
 Check for extension updates regularly
 =====================================
@@ -160,6 +170,8 @@ automatically and periodically (e.g. once a day). In combination with
 the task "System Status Update (reports)", it is possible to get a
 notification by email when extension updates are available.
 
+
+..  _security-extensions-security-related-extensions:
 
 Security-related extensions
 ===========================

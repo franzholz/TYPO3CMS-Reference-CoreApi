@@ -2,9 +2,9 @@
 ..  _extension-configuration-extbase-persistence:
 ..  index:: Path; EXT:{extkey}/Configuration/Extbase/Persistence
 
-===================
-:file:`Persistence`
-===================
+=============
+`Persistence`
+=============
 
 This folder contains the following file:
 
@@ -21,4 +21,4 @@ This folder contains the following file:
     in this file overrides the automatic mapping by naming convention.
 
     ..  seealso::
-        :ref:`Connecting the model to the database <extbase-Persistence>`
+        :ref:`Connecting the model to the database <extbase-domain-model-mapping>`

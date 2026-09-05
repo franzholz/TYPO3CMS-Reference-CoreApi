@@ -37,13 +37,13 @@ The ViewHelper should be given the name "gravatar" and take an email
 address and an optional alt-text  as a parameters.
 The ViewHelper is called in the template as follows:
 
-..  literalinclude:: _CustomViewHelper/_SomeTemplate.html
-    :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.html
+..  literalinclude:: _CustomViewHelper/_SomeTemplate.fluid.html
+    :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.fluid.html
 
 ..  _fluid-custom-viewhelper-implementation:
 
-AbstractViewHelper implementation
-=================================
+`AbstractViewHelper` implementation
+===================================
 
 Every ViewHelper is a PHP class. For the Gravatar ViewHelper, the fully
 qualified name of the class is
@@ -55,8 +55,8 @@ qualified name of the class is
 
 ..  _fluid-custom-viewhelper-AbstractViewHelper:
 
-:php:`AbstractViewHelper`
--------------------------
+`AbstractViewHelper`
+--------------------
 
 *line 9* `extends AbstractViewHelper`
 
@@ -95,8 +95,8 @@ Passing in children is explained in :ref:`prepare-viewhelper-for-inline-syntax`.
 
 ..  _fluid-viewhelper-custom-initializeArguments:
 
-:php:`initializeArguments()`
-----------------------------
+`initializeArguments()`
+-----------------------
 
 *line 13* `public function initializeArguments(): void`
 
@@ -122,6 +122,8 @@ through the array :php:`$this->arguments`, in method :php:`render()`.
 .. versionadded:: 14.0
 
     Union types for ViewHelper arguments are available since TYPO3 14.0.
+
+..  _fluid-custom-viewhelper-implementation-render:
 
 `render()`
 ----------
@@ -163,8 +165,8 @@ harmful chars are escaped.
 ..  _creating-xml-tags-using-tagbasedviewhelper:
 ..  _creating-html-tags-using-tagbasedviewhelper:
 
-Creating HTML/XML tags with the :php:`AbstractTagBasedViewHelper`
-=================================================================
+Creating HTML/XML tags with the `AbstractTagBasedViewHelper`
+============================================================
 
 For ViewHelpers which create HTML/XML tags, Fluid provides an enhanced base
 class: :php:`\TYPO3Fluid\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper`.  This
@@ -187,7 +189,6 @@ Because the Gravatar ViewHelper creates an :html:`<img>` tag the use of the
 `$this->tag` is advised:
 
 ..  literalinclude:: _CustomViewHelper/_GravatarTagBasedViewHelper.php
-    :language: php
     :caption: EXT:my_extension/Classes/ViewHelpers/GravatarViewHelper.php (Example 2, tag-based)
     :linenos:
 
@@ -212,8 +213,8 @@ escapes arbitrary tag attributes.
 
 ..  _AbstractTagBasedViewHelper-tagname:
 
-:php:`$tagName`
----------------
+`$tagName`
+----------
 
 *line 9* `protected $tagName = 'img';`
 
@@ -222,8 +223,8 @@ created (:html:`<img>`).
 
 ..  _AbstractTagBasedViewHelper-addAttribute:
 
-:php:`$this->tag->addAttribute()`
----------------------------------
+`$this->tag->addAttribute()`
+----------------------------
 
 *line 28 - 31* `$this->tag->addAttribute(...)`
 
@@ -233,8 +234,8 @@ example the attribute `src` is added to the tag.
 
 ..  _AbstractTagBasedViewHelper-render:
 
-:php:`$this->tag->render()`
----------------------------
+`$this->tag->render()`
+----------------------
 
 *line 32* `return $this->tag->render();`
 
@@ -270,14 +271,14 @@ ViewHelper. The call to render the ViewHelper was written with tag syntax, which
 seemed obvious because it itself returns a tag:
 
 ..  code-block:: html
-    :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.html
+    :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.fluid.html
 
     <m:gravatar emailAddress="{post.author.emailAddress}" />
 
 Alternatively, this expression can be written using the inline notation:
 
 ..  code-block:: html
-    :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.html
+    :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.fluid.html
 
     {m:gravatar(emailAddress: post.author.emailAddress)}
 
@@ -285,7 +286,7 @@ One should see the Gravatar ViewHelper as a kind of post-processor for an email
 address and would allow the following syntax:
 
 ..  code-block:: html
-    :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.html
+    :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.fluid.html
 
     {post.author.emailAddress -> m:gravatar()}
 
@@ -309,7 +310,6 @@ available in the :php-short:`\TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelpe
 This returns the evaluated object between the opening and closing tag.
 
 ..  literalinclude:: _CustomViewHelper/_GravatarTagBasedViewHelper_getContentArgumentName.php
-    :language: php
     :caption: EXT:my_extension/Classes/ViewHelpers/GravatarViewHelper.php  (Example 3, with content arguments)
     :linenos:
 
@@ -377,7 +377,7 @@ the rendering context:
 
 ..  _fluid-custom-viewhelper-access-request:
 
-Accessing the current Request in a ViewHelper implementation
+Accessing the current request in a ViewHelper implementation
 ------------------------------------------------------------
 
 
@@ -409,8 +409,8 @@ for a list of available attributes.
 
 ..  _fluid-custom-viewhelper-access-contentObject:
 
-Using stdWrap / fetching the current ContentObject in a ViewHelper implementation
----------------------------------------------------------------------------------
+Using `stdWrap` / fetching the current `ContentObject` in a ViewHelper implementation
+-------------------------------------------------------------------------------------
 
 You can access the :php-short:`\TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer`
 from the :php-short:`\Psr\Http\Message\ServerRequestInterface`:

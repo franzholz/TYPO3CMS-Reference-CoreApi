@@ -10,6 +10,8 @@ Extending site configuration
 
 ..  index:: Site handling; Custom options
 
+..  _sitehandling-extending-site-configuration-adding-custom:
+
 Adding custom / project-specific options to site configuration
 ==============================================================
 
@@ -33,7 +35,6 @@ form are left alone and will not get overwritten when saved.
 Example:
 
 ..  literalinclude:: _extending-site-config.yaml
-    :language: yaml
     :caption: config/sites/<some_site>/config.yaml | typo3conf/sites/<some_site>/config.yaml
 
 Access it via the API:
@@ -44,6 +45,8 @@ Access it via the API:
 
 
 .. index:: Site handling; Extending the Form
+
+..  _sitehandling-extending-site-configuration-extending-form:
 
 Extending the form / GUI
 ========================

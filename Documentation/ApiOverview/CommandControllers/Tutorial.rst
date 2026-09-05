@@ -4,7 +4,7 @@
 ..  _console-command-tutorial:
 
 ===============================================
-Tutorial: Create a console command from scratch
+Tutorial: create a console command from scratch
 ===============================================
 
 A console command is always inside an extension. If you want to create
@@ -28,7 +28,6 @@ Create a class called :php:`DoSomethingCommand` which extends
 :php:`\Symfony\Component\Console\Command\Command`.
 
 ..  literalinclude:: _Tutorial/_DoSomethingCommandViaAttribute.php
-    :language: php
     :caption: EXT:my_extension/Classes/Command/MyCommand.php
 
 The following two methods should be overridden by your class:
@@ -99,8 +98,8 @@ which can be added on the command line:
 
 ..  _console-command-tutorial-fluidmail:
 
-Sending a FluidMail via command
--------------------------------
+Sending a `FluidMail` via command
+---------------------------------
 
 ..  literalinclude:: _Tutorial/_SendFluidMailCommand.php
     :caption: packages/my_extension/Classes/Command/SendFluidMailCommand.php

@@ -3,9 +3,9 @@
     Events; ModifyComponentDefinitionEvent
 ..  _ModifyComponentDefinitionEvent:
 
-==============================
-ModifyComponentDefinitionEvent
-==============================
+================================
+`ModifyComponentDefinitionEvent`
+================================
 
 ..  versionadded:: 14.1
 
@@ -17,12 +17,15 @@ they might be used for static analysis or IDE auto-completion. Due
 to the component definitions cache, this is already enforced, as the registered
 events are only executed once and not on every request.
 
+..  _modify-component-definition-event-example:
+
 Example
 =======
 
 ..  literalinclude:: _ModifyComponentDefinitionEvent/_ModifyComponentDefinitionListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/EventListener/ModifyComponentDefinitionListener.php
+
+..  _modify-component-definition-event-api:
 
 API
 ===

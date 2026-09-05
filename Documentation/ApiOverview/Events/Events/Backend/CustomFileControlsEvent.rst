@@ -2,9 +2,9 @@
 ..  index:: Events; CustomFileControlsEvent
 ..  _CustomFileControlsEvent:
 
-=======================
-CustomFileControlsEvent
-=======================
+=========================
+`CustomFileControlsEvent`
+=========================
 
 Listeners to the PSR-14 event
 :php:`\TYPO3\CMS\Backend\Form\Event\CustomFileControlsEvent`
@@ -17,10 +17,14 @@ independent of the :php:`readonly` and :php:`showFileSelectors` options.
 This means, you have full control in which scenario your custom controls
 are being displayed.
 
+..  _custom-file-controls-event-example:
+
 Example
 =======
 
 ..  include:: /_includes/EventsContributeNote.rst.txt
+
+..  _custom-file-controls-event-api:
 
 API
 ===

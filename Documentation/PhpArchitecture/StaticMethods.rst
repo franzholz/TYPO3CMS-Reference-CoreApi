@@ -4,9 +4,11 @@
 ..  _cgl-static-methods:
 
 ===============================================
-Static Methods, static Classes, Utility Classes
+Static methods, static classes, utility classes
 ===============================================
 
+
+..  _cgl-model-static-methods-characteristica:
 
 Characteristica
 ===============
@@ -38,6 +40,8 @@ Characteristica
 *   Static methods MUST call other static methods of the same class
     using the PHP :php:`self` keyword instead of the class name.
 
+
+..  _cgl-model-static-methods-rationale:
 
 Rationale
 =========
@@ -92,7 +96,9 @@ static method itself, defining the method behaviour especially for
 edge cases.
 
 
-Good Examples
+..  _cgl-model-static-methods-good-examples:
+
+Good examples
 =============
 
 *   :php:`Core/Utility/ArrayUtility`
@@ -118,7 +124,9 @@ Good Examples
         concern well.
 
 
-Bad Examples
+..  _cgl-model-static-methods-bad-examples:
+
+Bad examples
 ============
 
 *   :php:`Backend/Utility/BackendUtility`
@@ -148,7 +156,9 @@ Bad Examples
     *   Should probably be a dedicated class construct, probably a service is not enough. Why is this not part of a tree structure?
 
 
-Red Flags
+..  _cgl-model-static-methods-red-flags:
+
+Red flags
 =========
 
 *   :php:`$GLOBALS: Utility` code should not have dependencies to global

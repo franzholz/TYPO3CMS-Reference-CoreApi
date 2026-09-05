@@ -34,8 +34,9 @@ To register icons for your own extension, create a file called
 The file needs to return a PHP configuration array with the following keys:
 
 ..  literalinclude:: _Icons.php
-    :language: php
     :caption: EXT:my_extension/Configuration/Icons.php
+
+..  _icon-registration-minimal-svg-sprite:
 
 Minimal SVG sprite structure
 ----------------------------
@@ -48,10 +49,12 @@ may look like this:
     :language: xml
     :caption: Minimal SVG sprite example
 
-The fragment identifier (``#tx-myextension``) is used to reference the symbol
+The fragment identifier (`#tx-myextension`) is used to reference the symbol
 from the SVG sprite when registering the icon.
 
 ..  index:: Icon API; IconProviderInterface
+
+..  _icon-registration-icon-provider:
 
 Icon provider
 -------------
@@ -84,6 +87,8 @@ code or directly in Fluid.
 
 .. index:: Icon API; IconFactory
 
+..  _icon-usage-php-way:
+
 The PHP way
 -----------
 
@@ -105,6 +110,8 @@ The following icon sizes are available as enum values:
 ..  index::
     Fluid; Core icon
     pair: Icon API; Fluid
+
+..  _icon-usage-fluid-viewhelper:
 
 The Fluid ViewHelper
 --------------------
@@ -142,6 +149,8 @@ The following icon sizes are available:
 
 
 ..  index:: JavaScript; getIcon
+
+..  _icon-usage-javascript-way:
 
 The JavaScript way
 ------------------

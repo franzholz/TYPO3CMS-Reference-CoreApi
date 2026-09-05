@@ -25,8 +25,8 @@ Example Fluid snippet
 
 This is how a simple Fluid snippet could look like:
 
-..  literalinclude:: _Introduction/_SomeTemplate.html
-    :caption: EXT:site_package/Resources/Private/Templates/SomeTemplate.html
+..  literalinclude:: _Introduction/_SomeTemplate.fluid.html
+    :caption: EXT:site_package/Resources/Private/Templates/SomeTemplate.fluid.html
 
 The resulting HTML may look like this:
 
@@ -62,7 +62,7 @@ Conditions:
 
 ..  _fluid-variables:
 
-Passing Variables from PHP
+Passing variables from PHP
 --------------------------
 
 In PHP, you can use the :php:`assign()` method on an instance of
@@ -94,6 +94,15 @@ Directory structure
 ===================
 
 In your extension, the following directory structure should be used for Fluid files:
+
+..  versionchanged:: 14.0
+    Fluid 5 introduces a dedicated file extension for template, partial,
+    layout and component files, for example :file:`.fluid.html` instead of
+    plain :file:`.html`. A fallback mechanism keeps existing files without
+    this extension working, so renaming is entirely optional. See
+    `Feature: #108166 - Fluid File Extension and Template Resolving
+    <https://docs.typo3.org/permalink/changelog:feature-108166-1763400992>`_
+    for the resolving order and the reasoning behind the change.
 
 ..  directory-tree::
     :show-file-icons: true
@@ -144,8 +153,8 @@ certain action on that controller.
 
                     *   Blog
 
-                        *   List.html (for Blog->list() action)
-                        *   Show.html (for Blog->show() action)
+                        *   List.fluid.html (for Blog->list() action)
+                        *   Show.fluid.html (for Blog->show() action)
 
 
 If you don't use Extbase you can still use this convention, but it is not a
@@ -159,15 +168,15 @@ TYPO3 provides the possibility to set the paths using TypoScript.
 
 ..  _fluid-templates:
 
-:file:`Templates`
------------------
+`Templates`
+-----------
 
 The template contains the main Fluid template.
 
 ..  _fluid-layouts:
 
-:file:`Layouts`
----------------
+`Layouts`
+---------
 
 *optional*
 
@@ -191,8 +200,8 @@ Without a Layout
 
 For example, the layout may like this
 
-..  literalinclude:: _Introduction/_LayoutExtensionDefault.html
-    :caption: EXT:my_extension/Resources/Private/Layouts/Default.html
+..  literalinclude:: _Introduction/_LayoutExtensionDefault.fluid.html
+    :caption: EXT:my_extension/Resources/Private/Layouts/Default.fluid.html
 
 The layout defines which sections are rendered and in which order. It can
 contain additional arbitrary Fluid / HTML. How you name the sections and which
@@ -200,13 +209,13 @@ sections you use is up to you.
 
 The corresponding template should include the sections which are to be rendered.
 
-..  literalinclude:: _Introduction/_ExtensionDefault.html
-    :caption:  EXT:my_extension/Resources/Private/Templates/Default.html
+..  literalinclude:: _Introduction/_ExtensionDefault.fluid.html
+    :caption:  EXT:my_extension/Resources/Private/Templates/Default.fluid.html
 
 ..  _fluid-partials:
 
-:file:`Partials`
-----------------
+`Partials`
+----------
 
 *optional*
 
@@ -218,13 +227,13 @@ Partials are stored, by convention, within :file:`Resources/Private/Partials/`.
 
 Example partial:
 
-..  literalinclude:: _Introduction/_Tags.html
-    :caption:  EXT:my_extension/Resources/Private/Partials/Tags.html
+..  literalinclude:: _Introduction/_Tags.fluid.html
+    :caption:  EXT:my_extension/Resources/Private/Partials/Tags.fluid.html
 
 Example template using the partial:
 
 ..  code-block:: html
-    :caption:  EXT:my_extension/Resources/Private/Templates/Show.html
+    :caption:  EXT:my_extension/Resources/Private/Templates/Show.fluid.html
 
     <f:render partial="Tags" arguments="{tags: post.tags}" />
 
@@ -235,8 +244,8 @@ import can be done in the template or the partial.
 
 ..  _fluid-components:
 
-:file:`Components`
-----------------
+`Components`
+------------
 
 *optional*
 
@@ -246,7 +255,7 @@ good code reuseability.
 
 ..  _fluid-theme-example:
 
-Example: Using Fluid to create a theme for a site package
+Example: using Fluid to create a theme for a site package
 =========================================================
 
 This example was taken from a theme created by the
@@ -270,18 +279,18 @@ This example was taken from a theme created by the
 
             *   Layouts
 
-                *   PageLayout.html
+                *   PageLayout.fluid.html
 
             *   Partials
 
-                *   Content.html
-                *   Footer.html
+                *   Content.fluid.html
+                *   Footer.fluid.html
                 *   ...
 
             *   Pages
 
-                *   Default.html
-                *   Subpage.html
+                *   Default.fluid.html
+                *   Subpage.fluid.html
 
 Set the Fluid base path with TypoScript using the
 `PAGEVIEW <https://docs.typo3.org/permalink/t3tsref:cobj-pageview>`_ TypoScript
@@ -290,28 +299,28 @@ object.
 ..  literalinclude:: _Introduction/_pageview.typoscript
     :caption:  packages/my_sitepackage/Configuration/Sets/SitePackage/setup.typoscript
 
-The template in file :file:`Pages/Default.html` is automatically used whenever there is
+The template in file :file:`Pages/Default.fluid.html` is automatically used whenever there is
 no specific template for the current `Backend layout <https://docs.typo3.org/permalink/t3coreapi:be-layout>`_ of the page.
 
-..  literalinclude:: _Introduction/_Default.html
-    :caption: EXT:my_sitepackage/Resources/Private/PageView/Pages/Default.html
+..  literalinclude:: _Introduction/_Default.fluid.html
+    :caption: EXT:my_sitepackage/Resources/Private/PageView/Pages/Default.fluid.html
 
-It includes the layout :file:`Layouts/PageLayout.html`. And uses partial
-:file:`Partials/Content.html` to display its content.
+It includes the layout :file:`Layouts/PageLayout.fluid.html`. And uses partial
+:file:`Partials/Content.fluid.html` to display its content.
 
-It uses the partial :file:`Partials/Content.html` to display its content.
+It uses the partial :file:`Partials/Content.fluid.html` to display its content.
 
-..  literalinclude:: _Introduction/_Content.html
-    :caption: Resources/Private/PageView/Partials/Content.html
+..  literalinclude:: _Introduction/_Content.fluid.html
+    :caption: Resources/Private/PageView/Partials/Content.fluid.html
 
 The template for a different backend layout will look similar, but has for
 example two columns:
 
-..  literalinclude:: _Introduction/_Subpage.html
-    :caption: my_sitepackage/Resources/Private/PageView/Page/Subpage.html
+..  literalinclude:: _Introduction/_Subpage.fluid.html
+    :caption: my_sitepackage/Resources/Private/PageView/Page/Subpage.fluid.html
 
 The page layout takes care of elements that are shared across all or most page
 types:
 
-..  literalinclude:: _Introduction/_PageLayout.html
-    :caption: my_sitepackage/Resources/Private/PageView/Layouts/PageLayout.html
+..  literalinclude:: _Introduction/_PageLayout.fluid.html
+    :caption: my_sitepackage/Resources/Private/PageView/Layouts/PageLayout.fluid.html

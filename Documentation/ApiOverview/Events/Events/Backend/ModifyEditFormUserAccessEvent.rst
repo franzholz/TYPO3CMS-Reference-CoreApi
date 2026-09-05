@@ -2,9 +2,9 @@
 ..  index:: Events; ModifyEditFormUserAccessEvent
 ..  _ModifyEditFormUserAccessEvent:
 
-=============================
-ModifyEditFormUserAccessEvent
-=============================
+===============================
+`ModifyEditFormUserAccessEvent`
+===============================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Backend\Form\Event\ModifyEditFormUserAccessEvent\ModifyEditFormUserAccessEvent`
@@ -17,13 +17,16 @@ In case any listener to the new event denies user access, while it was initially
 allowed by Core, the :php:`\TYPO3\CMS\Backend\Form\Exception\AccessDeniedListenerException`
 will be thrown.
 
+..  _modify-edit-form-user-access-event-example:
+
 Example
 =======
 
 ..  literalinclude:: _ModifyEditFormUserAccessEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Backend/EventListener/MyEventListener.php
 
+
+..  _modify-edit-form-user-access-event-api:
 
 API
 ===

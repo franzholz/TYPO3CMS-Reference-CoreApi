@@ -19,7 +19,7 @@ Docker environments.
     While this example uses a classic TYPO3 installation based on the
     `martinhelmich/typo3` image, the same approach can be adapted for
     Composer-based projects. To do so, use a different base image (e.g.
-    `php:8.4-apache`) and update the CLI path to match the Composer installation,
+    `php:8.5-apache`) and update the CLI path to match the Composer installation,
     typically `vendor/bin/typo3`.
 
 ..  contents:: Table of contents
@@ -75,7 +75,6 @@ To automate setup, you must provide all required parameters via environment
 variables. Add these to the `web` service in your `docker-compose.yml`:
 
 ..  literalinclude:: _codesnippets/_docker-compose.yml
-    :language: yaml
     :caption: docker-compose.yml (excerpt)
 
 ..  warning::

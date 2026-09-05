@@ -9,7 +9,7 @@
    File; config/system/services.php
 
 .. _DependencyInjection:
-.. _Dependency-Injection:
+.. _dependency-injection:
 
 ====================
 Dependency injection
@@ -20,6 +20,8 @@ Dependency injection
 .. contents:: Overview of page contents
    :local:
 
+
+..  _dependency-injection-abstract:
 
 Abstract
 ========
@@ -44,6 +46,8 @@ To activate the Symfony component for dependency injection a few lines of
 :ref:`configuration <Configuration>` are necessary.
 
 
+..  _dependency-injection-introduction:
+
 Introduction
 ============
 
@@ -57,6 +61,8 @@ implementation is based on `Symfony service container <https://symfony.com/doc/c
 and `Symfony dependency injection <https://symfony.com/doc/current/components/dependency_injection.html>`_ components,
 plus some TYPO3 specific sugar.
 
+
+..  _dependency-injection-background-history:
 
 Background and history
 ======================
@@ -210,6 +216,8 @@ button is always reachable. Note that *if* the container calculation fails, the
 :file:`var/log/typo3_*` files contain the exception with backtrace!
 
 
+..  _dependency-injection-important-terms:
+
 Important terms
 ===============
 
@@ -285,7 +293,6 @@ direct dependency of the controller service. A typical constructor dependency in
 to resolve the dependency by the framework looks like this:
 
 ..  literalinclude:: _ConstructorInjection.php
-    :language: php
     :caption: EXT:my_extension/Controller/UserController.php
 
 The symfony container setup process will now see :php:`UserRepository` as a dependency
@@ -305,7 +312,6 @@ Method injection
 A second way to get services injected is by using :php:`inject*()` methods:
 
 ..  literalinclude:: _MethodInjection.php
-    :language: php
     :caption: EXT:my_extension/Controller/UserController.php
 
 This ends up with basically the same result as above: The controller instance retrieves
@@ -320,7 +326,6 @@ since the instance is not set during :php:`__construct()`. But that's just an
 implementation detail. More important is an abstraction scenario. Consider this case:
 
 ..  literalinclude:: _MethodInjectionWithAbstract.php
-    :language: php
     :caption: EXT:my_extension/Controller/UserController.php
 
 We have an abstract controller service with a dependency plus a controller service that extends
@@ -359,7 +364,6 @@ Interface injection
 -------------------
 
 ..  literalinclude:: _InterfaceInjection.php
-    :language: php
     :caption: EXT:my_extension/Controller/UserController.php
 
 Notice the difference? The code requests the injection of an interface and not a class!
@@ -383,31 +387,24 @@ A :file:`Services.yaml` file configures different service implementation for
 some service consumers:
 
 ..  literalinclude:: _MyFirstController.php
-    :language: php
     :caption: EXT:my_extension/Controller/MyFirstController.php
 
 ..  literalinclude:: _MySecondController.php
-    :language: php
     :caption: EXT:my_extension/Controller/MySecondController.php
 
 ..  literalinclude:: _MyThirdController.php
-    :language: php
     :caption: EXT:my_extension/Controller/MyThirdController.php
 
 ..  literalinclude:: _MyServiceInterface.php
-    :language: php
     :caption: EXT:my_extension/Service/MyServiceInterface.php
 
 ..  literalinclude:: _MyDefaultServiceImplementation.php
-    :language: php
     :caption: EXT:my_extension/Service/MyDefaultServiceImplementation.php
 
 ..  literalinclude:: _MyOtherServiceImplementation.php
-    :language: php
     :caption: EXT:my_extension/Service/MyOtherServiceImplementation.php
 
 ..  literalinclude:: _ServicesYamlUsingInterfaceInjection.yaml
-    :language: yaml
     :caption: EXT:my_extension/Configuration/Services.yaml
 
 
@@ -419,8 +416,8 @@ Configuration
 
 ..  _dependency-injection-in-extensions:
 
-:file:`Services.yaml` declaring service defaults
-------------------------------------------------
+`Services.yaml` declaring service defaults
+------------------------------------------
 
 Extensions have to configure their classes to make use of
 dependency injection. This can be done in :file:`Configuration/Services.yaml`.
@@ -433,7 +430,6 @@ A basic :file:`Services.yaml` file of an extension looks like the following.
     cache must be flushed, see :ref:`above <dependency-injection-caches>` for details.
 
 ..  literalinclude:: _ServicesYamlDefaults.yaml
-    :language: yaml
     :caption: EXT:my_extension/Configuration/Services.yaml
 
 
@@ -472,15 +468,14 @@ Model exclusion
 
 .. _dependency-injection-autoconfigure:
 
-Autoconfiguration using attributes and :file:`Services.yaml`
-------------------------------------------------------------
+Autoconfiguration using attributes and `Services.yaml`
+------------------------------------------------------
 
 Single service classes may need to change auto configuration
 to be different than above declared defaults. This can be done using PHP attributes.
 The most common use case is :php:`public: true`:
 
 ..  literalinclude:: _MyServiceUsingAutoconfigurePublicTrue.php
-    :language: php
     :caption: EXT:my_extension/Services/MyServiceUsingAutoconfigurePublicTrue.php
 
 The above usage of the :php:`Autoconfigure` attribute declares this service as
@@ -490,7 +485,6 @@ The above usage of the :php:`Autoconfigure` attribute declares this service as
 Similar with :php:`shared: false`:
 
 ..  literalinclude:: _MyServiceUsingAutoconfigureSharedFalse.php
-    :language: php
     :caption: EXT:my_extension/Services/MyServiceUsingAutoconfigureSharedFalse.php
 
 It is possible to set both using :php:`#[Autoconfigure(public: true, shared: false)]`.
@@ -511,7 +505,6 @@ via constructor or method injection, rather than
 the "foreign" service as "public" in :file:`Services.yaml`:
 
 ..  literalinclude:: _ServicesYamlDeclaringForeignServicePublicTrue.yaml
-    :language: yaml
     :caption: EXT:my_extension/Configuration/Services.yaml
 
 
@@ -533,13 +526,11 @@ naive approach is to inject the core :php:`CacheManager` and retrieve the
 runtime cache instance:
 
 ..  literalinclude:: _MyServiceUsingCacheManager.php
-    :language: php
     :caption: EXT:my_extension/Services/MyServiceUsingCacheManager.php
 
 This can be simplified, resulting in more streamlined code:
 
 ..  literalinclude:: _MyServiceGettingRuntimeCacheInjected.php
-    :language: php
     :caption: EXT:my_extension/Services/MyServiceGettingRuntimeCacheInjected.php
 
 The "cache.runtime" service alias, configured by the TYPO3 core extension,
@@ -551,7 +542,6 @@ of the results, which is useful for "compile-time" state that remains constant
 during requests. For example, to inject a feature toggle status:
 
 ..  literalinclude:: _MyServiceGettingFeatureToggleResultInjected.php
-    :language: php
     :caption: EXT:my_extension/Services/MyServiceGettingFeatureToggleResultInjected.php
 
 Another example, including alias definition, is new in TYPO3 v13. It enables
@@ -559,11 +549,9 @@ injecting values from :file:`ext_conf_templates.txt` files using the
 :php:`ExtensionConfiguration` API.
 
 ..  literalinclude:: _CoreExtensionConfiguration.php
-    :language: php
     :caption: EXT:core/Configuration/ExtensionConfiguration.php
 
 ..  literalinclude:: _MyServiceGettingExtensionConfigurationValueInjected.php
-    :language: php
     :caption: EXT:my_extension/Services/MyServiceGettingExtensionConfigurationValueInjected.php
 
 This example demonstrates the combination of a service class with an alias and
@@ -605,16 +593,16 @@ files from extensions. The global files can provide defaults but can not overrid
 service definitions from service configuration files loaded afterwards.
 
 ..  literalinclude:: _ServicesYamlInstallationWide.yaml
-    :language: yaml
     :caption: config/system/services.yaml
 
 The concrete clock implementation is now injected when a type hint to the
 interface is given:
 
 ..  literalinclude:: _MyServiceUsingClockInterface.php
-    :language: php
     :caption: EXT:my_extension/Classes/MyServiceUsingClockInterface.php
 
+
+..  _dependency-injection-faq:
 
 FAQ
 ===
@@ -715,6 +703,8 @@ be declared public:
 
 ..  dependency-injection-override-service-arguments:
 
+..  _dependency-injection-faq-override-service-arguments:
+
 How to override service arguments?
 ----------------------------------
 
@@ -746,8 +736,10 @@ This can be achieved by requiring the original extension as a dependency in the 
 of the 3rd party extension.
 
 
-What do declare :php:`shared: false`?
--------------------------------------
+..  _dependency-injection-faq-declare-shared-false:
+
+What do declare `shared: false`?
+--------------------------------
 
 ..  attention::
     **In short**: Declare a service :php:`shared: false` if it is stateful.
@@ -760,8 +752,8 @@ stateful services using :php:`GeneralUtility::makeInstance()` when needed, rathe
 than within :php:`__construct()`.
 
 .. _when-to-use-php-generalutility-makeinstance:
-When to use :php:`GeneralUtility::makeInstance()`?
---------------------------------------------------
+When to use `GeneralUtility::makeInstance()`?
+---------------------------------------------
 
 ..  attention::
     **In short**: Use :php:`GeneralUtility::makeInstance()` to obtain instances of stateful
@@ -817,8 +809,8 @@ compatible with dependency injection.
 
 .. _dependency-injection-new:
 
-When to use :php:`new`?
------------------------
+When to use `new`?
+------------------
 
 ..  attention::
     **In short**: Use :php:`new` to instantiate data objects, not services.
@@ -835,6 +827,8 @@ Only data objects - preferably using
 :ref:`public constructor property promotion <cgl-named-arguments-pcpp-value-objects>` -
 should be instantiated using the PHP keyword :php:`new`.
 
+
+..  _dependency-injection-faq-mix-manual-constructor:
 
 Mix manual constructor arguments and service dependencies?
 ----------------------------------------------------------
@@ -855,6 +849,8 @@ allowed such mixtures, but this has been replaced by the Symfony-based
 dependency injection solution, which does not support this practice.
 
 
+..  _dependency-injection-faq-user-functions:
+
 What about user functions?
 --------------------------
 
@@ -867,6 +863,8 @@ for example :ref:`.userFunc within TypoScript <t3tsref:cobj-user-properties>` or
 helper :php:`GeneralUtility::makeInstance()`, which can recognize and inject
 services that are marked public.
 
+
+..  _dependency-injection-faq-injection-xclass-ed:
 
 What about injection in a XCLASS'ed class?
 ------------------------------------------
@@ -895,6 +893,8 @@ notation including the `public` argument:
       alias: MyVendor\MyExtension\Controller\ExtendedBackendLogController
 
 
+..  _dependency-injection-yet-exemplified:
+
 Not yet exemplified
 ===================
 
@@ -911,6 +911,8 @@ Not yet exemplified
     "lazy." Another approach involves using a factory with an interface,
     as demonstrated in `ext:styleguide`.
 
+
+..  _dependency-injection-further-information:
 
 Further information
 ===================

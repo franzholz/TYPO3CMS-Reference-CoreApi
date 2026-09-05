@@ -2,9 +2,9 @@
 ..  index:: Events; AfterCacheableContentIsGeneratedEvent
 ..  _AfterCacheableContentIsGeneratedEvent:
 
-=====================================
-AfterCacheableContentIsGeneratedEvent
-=====================================
+=======================================
+`AfterCacheableContentIsGeneratedEvent`
+=======================================
 
 ..  important::
     ..  versionchanged:: 14.0
@@ -31,7 +31,6 @@ Example
 =======
 
 ..  literalinclude:: _AfterCacheableContentIsGeneratedEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Frontend/EventListener/MyEventListener.php
 
 ..  _AfterCacheableContentIsGeneratedEvent-api:

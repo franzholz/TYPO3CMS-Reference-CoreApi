@@ -2,9 +2,9 @@
 ..  index:: Events; BeforeMailerSentMessageEvent
 ..  _BeforeMailerSentMessageEvent:
 
-============================
-BeforeMailerSentMessageEvent
-============================
+==============================
+`BeforeMailerSentMessageEvent`
+==============================
 
 The PSR-14 event :php:`\TYPO3\CMS\Core\Mail\Event\BeforeMailerSentMessageEvent`
 is dispatched before the message is sent by the mailer and can be
@@ -25,7 +25,6 @@ Example
 This event adds an additional BCC receiver right before the mail is sent:
 
 ..  literalinclude:: _BeforeMailerSentMessageEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Mail/EventListener/AddMailMessageBcc.php
 
 ..  _BeforeMailerSentMessageEvent-api:

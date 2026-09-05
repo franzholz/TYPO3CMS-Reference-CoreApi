@@ -37,16 +37,16 @@ use these options.
 
 ..  _logging-writers-database:
 
-DatabaseWriter
---------------
+`DatabaseWriter`
+----------------
 
 :php:`\TYPO3\CMS\Core\Log\Writer\DatabaseWriter` is a dedicated writer for the
 :sql:`sys_log` table.
 
 ..  _logging-writers-FileWriter:
 
-FileWriter
-----------
+`FileWriter`
+------------
 
 The file writer logs into a log file, one log record per line. If the log file
 does not exist, it will be created (including parent directories, if needed).
@@ -67,6 +67,10 @@ set, TYPO3 will use a filename containing a random hash, like
 
 The following options are available:
 
+
+logFile
+~~~~~~~
+
 ..  confval:: logFile
     :name: file-writer-logFile
     :type: string
@@ -75,6 +79,10 @@ The following options are available:
               (for example, like :file:`typo3temp/logs/typo3_7ac500bce5.log`)
 
     The path to the log file.
+
+
+logFileInfix
+~~~~~~~~~~~~
 
 ..  confval:: logFileInfix
     :name: file-writer-logFileInfix
@@ -92,14 +100,13 @@ The corresponding configuration might look like this for the example class
 :php:`\T3docs\Examples\Controller`:
 
 ..  literalinclude:: _ext_localconf_FileWriter.php
-    :language: php
     :caption: EXT:my_extension/ext_localconf.php
 
 
 ..  _logging-writers-RotatingFileWriter:
 
-RotatingFileWriter
-------------------
+`RotatingFileWriter`
+--------------------
 
 TYPO3 log files tend to grow over time if not manually cleaned on a regular
 basis, potentially leading to full disks. Also, reading its contents may be
@@ -130,6 +137,10 @@ The file writer :php:`\TYPO3\CMS\Core\Log\Writer\RotatingFileWriter` extends the
 :ref:`FileWriter <logging-writers-FileWriter>` class. The :php:`RotatingFileWriter`
 accepts all options of :php:`FileWriter` in addition of the following:
 
+
+interval
+~~~~~~~~
+
 ..  confval:: interval
     :name: rotating-file-writer-interval
     :type: :php:`\TYPO3\CMS\Core\Log\Writer\Enum\Interval`, string
@@ -143,6 +154,10 @@ accepts all options of :php:`FileWriter` in addition of the following:
     *   :php:`\TYPO3\CMS\Core\Log\Writer\Enum\Interval::WEEKLY` or :php:`weekly`
     *   :php:`\TYPO3\CMS\Core\Log\Writer\Enum\Interval::MONTHLY` or :php:`monthly`
     *   :php:`\TYPO3\CMS\Core\Log\Writer\Enum\Interval::YEARLY` or :php:`yearly`
+
+
+maxFiles
+~~~~~~~~
 
 ..  confval:: maxFiles
     :name: rotating-file-writer-maxFiles
@@ -162,20 +177,18 @@ accepts all options of :php:`FileWriter` in addition of the following:
 The following example introduces log rotation for the "main" log file:
 
 ..  literalinclude:: _additionalRotationFileWriter.php
-    :language: php
     :caption: config/system/additional.php | typo3conf/system/additional.php
 
 Another example introduces log rotation for the "deprecation" log file:
 
 ..  literalinclude:: _additionalRotationFileWriterForDeprecations.php
-    :language: php
     :caption: config/system/additional.php | typo3conf/system/additional.php
 
 
 ..  _logging-writers-php:
 
-PhpErrorLogWriter
------------------
+`PhpErrorLogWriter`
+-------------------
 
 This writer logs into the PHP error log using `error_log()`_
 
@@ -183,8 +196,8 @@ This writer logs into the PHP error log using `error_log()`_
 
 ..  _logging-writers-syslog:
 
-SyslogWriter
-------------
+`SyslogWriter`
+--------------
 
 The syslog writer logs into the syslog (Unix only).
 
@@ -194,7 +207,7 @@ The following option is available:
     :name: syslog-writer-facility
     :type: string
     :Mandatory: no
-    :Default: ``USER``
+    :Default: `USER`
 
     The syslog `facility`_ to log into.
 
@@ -241,7 +254,6 @@ One or more log writers for this class are configured in the file
 :file:`ext_localconf.php`:
 
 ..  literalinclude:: _ext_localconf_FileWriter_config.php
-    :language: php
     :caption: EXT:my_extension/ext_localconf.php
 
 ..  _logging-writers-examples:

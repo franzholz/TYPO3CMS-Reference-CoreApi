@@ -3,14 +3,16 @@
 ..  _LogoutConfirmedEvent:
 
 
-====================
-LogoutConfirmedEvent
-====================
+======================
+`LogoutConfirmedEvent`
+======================
 
 The PSR-14 event :php:`\TYPO3\CMS\FrontendLogin\Event\LogoutConfirmedEvent` is
 triggered when a logout was successful.
 
-Example: Delete stored private key from disk on logout
+..  _logout-confirmed-event-example-delete-stored:
+
+Example: delete stored private key from disk on logout
 ======================================================
 
 Upon logout a private key the user uploaded for decryption of private
@@ -26,8 +28,9 @@ event. We therefore need different logic to determine the user who just logged
 out. This logic is not part of the example below.
 
 ..  literalinclude:: _LogoutConfirmedEvent/_DeletePrivateKeyOnLogout.php
-    :language: php
     :caption: EXT:my_extension/Classes/EventListeners/DeletePrivateKeyOnLogout.php
+
+..  _logout-confirmed-event-api:
 
 API
 ===

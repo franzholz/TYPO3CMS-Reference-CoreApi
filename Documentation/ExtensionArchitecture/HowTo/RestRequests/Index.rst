@@ -48,7 +48,8 @@ Basic usage
 
 The :php:`RequestFactory` class can be used like this:
 
-..  include:: /CodeSnippets/Examples/Http/MeowInformationRequester.rst.txt
+.. literalinclude:: /CodeSnippets/Examples/Http/MeowInformationRequester.php
+   :caption: EXT:examples/Classes/Http/MeowInformationRequester.php
 
 A POST request can be achieved with:
 
@@ -98,19 +99,25 @@ and not overwritten.
 
 .. index:: HTTP request; HttpUtility
 
-HTTP Utility Methods
+..  _http-http-utility-methods:
+
+HTTP utility methods
 ====================
 
 TYPO3 provides a small set of helper methods related to HTTP Requests in the class :php:`HttpUtility`:
 
-HttpUtility::buildUrl
----------------------
+..  _http-http-utility-methods-httputility-buildurl:
+
+`HttpUtility::buildUrl`
+-----------------------
 
 Creates a URL string from an array containing the URL parts, such as those
 output by :php:`parse_url()`.
 
-HttpUtility::buildQueryString
------------------------------
+..  _http-http-utility-methods-httputility-buildquerystring:
+
+`HttpUtility::buildQueryString`
+-------------------------------
 
 The :php:`buildQueryString()` method is an enhancement to the `PHP function`_
 :php:`http_build_query()`. It implodes multidimensional parameter arrays and

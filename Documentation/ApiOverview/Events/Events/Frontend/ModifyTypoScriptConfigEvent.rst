@@ -2,9 +2,9 @@
 ..  index:: Events; ModifyTypoScriptConfigEvent
 ..  _ModifyTypoScriptConfigEvent:
 
-===========================
-ModifyTypoScriptConfigEvent
-===========================
+=============================
+`ModifyTypoScriptConfigEvent`
+=============================
 
 The PSR-14 event :php:`\TYPO3\CMS\Frontend\Event\ModifyTypoScriptConfigEvent`
 allows listeners to adjust and react on TypoScript :ref:`config <t3tsref:config>`.
@@ -26,10 +26,14 @@ The result of this event is available as a
     $configTree = $request->getAttribute('frontend.typoscript')->getConfigTree();
 
 
+..  _modify-typo-script-config-event-example:
+
 Example
 =======
 
 ..  include:: /_includes/EventsContributeNote.rst.txt
+
+..  _modify-typo-script-config-event-api:
 
 API
 ===

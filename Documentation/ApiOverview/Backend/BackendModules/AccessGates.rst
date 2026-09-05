@@ -43,8 +43,8 @@ These gates preserve the traditional backend module access behavior.
 
 ..  _backend-module-access-gates-user-gate:
 
-UserGate
----------
+`UserGate`
+----------
 
 The :php-short:`UserGate` grants access to:
 
@@ -62,8 +62,8 @@ This corresponds to the module access value:
 
 ..  _backend-module-access-gates-admin-gate:
 
-AdminGate
-----------
+`AdminGate`
+-----------
 
 The :php-short:`AdminGate` grants access only to backend administrator users.
 
@@ -75,8 +75,8 @@ This corresponds to:
 
 ..  _backend-module-access-gates-system-maintainer-gate:
 
-SystemMaintainerGate
---------------------
+`SystemMaintainerGate`
+----------------------
 
 The :php-short:`SystemMaintainerGate` grants access only to system maintainers.
 
@@ -109,10 +109,11 @@ Possible results are:
 
 ..  _backend-module-access-gates-example-editor-gate:
 
-Example: Custom editor gate
+Example: custom editor gate
 ---------------------------
 
-..  include:: _AccessGate/_ExampleGate.rst.txt
+.. literalinclude:: /ApiOverview/Backend/BackendModules/_AccessGate/_ExampleGate.php
+   :caption: EXT:examples/Classes/Module/AccessGate/ExampleGate.php
 
 The example above defines a custom access type called :php:`exampleUser`.
 

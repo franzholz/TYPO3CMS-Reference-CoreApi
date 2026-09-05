@@ -2,9 +2,9 @@
 ..  index:: Events; AfterFileAddedEvent
 ..  _AfterFileAddedEvent:
 
-===================
-AfterFileAddedEvent
-===================
+=====================
+`AfterFileAddedEvent`
+=====================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Core\Resource\Event\AfterFileAddedEvent`
@@ -16,10 +16,14 @@ is fired after a file was added to the resource
 permissions or perform specific analysis of files like additional metadata
 analysis after adding them to TYPO3.
 
+..  _after-file-added-event-example:
+
 Example
 =======
 
 ..  include:: /_includes/EventsContributeNote.rst.txt
+
+..  _after-file-added-event-api:
 
 API
 ===

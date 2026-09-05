@@ -3,9 +3,9 @@
 
 ..  _AfterFlexFormDataStructureParsedEvent:
 
-=====================================
-AfterFlexFormDataStructureParsedEvent
-=====================================
+=======================================
+`AfterFlexFormDataStructureParsedEvent`
+=======================================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Core\Configuration\Event\AfterFlexFormDataStructureParsedEvent`
@@ -18,10 +18,14 @@ object-oriented approach.
     *   :ref:`BeforeFlexFormDataStructureIdentifierInitializedEvent`
     *   :ref:`BeforeFlexFormDataStructureParsedEvent`
 
+..  _after-flex-form-data-structure-parsed-event-example:
+
 Example
 =======
 
 Have a look at the :ref:`combined example <AfterFlexFormDataStructureIdentifierInitializedEvent-Example>`.
+
+..  _after-flex-form-data-structure-parsed-event-api:
 
 API
 ===

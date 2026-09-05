@@ -20,13 +20,16 @@ view of a haiku poem.
 
     A link browser for records of the custom table 'haiku'
 
-Backend: Configure the link browser with page TSconfig
+..  _table-record-link-browser-tutorials-backend-configure-link:
+
+Backend: configure the link browser with page TSconfig
 ======================================================
 
 The following configuration displays an additional tab in the link browser
 window in the backend.
 
-..  include:: /CodeSnippets/Tutorials/LinkBrowser/Classes/HaikuRecordLinkBrowserTsconfig.rst.txt
+.. literalinclude:: /CodeSnippets/Tutorials/LinkBrowser/Classes/HaikuRecordLinkBrowserTsconfig.typoscript
+   :caption: EXT:examples/Configuration/TsConfig/Page/LinkBrowser/HaikuRecordLinkBrowser.tsconfig
 
 For a complete list of available option see :ref:`link-handler-configuration`.
 
@@ -50,13 +53,16 @@ in the rich text editor (RTE).
 The output of the link needs still to be configured or the
 link will be removed upon rendering. See the next step:
 
-Frontend: Configure the detail link to the record with TypoScript
+..  _table-record-link-browser-tutorials-frontend-configure-detail:
+
+Frontend: configure the detail link to the record with TypoScript
 =================================================================
 
 For the frontend output of a haiku record link we have to configure the
 page on which the plugin handling the detail view is displayed and the
 parameters this plugin expects:
 
-..  include:: /CodeSnippets/Tutorials/LinkBrowser/Classes/HaikuRecordLinkTypoScript.rst.txt
+.. literalinclude:: /CodeSnippets/Tutorials/LinkBrowser/Classes/HaikuRecordLinkTypoScript.typoscript
+   :caption: EXT:examples/Configuration/TypoScript/RecordLinks/Haiku.typoscript
 
 You can find the available options here: :ref:`linkhandler-typoscript_options`.

@@ -2,7 +2,7 @@
 .. _extending-examples:
 
 ======================
-Customization Examples
+Customization examples
 ======================
 
 There are many customization examples in the documentation, but this section
@@ -14,8 +14,8 @@ provides the most complete examples.
    File; EXT:{extkey}Configuration/TCA/Overrides/fe_users.php
 .. _extending-examples-feusers:
 
-Example 1: Extending the fe\_users table
-========================================
+Example 1: extending the `fe_users` table
+=========================================
 
 The "examples" extension adds two fields to the "fe\_users" table.
 Here is the complete code, taken from file
@@ -31,16 +31,16 @@ Here is the complete code, taken from file
       [
          'tx_examples_options' => [
             'exclude' => 0,
-            'label' => 'LLL:EXT:examples/Resources/Private/Language/locallang_db.xlf:fe_users.tx_examples_options',
+            'label' => 'examples.db:fe_users.tx_examples_options',
             'config' => [
                'type' => 'select',
                'renderType' => 'selectSingle',
                'items' => [
                   ['',0,],
-                  ['LLL:EXT:examples/Resources/Private/Language/locallang_db.xlf:fe_users.tx_examples_options.I.0',1,],
-                  ['LLL:EXT:examples/Resources/Private/Language/locallang_db.xlf:fe_users.tx_examples_options.I.1',2,],
-                  ['LLL:EXT:examples/Resources/Private/Language/locallang_db.xlf:fe_users.tx_examples_options.I.2','--div--',],
-                  ['LLL:EXT:examples/Resources/Private/Language/locallang_db.xlf:fe_users.tx_examples_options.I.3',3,],
+                  ['examples.db:fe_users.tx_examples_options.I.0',1,],
+                  ['examples.db:fe_users.tx_examples_options.I.1',2,],
+                  ['examples.db:fe_users.tx_examples_options.I.2','--div--',],
+                  ['examples.db:fe_users.tx_examples_options.I.3',3,],
                ],
                'size' => 1,
                'maxitems' => 1,
@@ -48,7 +48,7 @@ Here is the complete code, taken from file
          ],
          'tx_examples_special' => [
             'exclude' => 0,
-            'label' => 'LLL:EXT:examples/Resources/Private/Language/locallang_db.xlf:fe_users.tx_examples_special',
+            'label' => 'examples.db:fe_users.tx_examples_special',
             'config' => [
                'type' => 'user',
                // renderType needs to be registered in ext_localconf.php
@@ -99,7 +99,6 @@ calling :php:`ExtensionManagementUtility::addToAllTCAtypes()`. The parameters ar
 Example code:
 
 ..  literalinclude:: _fe_users.php
-    :language: php
     :caption: EXT:some_extension/Configuration/TCA/Overrides/fe_users.php
 
 If the fourth parameter is omitted or the field is not found,
@@ -140,8 +139,8 @@ The next example shows how to position a field more precisely.
    File; EXT:{extkey}Configuration/TCA/Overrides/tt_content.php
 .. _extending-examples-ttcontent:
 
-Example 2: Extending the tt\_content Table
-==========================================
+Example 2: extending the `tt_content` table
+===========================================
 
 In this second example, we will add a "No print" field to all content
 element types. First of all, we add its SQL definition in
@@ -164,7 +163,7 @@ Then we add it to the :php:`$GLOBALS['TCA']` in :file:`Configuration/TCA/Overrid
       [
          'tx_examples_noprint' => [
             'exclude' => 0,
-            'label' => 'LLL:EXT:examples/Resources/Private/Language/locallang_db.xlf:tt_content.tx_examples_noprint',
+            'label' => 'examples.db:tt_content.tx_examples_noprint',
             'config' => [
                'type' => 'check',
                'renderType' => 'checkboxToggle',

@@ -40,7 +40,7 @@ It is possible to include nested arguments:
 
     $GLOBALS['TYPO3_CONF_VARS']['FE']['additionalCanonicalizedUrlParameters'][] = 'example_argument_name[second_level]';
 
-Non-vital arguments in general should be excluded from cHash and not be listed as ``additionalCanonicalizedUrlParameters``.
+Non-vital arguments in general should be excluded from cHash and not be listed as `additionalCanonicalizedUrlParameters`.
 See the possible options in :ref:`caching` regarding excluding arguments from cHash.
 
 The idea behind that is:
@@ -48,6 +48,8 @@ The idea behind that is:
    If a URL is worth caching (because it has different content) it is worth having a canonical as well.
 
    — https://github.com/TYPO3-Documentation/TYPO3CMS-Reference-CoreApi/pull/1326#issuecomment-788741312
+
+..  _canonicalapi-event-define-url:
 
 Using an event to define the URL
 ================================

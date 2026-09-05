@@ -3,9 +3,9 @@
 
 ..  _BeforeFormIsDuplicatedEvent:
 
-===========================
-BeforeFormIsDuplicatedEvent
-===========================
+=============================
+`BeforeFormIsDuplicatedEvent`
+=============================
 
 ..  versionadded:: 14.0
     The event :php-short:`TYPO3\CMS\Form\Event\BeforeFormIsDuplicatedEvent`
@@ -21,7 +21,6 @@ Example
 =======
 
 ..  literalinclude:: _BeforeFormIsDuplicatedEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/EventListener/MyEventListener.php
 
 ..  _BeforeFormIsDuplicatedEvent-api:

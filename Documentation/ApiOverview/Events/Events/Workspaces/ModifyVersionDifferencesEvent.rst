@@ -3,9 +3,9 @@
 ..  _ModifyVersionDifferencesEvent:
 
 
-=============================
-ModifyVersionDifferencesEvent
-=============================
+===============================
+`ModifyVersionDifferencesEvent`
+===============================
 
 The PSR-14 event :php:`\TYPO3\CMS\Workspaces\Event\ModifyVersionDifferencesEvent`
 can be used to modify the version differences data, used for the display in the
@@ -14,13 +14,16 @@ with the :php:`getVersionDifferences()` method and updated using the
 :php:`setVersionDifferences(array $versionDifferences)` method.
 
 
+..  _modify-version-differences-event-example:
+
 Example
 =======
 
 ..  literalinclude:: _ModifyVersionDifferencesEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Workspaces/EventListener/MyEventListener.php
 
+
+..  _modify-version-differences-event-api:
 
 API
 ===

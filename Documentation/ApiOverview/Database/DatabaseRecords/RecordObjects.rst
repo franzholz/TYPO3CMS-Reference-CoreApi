@@ -19,7 +19,7 @@ into account.
 
 .. _record_objects_typoscript:
 
-Provide Records in TypoScript
+Provide records in TypoScript
 =============================
 
 In TypoScript you can use the
@@ -64,7 +64,7 @@ like the language :fluid:`{record.languageId}` or workspace
 
 Overview of all possibilities:
 
-..  literalinclude:: _CodeSnippets/_FluidUsage.html
+..  literalinclude:: _CodeSnippets/_FluidUsage.fluid.html
     :caption: Demonstration of available variables in Fluid
 
 .. _record_objects_fluid-raw:

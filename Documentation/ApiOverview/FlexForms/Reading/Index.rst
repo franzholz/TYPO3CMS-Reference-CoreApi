@@ -38,15 +38,8 @@ value is not defined in the plugin.
 
 ..  _read-flexforms-php:
 
-FlexFormTools: Read FlexForms values in PHP
-===========================================
-
-..  deprecated:: 14.0
-    Class :php-short:`\TYPO3\CMS\Core\Service\FlexFormService` has been merged
-    into :php-short:`\TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools`.
-
-    :php-short:`\TYPO3\CMS\Core\Service\FlexFormService` can be used with
-    an alias up until TYPO3 v15.
+`FlexFormTools`: read FlexForms values in PHP
+=============================================
 
 You can use the :php:`\TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools` to read
 the content of a FlexForm field.
@@ -78,7 +71,7 @@ See also section :ref:`modify-flexforms-php`.
 ..  index:: pair: FlexForms; TypoScript
 ..  _read-flexforms-ts:
 
-TypoScript: Reading flexform data
+TypoScript: reading flexform data
 ---------------------------------
 
 It is possible to read FlexForm properties in TypoScript:

@@ -3,9 +3,9 @@
 
 ..  _BeforeFormIsCreatedEvent:
 
-========================
-BeforeFormIsCreatedEvent
-========================
+==========================
+`BeforeFormIsCreatedEvent`
+==========================
 
 ..  versionadded:: 14.0
     The event :php-short:`TYPO3\CMS\Form\Event\BeforeFormIsCreatedEvent`
@@ -28,7 +28,6 @@ Example
 =======
 
 ..  literalinclude:: _BeforeFormIsCreatedEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/EventListener/MyEventListener.php
 
 ..  _BeforeFormIsCreatedEvent-api:

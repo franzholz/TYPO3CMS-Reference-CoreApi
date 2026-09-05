@@ -3,9 +3,9 @@
 
 ..  _BeforeFormIsDeletedEvent:
 
-========================
-BeforeFormIsDeletedEvent
-========================
+==========================
+`BeforeFormIsDeletedEvent`
+==========================
 
 ..  versionadded:: 14.0
     The event :php-short:`TYPO3\CMS\Form\Event\BeforeFormIsDeletedEvent`
@@ -29,7 +29,6 @@ Example
 =======
 
 ..  literalinclude:: _BeforeFormIsDeletedEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/EventListener/MyEventListener.php
 
 ..  _BeforeFormIsDeletedEvent-api:

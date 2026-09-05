@@ -21,7 +21,6 @@ Routes are defined inside extensions, in the files
 Here is an extract of :t3src:`backend/Configuration/Backend/Routes.php`:
 
 ..  literalinclude:: _BackendRouting/_RoutesBackend.php
-    :language: php
     :caption: EXT:backend/Configuration/Backend/Routes.php (excerpt)
 
 So, a route file essentially returns an array containing route mappings. A route
@@ -38,6 +37,8 @@ property indicates that no authentication is required for that action.
 ..  index::
     pair: Backend routing; Cross-site scripting
     Backend routing; Public
+
+..  _backend-routing-backend-routing-cross:
 
 Backend routing and cross-site scripting
 ========================================
@@ -109,13 +110,11 @@ which are then resolved into a PSR-7 request attribute called
 These routes are defined within the route path as named placeholders:
 
 ..  literalinclude:: _BackendRouting/_RoutesMyRoute.php
-    :language: php
     :caption: EXT:my_extension/Configuration/Backend/Routes.php
 
 Within a controller (we use here a non-Extbase controller as example):
 
 ..  literalinclude:: _BackendRouting/_MyRouteController.php
-    :language: php
     :caption: EXT:my_extension/Classes/Controller/MyRouteController.php
 
 .. index:: Backend routing; Generating backend URLs
@@ -161,7 +160,6 @@ Via PHP
 Example within a controller (we use here a non-Extbase controller):
 
 ..  literalinclude:: _BackendRouting/_UriBuilderExample.php
-    :language: php
     :caption: EXT:my_extension/Classes/Controller/MyRouteController.php
 
 ..  _backend-routing-sudo:
@@ -178,6 +176,8 @@ You can configure the sudo mode in your backend routing like this:
     :caption: EXT:my_extension/Configuration/Backend/Routes.php
 
 See also :ref:`backend-module-sudo-modules`.
+
+..  _backend-routing-information:
 
 More information
 ================

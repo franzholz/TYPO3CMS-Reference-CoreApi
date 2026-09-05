@@ -2,9 +2,9 @@
 ..  index:: Events; BeforeFileCopiedEvent
 ..  _BeforeFileCopiedEvent:
 
-=====================
-BeforeFileCopiedEvent
-=====================
+=======================
+`BeforeFileCopiedEvent`
+=======================
 
 The PSR-14 event :php:`\TYPO3\CMS\Core\Resource\Event\BeforeFileCopiedEvent`
 is fired before a file is about to be copied within a resource
@@ -15,10 +15,14 @@ The folder represents the "target folder".
 This allows to further analyze or modify the file or metadata before it is
 written by the driver.
 
+..  _before-file-copied-event-example:
+
 Example
 =======
 
 ..  include:: /_includes/EventsContributeNote.rst.txt
+
+..  _before-file-copied-event-api:
 
 API
 ===

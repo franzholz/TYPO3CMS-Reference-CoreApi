@@ -35,7 +35,7 @@ patterns <https://designpatternsphp.readthedocs.io/en/latest/>`__.
 
 ..  _concept-dto:
 
-Data Transfer Objects (DTO) as a software design concept
+Data transfer objects (DTO) as a software design concept
 ========================================================
 
 A very common pattern in Extbase extensions is a :abbr:`DTO (Data Transfer Object)`.
@@ -53,7 +53,6 @@ entity: The DTO getters retrieve the data, and the Extbase domain model entity's
 receive that data:
 
 ..  literalinclude:: _dto.php
-    :language: php
     :caption: Example of DTO and AbstractEntity used in an Extbase controller
 
 DTOs are helpful because:

@@ -4,13 +4,14 @@
    pair: Create; Content elements
 .. _adding-your-own-content-elements:
 
-====================================
-Create a custom content element type
-====================================
+============================================
+Create a custom content element type (CType)
+============================================
 
 This page explains how to create your own custom content element types. These
-are comparable to the predefined content element types supplied by TYPO3. The latter
-can be found in the system extension `fluid_styled_content`.
+are comparable to the predefined content element types supplied by TYPO3. They
+are used from extensions like :composer:`typo3/cms-fluid-styled-content` .
+See :doc:`fluid_styled_content <typo3/cms-fluid-styled-content:Index>`
 
 A content element can be based on fields already available in the `tt_content`
 table.
@@ -27,11 +28,11 @@ processors are frequently used for example to process files
 (:ref:`t3tsref:DatabaseQueryProcessor`).
 
 A data processor can also be used to convert a string to an array,
-as is done for example in the *table* content element with the field `bodytext`.
+as is done for example in the *table* content element (:sql:`tt_content`) with the field :sql:`bodytext`.
 
 In these cases Fluid does not have to deal with these manipulations or transformation.
 
-You can find the example below in the TYPO3 Documentation Team extension
+You can find the examples below in the TYPO3 Documentation Team extension
 :composer:`t3docs/examples`.
 
 ..  _adding-your-own-content-elements-prerequisites:
@@ -39,8 +40,8 @@ You can find the example below in the TYPO3 Documentation Team extension
 Prerequisites
 =============
 
-The following examples require the system extension
-:doc:`fluid_styled_content <typo3/cms-fluid-styled-content:Index>`.
+The following examples require an extension like the system extension
+:composer:`typo3/cms-fluid-styled-content`.
 
 It can be installed via Composer with:
 
@@ -72,7 +73,7 @@ First we need to define the key of the new content element type. We use
 `myextension_basiccontent` throughout the simple example.
 
 Next the key needs to be added to the select field `CType`. This will make it
-available in :guilabel:`Type` dropdown in the backend.
+available in the :guilabel:`Type` dropdown in the backend.
 
 The following call needs to be added to the file
 :file:`Configuration/TCA/Overrides/tt_content.php`.
@@ -84,6 +85,12 @@ The following call needs to be added to the file
 
 Now the new content element is available in the CType selector and the
 "New Content Element" wizard.
+
+..  note::
+    In plain Core native plugins you need to call
+    :php:`ExtensionManagementUtility::addPlugin`instead of
+    :php:`ExtensionManagementUtility::addTcaSelectItem`.
+
 
 .. index:: Content element; Icon
 .. _AddingCE-Icon:
@@ -154,15 +161,14 @@ The output in the frontend gets configured in the setup TypoScript. See
 :ref:`Add TypoScript to your extension <t3tsref:extdev-add-typoscript>` about how
 to add TypoScript.
 
-In the :file:`examples` extension the TypoScript can be found at
-:file:`Configuration/TypoScript/CustomContentElements/Basic.typoscript`
+In the `examples` extension the TypoScript can be found at
+:file:`Configuration/TypoScript/CustomContentElements/Basic.typoscript`.
 
-The Fluid templates for our custom content element will be saved in our
+The Fluid templates for a custom content element will be saved in the
 extension. Therefore we need to add the path to the
 :ref:`t3tsref:cobj-fluidtemplate-properties-templaterootpaths`:
 
 ..  literalinclude:: _AddingYourOwnContentElements/_setup.typoscript
-    :language: typoscript
     :caption: EXT:my_extension/Configuration/TypoScript/setup.typoscript
 
 You can use any index (`200` in this example), just make sure it is unique.
@@ -171,7 +177,6 @@ If needed you can also add paths for partials and layouts.
 Now you can register the rendering of your custom content element:
 
 ..  literalinclude:: _AddingYourOwnContentElements/_setup_2.typoscript
-    :language: typoscript
     :caption: EXT:my_extension/Configuration/TypoScript/setup.typoscript
 
 The :typoscript:`lib.contentElement` path is defined in file
@@ -186,11 +191,11 @@ The Fluid template is configured by the
 :ref:`t3tsref:cobj-fluidtemplate-properties-templatename` property as
 `NewContentElement`.
 
-This will load a :file:`BasicContent.html` template file from the path
+This will load a :file:`BasicContent.fluid.html` template file from the path
 defined at the :typoscript:`templateRootPaths`.
 
 In the example extension you can find the file at
-:file:`EXT:examples/Resources/Private/Templates/ContentElements/BasicContent.html`
+:file:`EXT:examples/Resources/Private/Templates/ContentElements/BasicContent.fluid.html`
 
 `tt_content` fields can now be used in the Fluid template by accessing them via
 the `data` variable.
@@ -198,7 +203,8 @@ the `data` variable.
 The following example shows the text entered in the text field. New lines are
 converted to `<br>` tags.
 
-.. include:: /CodeSnippets/CustomContentElements/CustomContentElement.rst.txt
+.. literalinclude:: /CodeSnippets/CustomContentElements/CustomContentElement.fluid.html
+   :caption: EXT:examples/Resources/Private/Templates/NewContentElement.fluid.html
 
 All fields of the table :php:`tt_content` are now available in the variable
 `data`. Read more about :ref:`fluid`.
@@ -230,13 +236,13 @@ dump of all available data:
 
 .. _AddingCE-Extended-Example:
 
-Extended example: Extend tt_content and use data processing
+Extended example: extend tt_content and use data processing
 ===========================================================
 
 You can find the complete example in the  TYPO3 Documentation Team extension
 :composer:`t3docs/examples`. The steps for
 creating a simple new content element as above need to be repeated. We use the
-key *examples_newcontentcsv* in this example.
+key *myextension_newcontentcsv* in this example.
 
 We want to output comma separated values (CSV) stored in the field bodytext.
 As different programs use different separators to store CSV we want to make
@@ -302,7 +308,6 @@ The new field *tx_examples_separator* is added to the TCA definition of the tabl
 :file:`Configuration/TCA/Overrides/tt_content.php`:
 
 ..  literalinclude:: _AddingYourOwnContentElements/_tt_content_temporary_column.php
-    :language: php
     :caption: EXT:my_extension/Configuration/TCA/Overrides/tt_content.php
 
 You can read more about defining fields via TCA in the :ref:`t3tca:start`.
@@ -317,8 +322,9 @@ called :sql:`tx_myextension_mytable`:
 
 
 ..  literalinclude:: _AddingYourOwnContentElements/_tt_content_reference.php
-    :language: php
     :caption: EXT:my_extension/Configuration/TCA/Overrides/tt_content.php
+
+..  _configure-ce-extend-tt-content-defining-field-tce:
 
 Defining the field in the TCE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -330,7 +336,6 @@ id of the general storage folder. Then the examples extension will only use
 the content records from the given page id.
 
 ..  literalinclude:: _AddingYourOwnContentElements/_page-page-id.tsconfig
-    :language: typoscript
     :caption: EXT:my_extension/Configuration/page.tsconfig
 
 If more than one page id is allowed, this configuration must be used instead
@@ -338,7 +343,6 @@ If more than one page id is allowed, this configuration must be used instead
 instead of `###PAGE_TSCONFIG_ID###`):
 
 ..  literalinclude:: _AddingYourOwnContentElements/_page-page-id-list.tsconfig
-    :language: typoscript
     :caption: EXT:my_extension/Configuration/page.tsconfig
 
 ..  note::
@@ -369,13 +373,13 @@ Each processor has to be added with a fully qualified class name and optional
 parameters to be used in the data processor:
 
 ..  literalinclude:: _AddingYourOwnContentElements/_setup_myextension_newcontentcsv.typoscript
-    :language: typoscript
     :caption: EXT:my_extension/Configuration/TypoScript/setup.typoscript
 
 You can now iterate over the variable `myTable` in the Fluid template, in this
-example :file:`Resources/Private/Templates/ContentElements/DataProcCsv.html`
+example :file:`Resources/Private/Templates/ContentElements/DataProcCsv.fluid.html`
 
-.. include:: /CodeSnippets/CustomContentElements/DataProcCsv.rst.txt
+.. literalinclude:: /CodeSnippets/CustomContentElements/DataProcCsv.fluid.html
+   :caption: EXT:examples/Resources/Private/Templates/ContentElements/DataProcCsv.fluid.html
 
 
 The output would look like this (we added a debug of the variable `myTable`):

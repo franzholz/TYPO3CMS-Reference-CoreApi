@@ -16,7 +16,9 @@ users and groups. The users list can be searched and filtered.
     Until TYPO3 V14 this module was called :guilabel:`System > Backend Users`.
     See also: `Feature: #107628 - Improved backend module naming and structure <https://docs.typo3.org/permalink/changelog:feature-107628-1729026000>`_.
 
-Comparing Users or Groups
+..  _access-backend-users-module-comparing-users-groups:
+
+Comparing users or groups
 =========================
 
 The :guilabel:`Backend users` module offers the possibility to compare users.
@@ -33,7 +35,9 @@ provided by the Introduction Package:
 The same functionality is available for user groups, including a comparison
 of their inherited permissions.
 
-Impersonating Users ("Switch to")
+..  _access-backend-users-module-impersonating-users-switch:
+
+Impersonating users ("Switch to")
 =================================
 
 We can impersonate (switch) to a user by clicking the :guilabel:`Switch to user`

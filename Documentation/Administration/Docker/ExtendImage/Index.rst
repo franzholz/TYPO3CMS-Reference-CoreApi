@@ -91,7 +91,7 @@ You can extend the image further by adding your own startup script. This is
 useful if you want to run custom commands each time the container starts—for
 example, to set file permissions, log environment variables, or flush caches.
 
-Create a file named ``startup.sh`` in the same folder as your ``Dockerfile``:
+Create a file named `startup.sh` in the same folder as your `Dockerfile`:
 
 ..  code-block:: bash
     :caption: startup.sh
@@ -105,7 +105,7 @@ Create a file named ``startup.sh`` in the same folder as your ``Dockerfile``:
     # Start Apache (required by php:*-apache images)
     exec apache2-foreground
 
-Update your ``Dockerfile`` to copy this script and use it as the new entrypoint:
+Update your `Dockerfile` to copy this script and use it as the new entrypoint:
 
 ..  code-block:: docker
     :caption: Dockerfile (excerpt)
@@ -209,7 +209,7 @@ You can now open your browser at: http://localhost:8081
 ..  _docker-extend-typo3-advantages:
 
 Advantages of extending the community-maintained image
-=======================================================
+======================================================
 
 Extending the `martinhelmich/typo3` image is useful for learning purposes:
 

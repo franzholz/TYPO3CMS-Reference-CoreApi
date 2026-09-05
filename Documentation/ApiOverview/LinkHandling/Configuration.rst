@@ -8,7 +8,8 @@ Link handler configuration
 
 Link browser tabs are registered in :ref:`page TSconfig <t3tsref:pagetsconfig>` like this:
 
-..  include:: /CodeSnippets/Tutorials/LinkBrowser/Classes/HaikuRecordLinkBrowserTsconfig.rst.txt
+.. literalinclude:: /CodeSnippets/Tutorials/LinkBrowser/Classes/HaikuRecordLinkBrowserTsconfig.typoscript
+   :caption: EXT:examples/Configuration/TsConfig/Page/LinkBrowser/HaikuRecordLinkBrowser.tsconfig
 
 See the complete example: :ref:`Tutorial: Custom record link
 browser <TableRecordLinkBrowserTutorials>`.
@@ -50,6 +51,8 @@ Record link handlers have the following additional options:
 
 :typoscript:`configuration.pageTreeMountPoints = 123,456`
    Only records on these pages and their children will be displayed
+
+..  _link-handler-configuration-page-link-handler:
 
 Page link handler configuration
 ===============================

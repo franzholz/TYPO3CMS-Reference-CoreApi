@@ -70,7 +70,9 @@ The main array is initialized by :php:`FormDataCompiler`, and each :php:`DataPro
     The main data array is prepared by :php:`FormDataCompiler`, each key is well documented in this class. To find out
     which data is expected to reside in this array, those comments are worth a look.
 
-Data Groups and Providers
+..  _form-engine-data-compiling-data-groups-providers:
+
+Data groups and providers
 =========================
 
 So we have this empty data array, pre-set with data by a controller and then initialized by :php:`FormDataCompiler`,
@@ -149,7 +151,9 @@ Post process after single field values are prepared:
 * Determine main record title and set as :php:`$data['recordTitle']`
 
 
-Extending Data Groups With Own Providers
+..  _form-engine-data-compiling-extending-data-groups:
+
+Extending data groups with own providers
 ========================================
 
 The base set of DataProviders for all DataGroups is defined within :file:`typo3/sysext/core/Configuration/DefaultConfiguration.php`
@@ -169,7 +173,6 @@ from the extension "news" hooks in between these two to add some own preparation
 code in :file:`ext_localconf.php`:
 
 ..  literalinclude:: _ext_localconf.php
-    :language: php
     :caption: EXT:news/ext_localconf.php
 
 This is pretty powerful since it allows extensions to hook in additional stuff at any point of the processing chain, and
@@ -194,7 +197,9 @@ Limitations:
     are a technical debt that should be changed.
 
 
-Adding Data to Data Array
+..  _form-engine-data-compiling-adding-data-data:
+
+Adding data to data array
 =========================
 
 Most custom data providers change or add existing data within the main data array. A typical use case is an additional
@@ -208,7 +213,9 @@ to prefix own data in :php:`$data['customData']` with some unique key (for insta
 with other data that a different extension may add.
 
 
-Disable Single FormEngine Data Provider
+..  _form-engine-data-compiling-disable-single-formengine:
+
+Disable single FormEngine data provider
 =======================================
 
 Single data providers used in the FormEngine data compilation step can be disabled to allow extension authors to substitute
@@ -218,7 +225,6 @@ As an example, if editing a full database record, the default `TcaCheckboxItems`
 :php:`disabled` in the :php:`tcaDatabaseRecord` group in an extension's :file:`ext_localconf.php` file:
 
 ..  literalinclude:: _ext_localconf_disable.php
-    :language: php
     :caption: EXT:my_extension/ext_localconf.php
 
 Extension authors can then add an own data provider, which :php:`depends`

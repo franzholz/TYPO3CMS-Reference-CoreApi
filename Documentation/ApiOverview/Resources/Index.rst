@@ -20,7 +20,7 @@ configuration files and localization files.
 ..  _resources-composer:
 
 Location for resources in Composer-mode installations
-======================================================
+=====================================================
 
 By default, public resources must be put into the folder
 :folder:`Resources/Public` of an extension or somewhere within the web root
@@ -109,7 +109,7 @@ to reference resources. You can then provide the resource path in a data
 attribute:
 
 ..  literalinclude:: _CodeSnippets/_Map.fluid.html
-    :caption: packages/my_extension/Resources/Private/Content/Map.html
+    :caption: packages/my_extension/Resources/Private/Content/Map.fluid.html
 
 The file paths can then be used within JavaScript:
 

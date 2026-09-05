@@ -31,7 +31,6 @@ or JavaScript created by a sub-class is returned by the sub-class "up" again in 
 format.
 
 ..  literalinclude:: _SomeContainer.php
-    :language: php
     :caption: EXT:my_extension/Classes/Containers/SomeContainer.php
 
 Above example lets :php:`NodeFactory` find and compile some data from "subContainer", and merges the child result
@@ -46,7 +45,7 @@ on it.
 
 .. _FormEngine-Rendering-ClassInheritance:
 
-Class Inheritance
+Class inheritance
 =================
 
 ..  uml:: /Images/Plantuml/FormEngine/FormEngineRenderClasses.plantuml
@@ -64,8 +63,8 @@ single element never calls a container again.
 
 .. _FormEngine-Rendering-NodeFactory:
 
-NodeFactory
-===========
+`NodeFactory`
+=============
 
 The :php:`NodeFactory` plays an important abstraction role within the render chain: Creation of child nodes is
 always routed through it, and the NodeFactory takes care of finding and validating the according class that
@@ -80,7 +79,6 @@ to add for instance an own multi-language rendering of flex fields. It does that
 flex container with own implementation:
 
 ..  literalinclude:: _ext_localconf_flex.php
-    :language: php
     :caption: EXT:my_extension/ext_localconf.php
 
 This re-routes the :php:`renderType` "flex" to an own class. If multiple registrations for a single renderType exist,
@@ -99,14 +97,12 @@ the one with highest priority wins.
 Adding a new renderType in :file:`ext_localconf.php`
 
 ..  literalinclude:: _ext_localconf.php
-    :language: php
     :caption: EXT:my_extension/ext_localconf.php
 
 And use it in TCA for a specific field, keeping the full database functionality in DataHandler together with the
 data preparation of FormDataCompiler, but just routing the rendering of that field to the new element:
 
 ..  literalinclude:: _tx_cooltagcloud.php
-    :language: php
     :caption: EXT:cool_tag_cloud/Configuration/TCA/overrides/tx_cooltagcloud.php
 
 The above examples are a static list of nodes that can be changed by settings in :file:`ext_localconf.php`. If that
@@ -120,7 +116,6 @@ editing in his user settings, then the resolvers return their own :php:`RichText
 field:
 
 ..  literalinclude:: _ext_localconf_rte.php
-    :language: php
     :caption: EXT:my_extension/ext_localconf.php
 
 The trick here is that CKEditor registers his resolver with a higher priority (50) than "rtehtmlarea" (40), so the
@@ -129,7 +124,7 @@ The trick here is that CKEditor registers his resolver with a higher priority (5
 
 .. _FormEngine-Rendering-ResultArray:
 
-Result Array
+Result array
 ============
 
 Each node, no matter if it is a container, an element, or a :ref:`node expansion <FormEngine-Rendering-NodeExpansion>`,
@@ -170,6 +165,8 @@ names in format :php:`EXT:my_extension/path/to/file`.
     those resources must be registered via the result array only,
     using :php:`stylesheetFiles` and :php:`javaScriptModules`.
 
+..  _form-engine-rendering-result-array-adding-javascript-modules:
+
 Adding JavaScript modules
 -------------------------
 
@@ -179,18 +176,16 @@ function :php:`JavaScriptModuleInstruction::create()`.
 You can for example use it in a container:
 
 ..  literalinclude:: _SomeContainerJavaScript.php
-    :language: php
     :caption: EXT:my_extension/Classes/Backend/SomeContainer.php
 
 Or a controller:
 
 ..  literalinclude:: _SomeController.php
-    :language: php
     :caption: EXT:my_extension/Classes/Backend/Controller/SomeController.php
 
 .. _FormEngine-Rendering-NodeExpansion:
 
-Node Expansion
+Node expansion
 ==============
 
 The "node expansion" classes :php:`FieldControl`, :php:`FieldInformation` and :php:`FieldWizard` are called by containers
@@ -213,7 +208,9 @@ FieldControl
 Currently, all elements usually implement all three of these, except in cases where it does not make sense. This API allows
 adding functionality to single nodes, without overriding the whole node. Containers and elements can come with default
 expansions (and usually do). TCA configuration can be used to add own stuff. On container side the implementation is still
-basic, only :php:`OuterWrapContainer` and :php:`InlineControlContainer` currently implement FieldInformation and FieldWizard.
+basic, only :php-short:`\TYPO3\CMS\Backend\Form\Container\FormWrapContainer` and
+:php-short:`\TYPO3\CMS\Backend\Form\Container\InlineControlContainer` currently
+implement FieldInformation and FieldWizard.
 
 See the :ref:`TCA reference ctrl section <t3tca:ctrl-reference-container>` for more information on how to configure these
 for containers in TCA.
@@ -222,7 +219,6 @@ Example. The :php:`InputTextElement` (standard input element) defines a couple o
 main result HTML:
 
 ..  literalinclude:: _InputTextElement.php
-    :language: php
     :caption: EXT:my_extension/Classes/Backend/Form/InputTextElement.php
 
 This element defines three wizards to be called by default. The :php:`renderType` concept is re-used, the
@@ -238,8 +234,10 @@ It is possible to:
     "after" in TCA.
 
 
-Add fieldControl Example
-========================
+..  _form-engine-rendering-add-fieldcontrol-example:
+
+Add `fieldControl` example
+==========================
 
 To illustrate the principals discussed in this chapter see the following
 example which registers a fieldControl (button) next to a field in the pages
@@ -248,14 +246,12 @@ table to trigger a data import via Ajax.
 Add a new renderType in :file:`ext_localconf.php`:
 
 ..  literalinclude:: _ext_localconf_fieldcontrol.php
-    :language: php
     :caption: EXT:my_extension/ext_localconf.php
 
 Register the control in :file:`Configuration/TCA/Overrides/pages.php`:
 
 
 ..  literalinclude:: _pages.php
-    :language: php
     :caption: EXT:my_extension/Configuration/TCA/Overrides/pages.php
 
 ..  note::
@@ -265,7 +261,6 @@ Add the PHP class for rendering the control in
 :file:`Classes/FormEngine/FieldControl/ImportDataControl.php`:
 
 ..  literalinclude:: _ImportDataControl.php
-    :language: php
     :caption: EXT:my_extension/Classes/FormEngine/FieldControl/ImportDataControl.php
 
 ..  todo: switch from RequireJS to ES6
@@ -279,19 +274,16 @@ Add the JavaScript for defining the behavior of the control in
 :file:`Resources/Public/JavaScript/ImportData.js`:
 
 ..  literalinclude:: _ImportData.js
-    :language: js
     :caption: EXT:my_extension/Resources/Public/JavaScript/ImportData.js
 
 Add an Ajax route for the request in
 :file:`Configuration/Backend/AjaxRoutes.php`:
 
 ..  literalinclude:: _AjaxRoutes.php
-    :language: php
     :caption: EXT:my_extension/Configuration/Backend/AjaxRoutes.php
 
 Add the Ajax controller class in
 :file:`Classes/Controller/Ajax/ImportDataController.php`:
 
 ..  literalinclude:: _ImportDataController.php
-    :language: php
     :caption: EXT:my_extension/Classes/Controller/Ajax/ImportDataController.php

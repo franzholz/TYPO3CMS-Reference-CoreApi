@@ -2,9 +2,9 @@
 .. index:: Events; ModifyHrefLangTagsEvent
 .. _ModifyHrefLangTagsEvent:
 
-=======================
-ModifyHrefLangTagsEvent
-=======================
+=========================
+`ModifyHrefLangTagsEvent`
+=========================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Frontend\Event\ModifyHrefLangTagsEvent` is available to alter
@@ -15,6 +15,8 @@ The class :php:`\TYPO3\CMS\Seo\HrefLang\HrefLangGenerator` (identifier
 is to provide the default :html:`hreflang` tags. This way it is possible to
 register a custom event listener after or instead of this implementation.
 
+..  _modify-href-lang-tags-event-example:
+
 Example
 =======
 
@@ -22,9 +24,10 @@ With :yaml:`after` and :yaml:`before`, you can make sure your own listener is
 executed after or before the given identifiers.
 
 ..  literalinclude:: _ModifyHrefLangTagsEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Frontend/EventListener/MyEventListener.php
 
+
+..  _modify-href-lang-tags-event-api:
 
 API
 ===

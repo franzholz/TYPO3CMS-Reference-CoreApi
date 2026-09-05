@@ -26,7 +26,7 @@
 
 ..  _ext-tables-php-migration:
 
-Migration: Move registrations from `ext_tables.php`
+Migration: move registrations from `ext_tables.php`
 ===================================================
 
 Move all registrations from :file:`ext_tables.php` to the appropriate
@@ -47,7 +47,7 @@ Before:
 
     $GLOBALS['TYPO3_USER_SETTINGS']['columns']['myCustomSetting'] = [
         'type' => 'check',
-        'label' => 'LLL:EXT:my_ext/Resources/Private/Language/locallang.xlf:myCustomSetting',
+        'label' => 'my_ext.messages:myCustomSetting',
     ];
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToUserSettings(
         'myCustomSetting',
@@ -62,7 +62,7 @@ After:
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addUserSetting(
         'myCustomSetting',
         [
-            'label' => 'LLL:EXT:my_ext/Resources/Private/Language/locallang.xlf:myCustomSetting',
+            'label' => 'my_ext.messages:myCustomSetting',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',

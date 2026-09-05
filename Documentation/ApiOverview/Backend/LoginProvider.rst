@@ -25,7 +25,7 @@ or :file:`config/system/additional.php`  like this:
         'provider' => \MyVendor\MyExtension\LoginProvider\CustomLoginProvider::class,
         'sorting' => 50,
         'iconIdentifier' => 'actions-key',
-        'label' => 'LLL:EXT:backend/Resources/Private/Language/locallang.xlf:login.link'
+        'label' => 'backend.messages:login.link'
     ];
 
 The settings are defined as:
@@ -57,8 +57,8 @@ replace its registered :php:`provider` class with your custom class.
 
 ..  _login-provider-interface:
 
-LoginProviderInterface
-======================
+`LoginProviderInterface`
+========================
 
 ..  include:: /CodeSnippets/Backend/LoginProviderInterface.rst.txt
 
@@ -95,8 +95,8 @@ View requirements:
 *   Form fields must be provided within the section
     `<f:section name="loginFormFields">`.
 
-..  literalinclude:: _LoginProvider/_MyLoginForm.html
-    :caption: EXT:my_sitepackage/Resources/Private/Templates/MyLoginForm.html
+..  literalinclude:: _LoginProvider/_MyLoginForm.fluid.html
+    :caption: EXT:my_sitepackage/Resources/Private/Templates/MyLoginForm.fluid.html
 
 ..  _login-provider-examples:
 

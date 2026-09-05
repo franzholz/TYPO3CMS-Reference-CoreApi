@@ -1,11 +1,11 @@
 ..  include:: /Includes.rst.txt
 ..  index:: Crowdin; Best Practice
-..  _crowdin-bestpractice
+..  _crowdin-bestpractice:
 
 
-================================
-Crowdin Best Practice
-================================
+=====================
+Crowdin best practice
+=====================
 
 ..  contents::
     :local:
@@ -67,7 +67,9 @@ and upload the files later.
 Best practice in short:
 -----------------------
 
-EXT:Crowdin Overview
+..  _crowdin-bestpractice-in-short-overview:
+
+EXT:Crowdin overview
 ~~~~~~~~~~~~~~~~~~~~
 
 - **Purpose**: Integrates Crowdin’s in-context editing into TYPO3 for easy translation of backend XLF files.
@@ -76,7 +78,9 @@ EXT:Crowdin Overview
     - Provides context for each string by showing where it’s used in TYPO3.
     - Helps track translated vs. missing files.
 
-Crowdin Setup
+..  _crowdin-bestpractice-in-short-setup:
+
+Crowdin setup
 ~~~~~~~~~~~~~
 
 - **Prerequisites**: Must be a translator or proofreader in Crowdin and logged in.
@@ -85,12 +89,16 @@ Crowdin Setup
     - Options: Translate all files or single file.
 - Recommended View: “Comfortable” Editor View for better overview and tools.
 
-Editor Features
+..  _crowdin-bestpractice-in-short-editor-features:
+
+Editor features
 ~~~~~~~~~~~~~~~
 
 - Shows source text, TM suggestions, comments, and string status.
 - Includes filtering, search, glossary, and TM access.
 - Keyboard shortcuts available for efficiency.
+
+..  _crowdin-bestpractice-in-short-glossary:
 
 Glossary
 ~~~~~~~~
@@ -99,13 +107,17 @@ Glossary
 - TYPO3 has a shared glossary (for example TypoScript, TsConfig, Cache).
 - Contributors can add or improve terms in Crowdin.
 
-Translation Memory (TM)
+..  _crowdin-bestpractice-in-short-tm:
+
+Translation memory (TM)
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 - Stores approved translations for reuse.
 - Saves time and ensures consistency.
 - TYPO3 has a shared TM that grows over time.
 - Avoid mixing similar but different phrases to maintain quality.
+
+..  _crowdin-bestpractice-in-short-collaboration:
 
 Collaboration
 ~~~~~~~~~~~~~
@@ -115,6 +127,8 @@ Collaboration
     - **TYPO3 localization team**: Process and coordination.
 - Share experiences and tips for better results.
 
+..  _crowdin-bestpractice-in-short-daily-work:
+
 The daily work
 ~~~~~~~~~~~~~~
 
@@ -123,7 +137,9 @@ The daily work
 - Don’t rely solely on Crowdin’s percentage counters—quality matters more than quantity.
 - Review translations for consistency and natural language.
 
-Final Tips
+..  _crowdin-bestpractice-in-short-final-tips:
+
+Final tips
 ~~~~~~~~~~
 
 - Use shortcuts for speed.
@@ -225,7 +241,7 @@ You find the Crowdin Docs here: `Crowdin Docs`_
 
 ..  _crowdin-bestpractice-glossary:
 
-Working with Glossary
+Working with glossary
 ---------------------
 
 A Glossary is used to establish a terminology and frequently used terms within a
@@ -247,7 +263,7 @@ You can read more about creating and using Glossary on Crowdin Docs: `Glossary |
 
 .. _crowdin-bestpractice-tm:
 
-Translation Memory (TM)
+Translation memory (TM)
 -----------------------
 
 Translation Memory(TM) is a central part of a translation tool like Crowdin. TM

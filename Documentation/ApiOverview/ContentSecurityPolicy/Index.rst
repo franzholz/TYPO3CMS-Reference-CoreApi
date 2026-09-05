@@ -4,7 +4,7 @@
 ..  _content-security-policy:
 
 =======================
-Content Security Policy
+Content security policy
 =======================
 
 ..  todo: Split this up into sub-pages!
@@ -12,6 +12,8 @@ Content Security Policy
 
 ..  contents::
     :local:
+
+..  _content-security-policy-introduction:
 
 Introduction
 ============
@@ -68,7 +70,6 @@ needs to be enabled, **or** the site-specific :file:`csp.yaml` configuration
 file needs to set the `enforce` or `report` disposition like this:
 
 ..  literalinclude:: _csp_enforce.yaml
-    :language: yaml
     :caption: config/sites/<my_site>/csp.yaml | typo3conf/sites/<my_site>/csp.yaml
 
 Within the TYPO3 backend, a specific backend module is available to inspect policy
@@ -157,7 +158,7 @@ Nonces
     exemptions are valid in a policy, a so-called "Nonce" (a unique "**n**umber used **once**")
     is created (details on `https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce`__).
 
-    *   TYPO3 can manage these Nonces and apply them were configured.
+    *   TYPO3 can manage these Nonces and apply them where configured.
     *   Nonces are retrieved from :php:`\TYPO3\CMS\Core\Security\ContentSecurityPolicy\ConsumableNonce`
         and will be used for any directive within the scope of a single HTTP request.
     *   More details are covered in :ref:`content-security-policy-nonce`.
@@ -209,6 +210,8 @@ Specifically you want to to set these following rules, as an example.
     for example, YouTube is already allowed by the default TYPO3 frontend CSP configuration,
     which can be inherited.
 
+..  _content-security-policy-example-rules-example-com:
+
 Rules for example.com (editorial)
 ---------------------------------
 
@@ -217,6 +220,8 @@ Rules for example.com (editorial)
 *    :html:`<script>` sources to `cdn.example.com` and `*.youtube.com` and `*.google.com`
      should be allowed
 
+..  _content-security-policy-example-rules-example-org:
+
 Rules for example.org (community)
 ---------------------------------
 
@@ -224,6 +229,8 @@ Rules for example.org (community)
 *    :html:`<img>` sources to `cdn.example.com` and `*.instagram.com` should be allowed
 *    :html:`<script>` sources to `cdn.example.com` and `*.youtube.com` and `*.google.com`
      should be allowed
+
+..  _content-security-policy-example-rules-typo3-backend:
 
 Rules for the TYPO3 backend
 ---------------------------
@@ -235,21 +242,20 @@ rules for custom backend modules:
 *    :html:`<img>` sources to `cdn.example.com` should be allowed
 *    :html:`<script>` sources to `cdn.example.com` should be allowed
 
+..  _content-security-policy-example-resulting-configuration-example:
+
 Resulting configuration example:
 --------------------------------
 
 And this is how you would do that with a CSP YAML configuration file, one per site:
 
 ..  literalinclude:: _csp_example_com.yaml
-    :language: yaml
     :caption: config/sites/example-com/csp.yaml | typo3conf/sites/example-com/csp.yaml
 
 ..  literalinclude:: _csp_example_org.yaml
-    :language: yaml
     :caption: config/sites/example-org/csp.yaml | typo3conf/sites/example-org/csp.yaml
 
 ..  literalinclude:: _ContentSecurityPolicies_example.php
-    :language: yaml
     :caption: EXT:my_extension/Configuration/ContentSecurityPolicies.php
 
 This is really just a simple demo, that has room for improvements. For example,
@@ -322,27 +328,35 @@ example:
     :caption: EXT:my_extension/Configuration/ContentSecurityPolicies.php
 
 The API here is much like the YAML syntax. The PHP code needs to return
-a mapped array of an :php:`MutationCollection` instance with all rules
-put into a sub-array, containing instances of a single :php:`Mutation`.
+a mapped array of an :php-short:`\TYPO3\CMS\Core\Security\ContentSecurityPolicy\MutationCollection`
+instance with all rules put into a sub-array, containing instances of a
+single :php-short:`\TYPO3\CMS\Core\Security\ContentSecurityPolicy\Mutation`.
 
-Each :php:`Mutation` instance is like a Data Object (DO) where its constructor
-allows you to specifiy a `mode` (type :php:`MutationMode`), a `directive`
-(type :php:`Directive`) and one ore more actual values ("sources", type :php:`UriValue`
-or `SourceKeyword`).
+Each :php-short:`\TYPO3\CMS\Core\Security\ContentSecurityPolicy\Mutation`
+instance is like a Data Object (DO) where its constructor allows you to
+specifiy a `mode` (type :php-short:`\TYPO3\CMS\Core\Security\ContentSecurityPolicy\MutationMode`),
+a `directive` (type :php-short:`\TYPO3\CMS\Core\Security\ContentSecurityPolicy\Directive`)
+and one ore more actual values ("sources", type
+:php-short:`\TYPO3\CMS\Core\Security\ContentSecurityPolicy\UriValue` or
+:php-short:`\TYPO3\CMS\Core\Security\ContentSecurityPolicy\SourceKeyword`).
 
-Additionally, a :php:`Scope` instance object is included, which can either
-be :php:`Scope::backend()` or :php:`Scope::frontend()`.
+Each entry in the returned map is keyed by a
+:php-short:`\TYPO3\CMS\Core\Security\ContentSecurityPolicy\Scope` instance —
+either :php-short:`\TYPO3\CMS\Core\Security\ContentSecurityPolicy\Scope::backend()`
+or :php-short:`\TYPO3\CMS\Core\Security\ContentSecurityPolicy\Scope::frontend()`.
+The scope is required, not optional: there is no way to apply a single set
+of mutations to both frontend and backend at once. To apply the same
+mutations to both, add two separate entries, one per scope.
 
 A good PHP IDE will allow for good autocompletion and hinting, and using
 a boilerplate configuration like the example above helps you to get started.
 
-..  todo: Better explain "Scope", "MutationCollection", "Mutation", "MutationMode"
-..  todo: Link to API docs / FQDNs?
+..  todo: Better explain "MutationCollection", "Mutation", "MutationMode"
 
 .. _content-security-policy-backend-specification:
 
 Backend-specific
-------------------
+----------------
 
 The YAML configuration only applies to the frontend part of TYPO3.
 Backend policies need to be set using the PHP API, within an extension
@@ -360,7 +374,6 @@ In frontend, a dedicated :file:`sites/<my_site>/csp.yaml` can be
 used to declare policies for a specific site, for example:
 
 ..  literalinclude:: _csp.yaml
-    :language: yaml
     :caption: config/sites/<my_site>/csp.yaml | typo3conf/sites/<my_site>/csp.yaml
 
 
@@ -373,7 +386,6 @@ The Content Security Policy for a particular site can be disabled with the
 :yaml:`active` key set to :yaml:`false`:
 
 ..  literalinclude:: _csp_active.yaml
-    :language: yaml
     :caption: config/sites/<my_site>/csp.yaml | typo3conf/sites/<my_site>/csp.yaml
 
 
@@ -412,7 +424,7 @@ server-side process responds with a 403 HTTP error message.
 
 ..  _content-security-policy-site-endpoints-disable:
 
-Example: Disabling the reporting endpoint
+Example: disabling the reporting endpoint
 """""""""""""""""""""""""""""""""""""""""
 
 ..  literalinclude:: _csp_reporting_false.yaml
@@ -420,7 +432,7 @@ Example: Disabling the reporting endpoint
 
 ..  _content-security-policy-site-endpoints-custom:
 
-Example: Using custom external reporting endpoint
+Example: using custom external reporting endpoint
 """""""""""""""""""""""""""""""""""""""""""""""""
 
 ..  literalinclude:: _csp_reporting_custom.yaml
@@ -428,7 +440,7 @@ Example: Using custom external reporting endpoint
 
 ..  _content-security-policy-modes:
 
-Content Security Police modes
+Content security police modes
 -----------------------------
 
 Adjusting specific directives / mutations for a policy can be performed
@@ -447,12 +459,10 @@ via the following modes:
         Example:
 
         ..  literalinclude:: _csp_mode_append.yaml
-            :language: yaml
             :caption: config/sites/<my_site>/csp.yaml | typo3conf/sites/<my_site>/csp.yaml
             :emphasize-lines: 12-15
 
         ..  literalinclude:: _ContentSecurityPolicies_mode_append.php
-            :language: php
             :caption: EXT:my_extension/Configuration/ContentSecurityPolicies.php
             :emphasize-lines: 27-31
 
@@ -474,12 +484,10 @@ via the following modes:
         Example:
 
         ..  literalinclude:: _csp_mode_extend.yaml
-            :language: yaml
             :caption: config/sites/<my_site>/csp.yaml | typo3conf/sites/<my_site>/csp.yaml
             :emphasize-lines: 7-10
 
         ..  literalinclude:: _ContentSecurityPolicies_mode_extend.php
-            :language: php
             :caption: EXT:my_extension/Configuration/ContentSecurityPolicies.php
             :emphasize-lines: 22-26
 
@@ -500,12 +508,10 @@ via the following modes:
         Example:
 
         ..  literalinclude:: _csp_mode_inherit_again.yaml
-            :language: yaml
             :caption: config/sites/<my_site>/csp.yaml | typo3conf/sites/<my_site>/csp.yaml
             :emphasize-lines: 8-9,21-22
 
         ..  literalinclude:: _ContentSecurityPolicies_mode_inherit_again.php
-            :language: php
             :caption: EXT:my_extension/Configuration/ContentSecurityPolicies.php
             :emphasize-lines: 23-26,37-40
 
@@ -529,12 +535,10 @@ via the following modes:
         Example:
 
         ..  literalinclude:: _csp_mode_inherit_once.yaml
-            :language: yaml
             :caption: config/sites/<my_site>/csp.yaml | typo3conf/sites/<my_site>/csp.yaml
             :emphasize-lines: 8-9,21-22
 
         ..  literalinclude:: _ContentSecurityPolicies_mode_inherit_once.php
-            :language: php
             :caption: EXT:my_extension/Configuration/ContentSecurityPolicies.php
             :emphasize-lines: 23-26,37-40
 
@@ -558,12 +562,10 @@ via the following modes:
         Example:
 
         ..  literalinclude:: _csp_mode_reduce.yaml
-            :language: yaml
             :caption: config/sites/<my_site>/csp.yaml | typo3conf/sites/<my_site>/csp.yaml
             :emphasize-lines: 9-12
 
         ..  literalinclude:: _ContentSecurityPolicies_mode_reduce.php
-            :language: php
             :caption: EXT:my_extension/Configuration/ContentSecurityPolicies.php
             :emphasize-lines: 24-28
 
@@ -583,12 +585,10 @@ via the following modes:
         Example:
 
         ..  literalinclude:: _csp_mode_remove.yaml
-            :language: yaml
             :caption: config/sites/<my_site>/csp.yaml | typo3conf/sites/<my_site>/csp.yaml
             :emphasize-lines: 12-13
 
         ..  literalinclude:: _ContentSecurityPolicies_mode_remove.php
-            :language: php
             :caption: EXT:my_extension/Configuration/ContentSecurityPolicies.php
             :emphasize-lines: 27-30
 
@@ -608,12 +608,10 @@ via the following modes:
         Example:
 
         ..  literalinclude:: _csp_mode_set.yaml
-            :language: yaml
             :caption: config/sites/<my_site>/csp.yaml | typo3conf/sites/<my_site>/csp.yaml
             :emphasize-lines: 2-5
 
         ..  literalinclude:: _ContentSecurityPolicies_mode_set.php
-            :language: php
             :caption: EXT:my_extension/Configuration/ContentSecurityPolicies.php
             :emphasize-lines: 16-20
 
@@ -672,7 +670,18 @@ as listed below, or use TypoScript only for passing DOM attributes
 and using external scripts to actually evaluate these attributes to control
 functionality.
 
+..  note::
+    Using a nonce in your HTML is not enough on its own — the relevant
+    policy directive (for example `script-src` or `style-src`) must also
+    allow the source keyword `nonce-proxy`, otherwise the nonce is never
+    added to the compiled `Content-Security-Policy` header and the browser
+    still blocks the content. See the `nonce-proxy` source in the
+    :ref:`extension-specific <content-security-policy-extension>` and
+    :ref:`site-specific <content-security-policy-site>` examples above.
+
 TYPO3 provides APIs to get the nonce for the current request:
+
+..  _content-security-policy-nonce-retrieve-php:
 
 Retrieve with PHP
 -----------------
@@ -693,6 +702,8 @@ The nonce can be retrieved via the
         $nonce = $nonceAttribute->consumeStatic(Directive::StyleSrcElem);  // static style
     }
 
+..  _content-security-policy-nonce-fluid-template:
+
 In a Fluid template
 -------------------
 
@@ -700,7 +711,7 @@ The :ref:`f:security.nonce <t3viewhelper:typo3-fluid-security-nonce>` ViewHelper
 is available, which provides the nonce in a Fluid template, for example:
 
 ..  code-block:: html
-    :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.html
+    :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.fluid.html
 
     <script nonce="{f:security.nonce()}">
         const inline = 'script';
@@ -715,7 +726,7 @@ or :ref:`f:asset.css <t3viewhelper:typo3-fluid-asset-css>`
 ViewHelpers with the `useNonce` attribute:
 
 ..  code-block:: html
-    :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.html
+    :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.fluid.html
 
     <f:asset.script identifier="my-inline-script" useNonce="1">
         const inline = 'script';

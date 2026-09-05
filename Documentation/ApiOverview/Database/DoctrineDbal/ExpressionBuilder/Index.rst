@@ -51,7 +51,6 @@ one argument.
 Example: finding :sql:`tt_content` records:
 
 ..  literalinclude:: _RepositoryWithJunctions.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyTableRepository.php
 
 Read :ref:`how to correctly instantiate <database-query-builder-instantiation>`
@@ -162,7 +161,6 @@ with field name), the second argument is an optional alias.
 Examples:
 
 ..  literalinclude:: _RepositoryAgregate.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyTableRepository.php
 
 Read :ref:`how to correctly instantiate <database-query-builder-instantiation>`
@@ -175,8 +173,8 @@ Various expressions
 
 ..  _database-expression-builder-as:
 
-:php:`ExpressionBuilder::as()`
-------------------------------
+`ExpressionBuilder::as()`
+-------------------------
 
 ..  include:: _ExpressionBuilderAs.rst.txt
 
@@ -193,8 +191,8 @@ Creates a statement to append a field alias to a value, identifier or sub-expres
 
 ..  _database-expression-builder-concat:
 
-:php:`ExpressionBuilder::concat()`
-----------------------------------
+`ExpressionBuilder::concat()`
+-----------------------------
 
 ..  include:: _ExpressionBuilderConcat.rst.txt
 
@@ -208,13 +206,12 @@ for SQLite and :sql:`CONCAT(field1, field2, field3, ...)` for other database ven
 ..  include:: _EscapeWarning.rst.txt
 
 ..  literalinclude:: _RepositoryConcat.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyTableRepository.php
 
 ..  _database-expression-builder-castInt:
 
-:php:`ExpressionBuilder::castInt()`
------------------------------------
+`ExpressionBuilder::castInt()`
+------------------------------
 
 ..  include:: _ExpressionBuilderCastInt.rst.txt
 
@@ -227,13 +224,12 @@ except PostgreSQL. For PostgreSQL :sql:`"value"::INTEGER` cast notation
 is used.
 
 ..  literalinclude:: _RepositoryCastInt.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyTableRepository.php
 
 ..  _database-expression-builder-castText:
 
-:php:`ExpressionBuilder::castText()`
-------------------------------------
+`ExpressionBuilder::castText()`
+-------------------------------
 
 ..  todo: Add api description as soon as building code-snippets is working again
 
@@ -247,13 +243,12 @@ or similar methods based on the database engine.
 ..  include:: _EscapeWarning.rst.txt
 
 ..  literalinclude:: _RepositoryCastText.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyTableRepository.php
 
 ..  _database-expression-builder-castVarchar:
 
-:php:`ExpressionBuilder::castVarchar()`
----------------------------------------
+`ExpressionBuilder::castVarchar()`
+----------------------------------
 
 ..  include:: _ExpressionBuilderCastVarchar.rst.txt
 
@@ -268,14 +263,13 @@ where :sql:`"value"::INTEGER` cast notation is used.
 ..  include:: _EscapeWarning.rst.txt
 
 ..  literalinclude:: _RepositoryCastVarChar.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyTableRepository.php
 
 
 ..  _database-expression-builder-if:
 
-:php:`ExpressionBuilder::if()`
-------------------------------
+`ExpressionBuilder::if()`
+-------------------------
 
 ..  include:: _ExpressionBuilderIf.rst.txt
 
@@ -321,8 +315,8 @@ Result with MySQL/MariaDB:
 
 ..  _database-expression-builder-left:
 
-:php:`ExpressionBuilder::left()`
---------------------------------
+`ExpressionBuilder::left()`
+---------------------------
 
 ..  include:: _ExpressionBuilderLeft.rst.txt
 
@@ -340,8 +334,8 @@ to provide a compatible expression.
 
 ..  _database-expression-builder-leftPad:
 
-:php:`ExpressionBuilder::leftPad()`
------------------------------------
+`ExpressionBuilder::leftPad()`
+------------------------------
 
 ..  include:: _ExpressionBuilderLeftPad.rst.txt
 
@@ -354,14 +348,13 @@ more complex compatible replacement expression construct is created.
 ..  include:: _EscapeWarning.rst.txt
 
 ..  literalinclude:: _RepositoryLeftPad.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyTableRepository.php
 
 
 ..  _database-expression-builder-length:
 
-:php:`ExpressionBuilder::length()`
-----------------------------------
+`ExpressionBuilder::length()`
+-----------------------------
 
 ..  include:: _ExpressionBuilderLength.rst.txt
 
@@ -369,7 +362,6 @@ The :php:`length()` string function can be used to return the length of a
 string in bytes.
 
 ..  literalinclude:: _RepositoryLength.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyTableRepository.php
 
 Read :ref:`how to correctly instantiate <database-query-builder-instantiation>`
@@ -378,8 +370,8 @@ See available :ref:`parameter types <database-connection-parameter-types>`.
 
 ..  _database-expression-builder-repeat:
 
-:php:`ExpressionBuilder::repeat()`
-----------------------------------
+`ExpressionBuilder::repeat()`
+-----------------------------
 
 ..  include:: _ExpressionBuilderRepeat.rst.txt
 
@@ -395,13 +387,12 @@ vendors except SQLite which uses
 ..  include:: _EscapeWarning.rst.txt
 
 ..  literalinclude:: _RepositoryRepeat.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyTableRepository.php
 
 ..  _database-expression-builder-right:
 
-:php:`ExpressionBuilder::right()`
----------------------------------
+`ExpressionBuilder::right()`
+----------------------------
 
 ..  include:: _ExpressionBuilderRight.rst.txt
 
@@ -413,14 +404,13 @@ database vendors except SQLite, which uses :sql:`substring("value", start_of_str
 ..  include:: _EscapeWarning.rst.txt
 
 ..  literalinclude:: _RepositoryRight.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyTableRepository.php
 
 
 ..  _database-expression-builder-rightPad:
 
-:php:`ExpressionBuilder::rightPad()`
-------------------------------------
+`ExpressionBuilder::rightPad()`
+-------------------------------
 
 ..  include:: _ExpressionBuilderRightPad.rst.txt
 
@@ -433,13 +423,12 @@ more complex compatible replacement expression construct is created.
 ..  include:: _EscapeWarning.rst.txt
 
 ..  literalinclude:: _RepositoryRightPad.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyTableRepository.php
 
 ..  _database-expression-builder-space:
 
-:php:`ExpressionBuilder::space()`
----------------------------------
+`ExpressionBuilder::space()`
+----------------------------
 
 ..  include:: _ExpressionBuilderSpace.rst.txt
 
@@ -452,13 +441,12 @@ and SQLite.
 ..  include:: _EscapeWarning.rst.txt
 
 ..  literalinclude:: _RepositorySpace.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyTableRepository.php
 
 ..  _database-expression-builder-trim:
 
-:php:`ExpressionBuilder::trim()`
---------------------------------
+`ExpressionBuilder::trim()`
+---------------------------
 
 ..  include:: _ExpressionBuilderTrim.rst.txt
 
@@ -466,7 +454,6 @@ Using the :php:`->trim()` expression ensures that fields are trimmed at the
 database level. The following examples give a better idea of what is possible:
 
 ..  literalinclude:: _RepositoryWithTrim.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyTableRepository.php
 
 Read :ref:`how to correctly instantiate <database-query-builder-instantiation>`

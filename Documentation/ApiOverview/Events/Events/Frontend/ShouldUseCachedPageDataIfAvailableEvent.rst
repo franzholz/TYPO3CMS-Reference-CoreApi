@@ -2,9 +2,9 @@
 ..  index:: Events; ShouldUseCachedPageDataIfAvailableEvent
 ..  _ShouldUseCachedPageDataIfAvailableEvent:
 
-=======================================
-ShouldUseCachedPageDataIfAvailableEvent
-=======================================
+=========================================
+`ShouldUseCachedPageDataIfAvailableEvent`
+=========================================
 
 The PSR-14 event :php:`\TYPO3\CMS\Frontend\Event\ShouldUseCachedPageDataIfAvailableEvent`
 allows TYPO3 extensions to register event listeners to modify if a
@@ -15,12 +15,15 @@ This event can be used to avoid loading from the cache when indexing via
 CLI happens from an external source, or if the cache should be ignored when
 logged in from a certain IP address.
 
+..  _should-use-cached-page-data-if-available-event-example:
+
 Example
 =======
 
 ..  literalinclude:: _ShouldUseCachedPageDataIfAvailableEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Frontend/EventListener/MyEventListener.php
+
+..  _should-use-cached-page-data-if-available-event-api:
 
 API
 ===

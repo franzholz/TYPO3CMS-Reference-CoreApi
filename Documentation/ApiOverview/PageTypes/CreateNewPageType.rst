@@ -59,19 +59,17 @@ identifier in the `typeicon_classes` array. This identifier must be registered
 later in the Icon API.
 
 ..  literalinclude:: _pages.php
-    :language: php
     :caption: EXT:my_extension/Configuration/TCA/Overrides/pages.php
 
 ..  _page-types-example-register-icon:
 
-Register the icon via Icon API
+Register the icon via icon API
 ==============================
 
 The identifier used in the TCA (`tx-examples-archive-page`) must be
 registered in :file:`Configuration/Icons.php` to link it to an SVG file.
 
 ..  literalinclude:: _Icons.php
-    :language: php
     :caption: EXT:my_extension/Configuration/Icons.php
 
 You can also provide icons for special states by registering additional

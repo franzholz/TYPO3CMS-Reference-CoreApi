@@ -3,7 +3,7 @@
 .. _backend-javascript-es6:
 
 ========================
-ES6 in the TYPO3 Backend
+ES6 in the TYPO3 backend
 ========================
 
 ES6 modules may be used instead of AMD modules, both in backend and frontend context.
@@ -25,6 +25,8 @@ Exposing all module configurations is possible via
 done in backend context for logged-in users to avoid disclosing installed
 extensions to anonymous visitors.
 
+..  _backend-javascript-es6-configuration:
+
 Configuration
 =============
 
@@ -32,14 +34,12 @@ A simple configuration example for an extension that maps
 the `Public/JavaScript` folder to an import prefix `@vendor/my-extensions`:
 
 ..  literalinclude:: _JavaScriptModulesSimple.php
-    :language: php
     :caption: EXT:my_extension/Configuration/JavaScriptModules.php
 
 Complex configuration example containing recursive-lookup exclusions,
 third-party library definitions and overwrites:
 
 ..  literalinclude:: _JavaScriptModulesExtended.php
-    :language: php
     :caption: EXT:my_extension/Configuration/JavaScriptModules.php
 
 .. _backend-javascript-es6-loading:
@@ -52,15 +52,15 @@ A module can be added to the current page response either via
 :php:`JavaScriptRenderer`:
 
 ..  literalinclude:: _PageRendererJavaScriptLoading.php
-    :language: php
     :caption: EXT:my_extension/Classes/SomeNamespace/SomeClass.php
 
 In a Fluid template the `includeJavaScriptModules` property of the
 :html:`<f:be.pageRenderer>` ViewHelper may be used:
 
-..  literalinclude:: _BackendFluidTemplate.html
-    :language: html
-    :caption: EXT:my_extension/Resources/Private/Backend/Templates/SomeTemplate.html
+..  literalinclude:: _BackendFluidTemplate.fluid.html
+    :caption: EXT:my_extension/Resources/Private/Backend/Templates/SomeTemplate.fluid.html
+
+..  _backend-javascript-es6-tips-es6:
 
 Some tips on ES6
 ================
@@ -80,7 +80,9 @@ For a practical example on how to introduce ES6 modules into a large extension
 see this commit for EXT:news: `[TASK] Add support for TYPO3 v12 ES6
 modules <https://github.com/bnf/news/commit/f8e196b67ceaa2f56699fbf464080dde668ad526>`__.
 
-Using JQuery
+..  _backend-javascript-es6-tips-es6-jquery:
+
+Using jQuery
 ------------
 
 In the TYPO3 Core usage of jQuery is eliminated step-by-step as the necessary
@@ -92,6 +94,8 @@ with the following statement:
 ..  code-block:: javascript
 
     import $ from 'jquery';
+
+..  _backend-javascript-es6-add-javascript-modules:
 
 Add JavaScript modules to import map in backend form
 ====================================================
@@ -111,5 +115,4 @@ CKEditor is not part of the main record but needs to be loaded for
 the child record.
 
 ..  literalinclude:: _JavaScriptModulesBackendForm.php
-    :language: php
     :caption: EXT:my_extension/Configuration/JavaScriptModules.php

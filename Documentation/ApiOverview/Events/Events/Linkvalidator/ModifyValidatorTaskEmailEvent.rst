@@ -2,9 +2,9 @@
 ..  index:: Events; ModifyValidatorTaskEmailEvent
 ..  _ModifyValidatorTaskEmailEvent:
 
-=============================
-ModifyValidatorTaskEmailEvent
-=============================
+===============================
+`ModifyValidatorTaskEmailEvent`
+===============================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Linkvalidator\Event\ModifyValidatorTaskEmailEvent`
@@ -28,11 +28,12 @@ assigning new values to `FluidEmail`.
     the event.
 
 
+..  _modify-validator-task-email-event-example:
+
 Example
 =======
 
 ..  literalinclude:: _ModifyValidatorTaskEmailEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Linkvalidator/EventListener/MyEventListener.php
 
 The :php:`\TYPO3\CMS\Linkvalidator\Result\LinkAnalyzerResult` contains the
@@ -99,6 +100,8 @@ of following columns:
 `Link Type`
     Type of the broken link (either `internal`, `external` or `file`)
 
+
+..  _modify-validator-task-email-event-api:
 
 API
 ===

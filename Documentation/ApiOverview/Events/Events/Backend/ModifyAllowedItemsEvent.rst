@@ -3,9 +3,9 @@
 ..  _ModifyAllowedItemsEvent:
 
 
-=======================
-ModifyAllowedItemsEvent
-=======================
+=========================
+`ModifyAllowedItemsEvent`
+=========================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Backend\Controller\Event\ModifyAllowedItemsEvent`
@@ -17,12 +17,15 @@ types.
     *   :ref:`modifyLinkHandlers`
     *   :ref:`ModifyLinkHandlersEvent`
 
+..  _modify-allowed-items-event-example:
+
 Example
 =======
 
 ..  literalinclude:: _ModifyAllowedItemsEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Backend/EventListener/MyEventListener.php
+
+..  _modify-allowed-items-event-api:
 
 API
 ===

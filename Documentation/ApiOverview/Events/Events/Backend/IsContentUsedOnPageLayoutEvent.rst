@@ -2,9 +2,9 @@
 ..  index:: Events; IsContentUsedOnPageLayoutEvent
 ..  _IsContentUsedOnPageLayoutEvent:
 
-==============================
-IsContentUsedOnPageLayoutEvent
-==============================
+================================
+`IsContentUsedOnPageLayoutEvent`
+================================
 
 Use the PSR-14 event :php:`\TYPO3\CMS\Backend\View\Event\IsContentUsedOnPageLayoutEvent`
 to identify if content has been used in a column that is not in a backend layout.
@@ -19,16 +19,15 @@ setting it to false displays it:
 
 ..  _IsContentUsedOnPageLayoutEvent-example:
 
-Example: Display "Unused elements detected on this page" for elements with missing parent
+Example: display "Unused elements detected on this page" for elements with missing parent
 =========================================================================================
 
 ..  literalinclude:: _IsContentUsedOnPageLayoutEvent/_ContentUsedOnPage.php
-    :language: php
     :caption: EXT:my_extension/Classes/Listener/ContentUsedOnPage.php
 
 ..  _IsContentUsedOnPageLayoutEvent-api:
 
-API of IsContentUsedOnPageLayoutEvent
-=====================================
+API of `IsContentUsedOnPageLayoutEvent`
+=======================================
 
 ..  include:: /CodeSnippets/Events/Backend/IsContentUsedOnPageLayoutEvent.rst.txt

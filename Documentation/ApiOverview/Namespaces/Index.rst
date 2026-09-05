@@ -117,13 +117,11 @@ extension key is used.
 For a backend module:
 
 ..  literalinclude:: _Modules.php
-    :language: php
     :caption: EXT:my_extension/Configuration/Backend/Modules.php
 
 For a frontend module:
 
 ..  literalinclude:: _ext_localconf.php
-    :language: php
     :caption: EXT:my_extension/ext_localconf.php
 
 .. index:: pair: Namespaces; Tests
@@ -146,7 +144,7 @@ So a test class in :file:`EXT:foo_bar_baz/Tests/Unit/Bla/` will have as namespac
 
 .. _namespaces-instances:
 
-Creating Instances
+Creating instances
 ------------------
 
 The following example shows how you can create instances by means of
@@ -160,6 +158,8 @@ The following example shows how you can create instances by means of
 
    $contentObject = GeneralUtility::makeInstance(ContentObjectRenderer::class);
 
+
+..  _namespaces-include-required:
 
 `include` and `required`
 ------------------------

@@ -31,8 +31,10 @@ and persisting them. It effectively encapsulates all calls to the
 
 .. index:: UserSessionManager
 
-Public API of :php:`UserSessionManager`
-=======================================
+..  _session-management-public-api-usersessionmanager:
+
+Public API of `UserSessionManager`
+==================================
 
 The :php:`UserSessionManager` can be retrieved using its static factory
 method :php:`create()`:
@@ -50,8 +52,10 @@ with user sessions. A couple of public methods are available:
 
 ..  include:: _UserSessionManager.rst.txt
 
-Public API of :php:`UserSession`
-================================
+..  _session-management-public-api-usersession:
+
+Public API of `UserSession`
+===========================
 
 The session object created or retrieved by the :php:`UserSessionManager`
 provides the following API methods:

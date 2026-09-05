@@ -2,9 +2,9 @@
 ..  index:: Events; AfterFolderCopiedEvent
 ..  _AfterFolderCopiedEvent:
 
-======================
-AfterFolderCopiedEvent
-======================
+========================
+`AfterFolderCopiedEvent`
+========================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Core\Resource\Event\AfterFolderCopiedEvent`
@@ -15,10 +15,14 @@ is fired after a folder was copied to the resource
 *Example*: Custom listeners can analyze contents of a file or add custom
 permissions to a folder automatically.
 
+..  _after-folder-copied-event-example:
+
 Example
 =======
 
 ..  include:: /_includes/EventsContributeNote.rst.txt
+
+..  _after-folder-copied-event-api:
 
 API
 ===

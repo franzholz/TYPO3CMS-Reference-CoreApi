@@ -4,9 +4,9 @@
     Request attribute; ModuleData
 ..  _typo3-request-attribute-module-data:
 
-==========
-ModuleData
-==========
+============
+`ModuleData`
+============
 
 The :php:`moduleData` backend request attribute is available when a backend
 module is requested. It holds the object :php:`\TYPO3\CMS\Backend\Module\ModuleData`
@@ -38,6 +38,8 @@ If :php:`ModuleData` contains :php:`property`, the value is checked against the
 Otherwise the value is either changed to the default or if this value is also
 not allowed, to the first allowed value.
 
+
+..  _typo3-request-attribute-module-data-api:
 
 API
 ===

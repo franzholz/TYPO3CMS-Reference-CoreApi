@@ -3,9 +3,9 @@
 
 ..  _AfterCurrentPageIsResolvedEvent:
 
-===============================
-AfterCurrentPageIsResolvedEvent
-===============================
+=================================
+`AfterCurrentPageIsResolvedEvent`
+=================================
 
 ..  versionadded:: 14.0
     The event :php-short:`TYPO3\CMS\Form\Event\AfterCurrentPageIsResolvedEvent`
@@ -21,7 +21,6 @@ Example
 =======
 
 ..  literalinclude:: _AfterCurrentPageIsResolvedEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/EventListener/MyEventListener.php
 
 ..  _AfterCurrentPageIsResolvedEvent-api:

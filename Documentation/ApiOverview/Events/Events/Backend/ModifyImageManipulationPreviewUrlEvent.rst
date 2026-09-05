@@ -3,9 +3,9 @@
     Events; ModifyImageManipulationPreviewUrlEvent
 ..  _ModifyImageManipulationPreviewUrlEvent:
 
-======================================
-ModifyImageManipulationPreviewUrlEvent
-======================================
+========================================
+`ModifyImageManipulationPreviewUrlEvent`
+========================================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Backend\Form\Event\ModifyImageManipulationPreviewUrlEvent`
@@ -22,12 +22,15 @@ URL will be opened in a new window.
     The element's crop variants will always be appended to the preview URL
     as JSON-encoded string, using the `cropVariants` parameter.
 
+..  _modify-image-manipulation-preview-url-event-example:
+
 Example
 =======
 
 ..  literalinclude:: _ModifyImageManipulationPreviewUrlEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Backend/EventListener/MyEventListener.php
+
+..  _modify-image-manipulation-preview-url-event-api:
 
 API
 ===

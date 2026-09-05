@@ -40,7 +40,7 @@ available as :ref:`attributes <typo3-request-attributes>` in the current
 Depending on the context, there are two main ways to access them:
 
 -   via the PSR-7 HTTP request object directly - for example in a PSR-15
-    middleware, an :ref:`Extbase controller <extbase-action-controller>` or a
+    middleware, an :ref:`Extbase controller <extbase-controller-action>` or a
     :ref:`user function <t3tsref:cobj-user>`.
 -   via :php:`$GLOBALS['TYPO3_REQUEST']` - everywhere you do not have a
     request object.
@@ -60,21 +60,23 @@ Methods:
     // current site language
     $siteLanguage = $request->getAttribute('language');
 
-The :ref:`Extbase <extbase>` request class implements the
+The :ref:`Extbase <extbase-extension-framework>` request class implements the
 PSR-7 :php:`\Psr\Http\Message\ServerRequestInterface`. Therefore, you can
 retrieve all needed attributes from the request object.
 
 ..  index:: pair: Site handling; SiteFinder
 ..  _sitehandling-sitefinder-object:
 
-Finding a site object with the :php:`SiteFinder` class
-======================================================
+Finding a site object with the `SiteFinder` class
+=================================================
 
 When you need to access the site configuration for a specific page ID or by a
 site identifier, you can use the class :php:`\TYPO3\CMS\Core\Site\SiteFinder`.
 
 The methods for finding a specific site throw a
 :php:`\TYPO3\CMS\Core\Exception\SiteNotFoundException`, if no site was found.
+
+..  _sitehandling-sitefinder-object-api:
 
 API
 ---
@@ -85,11 +87,13 @@ API
 .. index:: pair: Site handling; Site object
 ..  _sitehandling-site-object:
 
-The :php:`Site` object
-======================
+The `Site` object
+=================
 
 A :php:`\TYPO3\CMS\Core\Site\Entity\Site` object gives access to the site
 configuration options.
+
+..  _sitehandling-site-object-api:
 
 API
 ---
@@ -100,12 +104,14 @@ API
 .. index:: pair: Site handling; SiteLanguage object
 ..  _sitehandling-sitelanguage-object:
 
-The :php:`SiteLanguage` object
-==============================
+The `SiteLanguage` object
+=========================
 
 The :php:`SiteLanguage` object is basically a simple model that represents the
 configuration options of the site regarding language as an object and provides
 getters for those properties.
+
+..  _sitehandling-sitelanguage-object-api:
 
 API
 ---
@@ -114,8 +120,8 @@ API
 
 ..  _sitehandling-sitesetting-object:
 
-The :php:`SiteSettings` object
-==============================
+The `SiteSettings` object
+=========================
 
 The :ref:`site settings <sitehandling-settings>` can be retrieved using the
 :php:`getSettings()` method of the :ref:`Site <sitehandling-site-object>`
@@ -141,6 +147,8 @@ or even fetching all settings:
     $siteSettings->getAll();
 
 See :ref:`<sitehandling-inTypoScript>` for other means of accessing the site settings.
+
+..  _sitehandling-sitesetting-object-api:
 
 API
 ---

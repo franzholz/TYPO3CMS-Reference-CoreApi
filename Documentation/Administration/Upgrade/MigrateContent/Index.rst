@@ -14,6 +14,8 @@ This method won't copy any of your installed extensions. You have to take care
 of moving them yourself. Records stored on root level (such as sys_file) records
 don't get exported automatically.
 
+..  _migratecontent-prerequisites:
+
 Prerequisites
 =============
 
@@ -29,11 +31,15 @@ On composer based installations it can be required via
    composer req typo3/cms-impexp
 
 
+..  _migratecontent-export-data:
+
 Export your data
 ================
 
+..  _migratecontent-export-data-cli-command:
+
 Via CLI command
-----------------
+---------------
 
 Exporting a TYPO3 page tree without php time limit is possible via
 :ref:`Symfony Console Commands (cli) <t3coreapi:symfony-console-commands-cli>`.
@@ -59,6 +65,8 @@ You can see the complete list of options by calling the help for the command:
 
    vendor/bin/typo3 help impexp:export
 
+
+..  _migratecontent-export-data-manual-export-typo3:
 
 Manual export from the TYPO3 backend
 ------------------------------------
@@ -113,6 +121,8 @@ Manual export from the TYPO3 backend
 
       .. include:: /Images/ManualScreenshots/ImportExport/DownloadExport.rst.txt
 
+..  _migratecontent-import-data:
+
 Import your data
 ================
 
@@ -123,8 +133,10 @@ Import your data
    to non-existing tables will not get imported.
 
 
+..  _migratecontent-import-data-cli-command:
+
 Via CLI command
-----------------
+---------------
 
 Importing a TYPO3 page tree without php time limit is possible via
 :ref:`Symfony Console Commands (cli) <t3coreapi:symfony-console-commands-cli>`.
@@ -148,6 +160,8 @@ list of options by calling the help for the command:
 
    vendor/bin/typo3 help impexp:import
 
+
+..  _migratecontent-import-data-manual-import-typo3:
 
 Manual import from the TYPO3 backend
 ------------------------------------
@@ -176,6 +190,8 @@ Manual import from the TYPO3 backend
 
       Click the import button.
 
+
+..  _migratecontent-importing-data-old:
 
 Importing data from old TYPO3 versions
 ======================================

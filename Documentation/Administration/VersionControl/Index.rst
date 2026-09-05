@@ -30,7 +30,7 @@ professionalism to your workflow.
 
 ..  _version-control-quick-start:
 
-Quick Start: Add a new TYPO3 project to Git
+Quick start: add a new TYPO3 project to Git
 ===========================================
 
 This step-by-step guide explains how to add a new or existing TYPO3 project
@@ -279,7 +279,7 @@ Directories and files to always commit
 
 ..  _version-control-platforms-optional:
 
-Optional to Commit
+Optional to commit
 ------------------
 
 Depending on project needs, you may include:
@@ -375,7 +375,6 @@ https://git-scm.com/docs/gitignore
 
         .. literalinclude:: _codesnippets/_GitIgnoreComposer.txt
             :caption: project_root/.gitignore
-            :language: plaintext
             :linenos:
 
         ..  seealso::
@@ -390,7 +389,6 @@ https://git-scm.com/docs/gitignore
 
         .. literalinclude:: _codesnippets/_GitIgnoreClassic.txt
             :caption: project_root/.gitignore
-            :language: plaintext
             :linenos:
 ..  note::
 

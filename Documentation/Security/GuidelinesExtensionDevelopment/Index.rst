@@ -34,7 +34,7 @@ address was entered and not any other text.
 
 If the backend forms use the correct TCA types like :ref:`'type' => 'email' <t3tca:columns-email>`
 or parameters like :ref:`eval <t3tca:columns-input-properties-eval>`. In
-Extbase the :ref:`validating framework <extbase_validation>` can
+Extbase the :ref:`validating framework <extbase-validation-overview>` can
 be helpful.
 
 ..  index:: Security; Database Queries
@@ -62,7 +62,7 @@ applies to Extbase queries, Doctrine DBAL :ref:`QueryBuilder
 ..  _trusted-properties:
 
 Trusted properties (Extbase Only)
-==================================
+=================================
 
 ..  danger::
 
@@ -85,7 +85,7 @@ changed in our system).
 The form looks like this:
 
 ..  code-block:: html
-    :caption: EXT:blog_example/Resources/Private/Templates/SomeTemplate.html
+    :caption: EXT:blog_example/Resources/Private/Templates/SomeTemplate.fluid.html
 
     <f:form name="user" object="{user}" action="update">
        <f:form.textbox property="email" />
@@ -214,7 +214,7 @@ object accessors that are used in arguments of a ViewHelper. A short
 example for this:
 
 ..  code-block:: html
-    :caption: EXT:blog_example/Resources/Private/Templates/SomeTemplate.html
+    :caption: EXT:blog_example/Resources/Private/Templates/SomeTemplate.fluid.html
 
     {variable1}
     <f:format.crop append="{variable2}">a very long text</f:format.crop>

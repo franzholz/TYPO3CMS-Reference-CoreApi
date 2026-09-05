@@ -2,9 +2,9 @@
 ..  index:: Events; AfterGroupsResolvedEvent
 ..  _AfterGroupsResolvedEvent:
 
-========================
-AfterGroupsResolvedEvent
-========================
+==========================
+`AfterGroupsResolvedEvent`
+==========================
 
 When user groups are loaded, for example when a backend editor's groups and permissions
 are calculated, a new PSR-14 event `AfterGroupsResolvedEvent` is fired.
@@ -18,10 +18,14 @@ particular user logs in or is seated at a special location.
     This event acts as a substitution for the removed TYPO3 hook
     :php:`$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_userauthgroup.php']['fetchGroups_postProcessing']`.
 
+..  _after-groups-resolved-event-example:
+
 Example
 =======
 
 ..  include:: /_includes/EventsContributeNote.rst.txt
+
+..  _after-groups-resolved-event-api:
 
 API
 ===

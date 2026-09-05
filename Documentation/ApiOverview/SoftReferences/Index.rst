@@ -86,7 +86,6 @@ url
 The default setup is found in :t3src:`core/Configuration/Services.yaml`:
 
 ..  literalinclude:: _Services.yaml
-    :language: yaml
     :caption: Excerpt from EXT:core/Configuration/Services.yaml
 
 ..  _soft-references-examples:
@@ -98,7 +97,6 @@ For the :sql:`tt_content.bodytext` field of type text from the example
 above, the configuration looks like this:
 
 ..  literalinclude:: _tt_content_bodytext.php
-    :language: php
     :caption: Excerpt from EXT:frontend/Configuration/TCA/tt_content.php
 
 This means, the parsers for the soft reference types `typolink_tag`, `email` and
@@ -118,8 +116,10 @@ The parsers will return an instance of
 containing information about the references contained in the string.
 This object has two properties: :php:`$content` and :php:`$elements`.
 
-Property :php:`$content`
-------------------------
+..  _soft-references-examples-property-content:
+
+Property `$content`
+-------------------
 
 ..  code-block:: html
 
@@ -139,8 +139,10 @@ For each token there is an entry in :php:`$elements` which has a
 :php:`subst` key defining the :php:`tokenID` and the :php:`tokenValue`. See
 below.
 
-Property :php:`$elements`
--------------------------
+..  _soft-references-examples-property-elements:
+
+Property `$elements`
+--------------------
 
 ..  code-block:: php
 
@@ -205,7 +207,6 @@ registering them in your :file:`Services.yaml` file. This will load them
 via :ref:`dependency injection <Dependency-Injection>`:
 
 ..  literalinclude:: _YourSoftReferenceParser.yaml
-    :language: yaml
     :caption: EXT:my_extension/Configuration/Services.yaml
 
 Read :ref:`how to configure dependency injection in extensions <dependency-injection-in-extensions>`.
@@ -240,6 +241,8 @@ If :php:`$elements` is an empty array, this method will also be used internally.
     Soft references; Usage
     BackendUtility; softRefParserObj
 
+..  _soft-references-soft-reference-parser:
+
 Using the soft reference parser
 ===============================
 
@@ -250,5 +253,4 @@ They can be retrieved with the :php:`getSoftReferenceParser()` method. You
 have to provide the desired key as the first and only argument.
 
 ..  literalinclude:: _MyController.php
-    :language: php
     :caption: EXT:my_extension/Classes/MyController.php

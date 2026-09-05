@@ -5,7 +5,7 @@
 ..  _routing-extending-routing:
 
 =================
-Extending Routing
+Extending routing
 =================
 
 The TYPO3 Routing is extendable by design, so you can write both custom aspects
@@ -47,7 +47,6 @@ After implementing the matching interface, your aspect needs to be
 registered in :file:`ext_localconf.php`:
 
 ..  literalinclude:: _codesnippets/_ext_localconf.php
-    :language: php
     :caption: EXT:my_extension/ext_localconf.php
 
 It can now be used in the routing configuration as `type`. The example above
@@ -78,7 +77,6 @@ The interfaces contain methods you need to implement as well as a description of
 To register the enhancer, add the following to your `ext_localconf.php`:
 
 ..  literalinclude:: _codesnippets/_ext_localconf_custom_enhancer.php
-    :language: php
     :caption: EXT:my_extension/ext_localconf.php
 
 Now you can use your new enhancer in the routing configuration as `type`. The
@@ -88,7 +86,7 @@ example above could be used as `type: MyCustomEnhancerAsUsedInYaml`.
 ..  index:: Routing; Manipulating slugs
 
 Manipulating generated slugs
-=============================
+============================
 
 The "slug" TCA type includes a possibility to hook into the generation of a slug
 via custom TCA generation options.

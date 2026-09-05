@@ -58,7 +58,7 @@ configuration is stored in a file called :file:`config.yaml <site-config-yaml>`.
 
 ..  note::
     If you are using a Classic mode installation, the location is
-    :file:`typo3conf/sites/config.yaml`.
+    :file:`typo3conf/sites/<identifier>/config.yaml`.
 
 ..  tip::
     Add this folder to your version control system.
@@ -91,6 +91,8 @@ When choosing an identifier, be sure to use ASCII, but you may also use `-`, `_`
 and `.` for convenience.
 
 
+..  _site-configuration-file-root-page-id:
+
 Root page ID
 ------------
 
@@ -109,8 +111,8 @@ Root pages are identified by one of these two properties:
 
 ..  _sitehandling-basics-websiteTitle:
 
-websiteTitle
-------------
+`websiteTitle`
+--------------
 
 The title of the website which is used in :html:`<title>` tag in the frontend.
 
@@ -164,8 +166,8 @@ description see :ref:`Language configuration <sitehandling-addingLanguages>`.
 
 ..  _sitehandling-basics-errorHandling:
 
-errorHandling
--------------
+`errorHandling`
+---------------
 
 The error handling section describes how to handle error status codes for this
 website. It allows you to configure custom redirects, rendering templates, and
@@ -186,8 +188,8 @@ Read more at :ref:`static routes<sitehandling-staticRoutes>`.
 
 ..  _sitehandling-basics-routeEnhancers:
 
-routeEnhancers
---------------
+`routeEnhancers`
+----------------
 
 ..  todo: Add some more documentation here from the changelog?
 

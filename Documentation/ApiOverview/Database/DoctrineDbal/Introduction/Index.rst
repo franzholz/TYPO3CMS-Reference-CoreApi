@@ -30,6 +30,8 @@ consistency, and then deep dives into the programming API.
     Database; DBAL
     DBMS
 
+..  _database-introduction-doctrine-dbal:
+
 Doctrine DBAL
 =============
 
@@ -60,6 +62,8 @@ interest to extensions.
 
 ..  index:: Doctrine; ORM
 
+..  _database-introduction-understanding-doctrine-dbal:
+
 Understanding Doctrine DBAL and Doctrine ORM
 ============================================
 
@@ -75,12 +79,14 @@ required nor implemented nor used.
     Database;  Low-level calls
     DataHandler
 
+..  _database-introduction-low-level-high:
+
 Low-level and high-level database calls
 =======================================
 
 This documentation focuses on low-level database calls. In many cases, it is
 better to use higher level APIs such as the :ref:`DataHandler
-<datahandler-basics>` or :ref:`Extbase repositories <extbase-repository>` and
+<datahandler-basics>` or :ref:`Extbase repositories <extbase-domain-repository>` and
 to let the framework handle persistence details internally.
 
 ..  tip::

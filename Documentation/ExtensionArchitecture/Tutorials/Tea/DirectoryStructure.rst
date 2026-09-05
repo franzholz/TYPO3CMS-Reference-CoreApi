@@ -26,8 +26,10 @@ On the first level `EXT:tea <https://github.com/TYPO3-Documentation/tea>`__ has 
     ├── ...
     └── README.md
 
-Directory :file:`Classes`
--------------------------
+..  _extbase-tutorial-tea-directory-structure-directory-classes:
+
+Directory `Classes`
+-------------------
 
 The :file:`Classes/` folder should contain all the PHP classes provided by the
 extension. Otherwise they will not be available in the default
@@ -36,7 +38,8 @@ extension. Otherwise they will not be available in the default
 In the :file:`composer.json <extension-composer-json>` we define that all PHP classes are
 automatically loaded from the :file:`Classes/` directory:
 
-..  include:: /CodeSnippets/Tutorials/Tea/ComposerJsonAutoload.rst.txt
+.. literalinclude:: /CodeSnippets/Tutorials/Tea/ComposerJsonAutoload.json
+   :caption: EXT:tea/composer.json, extract
 
 The key of the psr-4 array, here :php:`'TTN\\Tea\\'`, defines the namespace
 for all classes in order to be found by
@@ -67,8 +70,10 @@ should be stored in the respective viewhelper folder.
 ..  note::
      :ref:`ViewHelpers <fluid-custom-viewhelper>` are a feature of the Fluid templating engine.
 
-Directory :file:`Configuration`
--------------------------------
+..  _extbase-tutorial-tea-directory-structure-directory-configuration:
+
+Directory `Configuration`
+-------------------------
 
 See also documentation on the :ref:`extension-configuration-files` folder.
 
@@ -114,14 +119,18 @@ The :file:`Configuration` folder contains several subfolders:
     :ref:`dependency injection <Dependency-Injection>`. See also
     :ref:`extension-configuration-services-yaml`.
 
-Directory :file:`Documentation/`
--------------------------------
+..  _extbase-tutorial-tea-directory-structure-directory-documentation:
+
+Directory `Documentation/`
+--------------------------
 
 The :file:`Documentation/` folder contains files from which
 documentation is rendered. See :ref:`extension-files-documentation`.
 
-Directory :file:`Resources/`
----------------------------
+..  _extbase-tutorial-tea-directory-structure-directory-resources:
+
+Directory `Resources/`
+----------------------
 
 See also documentation on the :ref:`extension-Resources` folder.
 
@@ -154,8 +163,10 @@ further divided up:
     **must** go in this directory. Otherwise they are not accessible
     (depending on the setup of the installation).
 
-Directory :file:`Tests/`
------------------------
+..  _extbase-tutorial-tea-directory-structure-directory-tests:
+
+Directory `Tests/`
+------------------
 
 Contains automatic tests (topic not covered by this tutorial).
 

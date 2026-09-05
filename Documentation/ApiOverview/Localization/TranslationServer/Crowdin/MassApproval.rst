@@ -71,7 +71,6 @@ The following script demonstrates mass approval using the Crowdin API v2:
 
 ..  literalinclude:: _codesnippets/crowdin_mass_approve.php
     :caption: crowdin_mass_approve.php
-    :language: php
 
 ..  _crowdin-mass-approval-implementation-usage:
 
@@ -135,7 +134,7 @@ Validation
 Before mass approval:
 
 #.  Verify that translations are complete and accurate.
-#.  Check for placeholder consistency (e.g., ``%s``, ``{variable}``).
+#.  Check for placeholder consistency (e.g., `%s`, `{variable}`).
 #.  Validate that translations do not contain English source text.
 #.  Review automatic translations from machine translation services.
 

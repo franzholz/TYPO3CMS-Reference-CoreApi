@@ -29,7 +29,7 @@ The changes apply to the current page and all subpages.
 
 ..  seealso::
 
-    * :ref:`Extbase TypoScript configuration <extbase_typoscript_configuration>`
+    * :ref:`Extbase TypoScript configuration <extbase-configuration-reference>`
 
     * :ref:`t3tsref:typoscript-syntax-what-are-constants`
 
@@ -91,10 +91,14 @@ Access settings
 The settings can be read using :php:`$this->settings` in an
 Extbase controller action and via :html:`{settings}` within Fluid.
 
-Example: Access settings in an Extbase controller
+..  _extension-configuration-settings-example-access-settings:
+
+Example: access settings in an Extbase controller
 -------------------------------------------------
 
-..  include:: /CodeSnippets/Extbase/Controllers/Settings.rst.txt
+..  literalinclude:: /ExtensionArchitecture/HowTo/_codesnippets/Settings.php
+    :caption: Class MyVendor\\MyExtension\\Controller\\PostController
+    :emphasize-lines: 17
 
 ..  _extension-configuration-yaml:
 

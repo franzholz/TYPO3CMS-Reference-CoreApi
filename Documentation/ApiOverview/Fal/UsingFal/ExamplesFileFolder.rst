@@ -19,21 +19,23 @@ This chapter provides some examples about interacting with
 Getting a file
 ==============
 
+..  _fal-using-fal-examples-file-folder-get-file-uid:
+
 By uid
 ------
 
 A file can be retrieved using its uid:
 
 ..  literalinclude:: _ExamplesFileFolder/_GetFileByUid.php
-    :language: php
     :caption: EXT:my_extension/Classes/MyClass.php
 
+
+..  _fal-using-fal-examples-file-folder-get-file-combined-identifier:
 
 By its combined identifier
 --------------------------
 
 ..  literalinclude:: _ExamplesFileFolder/_GetFileByCombinedIdentifier.php
-    :language: php
     :caption: EXT:my_extension/Classes/MyClass.php
 
 The syntax of argument 1 for :php:`getFileObjectFromCombinedIdentifier()` is
@@ -59,19 +61,21 @@ file identifier is adapted accordingly inside of TYPO3 to match the new
 storage's base path.
 
 
+..  _fal-using-fal-examples-file-folder-get-file-filename-folder:
+
 By filename from its folder
 ---------------------------
 
 ..  literalinclude:: _ExamplesFileFolder/_GetFileByFilenameFromItsFolder.php
-    :language: php
     :caption: EXT:my_extension/Classes/MyClass.php
 
+
+..  _fal-using-fal-examples-file-folder-get-file-filename-folder-2:
 
 By its filename from the folder object
 --------------------------------------
 
 ..  literalinclude:: _ExamplesFileFolder/_GetFileByItsFilenameFromTheFolderObject.php
-    :language: php
     :caption: EXT:my_extension/Classes/MyClass.php
 
 
@@ -81,7 +85,6 @@ Copying a file
 ==============
 
 ..  literalinclude:: _ExamplesFileFolder/_CopyingFile.php
-    :language: php
     :caption: EXT:my_extension/Classes/MyClass.php
 
 
@@ -92,7 +95,6 @@ Deleting a file
 ===============
 
 ..  literalinclude:: _ExamplesFileFolder/_DeletingFile.php
-    :language: php
     :caption: EXT:my_extension/Classes/MyClass.php
 
 ..  _fal-using-fal-examples-file-folder-add-file:
@@ -104,7 +106,6 @@ This example adds a new file in the root folder of the default
 storage:
 
 ..  literalinclude:: _ExamplesFileFolder/_AddingFile.php
-    :language: php
     :caption: EXT:my_extension/Classes/MyClass.php
 
 The default storage uses :file:`fileadmin/` unless this was configured
@@ -116,7 +117,6 @@ So, for this example, the resulting file path would typically be
 To store the file in a sub-folder use :php:`$storage->getFolder()`:
 
 ..  literalinclude:: _ExamplesFileFolder/_AddingFileToSubFolder.php
-    :language: php
     :caption: EXT:my_extension/Classes/MyClass.php
 
 In this example, the file path would likely be
@@ -191,7 +191,6 @@ entry and the relation to the other item (in this case a :sql:`tt_content`
 record):
 
 ..  literalinclude:: _ExamplesFileFolder/_CreatingFileReference.php
-    :language: php
     :caption: EXT:my_extension/Classes/MyClass.php
 
 The above example comes from the "examples" extension
@@ -226,8 +225,8 @@ The simplest solution is to create a database entry into table
 using the :ref:`database connection <database-connection>` class or the
 :ref:`query builder <database-query-builder>` provided by TYPO3.
 
-See :ref:`Extbase file upload <extbase_fileupload>` for details on how
-to achieve this using :ref:`Extbase <extbase>`.
+See :ref:`Extbase file upload <extbase-domain-fileupload>` for details on how
+to achieve this using :ref:`Extbase <extbase-extension-framework>`.
 
 
 ..  _fal-using-fal-examples-file-folder-get-references:
@@ -240,7 +239,6 @@ to some other element, in this case the :sql:`media` field of the :sql:`pages`
 table:
 
 ..  literalinclude:: _ExamplesFileFolder/_GetReferencedFile.php
-    :language: php
     :caption: EXT:my_extension/Classes/MyClass.php
 
 where :php:`$uid` is the ID of some page. The return value is an array
@@ -263,13 +261,12 @@ a folder object for some path in that storage (path relative to storage root),
 finally retrieve the files:
 
 ..  literalinclude:: _ExamplesFileFolder/_GetFilesInFolder.php
-    :language: php
     :caption: EXT:my_extension/Classes/MyClass.php
 
 ..  _fal-using-fal-examples-file-folder-eid:
 
-Dumping a file via eID script
-=============================
+Dumping a file via `eID` script
+===============================
 
 TYPO3 registers an `eID` script that allows dumping / downloading / referencing
 files via their FAL IDs. Non-public storages use this script to make their files

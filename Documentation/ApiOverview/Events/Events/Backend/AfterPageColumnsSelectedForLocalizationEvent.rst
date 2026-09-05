@@ -4,9 +4,9 @@
     Events; LocalizationController
 ..  _AfterPageColumnsSelectedForLocalizationEvent:
 
-============================================
-AfterPageColumnsSelectedForLocalizationEvent
-============================================
+==============================================
+`AfterPageColumnsSelectedForLocalizationEvent`
+==============================================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Backend\Controller\Event\AfterPageColumnsSelectedForLocalizationEvent`
@@ -31,10 +31,14 @@ gets displayed in the translation modal when a user has clicked the
 :guilabel:`Translate` button in the page module, by implementing a listener for
 the event.
 
+..  _after-page-columns-selected-for-localization-event-example:
+
 Example
 =======
 
 ..  include:: /_includes/EventsContributeNote.rst.txt
+
+..  _after-page-columns-selected-for-localization-event-api:
 
 API
 ===

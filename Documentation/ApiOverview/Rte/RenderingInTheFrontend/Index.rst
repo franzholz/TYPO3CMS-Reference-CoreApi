@@ -9,7 +9,7 @@
 ..  _rte-rendering-frontend:
 
 =====================================
-Rendering RTE content in the Frontend
+Rendering RTE content in the frontend
 =====================================
 
 The explanations on this page don't show how to display an RTE but rather, describe how
@@ -31,7 +31,7 @@ link syntax). You should therefore always render the output of a RTE field
 with the `Format.html ViewHelper <f:format.html> <https://docs.typo3.org/permalink/t3viewhelper:typo3-fluid-format-html>`_:
 
 ..  code-block:: html
-    :caption: packages/my_extension/Resources/Private/Templates/MyContentElement.html
+    :caption: packages/my_extension/Resources/Private/Templates/MyContentElement.fluid.html
 
     <f:format.html>{data.bodytext}</f:format.html>
 

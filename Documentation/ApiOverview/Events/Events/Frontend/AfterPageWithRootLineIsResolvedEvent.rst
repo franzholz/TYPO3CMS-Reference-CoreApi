@@ -2,9 +2,9 @@
 ..  index:: Events; AfterPageWithRootLineIsResolvedEvent
 ..  _AfterPageWithRootLineIsResolvedEvent:
 
-====================================
-AfterPageWithRootLineIsResolvedEvent
-====================================
+======================================
+`AfterPageWithRootLineIsResolvedEvent`
+======================================
 
 The PSR-14 event :php:`\TYPO3\CMS\Frontend\Event\AfterPageWithRootLineIsResolvedEvent`
 fires in the frontend process after a given page has been resolved with
@@ -24,11 +24,15 @@ page response if additional permissions should be checked.
     #.  :ref:`AfterPageAndLanguageIsResolvedEvent`
 
 
+..  _after-page-with-root-line-is-resolved-event-example:
+
 Example
 =======
 
 ..  include:: /_includes/EventsContributeNote.rst.txt
 
+
+..  _after-page-with-root-line-is-resolved-event-api:
 
 API
 ===

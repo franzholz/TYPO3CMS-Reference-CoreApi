@@ -21,7 +21,6 @@ the attribute may or may not exist already. A safe way to interact with it is
 like this:
 
 ..  literalinclude:: _FrontendCacheInstruction/_MyEarlyMiddleware.php
-    :language: php
     :caption: EXT:my_extension/Classes/Middleware/MyEarlyMiddleware.php
 
 Extension with middlewares or other code after
@@ -29,9 +28,10 @@ Extension with middlewares or other code after
 be set already. Usage example:
 
 ..  literalinclude:: _FrontendCacheInstruction/_MyLaterMiddleware.php
-    :language: php
     :caption: EXT:my_extension/Classes/Middleware/MyLaterMiddleware.php
 
+
+..  _typo3-request-attribute-frontend-cache-instruction-api:
 
 API
 ===

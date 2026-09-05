@@ -3,9 +3,9 @@
 ..  _fal-using-fal-examples:
 ..  _fal-using-fal-examples-storage-repository:
 
-===========================
-The StorageRepository class
-===========================
+=============================
+The `StorageRepository` class
+=============================
 
 The :php:`\TYPO3\CMS\Core\Resource\StorageRepository` is the
 main class for creating and retrieving
@@ -26,7 +26,6 @@ no storage has been explicitly chosen or defined (for example,
 when not using a :ref:`combined identifier <fal-architecture-components-files-folders>`).
 
 ..  literalinclude:: _ExamplesStorageRepository/_GetDefaultStorageExample.php
-    :language: php
     :caption: EXT:my_extension/Classes/Resource/GetDefaultStorageExample.php
 
 
@@ -38,5 +37,4 @@ Getting any storage
 The :php:`StorageRepository` class should be used for retrieving any storage.
 
 ..  literalinclude:: _ExamplesStorageRepository/_GetStorageObjectExample.php
-    :language: php
     :caption: EXT:my_extension/Classes/Resource/GetStorageObjectExample.php

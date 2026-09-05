@@ -23,6 +23,8 @@ emoji (UTF-8 representation).
    :local:
 
 
+..  _country-api-php-api:
+
 Using the PHP API
 =================
 
@@ -30,9 +32,10 @@ Using the PHP API
 :php:`\TYPO3\CMS\Core\Country\CountryProvider` class:
 
 ..  literalinclude:: _MyClass.php
-    :language: php
     :caption: EXT:my_extension/Classes/MyClass.php
 
+
+..  _country-api-php-api-get-countries:
 
 Get all countries
 -----------------
@@ -46,6 +49,8 @@ To get all countries call the :php:`getAll()` method:
 
 The method returns an array of :php:`\TYPO3\CMS\Core\Country\Country` objects.
 
+
+..  _country-api-php-api-get-country:
 
 Get a country
 -------------
@@ -64,6 +69,8 @@ Get a country
 
 The methods return a :php:`\TYPO3\CMS\Core\Country\Country` object.
 
+
+..  _country-api-php-api-filter-countries:
 
 Filter countries
 ----------------
@@ -89,32 +96,41 @@ The method :php:`getFiltered()` return an array of
 :php:`\TYPO3\CMS\Core\Country\Country` objects.
 
 
-The :php:`Country` object
--------------------------
+..  _country-api-php-api-country-object:
+
+The `Country` object
+--------------------
 
 A country object can be used to fetch all information about it, also with
 translatable labels:
 
 ..  literalinclude:: _MyClassWithTranslation.php
-    :language: php
     :caption: EXT:my_extension/Classes/MyClassWithTranslation.php
 
+
+..  _country-api-php-api-reference:
 
 PHP API reference
 =================
 
-:php:`CountryProvider`
-----------------------
+..  _country-api-php-api-reference-countryprovider:
+
+`CountryProvider`
+-----------------
 
 .. include:: /CodeSnippets/Manual/Country/CountryProvider.rst.txt
 
-:php:`CountryFilter`
-----------------------
+..  _country-api-php-api-reference-countryfilter:
+
+`CountryFilter`
+---------------
 
 .. include:: /CodeSnippets/Manual/Country/CountryFilter.rst.txt
 
-:php:`Country`
---------------
+..  _country-api-php-api-reference-country:
+
+`Country`
+---------
 
 .. include:: /CodeSnippets/Manual/Country/Country.rst.txt
 

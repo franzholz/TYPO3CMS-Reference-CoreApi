@@ -3,9 +3,9 @@
 
 ..  _AfterFlexFormDataStructureIdentifierInitializedEvent:
 
-====================================================
-AfterFlexFormDataStructureIdentifierInitializedEvent
-====================================================
+======================================================
+`AfterFlexFormDataStructureIdentifierInitializedEvent`
+======================================================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Core\Configuration\Event\AfterFlexFormDataStructureIdentifierInitializedEvent`
@@ -25,8 +25,9 @@ Example
 =======
 
 ..  literalinclude:: _AfterFlexFormDataStructureIdentifierInitializedEvent/_FlexFormParsingModifyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Configuration/EventListener/FlexFormParsingModifyEventListener.php
+
+..  _after-flex-form-data-structure-identifier-initialized-event-api:
 
 API
 ===

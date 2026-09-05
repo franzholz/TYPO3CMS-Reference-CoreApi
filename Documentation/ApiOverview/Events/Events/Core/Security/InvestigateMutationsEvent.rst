@@ -3,9 +3,9 @@
 ..  _InvestigateMutationsEvent:
 
 
-=========================
-InvestigateMutationsEvent
-=========================
+===========================
+`InvestigateMutationsEvent`
+===========================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Core\Security\ContentSecurityPolicy\Event\InvestigateMutationsEvent`
@@ -17,11 +17,15 @@ file storage, content processing/translation, ...) can provide the necessary
 mutations.
 
 
+..  _investigate-mutations-event-example:
+
 Example
 =======
 
 ..  include:: /_includes/EventsContributeNote.rst.txt
 
+
+..  _investigate-mutations-event-api:
 
 API
 ===

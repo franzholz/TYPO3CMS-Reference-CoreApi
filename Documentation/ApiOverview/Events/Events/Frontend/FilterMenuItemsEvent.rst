@@ -2,9 +2,9 @@
 ..  index:: Events; FilterMenuItemsEvent
 ..  _FilterMenuItemsEvent:
 
-====================
-FilterMenuItemsEvent
-====================
+======================
+`FilterMenuItemsEvent`
+======================
 
 The PSR-14 event :php:`\TYPO3\CMS\Frontend\Event\FilterMenuItemsEvent` has
 a variety of properties and getters, along with
@@ -22,10 +22,14 @@ order is possible.
 Additionally, more information about the currently rendered menu, such as
 the menu items which were filtered out, is available.
 
+..  _filter-menu-items-event-example:
+
 Example
 =======
 
 ..  include:: /_includes/EventsContributeNote.rst.txt
+
+..  _filter-menu-items-event-api:
 
 API
 ===

@@ -6,7 +6,7 @@
 ..  _routing-advanced-routing-configuration:
 
 ==============================================
-Route Enhancements and Aspects: for extensions
+Route enhancements and aspects: for extensions
 ==============================================
 
 ..  contents:: Table of contents
@@ -26,7 +26,7 @@ GET parameters to routes.
 
 An :ref:`enhancer <routing-advanced-routing-configuration-enhancers>` creates
 variations of a specific page-based route for a specific purpose (e.g. an
-:ref:`Extbase <extbase>` plugin) and "enhances" an existing route path, which
+:ref:`Extbase <extbase-extension-framework>` plugin) and "enhances" an existing route path, which
 can contain flexible values, so-called "placeholders".
 
 :ref:`Aspects <routing-advanced-routing-configuration-aspects>` can
@@ -61,7 +61,7 @@ and resolving the route.
 
 ..  _routing-advanced-routing-configuration-enhancers:
 
-Routing Enhancers
+Routing enhancers
 =================
 
 ..  tip::
@@ -140,8 +140,8 @@ configuration:
     URL generation receives the argument :yaml:`category`. It is mapped to that
     name (so you can access/use it as :php:`category` in your custom code).
 
-TYPO3 will add the parameter ``cHash`` to URLs when necessary, see :ref:`chash`.
-The ``cHash`` can be removed by converting dynamic arguments into static
+TYPO3 will add the parameter `cHash` to URLs when necessary, see :ref:`chash`.
+The `cHash` can be removed by converting dynamic arguments into static
 arguments. All captured arguments are dynamic by default. They can be converted
 to static arguments by defining the possible expected values for these
 arguments. This is done by adding :ref:`aspects
@@ -246,7 +246,7 @@ you would need an aspect that can be registered within any enhancer, see
 Extbase plugin enhancer
 -----------------------
 
-When creating :ref:`Extbase <extbase>` plugins, it is very common to have
+When creating :ref:`Extbase <extbase-extension-framework>` plugins, it is very common to have
 multiple controller/action combinations. Therefore, the Extbase plugin enhancer
 is an extension to the :ref:`regular plugin enhancer
 <routing-plugin-enhancer>` and provides the
@@ -299,8 +299,8 @@ To understand what is happening in the :yaml:`aspects` part, read on.
 ..  index:: Routing; PageType decorator
 ..  _routing-pagetype-decorator:
 
-PageType decorator
-------------------
+`PageType` decorator
+--------------------
 
 The PageType enhancer (route decorator) allows to add a suffix to the existing route
 (including existing other enhancers) to map a page type (GET parameter `&type=`)
@@ -399,8 +399,8 @@ Let us start with some examples first:
 ..  _routing-aspect-StaticValueMapper:
 ..  index:: Routing; StaticValueMapper
 
-StaticValueMapper
------------------
+`StaticValueMapper`
+-------------------
 
 The static value mapper replaces values on a 1:1 mapping list of an argument
 into a speaking segment, useful for a checkout process to define the steps into
@@ -422,8 +422,8 @@ locale of a value to use in multi-language setups:
 ..  _routing-aspect-LocaleModifier:
 ..  index:: Routing; LocaleModifier
 
-LocaleModifier
---------------
+`LocaleModifier`
+----------------
 
 If we have an enhanced route path such as `/archive/{year}/{month}`
 it should be possible in multi-language setups to change `/archive/` depending
@@ -440,8 +440,8 @@ locale of the language of that page.
 ..  _routing-aspect-StaticRangeMapper:
 ..  index:: Routing; StaticRangeMapper
 
-StaticRangeMapper
------------------
+`StaticRangeMapper`
+-------------------
 
 A static range mapper allows to avoid the `cHash` and narrow down the available
 possibilities for a placeholder. It explicitly defines a range for a value,
@@ -459,8 +459,8 @@ the placeholder.
 ..  _routing-aspect-PersistedAliasMapper:
 ..  index:: Routing; PersistedAliasMapper
 
-PersistedAliasMapper
---------------------
+`PersistedAliasMapper`
+----------------------
 
 If an extension ships with a slug field or a different field used for the
 speaking URL path, this database field can be used to build the URL:
@@ -485,8 +485,8 @@ is recommended.
 ..  _routing-aspect-PersistedPatternMapper:
 ..  index:: Routing; PersistedPatternMapper
 
-PersistedPatternMapper
-----------------------
+`PersistedPatternMapper`
+------------------------
 
 When a placeholder should be fetched from multiple fields of the database, the
 persisted pattern mapper is for you. It allows to combine various fields into
@@ -541,7 +541,7 @@ record, language or other detail can be represented. Specifying :yaml:`null`
 removes the corresponding parameter from the route result. In this way, it is
 up to the developer to react accordingly.
 
-In the case of :ref:`Extbase <extbase>` extensions, the developer can define the
+In the case of :ref:`Extbase <extbase-extension-framework>` extensions, the developer can define the
 parameters in his calling controller action as nullable and deliver
 corresponding :ref:`flash messages <flash-messages-api>` that explain the current
 scenario better than a "404" HTTP status code.
@@ -563,10 +563,10 @@ separately, for instance, to redirect to the list page:
 ..  literalinclude:: _codesnippets/_MyController.php
     :caption: EXT:my_extension/Classes/Controller/MyController.php
 
-..  index::
-    Routing; PageArguments
-    Routing; cHash
-    Routing; typolink
+..  _routing-aspect-behind-the-scenes:
+..  index:: Routing; Behind the scenes of routing in TYPO3
+
+..  _routing-advanced-routing-configuration-behind-scenes-routing:
 
 Behind the scenes of routing in TYPO3
 =====================================
@@ -590,5 +590,6 @@ All existing APIs like :typoscript:`typolink` or functionality evaluate the
 page routing API directly.
 
 ..  note::
-    If you update the site configuration with enhancers you have to to clear
-    all caches, for example via the upper menu bar in the backend.
+    If you update the site configuration by adding or modifying enhancers, remember to clear the TYPO3 cache afterwards.
+    The easiest way to do this is to log in to the TYPO3 backend and click the **lightning bolt** icon in the upper-right corner. Then select **"Flush all caches"**.
+    Alternatively, you can clear the cache using the **Maintenance** module or from the command line: `typo3 cache:flush`

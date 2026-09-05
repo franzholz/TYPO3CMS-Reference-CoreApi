@@ -44,7 +44,7 @@ inside extensions. The most important classes are:
 
 :php:`\TYPO3\CMS\Core\Resource\FileCollectionRepository`
     Used to retrieve collections. It is not exactly an
-    :ref:`Extbase repository <extbase-repository>` but works in a similar way.
+    :ref:`Extbase repository <extbase-domain-repository>` but works in a similar way.
     The default "find" methods refer to the
     :ref:`sys_file_collection <fal-architecture-database-sys-file-collection>`
     table and will fetch "static"-type collections.
@@ -75,7 +75,6 @@ The following example demonstrates the usage of collections. Here is what
 happens in the controller:
 
 ..  literalinclude:: _MyController.php
-    :language: php
     :caption: EXT:my_extension/Classes/Controller/MyController.php
 
 All collections are fetched and passed
@@ -86,9 +85,8 @@ In the view we can then either use collection member variables as usual
 (like their title) or put them directly in a loop to iterate over the
 record selection:
 
-..  literalinclude:: _List.html
-    :language: html
-    :caption: EXT:my_extension/Resources/Private/Templates/List.html
+..  literalinclude:: _List.fluid.html
+    :caption: EXT:my_extension/Resources/Private/Templates/List.fluid.html
 
 Here is what the result may look like (the exact result will obviously
 depend on the content of the selection):

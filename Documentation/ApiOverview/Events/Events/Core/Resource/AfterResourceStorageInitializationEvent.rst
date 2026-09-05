@@ -2,19 +2,23 @@
 ..  index:: Events; AfterResourceStorageInitializationEvent
 ..  _AfterResourceStorageInitializationEvent:
 
-=======================================
-AfterResourceStorageInitializationEvent
-=======================================
+=========================================
+`AfterResourceStorageInitializationEvent`
+=========================================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Core\Resource\Event\AfterResourceStorageInitializationEvent`
 is fired after a resource object was built/created. Custom handlers can be
 initialized at this moment for any kind of resource as well.
 
+..  _after-resource-storage-initialization-event-example:
+
 Example
 =======
 
 ..  include:: /_includes/EventsContributeNote.rst.txt
+
+..  _after-resource-storage-initialization-event-api:
 
 API
 ===

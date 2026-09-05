@@ -2,9 +2,9 @@
 ..  index:: Events; AfterRawPageRowPreparedEvent
 ..  _AfterRawPageRowPreparedEvent:
 
-============================
-AfterRawPageRowPreparedEvent
-============================
+==============================
+`AfterRawPageRowPreparedEvent`
+==============================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Backend\Tree\Repository\AfterRawPageRowPreparedEvent`
@@ -16,16 +16,15 @@ different sorting to its children.
 
 ..  _AfterRawPageRowPreparedEvent-example:
 
-Example: Sort pages by title in the page tree
+Example: sort pages by title in the page tree
 =============================================
 
 ..  literalinclude:: _AfterRawPageRowPreparedEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Backend/EventListener/MyEventListener.php
 
 ..  _AfterRawPageRowPreparedEvent-api:
 
-API of AfterRawPageRowPreparedEvent
-===================================
+API of `AfterRawPageRowPreparedEvent`
+=====================================
 
 ..  include:: /CodeSnippets/Events/Backend/AfterRawPageRowPreparedEvent.rst.txt

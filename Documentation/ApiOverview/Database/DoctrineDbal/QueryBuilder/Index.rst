@@ -64,7 +64,6 @@ argument. The :ref:`ConnectionPool <database-connection-pool>` object can be
 injected via :ref:`dependency injection <DependencyInjection>`.
 
 ..  literalinclude:: _MyRepository.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyRepository.php
 
 ..  attention::
@@ -86,8 +85,8 @@ injected via :ref:`dependency injection <DependencyInjection>`.
 
 ..  _database-query-builder-select:
 
-select() and addSelect()
-========================
+`select()` and `addSelect()`
+============================
 
 Create a :sql:`SELECT` query.
 
@@ -184,7 +183,7 @@ See available :ref:`parameter types <database-connection-parameter-types>`.
 ..  _database-query-builder-select-restrictions:
 ..  _database-query-builder-default-restrictions:
 
-Default Restrictions
+Default restrictions
 --------------------
 
 ..  note::
@@ -196,8 +195,8 @@ Default Restrictions
 
 ..  _database-query-builder-selectLiteral:
 
-selectLiteral() and addSelectLiteral()
-======================================
+`selectLiteral()` and `addSelectLiteral()`
+==========================================
 
 Create an advanced :sql:`SELECT` query. Typical usage:
 
@@ -238,8 +237,8 @@ Because the whole query part won't be escaped, you are responsible to escape all
 
 ..  _database-query-builder-count:
 
-count()
-=======
+`count()`
+=========
 
 Create a :sql:`COUNT` query. Typical usage:
 
@@ -307,8 +306,8 @@ Remarks:
 
 .. _database-query-builder-delete:
 
-delete()
-========
+`delete()`
+==========
 
 Create a :sql:`DELETE FROM` query. The method requires the table name from which
 data is to be deleted. Classic usage:
@@ -359,8 +358,8 @@ Remarks:
 
 .. _database-query-builder-update-set:
 
-update() and set()
-==================
+`update()` and `set()`
+======================
 
 Create an :sql:`UPDATE` query. Typical usage:
 
@@ -460,8 +459,8 @@ Remarks:
 
 .. _database-query-builder-insert-values:
 
-insert() and values()
-=====================
+`insert()` and `values()`
+=========================
 
 Create an :sql:`INSERT` query. Typical usage:
 
@@ -505,8 +504,8 @@ Remarks:
 
 .. _database-query-builder-from:
 
-from()
-======
+`from()`
+========
 
 :php:`->from()` is essential for :php:`->select()` and :php:`->count()` query
 types. :php:`->from()` requires a table name and an optional alias name. The
@@ -533,8 +532,8 @@ tables with an explicit :php:`->join()`.
 
 .. _database-query-builder-where:
 
-where(), andWhere() and orWhere()
-=================================
+`where()`, `andWhere()` and `orWhere()`
+=======================================
 
 These three methods create :sql:`WHERE` restrictions for :sql:`SELECT`,
 :sql:`COUNT`, :sql:`UPDATE` and :sql:`DELETE` query types. Each argument is
@@ -631,8 +630,8 @@ Remarks:
 ..  dbal-join
 .. _database-query-builder-join:
 
-join(), innerJoin(), rightJoin() and leftJoin()
-===============================================
+`join()`, `innerJoin()`, `rightJoin()` and `leftJoin()`
+=======================================================
 
 Joining multiple tables in a :php:`->select()` or :php:`->count()` query is done
 with one of these methods. Multiple joins are supported by calling the methods
@@ -822,8 +821,8 @@ Further remarks:
 
 .. _database-query-builder-orderby:
 
-orderBy() and addOrderBy()
-==========================
+`orderBy()` and `addOrderBy()`
+==============================
 
 Add :sql:`ORDER BY` to a :php:`->select()` statement. Both :php:`->orderBy()` and
 :php:`->addOrderBy()` require a field name as first argument:
@@ -874,8 +873,8 @@ Remarks:
 
 .. _database-query-builder-groupby:
 
-groupBy() and addGroupBy()
-==========================
+`groupBy()` and `addGroupBy()`
+==============================
 
 Add :sql:`GROUP BY` to a :php:`->select()` statement. Each argument of the
 methods is a single identifier:
@@ -904,8 +903,8 @@ Remarks:
 
 ..  _database-query-builder-union:
 
-union() and addUnion()
-======================
+`union()` and `addUnion()`
+==========================
 
 Method `union()` provides a streamlined way to combine result sets from multiple
 queries.
@@ -944,8 +943,8 @@ Named placeholders, such as created by :php:`QueryBuilder::createNamedParameter(
 
 ..  _database-query-builder-union-db-support:
 
-Database provider support of union() and addUnion()
----------------------------------------------------
+Database provider support of `union()` and `addUnion()`
+-------------------------------------------------------
 
 :php-short:`\TYPO3\CMS\Core\Database\Query\QueryBuilder` can be used create
 :sql:`UNION` clause queries not compatible with all database providers,
@@ -956,8 +955,8 @@ be supported.
 
 ..  _database-query-builder-union-example-querybuilder:
 
-Example using `union()` on two QueryBuilders
---------------------------------------------
+Example using `union()` on two `QueryBuilders`
+----------------------------------------------
 
 ..  literalinclude:: _UnionExample.php
     :caption: packages/my_extension/classes/Service/MyService.php
@@ -983,8 +982,8 @@ are applied to each subquery automatically.
 
 ..  _database-query-builder-setMaxResults:
 
-setMaxResults() and setFirstResult()
-====================================
+`setMaxResults()` and `setFirstResult()`
+========================================
 
 Add :sql:`LIMIT` to restrict the number of records and :sql:`OFFSET` for
 pagination of query parts. Both methods should be called only once per
@@ -1022,8 +1021,8 @@ Remarks:
 
 .. _database-query-builder-get-sql:
 
-getSQL()
-========
+`getSQL()`
+==========
 
 The :php:`->getSQL()` method returns the created query statement as string. It
 is incredibly useful during development to verify that the final statement is
@@ -1073,8 +1072,8 @@ Remarks:
 
 ..  _database-query-builder-get-parameters:
 
-getParameters()
-===============
+`getParameters()`
+=================
 
 The :php:`->getParameters()` method returns the values for the placeholders of
 the prepared statement in an array. This is incredibly useful during development
@@ -1115,8 +1114,8 @@ Remarks:
 
 ..  _database-query-builder-execute:
 
-executeQuery() and executeStatement()
-=====================================
+`executeQuery()` and `executeStatement()`
+=========================================
 
 Use :php:`->executeQuery()`, which returns a :php:`\Doctrine\DBAL\Result` for
 querries with results like `->select(...)->from()...`.
@@ -1126,8 +1125,8 @@ Use  :php:`->executeStatement()` returning the number of affected rows like
 
 ..  _database-query-builder-execute-query:
 
-executeQuery()
---------------
+`executeQuery()`
+----------------
 
 This method compiles and fires the final query statement. This is usually the
 last call on a query builder object. It can be called for :sql:`SELECT` and
@@ -1153,8 +1152,8 @@ should bubble up. For more information on proper exception handling, see the
 
 ..  _database-query-builder-execute-statement:
 
-executeStatement()
-------------------
+`executeStatement()`
+--------------------
 
 The :php:`executeStatement()` method can be used for :sql:`INSERT`,
 :sql:`UPDATE` and :sql:`DELETE` statements. It returns the number of affected
@@ -1162,8 +1161,8 @@ rows as an integer.
 
 .. _database-query-builder-expr:
 
-expr()
-======
+`expr()`
+========
 
 This method returns an instance of the :ref:`ExpressionBuilder
 <database-expression-builder>`. It is used to create complex :sql:`WHERE` query
@@ -1204,8 +1203,8 @@ Remarks:
 
 .. _database-query-builder-create-named-parameter:
 
-createNamedParameter()
-======================
+`createNamedParameter()`
+========================
 
 This method creates a placeholder for a field value of a prepared statement.
 **Always** use this when dealing with user input in expressions to protect the
@@ -1234,7 +1233,7 @@ a query builder with the connection pool.
 See available :ref:`parameter types <database-connection-parameter-types>`.
 
 The above example shows the importance of using :php:`->createNamedParameter()`:
-The search word ``kl'aus`` is "tainted" and would break the query if not
+The search word `kl'aus` is "tainted" and would break the query if not
 channeled through :php:`->createNamedParameter()`, which quotes the backtick and
 makes the value SQL injection-safe.
 
@@ -1274,6 +1273,8 @@ returning a list of backend user names!
     error during execution. This behaviour can be disabled by passing
     :php:`false` as third parameter to :php:`->set()`.
 
+..  _database-query-builder-create-named-parameter-examples:
+
 More examples
 -------------
 
@@ -1312,6 +1313,8 @@ Use integer, integer array:
 Read :ref:`how to correctly instantiate <database-query-builder-instantiation>`
 a query builder with the connection pool.
 See available :ref:`parameter types <database-connection-parameter-types>`.
+
+..  _database-query-builder-create-named-parameter-rules:
 
 Rules
 -----
@@ -1381,12 +1384,12 @@ See available :ref:`parameter types <database-connection-parameter-types>`.
 
 .. _database-query-builder-quote-identifier:
 
-quoteIdentifier() and quoteIdentifiers()
-========================================
+`quoteIdentifier()` and `quoteIdentifiers()`
+============================================
 
 :php:`->quoteIdentifier()` must be used when not a value but a field name is
 handled. The quoting is different in those cases and typically ends up with
-backticks ````` instead of ticks ``'``:
+backticks ````` instead of ticks `'`:
 
 ..  code-block:: php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyRepository.php
@@ -1445,8 +1448,8 @@ Remarks:
 
 .. _database-query-builder-escape-like-wildcards:
 
-escapeLikeWildcards()
-=====================
+`escapeLikeWildcards()`
+=======================
 
 Helper method to quote `%` characters within a search string. This is helpful in
 :php:`->like()` and :php:`->notLike()` expressions:
@@ -1481,7 +1484,7 @@ See available :ref:`parameter types <database-connection-parameter-types>`.
 
 .. _database-query-builder-get-restrictions:
 
-getRestrictions(), setRestrictions(), resetRestrictions()
-=========================================================
+`getRestrictions()`, `setRestrictions()`, `resetRestrictions()`
+===============================================================
 
 `API` methods to deal with the :ref:`RestrictionBuilder <database-restriction-builder>`.

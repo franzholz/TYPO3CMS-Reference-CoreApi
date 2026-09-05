@@ -18,12 +18,16 @@ event unbinding.
     need to omit the :file:`.js` extension in :js:`import` statements.
     See https://github.com/microsoft/TypeScript/issues/16577 for the reasoning of this.
 
-Event Binding
+..  _js-event-api-event-binding:
+
+Event binding
 =============
 
 Each event strategy (see below) has two ways to bind a listener to an event:
 
-Direct Binding
+..  _js-event-api-event-binding-direct-binding:
+
+Direct binding
 --------------
 
 The event listener is bound to the element that triggers the event. This is done
@@ -33,11 +37,12 @@ by using the method :js:`bindTo()`, which accepts any element, :js:`document` an
 Example:
 
 ..  literalinclude:: _DirectBinding.js
-    :language: js
     :caption: EXT:my_extension/Resources/Public/JavaScript/MyScript.js
 
 
-Event Delegation
+..  _js-event-api-event-binding-event-delegation:
+
+Event delegation
 ----------------
 
 The event listener is called if the event was triggered to any matching element
@@ -46,12 +51,13 @@ inside its bound element.
 Example:
 
 ..  literalinclude:: _EventDelegation.js
-    :language: js
     :caption: EXT:my_extension/Resources/Public/JavaScript/MyScript.js
 
 The event listener is now called every time the element matching the selector
 :js:`a[data-action="toggle"]` within :js:`document` is clicked.
 
+
+..  _js-event-api-event-binding-release-event:
 
 Release an event
 ----------------
@@ -62,17 +68,20 @@ detach the event listener.
 Example:
 
 ..  literalinclude:: _ReleaseEvent.js
-    :language: js
     :caption: EXT:my_extension/Resources/Public/JavaScript/MyScript.js
 
+
+..  _js-event-api-event-strategies:
 
 Event strategies
 ================
 
 The Event API brings several strategies to handle event listeners:
 
-RegularEvent
-------------
+..  _js-event-api-event-strategies-regularevent:
+
+`RegularEvent`
+--------------
 
 The :js:`RegularEvent` attaches a simple event listener to an event and element
 and has no further tweaks. This is the common use case for event handling.
@@ -85,12 +94,13 @@ Arguments:
 Example:
 
 ..  literalinclude:: _RegularEvent.js
-    :language: js
     :caption: EXT:my_extension/Resources/Public/JavaScript/MyScript.js
 
 
-DebounceEvent
--------------
+..  _js-event-api-event-strategies-debounceevent:
+
+`DebounceEvent`
+---------------
 
 The :js:`DebounceEvent` is most suitable if an event is triggered quite often
 but executing the event listener is called only after a certain wait time.
@@ -104,14 +114,13 @@ Arguments:
 Example:
 
 ..  literalinclude:: _DebounceEvent.js
-    :language: js
     :caption: EXT:my_extension/Resources/Public/JavaScript/MyScript.js
 
 
 ..  _js-event-api-throttleevent:
 
-ThrottleEvent
--------------
+`ThrottleEvent`
+---------------
 
 Arguments:
 
@@ -129,12 +138,13 @@ the event listener gets called up to 20 times in total (2000 / 100).
 Example:
 
 ..  literalinclude:: _ThrottleEvent.js
-    :language: js
     :caption: EXT:my_extension/Resources/Public/JavaScript/MyScript.js
 
 
-RequestAnimationFrameEvent
---------------------------
+..  _js-event-api-event-strategies-requestanimationframeevent:
+
+`RequestAnimationFrameEvent`
+----------------------------
 
 The :js:`RequestAnimationFrameEvent` binds its execution to the browser's
 :js:`RequestAnimationFrame` API. It is suitable for event listeners that
@@ -148,5 +158,4 @@ Arguments:
 Example:
 
 ..  literalinclude:: _RequestAnimationFrameEvent.js
-    :language: js
     :caption: EXT:my_extension/Resources/Public/JavaScript/MyScript.js

@@ -3,9 +3,9 @@
 ..  _ModifyRecordListTableActionsEvent:
 
 
-=================================
-ModifyRecordListTableActionsEvent
-=================================
+===================================
+`ModifyRecordListTableActionsEvent`
+===================================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Backend\RecordList\Event\ModifyRecordListTableActionsEvent`
@@ -18,8 +18,9 @@ Example
 =======
 
 ..  literalinclude:: _ModifyRecordListTableActionsEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Backend/EventListener/MyEventListener.php
+
+..  _modify-record-list-table-actions-event-api:
 
 API
 ===

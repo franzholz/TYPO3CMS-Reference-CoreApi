@@ -2,9 +2,9 @@
 ..  index:: Events; ModifyInlineElementControlsEvent
 ..  _ModifyInlineElementControlsEvent:
 
-================================
-ModifyInlineElementControlsEvent
-================================
+==================================
+`ModifyInlineElementControlsEvent`
+==================================
 
 The PSR-14 event :php:`\TYPO3\CMS\Backend\Form\Event\ModifyInlineElementControlsEvent`
 is called after the markup for all enabled controls has been generated. It
@@ -17,8 +17,9 @@ Example
 =======
 
 ..  literalinclude:: _ModifyInlineElementControlsEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Backend/EventListener/MyEventListener.php
+
+..  _modify-inline-element-controls-event-api:
 
 API
 ===

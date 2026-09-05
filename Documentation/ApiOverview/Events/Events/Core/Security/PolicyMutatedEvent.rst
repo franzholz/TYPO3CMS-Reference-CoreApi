@@ -2,9 +2,9 @@
 ..  index:: Events; PolicyMutatedEvent
 ..  _PolicyMutatedEvent:
 
-==================
-PolicyMutatedEvent
-==================
+====================
+`PolicyMutatedEvent`
+====================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Core\Security\ContentSecurityPolicy\Event\PolicyMutatedEvent`
@@ -19,7 +19,6 @@ Example
 =======
 
 ..  literalinclude:: _PolicyMutatedEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/ContentSecurityPolicy/EventListener/MyEventListener.php
 
 

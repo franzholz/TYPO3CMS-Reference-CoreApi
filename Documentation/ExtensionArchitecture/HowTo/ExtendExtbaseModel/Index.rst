@@ -11,7 +11,7 @@ Extending an Extbase model
 Once you have added a new field to the
 :ref:`TCA <extending-tca>` it will be displayed in the backend forms.
 
-However, if the extension you are trying to extend is based on :ref:`Extbase <extbase>` the new
+However, if the extension you are trying to extend is based on :ref:`Extbase <extbase-extension-framework>` the new
 field is not available in the frontend out of the box. Further steps are
 needed to make the fields available. These steps will not work in all cases.
 
@@ -67,7 +67,7 @@ your current installation you can proceed by extending the extended model.
 In the rest of this tutorial use the extended model
 as the original model.
 
-If the model has different :ref:`record types <extbase-persistance-record-types>`
+If the model has different :ref:`record types <extbase-domain-model-mapping>`
 you can add a new type and
 only extend that one type. This is commonly done when extending
 the :composer:`georgringer/news` model.
@@ -148,7 +148,6 @@ configuration array) as described in :ref:`Extending TCA <extending-tca>`. Exten
 original model in your extension using a class:
 
 ..  literalinclude:: _MyExtendedModel.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Model/MyExtendedModel.php
 
 Add all the additional fields that you require. By convention the database
@@ -159,15 +158,13 @@ fields and the model names are prefixed with the name of your extension.
 Register the extended model
 ---------------------------
 
-The extended model needs to be registered for :ref:`Extbase persistence <extbase-Persistence>` in files
+The extended model needs to be registered for :ref:`Extbase persistence <extbase-domain-model-mapping>` in files
 :file:`Configuration/Extbase/Persistence/Classes.php` and :file:`ext_localconf.php`.
 
 ..  literalinclude:: _Classes.php
-    :language: php
     :caption: EXT:my_extension/Configuration/Extbase/Persistence/Classes.php
 
 ..  literalinclude:: _ext_localconf.php
-    :language: php
     :caption: EXT:my_extension/ext_localconf.php
 
 ..  _extending-extbase-model_extend_original_repository:
@@ -178,7 +175,6 @@ Extend the original repository (optional)
 Similarly, extend the original repository:
 
 ..  literalinclude:: _MyExtendedModelRepository.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyExtendedModelRepository.php
 
 The rule that a repository must follow the naming schema of the model also
@@ -200,7 +196,6 @@ Extbase to use your repository instead of the original one whenever the original
 repository is requested via Dependency Injection in a controller or service.
 
 ..  literalinclude:: _ext_localconf_repository.php
-    :language: php
     :caption: EXT:my_extension/ext_localconf.php
 
 ..  _extending-extbase-model_alternative_strategies:

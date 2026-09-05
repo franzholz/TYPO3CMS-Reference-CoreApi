@@ -8,6 +8,8 @@ Global meta information about TYPO3
 ===================================
 
 
+..  _typo3-information-general-information:
+
 General information
 ===================
 
@@ -29,7 +31,9 @@ The following methods are available:
    Therefore preventing this notice from being properly shown is a violation of the license, regardless of whether
    you remove it or use a stylesheet to obstruct the display.
 
-Version Information
+..  _typo3-information-version-information:
+
+Version information
 ===================
 
 PHP class :php:`TYPO3\CMS\Core\Information\Typo3Version` provides an API for

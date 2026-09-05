@@ -2,9 +2,9 @@
 ..  index:: Events; BeforeDatabaseRecordLinkResolvedEvent
 ..  _BeforeDatabaseRecordLinkResolvedEvent:
 
-=====================================
-BeforeDatabaseRecordLinkResolvedEvent
-=====================================
+=======================================
+`BeforeDatabaseRecordLinkResolvedEvent`
+=======================================
 
 ..  versionadded:: 14.0
     The event :php-short:`TYPO3\CMS\Frontend\Event\BeforeDatabaseRecordLinkResolvedEvent`
@@ -39,7 +39,6 @@ Example
 =======
 
 ..  literalinclude:: _BeforeDatabaseRecordLinkResolvedEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Frontend/EventListener/MyEventListener.php
 
 ..  _BeforeDatabaseRecordLinkResolvedEvent-api:

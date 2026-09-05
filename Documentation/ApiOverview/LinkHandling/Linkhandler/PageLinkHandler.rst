@@ -2,9 +2,9 @@
 .. index:: LinkHandlers; PageLinkHandler
 .. _pagelinkhandler:
 
-===================
-The PageLinkHandler
-===================
+=====================
+The `PageLinkHandler`
+=====================
 
 The PageLinkHandler enables editors to link to pages and content.
 
@@ -20,10 +20,12 @@ The PageLinkHandler is preconfigured in the page TSconfig as:
    TCEMAIN.linkHandler {
       page {
          handler = TYPO3\CMS\Backend\LinkHandler\PageLinkHandler
-         label = LLL:EXT:backend/Resources/Private/Language/locallang_browse_links.xlf:page
+         label = backend.browse_links:page
       }
    }
 
+
+..  _pagelinkhandler-enable-direct-input:
 
 Enable direct input of the page id
 ==================================

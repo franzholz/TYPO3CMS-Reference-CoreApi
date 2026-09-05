@@ -12,7 +12,7 @@ Consider you have to translate the following static texts in your Fluid
 template:
 
 .. code-block:: html
-   :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.html
+   :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.fluid.html
 
    <h3>{post.title}</h3>
    <p>By: {post.author.fullName}</p>
@@ -35,8 +35,8 @@ that can be inserted into the Fluid template.
 
 .. _f-translate:
 
-The translation ViewHelper :html:`f:translate`
-==============================================
+The translation ViewHelper `f:translate`
+========================================
 
 To insert translations into a template, Fluid offers the ViewHelper
 :ref:`f:translate <t3viewhelper:typo3-fluid-translate>`.
@@ -45,11 +45,11 @@ This ViewHelper has a property called :html:`key` where the identifier of
 the text fragment prefixed by the location file can be provided.
 
 .. code-block:: html
-   :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.html
+   :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.fluid.html
 
-   <f:translate key="LLL:EXT:my_extension/Resources/Private/Language/yourFile.xlf:yourKey" />
+   <f:translate key="my_extension.your_file:yourKey" />
    <!-- or as inline Fluid: -->
-   {f:translate(key: 'LLL:EXT:my_extension/Resources/Private/Language/yourFile.xlf:yourKey')}
+   {f:translate(key: 'my_extension.your_file:yourKey')}
 
 
 The text fragment will now be displayed in the current frontend language
@@ -64,10 +64,10 @@ You can provide a default text fragment in the property :html:`default` to
 avoid no text being displayed:
 
 .. code-block:: html
-   :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.html
+   :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.fluid.html
 
    <f:translate
-       key="LLL:EXT:my_extension/Resources/Private/Language/yourFile.xlf:yourKey"
+       key="my_extension.your_file:yourKey"
        default="No translation available."
    />
 
@@ -80,7 +80,7 @@ In Extbase, the translation file can be detected automatically. It is therefore
 possible to omit the language file prefix.
 
 .. code-block:: html
-   :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.html
+   :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.fluid.html
 
    <f:translate key="commentHeader" />
    <!-- or as inline Fluid: -->
@@ -103,7 +103,7 @@ It is possible to use the translation file of another extension by supplying
 the parameter :html:`extensionName` with the UpperCamelCased extension key:
 
 ..  code-block:: html
-    :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.html
+    :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.fluid.html
 
     <f:translate key="commentHeader" extensionName="MyOtherExtension" />
 
@@ -118,7 +118,7 @@ By replacing all static texts with translation ViewHelpers the above example
 can be replaced:
 
 .. code-block:: html
-   :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.html
+   :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.fluid.html
 
    <h3>{post.title}</h3>
    <p><f:translate key="authorPrefix"> {post.author.fullName}</p>
@@ -129,8 +129,10 @@ can be replaced:
       <hr>
    </f:for>
 
+..  _extension-localization-fluid-source-language-file:
+
 Source of the language file
-============================
+===========================
 
 If the Fluid template is called outside of an Extbase context there are two
 options on how to configure the correct language file.
@@ -144,7 +146,7 @@ options on how to configure the correct language file.
     the translation file, followed by a colon and then the translation key.
 
     .. code-block:: html
-       :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.html
+       :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.fluid.html
 
        <f:translate
            key="LLL:EXT:my_extension/Resources/Private/Language/yourFile.xlf:yourKey"
@@ -153,7 +155,7 @@ options on how to configure the correct language file.
 #.  Or provide the parameter :html:`extensionName`:
 
     .. code-block:: html
-       :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.html
+       :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.fluid.html
 
        <f:translate
            key="yourKey"
@@ -220,6 +222,8 @@ Instead it is possible to insert a placeholder in the translation file:
             <target>Blogs ist hier: </target>
          </trans-unit>
 
+..  _extension-localization-fluid-arguments-argument-types:
+
 Argument types
 --------------
 
@@ -246,6 +250,8 @@ by the according ViewHelper :html:`<f:format.date>`, see section
 For a complete list of placeholders / specifiers see
 `PHP function sprintf <https://www.php.net/manual/en/function.sprintf.php>`__.
 
+..  _extension-localization-fluid-arguments-order-arguments:
+
 Order of the arguments
 ----------------------
 
@@ -266,7 +272,7 @@ syntax the ordering of the arguments can be made clear:
    </trans-unit>
 
 ..  code-block:: html
-    :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.html
+    :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.fluid.html
 
     <f:translate
        key="author"
@@ -294,7 +300,7 @@ Generally the date or time is formatted by the
 :html:`<f:format.date>` ViewHelper:
 
 .. code-block:: html
-   :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.html
+   :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.fluid.html
 
    <f:format.date date="{dateObject}" format="d.m.Y" />
    <!-- or -->
@@ -330,7 +336,7 @@ ViewHelper with the :html:`<f:translate>` ViewHelper to supply a localized
 date format:
 
 .. code-block:: html
-   :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.html
+   :caption: EXT:my_extension/Resources/Private/Templates/SomeTemplate.fluid.html
 
    <f:format.date date="{dateObject}" format="{f:translate(key: 'dateFormat')}" />
 

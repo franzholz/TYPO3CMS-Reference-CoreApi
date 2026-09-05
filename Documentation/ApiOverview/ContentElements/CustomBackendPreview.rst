@@ -51,8 +51,8 @@ In the Fluid template, the following variables are available:
 *   The current record as object (:php-short:`\TYPO3\CMS\Core\Domain\Record`)
     in variable `{record}`
 
-..  literalinclude:: _codesnippets/_Preview.html
-    :caption: EXT:my_extension/Resources/Private/Templates/Preview/MyCType.html
+..  literalinclude:: _codesnippets/_Preview.fluid.html
+    :caption: EXT:my_extension/Resources/Private/Templates/Preview/MyCType.fluid.html
 
 ..  rubric:: Migration
 
@@ -107,12 +107,16 @@ rendering method and your wrapping method does
 entire output becomes :html:`<div><h4>Header</h4><p>Body</p></div>` when
 combined.
 
-Should you wish to reuse parts of the default preview rendering and only change,
-for example, the method that renders the preview body content, you can extend
-:php:`\TYPO3\CMS\Backend\Preview\StandardContentPreviewRenderer` in your custom
-preview renderer class - and selectively override the methods from the API
-displayed above.
+..  versionchanged:: 15.0
+    :php-short:`\TYPO3\CMS\Backend\Preview\StandardContentPreviewRenderer` has been turned
+    into a stateless, dependency-injected service. It is now declared :php:`final`
+    and can no longer be subclassed.
 
+The standard renderer may be composed and its rendering methods delegated to where its output
+is desired, as :php-short:`\TYPO3\CMS\Form\Preview\FormPagePreviewRenderer` demonstrates.
+
+
+..  _configure-ce-preview-configuring-implementation:
 
 Configuring the implementation
 ==============================
@@ -141,6 +145,14 @@ approaches:
     This specifies the preview renderer only for records of type :php:`$type` as
     determined by the :ref:`type field <t3tca:types>` of your table.
 
+Like all other content types, `text`, `textpic`, `textmedia` and
+`image` use the standard
+:php-short:`\TYPO3\CMS\Backend\Preview\StandardContentPreviewRenderer`. To customize
+previews for these elements, use the
+:ref:`page TSconfig <ConfigureCE-Preview-PageTSconfig>` or
+:ref:`event listener <ConfigureCE-Preview-EventListener>` approach described
+above (instead of registering type-specific preview renderers as in the past).
+
 ..  note::
     The :ref:`recommended location <extension-configuration-tca>` is in the
     :php:`ctrl` array in your extension's :file:`Configuration/TCA/$table.php`
@@ -148,10 +160,3 @@ approaches:
     when your extension is the one that creates the table, the latter is used
     when you need to override TCA properties of tables added by the Core or
     other extensions.
-
-..  note::
-    The content elements :php:`text`, :php:`textpic`, :php:`textmedia` and
-    :php:`image` have their own :php:`PreviewRenderer`. Therefore it's not
-    sufficient to overwrite the :php:`StandardContentPreviewRenderer` but
-    you need to use the second approach from above for every single of
-    these content elements.

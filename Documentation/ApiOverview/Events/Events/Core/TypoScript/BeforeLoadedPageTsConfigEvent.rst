@@ -2,9 +2,9 @@
 ..  index:: Events; BeforeLoadedPageTsConfigEvent
 ..  _BeforeLoadedPageTsConfigEvent:
 
-=============================
-BeforeLoadedPageTsConfigEvent
-=============================
+===============================
+`BeforeLoadedPageTsConfigEvent`
+===============================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Core\TypoScript\IncludeTree\Event\BeforeLoadedPageTsConfigEvent`
@@ -15,12 +15,15 @@ generated automatically as a string from a PHP function.
 It is important to understand that this configuration is considered static and
 thus should not depend on runtime / request.
 
+..  _before-loaded-page-ts-config-event-example:
+
 Example
 =======
 
 ..  literalinclude:: _BeforeLoadedPageTsConfigEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/TypoScript/EventListener/MyEventListener.php
+
+..  _before-loaded-page-ts-config-event-api:
 
 API
 ===

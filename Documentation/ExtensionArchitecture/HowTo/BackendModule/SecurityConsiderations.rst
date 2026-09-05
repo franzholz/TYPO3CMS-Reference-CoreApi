@@ -6,11 +6,15 @@
 .. _backend-modules-security:
 
 =======================
-Security Considerations
+Security considerations
 =======================
+
+..  _backend-modules-security-cross-site-request:
 
 Cross-Site-Request-Forgery (CSRF)
 =================================
+
+..  _backend-modules-security-cross-site-request-overview:
 
 Overview
 --------
@@ -40,10 +44,14 @@ provides a delete action. The previous implementation used `GET` links with
 query parameters for the delete action, which modifies the server's state.
 This should be replaced with `POST` requests for improved security.
 
-Asserting HTTP Methods in Custom Module Controllers
+..  _backend-modules-security-cross-site-request-asserting-http:
+
+Asserting HTTP methods in custom module controllers
 ---------------------------------------------------
 
-Enforcing HTTP Methods
+..  _backend-modules-security-cross-site-request-asserting-http-enforcing-http:
+
+Enforcing HTTP methods
 ......................
 
 The revised example below uses dedicated target handlers for each controller
@@ -146,14 +154,16 @@ each controller action.
           }
       }
 
-Template Example
+..  _backend-modules-security-cross-site-request-asserting-http-template-example:
+
+Template example
 ................
 
 In the revised template, `POST`-based form buttons are used
 instead of `GET` links for delete actions:
 
 ..  code-block:: diff
-    :caption: **Revised** EXT:demo/Resources/Private/Templates/ExtbaseModule/List.html
+    :caption: **Revised** EXT:demo/Resources/Private/Templates/ExtbaseModule/List.fluid.html
     :linenos:
 
       <ul>
@@ -181,10 +191,14 @@ instead of `GET` links for delete actions:
     element. This allows multiple :html:`<button>` elements to be used with a single
     :html:`<form>`.
 
-Asserting HTTP Methods in Extbase Controllers
+..  _backend-modules-security-cross-site-request-asserting-http-2:
+
+Asserting HTTP methods in Extbase controllers
 ---------------------------------------------
 
-Enforcing HTTP Methods
+..  _backend-modules-security-cross-site-request-asserting-http-2-enforcing:
+
+Enforcing HTTP methods
 ......................
 
 The following example demonstrates enforcing HTTP methods in Extbase module
@@ -235,14 +249,16 @@ controllers using :php:`AllowedMethodsTrait`:
           }
       }
 
-Template Example
+..  _backend-modules-security-cross-site-request-asserting-http-2-template:
+
+Template example
 ................
 
 In the revised template, `POST`-based form buttons are used
 instead of `GET` action links for delete actions:
 
 ..  code-block:: diff
-    :caption: **Revised** EXT:demo/Resources/Private/Templates/ExtbaseModule/List.html
+    :caption: **Revised** EXT:demo/Resources/Private/Templates/ExtbaseModule/List.fluid.html
     :linenos:
 
       <ul>

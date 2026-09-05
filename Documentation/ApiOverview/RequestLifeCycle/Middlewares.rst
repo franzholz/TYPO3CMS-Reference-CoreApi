@@ -7,7 +7,7 @@
 ..  _request-handling:
 
 ==============================
-Middlewares (Request handling)
+Middlewares (request handling)
 ==============================
 
 TYPO3 has implemented `PSR-15`_ for handling incoming HTTP requests. The
@@ -105,7 +105,7 @@ By doing so, the middleware can do one or multiple of the following:
 Using Extbase
 -------------
 
-One note about using :ref:`Extbase <extbase>` in middlewares: do not! Extbase
+One note about using :ref:`Extbase <extbase-extension-framework>` in middlewares: do not! Extbase
 relies on :ref:`frontend TypoScript <t3tsref:start>` being present; otherwise
 the configuration is not applied. This is usually no problem - Extbase plugins
 are typically either included as :ref:`USER content object <t3tsref:cobj-user>`
@@ -209,7 +209,8 @@ the configuration.
 The configuration is provided within
 :file:`Configuration/RequestMiddlewares.php` of an extension:
 
-..  include:: /CodeSnippets/Manual/Extension/Configuration/RequestMiddlewares.rst.txt
+.. literalinclude:: /CodeSnippets/Manual/Extension/Configuration/RequestMiddlewares.php
+   :caption: EXT:some_extension/Configuration/RequestMiddlewares.php
 
 TYPO3 has multiple stacks where one middleware might only be necessary in one
 of them. Therefore the configuration defines the context on its first level to define the

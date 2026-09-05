@@ -23,7 +23,9 @@ are based on the extension key.
       to UpperCamelCase in namespaces (e.g. `cool_shop` becomes :php:`MyVendor\CoolShop`)
 
 
-Abbreviations & Glossary
+..  _extension-naming-abbreviations-glossary:
+
+Abbreviations & glossary
 ========================
 
 UpperCamelCase
@@ -147,10 +149,12 @@ Examples for names that are derived from the extkey:
 Here, the *extkey* is `my_extension`:
 
 * namespace: :php:`MyVendor\MyExtension\...`
-* package name in :file:`composer.json <extension-composer-json>`: ``vendor-name/my-extension`` (the underscore is replaced by
+* package name in :file:`composer.json <extension-composer-json>`: `vendor-name/my-extension` (the underscore is replaced by
   a dash)
 
 .. index:: Vendor name
+
+..  _extension-naming-vendor-name:
 
 Vendor name
 ===========
@@ -158,7 +162,7 @@ Vendor name
 The vendor name is used in:
 
 * namespaces
-* package name in :file:`composer.json <extension-composer-json>`, e.g. ``myvendor/cool-shop`` (all lowercase)
+* package name in :file:`composer.json <extension-composer-json>`, e.g. `myvendor/cool-shop` (all lowercase)
 
 .. attention::
 
@@ -243,12 +247,12 @@ Examples for Extbase domain models and table names of an extension named `cool_s
    Notice that the names above use the singular form, e.g. `post` and
    not `posts`. This is recommended, but not a requirement.
    However, if you do not follow the recommended patterns
-   you may need :ref:`manual mapping <extbase_manual_mapping>`.
+   you may need :ref:`manual mapping <extbase-domain-model-mapping>`.
 
 ..  _naming-tables-mm:
 
 MM-tables for multiple-multiple relations between tables
----------------------------------------------------------
+--------------------------------------------------------
 
 **MM** tables (for multiple-multiple relations between tables) follow these rules.
 
@@ -273,6 +277,8 @@ Non-Extbase tables usually use a similar rule, without the "domain_model" part:
    # example for TYPO3 core:
    sys_category_record_mm
 
+..  _extension-naming-database-column-name:
+
 Database column name
 ====================
 
@@ -287,7 +293,7 @@ follow this pattern:
 * `<column-name>` purpose of the column, lower case letters with underscores
 
 .. tip::
-   If you work with column-names not following this convention (e.g. :php:`colPos`), you have to add a :ref:`column mapping <extbase_manual_mapping>`.
+   If you work with column-names not following this convention (e.g. :php:`colPos`), you have to add a :ref:`column mapping <extbase-domain-model-mapping>`.
 
 .. _BackendModuleKey:
 
@@ -323,6 +329,8 @@ Example usage:
 
 For more details have a look into the :ref:`backend-modules-configuration`
 chapter.
+
+..  _extension-naming-backend-module-signature:
 
 Backend module signature
 ========================
@@ -452,6 +460,8 @@ Example register and configure an Extbase plugin:
       settings.pageId = 42
     }
 
+..  _extension-naming-class-name:
+
 Class name
 ==========
 
@@ -465,6 +475,8 @@ Examples:
 .. seealso::
 
    This follows `PSR-1 <https://www.php-fig.org/psr/psr-1/>`__ conventions.
+
+..  _extension-naming-upgrade-wizard-identifier:
 
 Upgrade wizard identifier
 =========================
@@ -496,6 +508,8 @@ the "user\_" prefix for their classes as well.
 
 .. _TER: https://extensions.typo3.org/
 .. _Packagist: https://packagist.org/
+
+..  _extension-naming-further-reading:
 
 Further reading
 ===============

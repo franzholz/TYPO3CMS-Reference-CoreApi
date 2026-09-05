@@ -2,9 +2,9 @@
 ..  index:: Events; AddUserSettingsJavaScriptModulesEvent
 ..  _AddUserSettingsJavaScriptModulesEvent:
 
-=====================================
-AddUserSettingsJavaScriptModulesEvent
-=====================================
+=======================================
+`AddUserSettingsJavaScriptModulesEvent`
+=======================================
 
 JavaScript events in custom user settings configuration options should not be
 placed as inline JavaScript. Instead, use a dedicated JavaScript module to
@@ -16,7 +16,6 @@ Example
 =======
 
 ..  literalinclude:: _AddUserSettingsJavaScriptModulesEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/UserSettings/EventListener/MyEventListener.php
 
 

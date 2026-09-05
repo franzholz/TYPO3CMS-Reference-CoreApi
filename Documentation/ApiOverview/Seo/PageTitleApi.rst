@@ -39,8 +39,8 @@ highest to lowest priority.
 
 ..  _page-title-provider-seo:
 
-SeoTitlePageTitleProvider
--------------------------
+`SeoTitlePageTitleProvider`
+---------------------------
 
 System extension :composer:`typo3/cms-seo` ships
 the :php:`\TYPO3\CMS\Seo\PageTitle\SeoTitlePageTitleProvider`. It is only
@@ -54,8 +54,8 @@ extension, the field and provider are not available.
 
 ..  _page-title-provider-record-title:
 
-RecordTitleProvider
--------------------
+`RecordTitleProvider`
+---------------------
 
 ..  versionadded:: 14.0
 
@@ -70,8 +70,8 @@ This provider can be used by third-party extensions to set the page title.
 
 ..  _page-title-provider-record:
 
-RecordPageTitleProvider
------------------------
+`RecordPageTitleProvider`
+-------------------------
 
 The fallback provider with the lowest priority is the
 :php:`\TYPO3\CMS\Core\PageTitle\RecordPageTitleProvider`. It has the identifier
@@ -98,7 +98,7 @@ quite easy to create one.
 
 ..  _page-title-provider-custom-example:
 
-Example: Set the page title from your extension's controller
+Example: set the page title from your extension's controller
 ------------------------------------------------------------
 
 First, create a PHP class in your extension that implements the
@@ -109,7 +109,7 @@ this method you can create your own logic to define the correct title.
 ..  literalinclude:: _PageTitleProvider/_ExampleSetInController/_MyOwnPageTitleProvider.php
     :caption: EXT:my_extension/Classes/PageTitle/MyOwnPageTitleProvider.php
 
-Usage example in an :ref:`Extbase <extbase>` controller:
+Usage example in an :ref:`Extbase <extbase-extension-framework>` controller:
 
 ..  literalinclude:: _PageTitleProvider/_ExampleSetInController/_SomeController.php
     :caption: EXT:my_extension/Classes/Controller/SomeController.php
@@ -117,12 +117,11 @@ Usage example in an :ref:`Extbase <extbase>` controller:
 Configure the new page title provider in your TypoScript setup:
 
 ..  literalinclude:: _PageTitleProvider/_ExampleSetInController/_setup.typoscript
-    :language: typoscript
     :caption: EXT:my_sitepackage/Configuration/TypoScript/setup.typoscript
 
 ..  _page-title-provider-custom-site-config:
 
-Example: Use values from the site configuration in the page title
+Example: use values from the site configuration in the page title
 -----------------------------------------------------------------
 
 If you want to use data from the :ref:`site configuration <sitehandling>`, for
@@ -141,7 +140,6 @@ and PHP Cache`.
 Configure the new page title provider to be used in your TypoScript setup:
 
 ..  literalinclude:: _PageTitleProvider/_website.typoscript
-    :language: typoscript
     :caption: EXT:my_sitepackage/Configuration/TypoScript/setup.typoscript
 
 The registered page title providers are called after each other in the
@@ -157,8 +155,8 @@ you can change this by loading your custom provider before `seo`.
 
 .. _define-the-priority-of-pagetitleproviders:
 
-Define the priority of PageTitleProviders
-=========================================
+Define the priority of `PageTitleProviders`
+===========================================
 
 The priority of the providers is set by the TypoScript property
 `config.pageTitleProviders <https://docs.typo3.org/permalink/t3tsref:confval-config-pagetitleproviders>`_.

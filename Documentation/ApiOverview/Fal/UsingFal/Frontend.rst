@@ -27,8 +27,8 @@ Fluid
 
 ..  _fal-using-fal-frontend-fluid-image:
 
-The ImageViewHelper
--------------------
+The `ImageViewHelper`
+---------------------
 
 If you have the uid of a file reference, you can use it directly in the
 :ref:`\\TYPO3\\CMS\\Fluid\\ViewHelpers\\ImageViewHelper <t3viewhelper:typo3-fluid-image>`:
@@ -43,6 +43,8 @@ Here :html:`{image}` is an object of one of the following types:
 *   :php:`\TYPO3\CMS\Core\Resource\FileReference`
 *   :php:`\TYPO3\CMS\Extbase\Domain\Model\FileReference`
 
+..  _fal-using-fal-frontend-fluid-get-file-properties:
+
 Get file properties
 -------------------
 
@@ -55,9 +57,9 @@ Example:
 	{fileReference.publicUrl}
 
 ..  tip::
-    If you are in :ref:`Extbase <extbase>` context, you usually have a
+    If you are in :ref:`Extbase <extbase-extension-framework>` context, you usually have a
     :php:`\TYPO3\CMS\Extbase\Domain\Model\FileReference`
-    :ref:`domain model <extbase-model>` instead of a "pure"
+    :ref:`domain model <extbase-domain-model>` instead of a "pure"
     :php:`\TYPO3\CMS\Core\Resource\FileReference` object. In order to get the
     meta data, you need to resolve the :php:`\TYPO3\CMS\Core\Resource\FileReference`
     first by accessing the :html:`originalResource` property:
@@ -114,7 +116,7 @@ This requires first a bit of TypoScript:
 
     lib.carousel = FLUIDTEMPLATE
     lib.carousel {
-      file = EXT:my_extension/Resources/Private/Templates/Carousel.html
+      file = EXT:my_extension/Resources/Private/Templates/Carousel.fluid.html
       dataProcessing.10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
       dataProcessing.10 {
         references {
@@ -131,7 +133,7 @@ variable called :typoscript:`images`. This can then be used in the Fluid
 template:
 
 ..  code-block:: html
-    :caption: EXT:my_extension/Resources/Private/Templates/Carousel.html
+    :caption: EXT:my_extension/Resources/Private/Templates/Carousel.fluid.html
 
     <f:for each="{images}" as="image">
         <div class="slide">

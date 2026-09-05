@@ -2,9 +2,9 @@
 ..  index:: Events; ModifyRecordsAfterFetchingContentEvent
 ..  _ModifyRecordsAfterFetchingContentEvent:
 
-======================================
-ModifyRecordsAfterFetchingContentEvent
-======================================
+========================================
+`ModifyRecordsAfterFetchingContentEvent`
+========================================
 
 The PSR-14 event
 :php:`\TYPO3\CMS\Frontend\ContentObject\Event\ModifyRecordsAfterFetchingContentEvent`
@@ -13,12 +13,15 @@ of the options, such as `slide`. Listeners are also able to set the final
 content and change the whole TypoScript configuration, used for further
 processing.
 
+..  _modify-records-after-fetching-content-event-example:
+
 Example
 =======
 
 ..  literalinclude:: _ModifyRecordsAfterFetchingContentEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Frontend/EventListener/MyEventListener.php
+
+..  _modify-records-after-fetching-content-event-api:
 
 API
 ===

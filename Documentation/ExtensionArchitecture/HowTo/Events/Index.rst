@@ -33,7 +33,8 @@ It is best practice to use a descriptive class name and to put it in the
 namespace :php:`MyVendor\MyExtension\EventListener`.
 
 .. literalinclude:: _Joh316PasswordInformer.php
-   :language: php
+
+..  _extension-development-events-dispatch-event:
 
 Dispatch an event
 =================

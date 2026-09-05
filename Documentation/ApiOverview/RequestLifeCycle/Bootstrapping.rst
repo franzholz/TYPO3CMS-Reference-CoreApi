@@ -15,14 +15,18 @@ Each application class registers request handlers to
 run a certain request type (e.g. eID or Ajax requests in the backend). Each
 application is handed over the class loader provided by Composer.
 
+..  _bootstrapping-applications:
+
 Applications
 ============
 
 There are four types of applications provided by the TYPO3 Core:
 
 
-\\TYPO3\\CMS\\Frontend\\Http\\Application
------------------------------------------
+..  _bootstrapping-applications-typo3cmsfrontendhttpapplication:
+
+`\\TYPO3\\CMS\\Frontend\\Http\\Application`
+-------------------------------------------
 
 This class handles all incoming web requests coming through :file:`index.php`
 in the public web directory. It handles all regular page and eID requests.
@@ -31,8 +35,10 @@ It checks if all configuration is set, otherwise redirects to the TYPO3 Install
 Tool.
 
 
-\\TYPO3\\CMS\\Backend\\Http\\Application
-----------------------------------------
+..  _bootstrapping-applications-typo3cmsbackendhttpapplication:
+
+`\\TYPO3\\CMS\\Backend\\Http\\Application`
+------------------------------------------
 
 This class handles all incoming web requests for any regular backend call
 inside :file:`typo3/\*`.
@@ -47,15 +53,19 @@ The :php:`Application` checks if all configuration is set, otherwise it
 redirects to the TYPO3 Install Tool.
 
 
-\\TYPO3\\CMS\\Core\\Console\\CommandApplication
------------------------------------------------
+..  _bootstrapping-applications-typo3cmscoreconsolecommandapplication:
+
+`\\TYPO3\\CMS\\Core\\Console\\CommandApplication`
+-------------------------------------------------
 
 This class is the entry point for the TYPO3 command line for console commands.
 In addition to registering all available commands, this also sets up a CLI user.
 
 
-\\TYPO3\\CMS\\Install\\Http\\Application
-----------------------------------------
+..  _bootstrapping-applications-typo3cmsinstallhttpapplication:
+
+`\\TYPO3\\CMS\\Install\\Http\\Application`
+------------------------------------------
 
 The install tool :php:`Application` only runs with a very limited bootstrap
 set up. The failsafe package manager does not take
@@ -96,13 +106,17 @@ used in the frontend, but only the backend process is described here.
 
 The following steps are performed during bootstrapping.
 
+..  _backend-initialization-1-initialize-class:
+
 1. Initialize the class loader
 ------------------------------
 
 This defines which autoloader to use.
 
-2. Run SystemEnvironmentBuilder
--------------------------------
+..  _backend-initialization-2-run-systemenvironmentbuilder:
+
+2. Run `SystemEnvironmentBuilder`
+---------------------------------
 
 The :php:`\TYPO3\CMS\Core\Core\SystemEnvironmentBuilder` is responsible for setting
 up a system environment that is shared by all contexts (FE, BE, Install Tool and CLI).
@@ -134,6 +148,8 @@ to have an overview of these base values, it is worth taking a look into the fol
    defines special variables which contain, for example, the current time or
    a simulated time as may be set using the Admin Panel.
 
+..  _backend-initialization-3-initialize-bootstrap:
+
 3.  Initialize bootstrap
 ------------------------
 
@@ -161,6 +177,8 @@ following:
 
 -  The database connection is established
 
+..  _backend-initialization-4-dispatch:
+
 4. Dispatch
 -----------
 
@@ -168,6 +186,8 @@ After all that the, the newly created container receives the application object
 and :php:`Application::run()` method is called, which basically dispatches the
 request to the right handler.
 
+
+..  _backend-initialization-5-initialization-typo3:
 
 5. Initialization of the TYPO3 backend
 --------------------------------------
@@ -196,12 +216,12 @@ Each request, no matter if it runs from the command line or through HTTP,
 runs in a specific *application context*. TYPO3 provides exactly three built-in
 contexts:
 
-* ``Production`` (default) - should be used for a live site
-* ``Development`` - used for development
-* ``Testing`` - is only used internally when executing TYPO3 **Core** tests. It must not be used otherwise.
+* `Production` (default) - should be used for a live site
+* `Development` - used for development
+* `Testing` - is only used internally when executing TYPO3 **Core** tests. It must not be used otherwise.
 
 The context TYPO3 runs in is specified through the environment variable
-``TYPO3_CONTEXT``. It can be set on the command line:
+`TYPO3_CONTEXT`. It can be set on the command line:
 
 .. code-block:: bash
 
@@ -262,23 +282,23 @@ more specific configuration sets can be realized.
 
 While it is not possible to add new "top-level" contexts at the same level like
 *Production* and *Testing*, you can create arbitrary *sub-contexts*, just by
-specifying them like ``<MainContext>/<SubContext>``.
+specifying them like `<MainContext>/<SubContext>`.
 
-For a staging environment a custom context ``Production/Staging`` may provide the
-necessary settings while the ``Production/Live`` context is used on the live instance.
+For a staging environment a custom context `Production/Staging` may provide the
+necessary settings while the `Production/Live` context is used on the live instance.
 
 .. note::
 
    This even works recursively, so if you have a multiple-server staging
-   setup, you could use the context ``Production/Staging/Server1`` and
-   ``Production/Staging/Server2`` if both staging servers needed different
+   setup, you could use the context `Production/Staging/Server1` and
+   `Production/Staging/Server2` if both staging servers needed different
    configuration.
 
 .. attention::
 
-   ``Testing`` Is reserved for internal use when executing TYPO3 **Core** functional and unit tests
+   `Testing` Is reserved for internal use when executing TYPO3 **Core** functional and unit tests
    It must not be used otherwise. Instead sub-contexts must be used:
-   ``Production/Testing`` or ``Development/Testing``
+   `Production/Testing` or `Development/Testing`
 
 
 .. _bootstrapping-context-example:

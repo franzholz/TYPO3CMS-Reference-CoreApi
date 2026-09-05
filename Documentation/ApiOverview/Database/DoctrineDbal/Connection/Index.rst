@@ -44,6 +44,8 @@ are executed right away.
 Instantiation
 =============
 
+..  _database-connection-instantiation-connection-pool:
+
 Using the connection pool
 -------------------------
 
@@ -54,6 +56,8 @@ should be executed. The :php:`ConnectionPool` can be injected via constructor:
 
 ..  literalinclude:: _MyTableRepositoryWithConnectionPool.php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyTableRepository.php
+
+..  _database-connection-instantiation-dependency-injection:
 
 Via dependency injection
 ------------------------
@@ -69,7 +73,6 @@ Another way is to inject the :php:`Connection` object directly via
     the factory option in the service configuration:
 
     ..  literalinclude:: _Services.yaml
-        :language: yaml
         :caption: EXT:my_extension/Configuration/Services.yaml
         :emphasize-lines: 10-18
 
@@ -79,7 +82,6 @@ Another way is to inject the :php:`Connection` object directly via
     the constructor:
 
     ..  literalinclude:: _MyTableRepositoryWithConnection.php
-        :language: php
         :caption: EXT:my_extension/Classes/Domain/Repository/MyTableRepository.php
 
 
@@ -129,14 +131,13 @@ Internally, these parameter types are mapped to the types Doctrine DBAL expects.
 
 .. _database-connection-insert:
 
-insert()
-========
+`insert()`
+==========
 
 The :php:`insert()` method creates and executes an :sql:`INSERT INTO` statement.
 Example:
 
 ..  literalinclude:: _MyTableRepository_insert.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyTableRepository.php
 
 Read :ref:`how to instantiate <database-connection-instantiation>` a connection
@@ -159,7 +160,6 @@ Arguments of the :php:`insert()` method:
     a string:
 
     ..  literalinclude:: _MyTableRepository_insert_types.php
-        :language: php
         :caption: EXT:my_extension/Classes/Domain/Repository/MyTableRepository.php
 
     Read :ref:`how to instantiate <database-connection-instantiation>` a
@@ -177,13 +177,12 @@ thrown.
 
 .. _database-connection-bulk-insert:
 
-bulkInsert()
-============
+`bulkInsert()`
+==============
 
 This method insert multiple rows at once:
 
 ..  literalinclude:: _MyTableRepository_bulkinsert.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyTableRepository.php
 
 Read :ref:`how to instantiate <database-connection-instantiation>` a connection
@@ -215,14 +214,13 @@ The number of inserted rows are returned. If something goes wrong, a
 
 .. _database-connection-update:
 
-update()
-========
+`update()`
+==========
 
 Create an :sql:`UPDATE` statement and execute it. The example from FAL's
 :php:`ResourceStorage` sets a storage to offline:
 
 ..  literalinclude:: _MyTableRepository_update.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyTableRepository.php
 
 This method supports the native database field declaration :sql:`json`,
@@ -255,14 +253,13 @@ The method returns the number of updated rows. If something goes wrong, a
 
 .. _database-connection-delete:
 
-delete()
-========
+`delete()`
+==========
 
 Execute a :sql:`DELETE` query using `equal` conditions in :sql:`WHERE`, example
 from :php:`BackendUtility`, to mark rows as no longer locked by a user:
 
 ..  literalinclude:: _MyTableRepository_delete.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyTableRepository.php
 
 Read :ref:`how to instantiate <database-connection-instantiation>` a connection
@@ -293,15 +290,14 @@ The method returns the number of deleted rows. If something goes wrong, a
 
 .. _database-connection-truncate:
 
-truncate()
-==========
+`truncate()`
+============
 
 This method empties a table, removing all rows. It is usually much faster than
 a :ref:`delete() <database-connection-delete>` of all rows. This typically
 resets "auto increment primary keys" to zero. Use with care:
 
 ..  literalinclude:: _MyCacheRepository_truncate.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyTableRepository.php
 
 Read :ref:`how to instantiate <database-connection-instantiation>` a connection
@@ -313,8 +309,8 @@ a :php:`\Doctrine\DBAL\Exception` is thrown.
 
 .. _database-connection-count:
 
-count()
-=======
+`count()`
+=========
 
 This method executes a :sql:`COUNT` query. Again, this becomes useful when very
 simple :sql:`COUNT` statements are to be executed. The example below returns the
@@ -323,7 +319,6 @@ table :sql:`tx_myextension_mytable` whose
 field :sql:`some_value` field set to :php:`$something`:
 
 ..  literalinclude:: _MyTableRepository_count.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyTableRepository.php
 
 Read :ref:`how to instantiate <database-connection-instantiation>` a connection
@@ -362,8 +357,8 @@ Remarks:
 
 .. _database-connection-select:
 
-select()
-========
+`select()`
+==========
 
 This method creates and executes a simple :sql:`SELECT` query based on `equal`
 conditions. Its usage is limited, the :ref:`restriction builder
@@ -371,7 +366,6 @@ conditions. Its usage is limited, the :ref:`restriction builder
 quoted:
 
 ..  literalinclude:: _MyTableRepository_select.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyTableRepository.php
 
 Read :ref:`how to instantiate <database-connection-instantiation>` a connection
@@ -411,15 +405,14 @@ Remarks:
 
 .. _database-connection-last-insert-id:
 
-lastInsertId()
-==============
+`lastInsertId()`
+================
 
 This method returns the :sql:`uid` of the last :ref:`insert()
 <database-connection-insert>` statement. This is useful if the ID is to be used
 directly afterwards:
 
 ..  literalinclude:: _MyTableRepository_lastinsertId.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyTableRepository.php
 
 Read :ref:`how to instantiate <database-connection-instantiation>` a connection
@@ -434,8 +427,8 @@ Remarks:
 
 .. _database-connection-create-query-builder:
 
-createQueryBuilder()
-====================
+`createQueryBuilder()`
+======================
 
 The :ref:`query builder <database-query-builder>` should not be reused for
 multiple different queries. However, sometimes it is convenient to first fetch a
@@ -447,7 +440,6 @@ good example could be found in the Core.
 The method can also be useful in loops to save some precious code characters:
 
 ..  literalinclude:: _MyTableRepository_queryBuilder.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyTableRepository.php
 
 Read :ref:`how to instantiate <database-connection-instantiation>` a connection
@@ -479,7 +471,6 @@ Example:
     :caption: EXT:my_extension/ext_tables.sql
 
 ..  literalinclude:: _MyTableRepository_insert.php
-    :language: php
     :caption: EXT:my_extension/Classes/Domain/Repository/MyTableRepository.php
 
 ..  note::

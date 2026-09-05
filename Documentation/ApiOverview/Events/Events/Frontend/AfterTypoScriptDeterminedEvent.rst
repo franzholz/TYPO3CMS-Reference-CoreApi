@@ -2,9 +2,9 @@
 ..  index:: Events; AfterTypoScriptDeterminedEvent
 ..  _AfterTypoScriptDeterminedEvent:
 
-==============================
-AfterTypoScriptDeterminedEvent
-==============================
+================================
+`AfterTypoScriptDeterminedEvent`
+================================
 
 The PSR-14 event :php:`\TYPO3\CMS\Frontend\Event\AfterTypoScriptDeterminedEvent`
 is dispatched after the :php:`\TYPO3\CMS\Core\TypoScript\FrontendTypoScript`
@@ -27,10 +27,14 @@ The Core uses this in the :php:`TimeTrackInitialization` and the
     page" scenarios. :typoscript:`setup` and (internal) :typoscript:`page` may
     not be set.
 
+..  _after-typo-script-determined-event-example:
+
 Example
 =======
 
 ..  include:: /_includes/EventsContributeNote.rst.txt
+
+..  _after-typo-script-determined-event-api:
 
 API
 ===

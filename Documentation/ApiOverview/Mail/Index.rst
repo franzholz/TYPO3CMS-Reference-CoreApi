@@ -94,12 +94,12 @@ Minimal example for a Fluid-based email template
 
                     *   Email
 
-                        *   MyCustomEmail.html
+                        *   MyCustomEmail.fluid.html
 
-**`MyCustomEmail.html`:**
+:file:`MyCustomEmail.fluid.html`:
 
 ..  code-block:: html
-    :caption: EXT:my_site_package/Resources/Private/Templates/Email/MyCustomEmail.html
+    :caption: EXT:my_site_package/Resources/Private/Templates/Email/MyCustomEmail.fluid.html
 
     <f:layout name="SystemEmail" />
 
@@ -223,7 +223,7 @@ mbox
 :php:`$GLOBALS['TYPO3_CONF_VARS']['MAIL']['transport'] = '<classname>';`
     Custom class which implements
     :php:`\Symfony\Component\Mailer\Transport\TransportInterface`.
-    The constructor receives all settings from the ``MAIL`` section to make it
+    The constructor receives all settings from the `MAIL` section to make it
     possible to add custom settings.
 
 
@@ -272,6 +272,8 @@ next page to load while the email is being sent. This can be avoided by choosing
 to "spool" the emails instead of sending them directly.
 
 
+..  _mail-spooling-spooling-memory:
+
 Spooling in memory
 ------------------
 
@@ -283,6 +285,8 @@ When you use spooling to store the emails to memory, they will get sent right
 before the kernel terminates. This means the email only gets sent if the whole
 request got executed without any unhandled exception or any errors.
 
+
+..  _mail-spooling-spooling-files:
 
 Spooling using files
 --------------------
@@ -304,7 +308,9 @@ Additional notes about the mail spool path:
 *   If the path is relative, the public web path is prepended to the path
 *   The path must not contain symlinks (important for environments with auto
     deployment)
-*   The path must not contain ``//``, ``..`` or ``\``
+*   The path must not contain `//`, `..` or `\\`
+
+..  _mail-spooling-sending-spooled-mails:
 
 Sending spooled mails
 ---------------------
@@ -402,7 +408,7 @@ In Fluid, you can now use the defined language key ("language"):
 
 ..  code-block:: html
 
-    <f:translate languageKey="{language}" id="LLL:EXT:my_extension/Resources/Private/Language/emails.xml:subject" />
+    <f:translate languageKey="{language}" id="my_extension.emails:subject" />
 
 ..  _mail-fluid-email-set-request:
 
@@ -540,6 +546,8 @@ mailer is used.
     TYPO3\CMS\Core\Mail\MailerInterface:
         alias: MyVendor\SitePackage\Mail\MyCustomMailer
 
+
+..  _mail-psr-14-events:
 
 PSR-14 events on sending messages
 =================================

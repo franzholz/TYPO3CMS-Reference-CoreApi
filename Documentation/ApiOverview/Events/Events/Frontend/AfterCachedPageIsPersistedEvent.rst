@@ -2,9 +2,9 @@
 ..  index:: Events; AfterCachedPageIsPersistedEvent
 ..  _AfterCachedPageIsPersistedEvent:
 
-===============================
-AfterCachedPageIsPersistedEvent
-===============================
+=================================
+`AfterCachedPageIsPersistedEvent`
+=================================
 
 The PSR-14 event :php:`\TYPO3\CMS\Frontend\Event\AfterCachedPageIsPersistedEvent`
 is commonly used to generate a static file cache. This event is only called if
@@ -16,7 +16,6 @@ Example
 =======
 
 ..  literalinclude:: _AfterCachedPageIsPersistedEvent/_MyEventListener.php
-    :language: php
     :caption: EXT:my_extension/Classes/Frontend/EventListener/MyEventListener.php
 
 ..  _AfterCachedPageIsPersistedEvent-api:

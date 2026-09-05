@@ -4,9 +4,9 @@
     Path; EXT:{extkey}/Configuration/Icons.php
 ..  _extension-configuration-Icons-php:
 
-=================
-:file:`Icons.php`
-=================
+===========
+`Icons.php`
+===========
 
 ..  typo3:file:: Icons.php
     :scope: extension
@@ -20,5 +20,4 @@
     See the :ref:`Icon API <icon>` for details.
 
 ..  literalinclude:: /ApiOverview/Icon/_Icons.php
-    :language: php
     :caption: EXT:my_extension/Configuration/Icons.php

@@ -21,6 +21,8 @@ menu will appear, offering useful functions to execute.
 Context menu rendering flow
 ===========================
 
+..  _csm-implementation-markup:
+
 Markup
 ------
 
@@ -40,8 +42,10 @@ The JavaScript click event handler is implemented in the
 data attributes mentioned above and executes an Ajax call to the
 :php:`\TYPO3\CMS\Backend\Controller\ContextMenuController->getContextMenuAction()`.
 
-ContextMenuController
----------------------
+..  _csm-implementation-contextmenucontroller:
+
+`ContextMenuController`
+-----------------------
 
 :php:`ContextMenuController` asks :php:`\TYPO3\CMS\Backend\ContextMenu\ContextMenu`
 to generate an array of items. :php:`ContextMenu` builds a list of available
@@ -49,6 +53,8 @@ item providers by asking each whether it can provide items
 (:php:`$provider->canHandle()`), and what priority it has
 (:php:`$provider->getPriority()`).
 
+
+..  _csm-implementation-contextmenucontroller-item-providers:
 
 Item providers registration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -72,6 +78,8 @@ There are two item providers which are always available:
 -  :php:`\TYPO3\CMS\Backend\ContextMenu\ItemProviders\PageProvider`
 -  :php:`\TYPO3\CMS\Backend\ContextMenu\ItemProviders\RecordProvider`
 
+..  _csm-implementation-contextmenucontroller-gathering-items:
+
 Gathering items
 ~~~~~~~~~~~~~~~
 
@@ -83,6 +91,8 @@ After that, a compiled list of items is returned to the
 :php:`ContextMenuController` which passes it back to the
 :file:`ContextMenu.js` as JSON.
 
+
+..  _csm-implementation-menu-rendering-javascript:
 
 Menu rendering in JavaScript
 ----------------------------
@@ -145,6 +155,8 @@ Example of the JSON response:
     }
 
 
+..  _csm-api-usage-core:
+
 API usage in the Core
 =====================
 
@@ -164,6 +176,8 @@ items. See following places for a reference:
     :php:`\TYPO3\CMS\Filelist\ContextMenu\ItemProviders\FilemountsProvider`
     and the :ref:`ES6 module <backend-javascript-es6>` :js:`@typo3/filelist/context-menu-actions.js`
 
+..  _csm-adding-context-menu:
+
 Adding context menu to elements in your backend module
 ======================================================
 
@@ -177,13 +191,13 @@ of the standard backend container Fluid view helper (or backend page
 renderer view helper).
 
 Doing so in your layout is sufficient (see
-:file:`typo3/sysext/beuser/Resources/Private/Layouts/Default.html`).
+:file:`typo3/sysext/beuser/Resources/Private/Layouts/Default.fluid.html`).
 
-..  literalinclude:: _ContextualMenu/_IncludeJS.html
+..  literalinclude:: _ContextualMenu/_IncludeJS.fluid.html
 
 The second step is to activate the context menu on the icons. This kind of markup
 is required (taken from
-:file:`typo3/sysext/beuser/Resources/Private/Templates/BackendUser/Index.html`):
+:file:`typo3/sysext/beuser/Resources/Private/Templates/BackendUser/Index.fluid.html`):
 
 ..  code-block:: xml
     :emphasize-lines: 2
@@ -223,7 +237,9 @@ independently from other places (disabled items can be configured in TSconfig).
    as a value like :html:`data-contextmenu-uid="1:/some-folder/some-file.pdf"`
 
 
-Disabling Context Menu Items from TSConfig
+..  _csm-disabling-context-menu:
+
+Disabling context menu items from TSconfig
 ==========================================
 
 Context menu items can be disabled in TSConfig by adding item name to the
@@ -251,7 +267,7 @@ For more details see :ref:`TSConfig reference <t3tsref:useroptions-contextmenu-k
 
 .. _csm-adding:
 
-Tutorial: How to add a custom context menu item
+Tutorial: how to add a custom context menu item
 ===============================================
 
 ..  todo: Document the new ES6 way of creating a context menu
@@ -262,7 +278,9 @@ Follow these steps to add a custom menu item for pages records. You will add a
 
 .. include:: /Images/ManualScreenshots/Examples/ContextualMenuExtended/ContextMenuHelloWorld.rst.txt
 
-Step 1: Implementation of the item provider class
+..  _csm-adding-step-1-implementation:
+
+Step 1: implementation of the item provider class
 -------------------------------------------------
 
 Implement your own item provider class. Provider must implement
@@ -272,7 +290,10 @@ or any other provider from EXT:backend.
 
 See comments in the following code snippet clarifying implementation details.
 
-.. include:: /CodeSnippets/Tutorials/ContextMenu/HelloWorldItemProvider.rst.txt
+.. literalinclude:: /CodeSnippets/Tutorials/ContextMenu/HelloWorldItemProvider.php
+   :caption: EXT:examples/Classes/ContextMenu/HelloWorldItemProvider.php
+
+..  _csm-adding-step-2-javascript:
 
 Step 2: JavaScript actions
 --------------------------
@@ -280,13 +301,17 @@ Step 2: JavaScript actions
 Provide a JavaScript file (ES6 module) which will be
 called after clicking on the context menu item.
 
-..  include:: /CodeSnippets/Tutorials/ContextMenu/ContextMenuActions.rst.txt
+.. literalinclude:: /CodeSnippets/Tutorials/ContextMenu/ContextMenuActions.js
+   :caption: EXT:examples/Resources/Public/JavaScript/context-menu-actions.js
 
 Register the JavaScript ES6 modules of your extension if not done yet:
 
-..  include:: /CodeSnippets/Tutorials/ContextMenu/JavaScriptModules.rst.txt
+.. literalinclude:: /CodeSnippets/Tutorials/ContextMenu/JavaScriptModules.php
+   :caption: examples/Configuration/JavaScriptModules.php
 
-Step 3: Registration
+..  _csm-adding-step-3-registration:
+
+Step 3: registration
 --------------------
 
 If you have :yaml:`autoconfigure: true` set in your extension's :file:`Services.yaml` file all
@@ -306,4 +331,6 @@ get registered as context menu items automatically:
 If :yaml:`autoconfigure` is disabled you can manually register a context menu item provider
 by adding the tag :yaml:`backend.contextmenu.itemprovider`:
 
-..  include:: /CodeSnippets/Tutorials/ContextMenu/ManualServicesYaml.rst.txt
+.. literalinclude:: /CodeSnippets/Tutorials/ContextMenu/ManualServicesYaml.yaml
+   :caption: EXT:my_extension/Configuration/Services.yaml
+   :emphasize-lines: 5-7

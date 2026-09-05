@@ -2,9 +2,9 @@
 ..  index:: Events; BrokenLinkAnalysisEvent
 ..  _BrokenLinkAnalysisEvent:
 
-=======================
-BrokenLinkAnalysisEvent
-=======================
+=========================
+`BrokenLinkAnalysisEvent`
+=========================
 
 The PSR-14 event :php:`\TYPO3\CMS\Core\Html\Event\BrokenLinkAnalysisEvent`
 can be used to get information about broken links set in the
@@ -23,6 +23,8 @@ The procedure for marking the broken links in the RTE is as follow:
 This functionality is implemented in the system extension
 :doc:`linkvalidator <ext_linkvalidator:Index>`. Other extensions can use the
 event to override the default behaviour.
+
+..  _broken-link-analysis-event-example:
 
 Example
 =======
@@ -43,6 +45,8 @@ The workflow would be:
 The corresponding event listener class:
 
 ..  include:: _TransformTextEvents/_TransformListener.php
+
+..  _broken-link-analysis-event-api:
 
 API
 ===
